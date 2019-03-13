@@ -1,0 +1,86 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Master Thesis, LaTeX Template                    %%
+%% Copyleft by Piotr Wozniak & Artur M. Brodzki     %%
+%% Faculty of Electronic and Information Technology %%
+%% Warsaw University of Technology, Warsaw, 2019    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{eiti/eiti-mgr}
+
+%\usepackage{fontspec} %custom fonts
+\usepackage[polish]{babel}
+
+%alternatywne czcionki 
+%\setmainfont{Adagio Slab}
+%\setromanfont{times.ttf}
+%\setsansfont{arial.ttf}
+
+\begin{document}
+
+%--------------------------------
+% Strona tytułowa
+%--------------------------------
+\instytut{XXXXXX}
+\kierunek{XXXXXX}
+\specjalnosc{XXXXXX}
+\title{XXXXXX}
+\author{XXXXXX}
+\album{XXXXXX}
+\promotor{XXXXXX}
+\date{\the\year}
+\maketitle
+
+%--------------------------------
+% Streszczenie po polsku
+%--------------------------------
+\streszczenie \lipsum[1-4]
+\slowakluczowe XXX, XXX, XXX
+\newpage
+
+%--------------------------------
+% Streszczenie po angielsku
+%--------------------------------
+\abstract \lipsum[1-4]
+\keywords XXX, XXX, XXX
+\newpage
+
+%--------------------------------
+% Oświadczenie o autorstwie
+%--------------------------------
+\makeauthorship
+\newpage
+
+%--------------------------------
+% Spis treści
+%--------------------------------
+\tableofcontents
+\newpage
+
+%--------------------------------
+% Rozdziały
+%--------------------------------
+
+\chapter{Wstęp}
+\lipsum[1-4]
+\section{Sekcja 1.}
+\lipsum[1-10]
+
+\chapter{Rozdział 1.}
+\lipsum[1-4]
+\section{Sekcja 1.}
+\lipsum[1-10]
+
+%--------------------------------
+% Literarura
+%--------------------------------
+
+%--------------------------------
+% Spisy
+%--------------------------------
+
+\listoffigures
+
+\listoftables
+
+\end{document}
+

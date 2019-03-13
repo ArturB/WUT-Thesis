@@ -1,0 +1,7 @@
+\babel@toc {polish}{}
+\contentsline {chapter}{\numberline {1\relax .\leavevmode@ifvmode \kern .5em }Wst\IeC {\k e}p}{7}{chapter.1}% 
+\contentsline {section}{\numberline {1.1\relax .\leavevmode@ifvmode \kern .5em }Sekcja 1.}{7}{section.1.1}% 
+\contentsline {chapter}{\numberline {2\relax .\leavevmode@ifvmode \kern .5em }Rozdzia\IeC {\l } 1.}{10}{chapter.2}% 
+\contentsline {section}{\numberline {2.1\relax .\leavevmode@ifvmode \kern .5em }Sekcja 1.}{10}{section.2.1}% 
+\contentsline {chapter}{Spis rysunk\'ow}{13}{chapter*.2}% 
+\contentsline {chapter}{Spis tablic}{14}{chapter*.3}% 

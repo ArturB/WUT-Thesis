@@ -20,4 +20,4 @@ Domyślnie używaną czcionką jest Adobe Utopia (pakiet [fourier](https://ctan.
 Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami widocznymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/EiTI-Szablon/tree/master/tex).
  
  ## Uwagi
- Copyright by Artur M. Brodzki, based on [](https://github.com/pwozniak/EiTI-Szablon) by [Piotr Woźniak](https://github.com/pwozniak). 
+ Copyright by Artur M. Brodzki, based on [https://github.com/pwozniak/EiTI-Szablon] by [Piotr Woźniak](https://github.com/pwozniak). 

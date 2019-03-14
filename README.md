@@ -1,5 +1,5 @@
 # EiTI-Szablon
-Repozytorium zawiera stworzony w LaTeXu szablon pracy dyplomowej: inżynierskiej lub magisterskiej - przeznaczony dla Wydziału EiTI Politechniki Warszawskiej. Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autorstwie, w dokumencie zawarte są przykładowe fragmenty kodu:
+Repozytorium zawiera stworzony w LaTeXu szablon pracy dyplomowej: [inżynierskiej](https://github.com/ArturB/EiTI-Szablon/blob/master/eiti/eiti-inz.cls) lub [magisterskiej](https://github.com/ArturB/EiTI-Szablon/blob/master/eiti/eiti-mgr.cls) - przeznaczony dla Wydziału EiTI Politechniki Warszawskiej. Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autorstwie, w dokumencie zawarte są przykładowe fragmenty kodu:
  - obrazek z podpisem
  - wzory matematyczne z numeracją lub bez, w tym równanie macierzowe
  - prosta tabela z podpisem

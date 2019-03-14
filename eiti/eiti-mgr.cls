@@ -7,40 +7,63 @@
 
 \ProvidesClass{eiti-mgr}
 
-% Load base
 \LoadClass[12pt]{article}
 
+%--------------------------------
+% Common packages
+%--------------------------------
 \RequirePackage{amsmath}
 \RequirePackage{array} 
 \RequirePackage{enumitem}
 \RequirePackage{float}
 \RequirePackage{fancyhdr}
-\RequirePackage[T1]{fontenc}
 \RequirePackage{fourier}
 \RequirePackage{graphicx}
-\RequirePackage[utf8]{inputenc}
+\RequirePackage{ifluatex}
+\RequirePackage{ifxetex}
 \RequirePackage{kantlipsum}
 \RequirePackage{lipsum}
 \RequirePackage{listings}
 \RequirePackage{longtable}
-\RequirePackage[
-	protrusion=true, 
-	expansion=true
-]{microtype}
 \RequirePackage{multirow}
 \RequirePackage{sectsty}
 \RequirePackage{setspace}
 \RequirePackage{pifont}
+\RequirePackage{tgadventor}
 \RequirePackage{tocbibind}
 \RequirePackage{url}
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
 \RequirePackage{xspace}
 
-%--------------------------------
+%--------------------------------------
+% XeTeX specific configuration
+%--------------------------------------
+\ifxetex
+	\RequirePackage{fontspec-xetex}
+	\RequirePackage[
+		protrusion=true,
+	]{microtype}
+\else
+	\RequirePackage[T1]{fontenc}
+	\RequirePackage[utf8]{inputenc}
+	\RequirePackage[
+		protrusion=true,
+		expansion=true
+	]{microtype}
+\fi
+
+%--------------------------------------
+% LuaTeX specific configuration
+%--------------------------------------
+\ifluatex
+	\RequirePackage[utf8]{luainputenc}
+\fi
+
+%--------------------------------------
 % Define and process margin parameter
 % Default margin is 2.5 cm
-%--------------------------------
+%--------------------------------------
 \newcommand\margin{2.5cm}
 \define@key{eiti/eiti-mgr.cls}{margin}[2.5cm]{
 	\def\margin{#1}

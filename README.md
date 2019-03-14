@@ -18,7 +18,7 @@ Domyślnie używaną czcionką jest Adobe Utopia (pakiet [fourier](https://ctan.
   - Arial, znany z MS Worda. 
  
  ## Kontrola wersji
-Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git oraz pracę z wykorzystaniem [TeX Studio](https://www.texstudio.org/). Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami widocznymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/EiTI-Szablon/tree/master/tex).
+Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git oraz pracę z wykorzystaniem [TeX Studio](https://www.texstudio.org/). Skrypt [build.sh](https://github.com/ArturB/EiTI-Szablon/blob/master/build.sh) commituje zmiany do repozytorium. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami widocznymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/EiTI-Szablon/tree/master/tex).
  
  ## Uwagi
  Copyright by Artur M. Brodzki, based on https://github.com/pwozniak/EiTI-Szablon by [Piotr Woźniak](https://github.com/pwozniak). 

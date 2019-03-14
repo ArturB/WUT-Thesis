@@ -1,13 +1,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Master Thesis, LaTeX Template                    %%
+%% Engineer & Master Thesis, LaTeX Template         %%
 %% Copyleft by Piotr Wozniak & Artur M. Brodzki     %%
 %% Faculty of Electronic and Information Technology %%
 %% Warsaw University of Technology, Warsaw, 2019    %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass{eiti/eiti-mgr}
+\documentclass{eiti/eiti-inz}
+%\documentclass{eiti/eiti-mgr}
 
-%\usepackage{fontspec} %custom fonts
+%\usepackage{fontspec} % custom fonts
 \usepackage[polish]{babel}
 
 %alternatywne czcionki 
@@ -60,56 +61,10 @@
 %--------------------------------
 % Rozdziały
 %--------------------------------
+\input{tex/1-wstep}      % W długich pracach, wygodnie jest trzymać
+\input{tex/2-de-finibus} % każdy rozdział w osobnym pliku. 
 
-\section{Wstęp}
-\lipsum[1-2] \cite{greenwade93}
-\begin{figure}[h]
-	\label{fig:anzelm}
-	\centering \includegraphics[width=0.7\linewidth]{img/anzelm.png}
-	\caption{Anzelm z Canterbury.}
-\end{figure}
-\lipsum[3-4]
-
-\section{De Finibus Bonorum et Malorum}
-\lipsum[1-2]
-
-\begin{align*}
-	E & = mc^2 \\ 
-	y & = ax^2 + bx + c
-\end{align*}
-
-\lipsum[3]
-
-\begin{align}
-\begin{bmatrix}
-1 & 0 & 0 \\ 
-0 & 2 & 0 \\ 
-0 & 0 & 3
-\end{bmatrix} \cdot 
-\begin{bmatrix}
-4 \\ 5 \\ 6
-\end{bmatrix} = 
-\begin{bmatrix}
-4 \\ 10 \\ 18
-\end{bmatrix}
-\end{align}
-
-\lipsum[4] \cite{goossens93}
-
-\subsection{Critique of Pure Reason}
-\kant[1]
-\begin{table} \label{tab:tabela1} \centering
-\begin{tabular} {| c | c | r |} \hline
-	Kolumna 1 & Kolumna 2 & Liczba \\ \hline\hline
-	cell1 & cell2 & 60 \\ \hline
-	cell4 & cell5 & 43 \\ \hline
-	cell7 & cell8 & 20,45 \\ \hline
-	\multicolumn{2}{|r|}{Suma:} & 123,45 \\ \hline
-\end{tabular} \caption{Przykładowa tabela.}
-\end{table}
-\kant[2-3]
-
-\section{Podsumowanie}
+\section{Podsumowanie}   % Ale można też pisać w jednym. 
 \lipsum[5-8]
 
 %--------------------------------
@@ -123,9 +78,9 @@
 % Spisy
 %--------------------------------
 \newpage
-\listoffigures
-\newpage
-\listoftables
+\listoffigures % Spis obrazków. 
+\vspace{5cm}   % Kawałek pionowej przestrzeni. 
+\listoftables  % Spis tabel. 
 
 \end{document}
 

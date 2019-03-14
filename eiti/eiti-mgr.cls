@@ -11,6 +11,7 @@
 \LoadClass[12pt]{article}
 
 \RequirePackage{amsmath}
+\RequirePackage{array} 
 \RequirePackage{enumitem}
 \RequirePackage{float}
 \RequirePackage{fancyhdr}
@@ -30,6 +31,7 @@
 \RequirePackage{sectsty}
 \RequirePackage{setspace}
 \RequirePackage{pifont}
+\RequirePackage{tocbibind}
 \RequirePackage{url}
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}

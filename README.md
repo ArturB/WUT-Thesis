@@ -5,6 +5,7 @@ Repozytorium zawiera stworzony w LaTeXu szablon pracy dyplomowej: inżynierskiej
  - prosta tabela z podpisem
  - duża tabela wielostronicowa, z regulowaną szerokością kolumn i zagnieżdżaniem (multirow)
  - bibliografia w BibTeX
+ 
  [Tutaj](https://github.com/ArturB/EiTI-Szablon/blob/master/main.pdf) dostępny podgląd w formacie PDF. 
  
  ## Kompilacja i kompatybilność

@@ -30,6 +30,7 @@
 \RequirePackage{sectsty}
 \RequirePackage{setspace}
 \RequirePackage{pifont}
+\RequirePackage{tgadventor}
 \RequirePackage{tocbibind}
 \RequirePackage{url}
 \RequirePackage{xcolor}

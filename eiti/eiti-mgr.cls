@@ -8,9 +8,8 @@
 \ProvidesClass{eiti-mgr}
 
 % Load base
-\LoadClass[12pt, twoside, openany]{mwrep}
+\LoadClass[12pt]{article}
 
-\RequirePackage[chapter]{algorithm}
 \RequirePackage{amsmath}
 \RequirePackage{enumitem}
 \RequirePackage{float}
@@ -19,7 +18,7 @@
 \RequirePackage{fourier}
 \RequirePackage{graphicx}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage{lastpage}
+\RequirePackage{kantlipsum}
 \RequirePackage{lipsum}
 \RequirePackage{listings}
 \RequirePackage{longtable}
@@ -28,6 +27,8 @@
 	expansion=true
 ]{microtype}
 \RequirePackage{multirow}
+\RequirePackage{sectsty}
+\RequirePackage{setspace}
 \RequirePackage{pifont}
 \RequirePackage{url}
 \RequirePackage{xcolor}
@@ -62,6 +63,12 @@
 }
 
 %--------------------------------
+% Initial setup
+%--------------------------------
+\onehalfspacing
+\sectionfont{\scshape}
+
+%--------------------------------
 % Header & footer
 %--------------------------------
 \pagestyle{fancy}
@@ -70,14 +77,6 @@
 \fancyhead[LE]{\nouppercase{\rightmark}}
 \fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
-
-\fancypagestyle{opening}{
-	\fancyhf{}\fancyfoot[LE,RO]{\thepage}
-	\renewcommand{\headrulewidth}{0pt}}
-
-\fancypagestyle{closing}{
-	\fancyhf{}\fancyhead[RO]{\nouppercase{\leftmark}}\fancyhead[LE]{\nouppercase{\rightmark}}\fancyfoot[LE,RO]{\thepage}
-	\renewcommand{\headrulewidth}{0.4pt}}
 
 %--------------------------------
 % Strona tytułowa
@@ -150,20 +149,20 @@
 %--------------------------------
 \newcommand{\streszczenie}{
 	\thispagestyle{empty}
-	\centerline{\bf \@title}
+	\begin{center}\textbf{\large\@title}\end{center}
 	\textbf{\\ Streszczenie.\xspace}
 }
-\newcommand{\slowakluczowe}{\textbf{\\ Słowa kluczowe: \xspace}}
+\newcommand{\slowakluczowe}{\vspace{0.5cm}\par\noindent \textbf{Słowa kluczowe: \xspace}}
 
 %--------------------------------
 % Streszczenie po angielsku
 %--------------------------------
 \renewcommand{\abstract}{
 	\thispagestyle{empty}
-	\centerline{\bf \@title}
+	\begin{center}\textbf{\large\@title}\end{center}
 	\textbf{\\ Abstract.\xspace}
 }
-\newcommand{\keywords}{\\ \textbf{Keywords: \xspace}}
+\newcommand{\keywords}{\vspace{0.5cm}\par\noindent \textbf{Keywords: \xspace}}
 
 %--------------------------------
 % Streszczenie po angielsku

@@ -32,9 +32,10 @@
 \RequirePackage{listings}
 \RequirePackage{longtable}
 \RequirePackage{multirow}
+\RequirePackage{pifont}
 \RequirePackage{sectsty}
 \RequirePackage{setspace}
-\RequirePackage{pifont}
+\RequirePackage{subcaption}
 \RequirePackage{titlesec}
 \RequirePackage{tgadventor}
 \RequirePackage[nottoc]{tocbibind}

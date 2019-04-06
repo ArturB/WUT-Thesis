@@ -5,27 +5,49 @@
 %% Warsaw University of Technology, Warsaw, 2019    %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\documentclass{eiti/eiti-inz}
-\documentclass{eiti/eiti-mgr}
+\documentclass[
+	left=2.5cm,  % sadly, generic margin parameter
+	right=2.5cm, % doesnt't work, as it is
+	top=2.5cm,   % superseded by more specific
+	bottom=3cm   % left...bottom parameters
+	%bindingoffset=1cm % optional binding offset
+]{eiti/eiti-thesis}
 
-%\usepackage{fontspec} % custom fonts
 \usepackage[polish]{babel}
 
-%alternatywne czcionki 
+%--------------------------------
+% Alternatywne czcionki
+%--------------------------------
+%\usepackage{fontspec} % custom fonts
 %\setmainfont{Adagio Slab}
 %\setromanfont{times.ttf}
 %\setsansfont{arial.ttf}
+
+%--------------------------------
+% Twierdzenia i definicje;
+% tutaj tłumaczymy te terminy
+% na inne języki
+%--------------------------------
+\newtheorem{theorem}{Twierdzenie}
+\newtheorem{lemma}{Lemat}
+\newtheorem{corollary}{Wniosek}
+\newtheorem{definition}{Definicja}
+\newtheorem{axiom}{Aksjomat}
+\newtheorem{assumption}{Założenie}
 
 \begin{document}
 
 %--------------------------------
 % Strona tytułowa
 %--------------------------------
+\MasterThesis % dla pracy inżynierskiej mamy \EngineerThesis
 \instytut{XXXXXX}
 \kierunek{XXXXXX}
 \specjalnosc{XXXXXX}
-\title{Niepotrzebnie długi i skomplikowany tytuł pracy \\ trudny do przeczytania, zrozumienia i wymówienia}
-\author{XXXXXX}
+\title{
+	Niepotrzebnie długi i skomplikowany tytuł pracy \\ 
+	trudny do przeczytania, zrozumienia i wymówienia}
+\author{\{Imię i Nazwisko\}}
 \album{XXXXXX}
 \promotor{XXXXXX}
 \date{\the\year}
@@ -49,14 +71,14 @@
 % Oświadczenie o autorstwie
 %--------------------------------
 \makeauthorship
-\newpage
+\blankpage
 
 %--------------------------------
 % Spis treści
 %--------------------------------
-\thispagestyle{plain}
+\thispagestyle{empty}
 \tableofcontents
-\newpage
+\blankpage
 
 %--------------------------------
 % Rozdziały
@@ -65,7 +87,7 @@
 \input{tex/2-de-finibus} % każdy rozdział w osobnym pliku. 
 
 \section{Podsumowanie}   % Ale można też pisać w jednym. 
-\lipsum[5-8]
+\lipsum[5-7]
 
 %--------------------------------
 % Literarura
@@ -79,7 +101,6 @@
 %--------------------------------
 \newpage
 \listoffigures % Spis obrazków. 
-\vspace{5cm}   % Kawałek pionowej przestrzeni. 
 \listoftables  % Spis tabel. 
 
 \end{document}

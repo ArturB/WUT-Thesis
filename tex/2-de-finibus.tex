@@ -1,14 +1,12 @@
 
 \section{De Finibus Bonorum et Malorum}
-\lipsum[1-2]
-
+\lipsum[1]\footnote{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. }
 \begin{align*}
 	E & = mc^2 \\ 
 	y & = ax^2 + bx + c
 \end{align*}
 
 \lipsum[3]
-
 \begin{align}
 \begin{bmatrix}
 1 & 0 & 0 \\ 
@@ -38,7 +36,7 @@
 \end{tabular} \caption{Przykładowa tabela.}
 \end{table}
 
-\kant[2-3]
+\kant[2]
 
 \begin{longtable}{| c | m{0.58\linewidth} | r | m{0.1\linewidth} |} 
 	\caption{Tabela wielostronicowa.} \\ 
@@ -63,13 +61,64 @@
 	13 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 444 444,44 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
 	14 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 55 555,55 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
 	15 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 66 666,66 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
-	16 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 777 777,77 zł & \multicolumn{1}{c|}{OPR} \\ \hline
-	17 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 8 888,88 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
-	18 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 999 999,99 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
 	& \multicolumn{1}{r|}{\textbf{Suma:}} & \textbf{7 777 777,77 zł} & 
 	\label{table:koszty}
 \end{longtable}
 \kant[4]
 
+\subsection{Categorical Imperative}
+\kant[6]
 
-
+\subsection{G\"odel's ontological proof}
+\kant[9]
+\begin{assumption} \label{ass:1}
+	$ [\![ \ \phi \ ]\!] \Longrightarrow [\![ \ P(\phi); \neg P(\phi) \ ]\!]$
+\end{assumption}
+\begin{axiom}[Dualność] \label{axiom:1}
+	$\neg P(\phi) \Leftrightarrow P(\neg \phi)$, równoważnie $P(\phi) \Leftrightarrow \neg P(\neg \phi)$
+\end{axiom}
+\begin{axiom}[Całkowitość] \label{axiom:2}
+	$ \left( P(\phi) \wedge \forall x: \phi(x) \Rightarrow \psi(x) \right) \Rightarrow P(\psi) $
+\end{axiom}
+\begin{axiom}[Absolutność] \label{axiom:3}
+	$ P(\phi) \Rightarrow \Box P(\phi) $
+\end{axiom}
+\begin{definition} \label{def:1}
+	$ G(x) \Leftrightarrow \forall \phi: \left( P(\phi) \Rightarrow \phi(x) \right) $
+\end{definition}
+\begin{definition} \label{def:2}
+	$ \phi \ ess \ x \Leftrightarrow \phi(x) \wedge \forall \psi \left( \psi(x) \Rightarrow \Box \forall y \left( \phi(y) \Rightarrow \psi(y) \right) \right)  $
+\end{definition}
+\begin{axiom} \label{axiom:4}
+	P(G)
+\end{axiom}
+\begin{lemma} \label{lemma:1}
+	$ P(\phi) \Rightarrow \Diamond \exists x : \phi(x) $
+\end{lemma}
+\begin{proof}
+	Dowód pomijamy, bo jest trywialny :)
+\end{proof}
+\begin{lemma} \label{lemma:2}
+	$ \Diamond \exists x : G(x) $
+\end{lemma}
+\begin{proof}
+	Natychmiastowy wniosek z aksjomatu \ref{axiom:4} i lematu \ref{lemma:1}.
+\end{proof}
+\begin{lemma} \label{lemma:3}
+	$ G(x) \Rightarrow G \ ess \ x $
+\end{lemma}
+\begin{proof}
+	Poprzez podstawienie do definicji \ref{def:2}. 
+\end{proof}
+\begin{definition} \label{def:3}
+	$ E(x) \Leftrightarrow \forall \phi \left( \phi \ ess \ x \Rightarrow \Box\ \exists x: \phi(x) \right) $
+\end{definition}
+\begin{axiom} \label{axiom:5}
+	P(E)
+\end{axiom}
+\begin{theorem}
+	$ \Box\ \exists x : G(x) $
+\end{theorem}
+\begin{proof}
+	Na podstawie definicji \ref{def:1}, lematu \ref{lemma:3} i aksjomatu \ref{axiom:5}. 
+\end{proof}

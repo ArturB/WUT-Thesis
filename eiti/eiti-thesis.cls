@@ -1,9 +1,9 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Engineer & Master Thesis LaTeX Template Class    %%
-%% Copyleft by Piotr Wozniak & Artur M. Brodzki     %%
-%% Faculty of Electronic and Information Technology %%
-%% Warsaw University of Technology, Warsaw, 2019    %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Engineer & Master Thesis LaTeX Template Class     %%
+%% Copyleft by Piotr Wozniak & Artur M. Brodzki      %%
+%% Faculty of Electronics and Information Technology %%
+%% Warsaw University of Technology, Warsaw, 2019     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ProvidesClass{eiti/eiti-thesis}
 
@@ -19,6 +19,10 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
 \RequirePackage{array} 
+\RequirePackage[
+	labelfont=bf,
+	labelsep=period
+]{caption}
 \RequirePackage{enumitem}
 \RequirePackage{float}
 \RequirePackage{fancyhdr}
@@ -127,8 +131,9 @@
 %--------------------------------
 % Initial setup
 %--------------------------------
-\onehalfspacing
-\sectionfont{\LARGE\scshape}
+\setstretch{1.2}
+\sectionfont{\LARGE}
+\titlelabel{\thetitle.\quad}
 \let\oldsection\section
 \renewcommand{\section}{
 	\newpage
@@ -140,7 +145,7 @@
 	\renewcommand{\headrulewidth}{0pt}
 	\fancyfoot[LE,RO]{\thepage}
 }
-\titlespacing{\section}{0cm}{0cm}{1cm}
+\titlespacing{\section}{0cm}{0cm}{0.2cm}
 
 %--------------------------------
 % Header & footer
@@ -218,7 +223,7 @@
 \renewcommand{\maketitle}{
 	\linespread{1.15}
 	
-	\thispagestyle{plain}
+	\thispagestyle{empty}
 	\pagenumbering{gobble}
 	
 	\begin{center}

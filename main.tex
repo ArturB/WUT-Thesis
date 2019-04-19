@@ -1,33 +1,33 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Engineer & Master Thesis, LaTeX Template         %%
-%% Copyleft by Piotr Wozniak & Artur M. Brodzki     %%
-%% Faculty of Electronic and Information Technology %%
-%% Warsaw University of Technology, Warsaw, 2019    %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Engineer & Master Thesis, LaTeX Template          %%
+%% Copyleft by Piotr Wozniak & Artur M. Brodzki      %%
+%% Faculty of Electronics and Information Technology %%
+%% Warsaw University of Technology, Warsaw, 2019     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[
-	left=2.5cm,  % sadly, generic margin parameter
-	right=2.5cm, % doesnt't work, as it is
-	top=2.5cm,   % superseded by more specific
-	bottom=3cm   % left...bottom parameters
-	%bindingoffset=1cm % optional binding offset
+	left=2.5cm,       % Sadly, generic margin parameter
+	right=2.5cm,      % doesnt't work, as it is
+	top=2.5cm,        % superseded by more specific
+	bottom=3cm,       % left...bottom parameters.
+	bindingoffset=6mm % Optional binding offset. I advise to comment it, until you will be ready to print and bind your thesis. 
 ]{eiti/eiti-thesis}
 
 \usepackage[polish]{babel}
 
-%--------------------------------
+%----------------------------------
 % Alternatywne czcionki
-%--------------------------------
+%----------------------------------
 %\usepackage{fontspec} % custom fonts
 %\setmainfont{Adagio Slab}
 %\setromanfont{times.ttf}
 %\setsansfont{arial.ttf}
 
-%--------------------------------
+%----------------------------------
 % Twierdzenia i definicje;
-% tutaj tłumaczymy te terminy
+% tutaj ew. tłumaczymy te terminy
 % na inne języki
-%--------------------------------
+%----------------------------------
 \newtheorem{theorem}{Twierdzenie}
 \newtheorem{lemma}{Lemat}
 \newtheorem{corollary}{Wniosek}
@@ -94,7 +94,7 @@
 % Literarura
 %--------------------------------
 \newpage
-\bibliographystyle{apalike}
+\bibliographystyle{ieeetr}
 \bibliography{literatura}
 
 %--------------------------------

@@ -43,6 +43,7 @@
 \RequirePackage{titlesec}
 \RequirePackage{tgadventor}
 \RequirePackage[nottoc]{tocbibind}
+\RequirePackage{tocloft}
 \RequirePackage{url}
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
@@ -134,6 +135,8 @@
 \setstretch{1.2}
 \sectionfont{\LARGE}
 \titlelabel{\thetitle.\quad}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecaftersnum}{.}%
 \let\oldsection\section
 \renewcommand{\section}{
 	\newpage

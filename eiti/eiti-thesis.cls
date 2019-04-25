@@ -10,7 +10,7 @@
 \LoadClass[
 	12pt, 
 	twoside
-]{article}
+]{mwart}
 
 %--------------------------------
 % Common packages
@@ -37,10 +37,10 @@
 \RequirePackage{longtable}
 \RequirePackage{multirow}
 \RequirePackage{pifont}
-\RequirePackage{sectsty}
+%\RequirePackage{sectsty}
 \RequirePackage{setspace}
-\RequirePackage{subcaption}
-\RequirePackage{titlesec}
+%\RequirePackage{subcaption}
+%\RequirePackage{titlesec}
 \RequirePackage{tgadventor}
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage{url}
@@ -132,8 +132,8 @@
 % Initial setup
 %--------------------------------
 \setstretch{1.2}
-\sectionfont{\LARGE}
-\titlelabel{\thetitle.\quad}
+%\sectionfont{\LARGE}
+%\titlelabel{\thetitle.\quad}
 \let\oldsection\section
 \renewcommand{\section}{
 	\newpage
@@ -145,7 +145,7 @@
 	\renewcommand{\headrulewidth}{0pt}
 	\fancyfoot[LE,RO]{\thepage}
 }
-\titlespacing{\section}{0cm}{0cm}{0.2cm}
+%\titlespacing{\section}{0cm}{0cm}{0.2cm}
 
 %--------------------------------
 % Header & footer

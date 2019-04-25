@@ -37,12 +37,8 @@
 \RequirePackage{longtable}
 \RequirePackage{multirow}
 \RequirePackage{pifont}
-%\RequirePackage{sectsty}
 \RequirePackage{setspace}
-%\RequirePackage{subcaption}
-%\RequirePackage{titlesec}
 \RequirePackage{tgadventor}
-%\RequirePackage[nottoc]{tocbibind}
 \RequirePackage{url}
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
@@ -132,11 +128,9 @@
 % Initial setup
 %--------------------------------
 \setstretch{1.2}
-%\sectionfont{\LARGE}
-%\titlelabel{\thetitle.\quad}
+\SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
 \let\oldsection\section
 \renewcommand{\section}{
-	\newpage
 	\thispagestyle{plain}
 	\oldsection
 }
@@ -145,7 +139,6 @@
 	\renewcommand{\headrulewidth}{0pt}
 	\fancyfoot[LE,RO]{\thepage}
 }
-%\titlespacing{\section}{0cm}{0cm}{0.2cm}
 
 %--------------------------------
 % Header & footer

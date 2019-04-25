@@ -42,7 +42,7 @@
 %\RequirePackage{subcaption}
 %\RequirePackage{titlesec}
 \RequirePackage{tgadventor}
-\RequirePackage[nottoc]{tocbibind}
+%\RequirePackage[nottoc]{tocbibind}
 \RequirePackage{url}
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}

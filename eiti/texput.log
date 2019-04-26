@@ -1,5 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.2.1)  25 APR 2019 18:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.4.25)  26 APR 2019 18:57
 entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
 **eiti-thesis.tex
 
 ! Emergency stop.
@@ -9,11 +11,11 @@ entering extended mode
 
  
 Here is how much of TeX's memory you used:
- 2 strings out of 492946
- 21 string characters out of 3126267
- 56557 words of memory out of 3000000
- 4004 multiletter control sequences out of 15000+200000
- 3640 words of font info for 14 fonts, out of 3000000 for 9000
+ 3 strings out of 492616
+ 113 string characters out of 6132768
+ 56950 words of memory out of 5000000
+ 4017 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 0i,0n,0p,1b,6s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 0i,0n,0p,1b,6s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!

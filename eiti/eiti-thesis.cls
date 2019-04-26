@@ -36,14 +36,10 @@
 \RequirePackage{listings}
 \RequirePackage{longtable}
 \RequirePackage{multirow}
+\RequirePackage{nameref}
 \RequirePackage{pifont}
 \RequirePackage{setspace}
 \RequirePackage{tgadventor}
-<<<<<<< HEAD
-\RequirePackage[nottoc]{tocbibind}
-\RequirePackage{tocloft}
-=======
->>>>>>> mwrep
 \RequirePackage{url}
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
@@ -133,14 +129,7 @@
 % Initial setup
 %--------------------------------
 \setstretch{1.2}
-<<<<<<< HEAD
-\sectionfont{\LARGE}
-\titlelabel{\thetitle.\quad}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\cftsecaftersnum}{.}%
-=======
 \SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
->>>>>>> mwrep
 \let\oldsection\section
 \renewcommand{\section}{
 	\thispagestyle{plain}
@@ -156,10 +145,14 @@
 % Header & footer
 %--------------------------------
 \pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{
+	\markboth{#1}{#1}
+}
+
 \fancyhead{}
 \fancyheadoffset{0cm} 
-\fancyhead[RO]{\nouppercase{\rightmark}}
-\fancyhead[LE]{\nouppercase{\rightmark}}
+\fancyhead[RO]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
+\fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
 \fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
 

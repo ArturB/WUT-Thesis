@@ -24,7 +24,7 @@ Szablon testowałem w następujących konfiguracjach:
  W innych środowiskach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z MacOS-em radzisz sobie więc sam(a). 
 
  ## Czcionki
-Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier)), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek jednak ja nie widzę takiego powodu. 
+Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek jednak ja nie widzę takiego powodu. 
  
  ## Kontrola wersji
 Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git oraz pracę z wykorzystaniem [TeX Studio](https://www.texstudio.org/). Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/EiTI-Szablon/tree/master/tex).

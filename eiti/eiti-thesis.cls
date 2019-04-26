@@ -36,12 +36,9 @@
 \RequirePackage{listings}
 \RequirePackage{longtable}
 \RequirePackage{multirow}
-\RequirePackage{nameref}
-\RequirePackage{pifont}
 \RequirePackage{setspace}
 \RequirePackage{tgadventor}
 \RequirePackage{url}
-\RequirePackage{xcolor}
 \RequirePackage{xkeyval}
 \RequirePackage{xspace}
 

@@ -222,7 +222,7 @@
 	\pagenumbering{gobble}
 	
 	\begin{center}
-		\sffamily
+		%\sffamily
 		\includegraphics[width=\textwidth]{eiti/header.png} \\
 		\hfill \break
 		\hfill \break
@@ -276,3 +276,13 @@
 	\ 
 	\newpage
 }
+
+%--------------------------------
+% Skrót (akronim) - makro
+%--------------------------------
+\newcommand{\acronym}[2]{
+	\noindent
+	\textbf{#1} -- #2
+	\newline
+}
+

@@ -1,0 +1,144 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Engineer & Master Thesis, LaTeX Template          %%
+%% Copyleft by Piotr Woźniak & Artur M. Brodzki      %%
+%% Faculty of Electronics and Information Technology %%
+%% Warsaw University of Technology, Warsaw, 2019     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[
+	left=2.5cm,       % Sadly, generic margin parameter
+	right=2.5cm,      % doesnt't work, as it is
+	top=2.5cm,        % superseded by more specific
+	bottom=3cm,       % left...bottom parameters.
+	bindingoffset=6mm % Optional binding offset.
+]{eiti/eiti-thesis}
+
+\usepackage[polish]{babel}
+\usepackage[
+	backend=bibtex,
+	style=ieee
+]{biblatex}
+\usepackage{csquotes}
+
+\graphicspath{{img/}}             % Katalog z obrazkami.
+\addbibresource{bibliografia.bib} % Plik .bib z bibliografią
+
+%----------------------------------------
+% Twierdzenia i definicje;
+% tutaj ew. tłumaczymy te terminy
+% na inne języki
+%----------------------------------------
+\newtheorem{theorem}{Twierdzenie}
+\newtheorem{lemma}{Lemat}
+\newtheorem{corollary}{Wniosek}
+\newtheorem{definition}{Definicja}
+\newtheorem{axiom}{Aksjomat}
+\newtheorem{assumption}{Założenie}
+
+%----------------------------------------
+% Spis rysunków, tablic i załączników;
+% tutaj ew. tłumaczymy te terminy
+% na inne języki
+%----------------------------------------
+\AtBeginDocument{
+	\renewcommand{\listfigurename}{Spis rysunków}
+	\renewcommand{\listtablename}{Spis tabel}
+	\renewcommand{\tablename}{Tabela}
+}
+
+\begin{document}
+
+%--------------------------------------
+% Strona tytułowa
+%--------------------------------------
+\MasterThesis % dla pracy inżynierskiej mamy \EngineerThesis
+\instytut{XXXXXX}
+\kierunek{XXXXXX}
+\specjalnosc{XXXXXX}
+\title{
+	Niepotrzebnie długi i skomplikowany tytuł pracy \\ 
+	trudny do przeczytania, zrozumienia i wymówienia}
+\author{\{Imię i Nazwisko\}}
+\album{XXXXXX}
+\promotor{XXXXXX}
+\date{\the\year}
+\maketitle
+
+%--------------------------------------
+% Streszczenie po polsku
+%--------------------------------------
+\streszczenie \lipsum[1-3]
+\slowakluczowe XXX, XXX, XXX
+\newpage
+
+%--------------------------------------
+% Streszczenie po angielsku
+%--------------------------------------
+\abstract \kant[1-3]
+\keywords XXX, XXX, XXX
+\newpage
+
+%--------------------------------------
+% Oświadczenie o autorstwie
+%--------------------------------------
+\makeauthorship
+\blankpage
+
+%--------------------------------------
+% Spis treści
+%--------------------------------------
+\thispagestyle{empty}
+\tableofcontents
+\blankpage
+
+%--------------------------------------
+% Rozdziały
+%--------------------------------------
+\input{tex/1-wstep}         % W długich pracach
+\input{tex/2-de-finibus}    % wygodnie jest trzymać
+\input{tex/3-code-listings} % każdy rozdział w osobnym pliku. 
+
+\newpage % Zaleca się otwieranie rozdziału od nowej strony
+\section{Podsumowanie}      % Ale można też pisać w jednym. 
+\lipsum[5-7]
+
+%--------------------------------------------
+% Literarura
+%--------------------------------------------
+\newpage
+\printbibliography
+
+%--------------------------------------------
+% Spisy (opcjonalne)
+%--------------------------------------------
+\newpage
+
+% Wykaz symboli i skrótów.
+% Pamiętaj, żeby posortować symbole alfabetycznie
+% we własnym zakresie. Ponieważ mało kto używa takiego wykazu, 
+% uznałem, że robienie automatycznie sortowanej listy
+% na poziomie LaTeXa to za duży overkill. 
+% Jest tylko proste i oczywiste makro \acronym, 
+% które dodaje postawowe formatowanie. 
+% //AB
+\vspace{0.8cm}
+\section*{Wykaz symboli i skrótów}
+\acronym{EiTI}{Wydział Elektroniki i Technik Informacyjnych}
+\acronym{PW}{Politechnika Warszawska}
+
+\listoffigures              % Spis obrazków. 
+\vspace{1cm}                % vertical space
+\listoftables               % Spis tabel. 
+\vspace{1cm}                % vertical space
+\section*{Spis załączników} % Spis załączników
+\begin{enumerate}[leftmargin=14pt] \small
+	\item Załącznik 1.
+	\item Załącznik 2.
+\end{enumerate}
+
+% Używając powyższych spisów jako szablonu,
+% możesz tu dodać swój własny wykaz bądź listę, 
+% np. spis algorytmów. 
+
+\end{document} % Dobranoc. 
+

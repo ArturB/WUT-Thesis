@@ -9,7 +9,7 @@ Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autor
  - duża tabela wielostronicowa, z regulowaną szerokością kolumn i zagnieżdżaniem (multirow);
  - twierdzenia, aksjomaty i definicje;
  - fragment kodu źródłowego programu;
- - bibliografia w BibTeX;
+ - bibliografia w BibLaTeX;
  - spis tabel oraz rysunków.
  
  [Tutaj](https://github.com/ArturB/WUT-Thesis/blob/master/main.pdf) dostępny podgląd w formacie PDF. Najnowsza wersja szablonu gotowa do kompilacji jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/download/latest/WUT-Thesis.zip. 

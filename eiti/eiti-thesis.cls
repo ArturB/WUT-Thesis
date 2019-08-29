@@ -168,7 +168,7 @@
 %--------------------------------
 \renewcommand{\abstract}{
 	\thispagestyle{empty}
-	\begin{center}\textbf{\large\@title}\end{center}
+	\begin{center}\textbf{\large\@engtitle}\end{center}
 	\textbf{\\ Abstract.\xspace}
 }
 \newcommand{\keywords}{\vspace{0.5cm}\par\noindent \textbf{Keywords: \xspace}}
@@ -209,6 +209,9 @@
 }
 \newcommand{\promotor}[1]{
 	\newcommand{\@promotor}{#1}
+}
+\newcommand{\engtitle}[1]{
+	\newcommand{\@engtitle}{#1}
 }
 
 %--------------------------------

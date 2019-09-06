@@ -1,0 +1,64 @@
+# This is the complex Travis configuration, 
+# which is intended for use on open source libraries 
+# which need compatibility over many platforms
+
+# Use new container infrastructure to enable caching
+sudo: false
+
+# Do not choose a language; we provide our own build tools.
+language: generic
+
+# Caching so the next build will be fast too.
+cache:
+  directories:
+
+# We set the compiler values here to tell Travis to use a different
+# compiler per set of arguments.
+matrix:
+  include:
+  # The LaTeX builds on Linux.
+  - env: BUILD="pdfLaTeX"
+    compiler: ": #pdfLaTeX"
+    addons: {apt: {packages: []}}
+
+  - env: BUILD="LuaTeX"
+    compiler: ": #LuaLaTeX"
+    addons: {apt: {packages: [texlive-luatex]}}
+
+  - env: BUILD="XeLaTeX"
+    compiler: ": #XeLaTeX"
+    addons: {apt: {packages: [texlive-xetex]}}
+
+  # The LaTeX builds on macOS. 
+  - env: BUILD="pdfLaTeX"
+    compiler: ": #pdfLaTeX OS X"
+    os: osx
+
+  - env: BUILD="LuaLaTeX"
+    compiler: ": #LuaLaTeX OS X"
+    os: osx
+
+  - env: BUILD="XeLaTeX"
+    compiler: ": #XeLaTeX OS X"
+    os: osx
+    
+before_install:
+# Using compiler above sets CC to an invalid value, so unset it
+- unset CC
+
+install:
+- apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish
+
+script:
+- |
+  case "$BUILD" in
+    pdfLaTeX)
+      ./pdftex-build.sh
+      ;;
+    LuaLaTeX)
+      ./luatex-build.sh
+      ;;
+    XeLaTeX)
+      ./xetex-build.sh
+      ;;
+  esac

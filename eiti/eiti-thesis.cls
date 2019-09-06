@@ -26,6 +26,7 @@
 \DeclareStringOption[2.5cm]{top}
 \DeclareStringOption[2.5cm]{bottom}
 \DeclareStringOption[0cm]{bindingoffset}
+\DeclareBoolOption[false]{nohyphenation}
 \ProcessKeyvalOptions*
 
 %--------------------------------
@@ -146,6 +147,16 @@
 \fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
 \fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
+
+%--------------------------------
+% Justify without hyphenation
+%--------------------------------
+\ifeitinohyphenation
+    \tolerance=1
+    \emergencystretch=\maxdimen
+    \hyphenpenalty=10000
+    \hbadness=10000
+\fi
 
 %--------------------------------
 % Streszczenie po polsku

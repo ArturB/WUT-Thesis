@@ -12,6 +12,22 @@
 	twoside
 ]{mwart}
 
+%--------------------------------------
+% Define class parameters
+%--------------------------------------
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family=eiti/eiti-thesis.cls,
+  prefix=eiti
+}
+
+\DeclareStringOption[2.5cm]{left}
+\DeclareStringOption[2.5cm]{right}
+\DeclareStringOption[2.5cm]{top}
+\DeclareStringOption[2.5cm]{bottom}
+\DeclareStringOption[0cm]{bindingoffset}
+\ProcessKeyvalOptions*
+
 %--------------------------------
 % Common packages
 %--------------------------------
@@ -89,37 +105,15 @@
 }
 
 %--------------------------------------
-% Define and process class parameters
 % Default margin is 2.5 cm
 %--------------------------------------
-\define@key{eiti/eiti-thesis.cls}{left}[2.5cm]{
-	\def\@left{#1}
-}
-\define@key{eiti/eiti-thesis.cls}{right}[2.5cm]{
-	\def\@right{#1}
-}
-\define@key{eiti/eiti-thesis.cls}{top}[2.5cm]{
-	\def\@top{#1}
-}
-\define@key{eiti/eiti-thesis.cls}{bottom}[2.5cm]{
-	\def\@bottom{#1}
-}
-\define@key{eiti/eiti-thesis.cls}{bindingoffset}[0cm]{
-	\def\@bindingoffset{#1}
-}
-\ExecuteOptionsX{left}
-\ExecuteOptionsX{right}
-\ExecuteOptionsX{top}
-\ExecuteOptionsX{bottom}
-\ExecuteOptionsX{bindingoffset}
-\ProcessOptionsX
 \RequirePackage[
 	a4paper, 
-	left=\@left,
-	right=\@right,
-	top=\@top,
-	bottom=\@bottom,
-	bindingoffset=\@bindingoffset
+	left=\eitileft,
+	right=\eitiright,
+	top=\eititop,
+	bottom=\eitibottom,
+	bindingoffset=\eitibindingoffset
 ]{geometry}
 
 %--------------------------------

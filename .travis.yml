@@ -12,8 +12,8 @@ language: generic
 cache:
   directories:
 
-# We set the compiler values here to tell Travis to use a different
-# compiler per set of arguments.
+# We set the compiler values here to tell Travis 
+# to use a different compiler per set of arguments.
 matrix:
   include:
   # The LaTeX builds on Linux.
@@ -45,9 +45,16 @@ matrix:
 before_install:
 # Using compiler above sets CC to an invalid value, so unset it
 - unset CC
+# Clear possible LaTeX auxiliary files
+- ./clear.sh
 
 install:
-- apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish
+- apt-get install -y     \
+    texlive              \
+    texlive-bibtex-extra \
+    texlive-fonts-extra  \
+    texlive-latex-extra  \
+    texlive-lang-polish
 
 script:
 - |

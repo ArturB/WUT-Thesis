@@ -27,6 +27,7 @@
 \DeclareStringOption[2.5cm]{bottom}
 \DeclareStringOption[0cm]{bindingoffset}
 \DeclareBoolOption[false]{nohyphenation}
+\DeclareBoolOption[false]{sectiononnewpage}
 \ProcessKeyvalOptions*
 
 %--------------------------------
@@ -124,6 +125,9 @@
 \SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
 \let\oldsection\section
 \renewcommand{\section}{
+	\ifeitisectiononnewpage
+		\newpage
+	\fi
 	\thispagestyle{plain}
 	\oldsection
 }

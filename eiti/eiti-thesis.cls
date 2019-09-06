@@ -154,6 +154,46 @@
 \fancyfoot[LE,RO]{\thepage}
 
 %--------------------------------
+% Prevent one letter word at the end of line
+%--------------------------------
+\ifluatex
+    \RequirePackage{luatexbase,luacode}
+    \begin{luacode}
+    local debug = false
+    local glyph_id = node.id "glyph"
+    local glue_id  = node.id "glue"
+    local hlist_id = node.id "hlist"
+    
+    local prevent_single_letter = function (head)
+        while head do
+            if head.id == glyph_id then
+                if unicode.utf8.match(unicode.utf8.char(head.char),"%a") then     -- is a letter
+                    if head.prev.id == glue_id and head.next.id == glue_id then   -- is one letter word
+                 
+                        local p = node.new("penalty")
+                        p.penalty = 10000
+                        
+                        if debug then
+                            local w = node.new("whatsit","pdf_literal")
+                            w.data = "q 1 0 1 RG 1 0 1 rg 0 0 m 0 5 l 2 5 l 2 0 l b Q"
+                            node.insert_after(head,head,w)
+                            node.insert_after(head,w,p)
+                        else
+                            node.insert_after(head,head,p)
+                        end
+                    end
+                end
+            end
+            head = head.next
+        end
+        return true
+    end
+    
+    luatexbase.add_to_callback("pre_linebreak_filter",prevent_single_letter,"~")
+    \end{luacode}
+\fi
+
+%--------------------------------
 % Streszczenie po polsku
 %--------------------------------
 \newcommand{\streszczenie}{

@@ -1,0 +1,8 @@
+texlive
+texlive-bibtex-extra
+texlive-fonts-extra
+texlive-latex-extra
+texlive-lang-polish
+texlive-luatex
+texlive-xetex
+

@@ -289,3 +289,31 @@
 	\newline
 }
 
+%--------------------------------
+% Spis załączników
+%--------------------------------
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{%
+    \bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup
+}
+
+\newcommand\listappendicesname{Spis załączników}
+
+\newcommand\newappendix[1]{%
+    % \refstepcounter{section}
+    \tocless\section{\hspace*{1.5ex} #1}
+    \addcontentsline{app}{subsection}{\hspace*{-2.5ex}\arabic{section}.\hspace*{0.5ex} #1}
+}
+\makeatletter
+\newcommand\listofappendices{%
+    \section*{\listappendicesname}\@starttoc{app}
+    \appendix
+    \renewcommand{\thesection}{Załącznik~\arabic{section}}
+}
+\makeatother
+
+\let\oldappendix\appendix
+\renewcommand{\appendix}{
+	\oldappendix
+	\renewcommand{\thesection}{Załącznik~\arabic{section}}
+}

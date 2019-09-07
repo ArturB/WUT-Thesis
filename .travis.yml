@@ -52,7 +52,7 @@ before_install:
 - echo "$OSTYPE"
 - |
   case "$OSTYPE" in
-    linux) 
+    linux-gnu) 
       sudo apt-get update
       ;;
     msys) 
@@ -63,8 +63,8 @@ before_install:
 
 install:
 - |
-  case "$OS" in
-    linux) 
+  case "$OSTYPE" in
+    linux-gnu) 
       sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
       ;;
     msys)

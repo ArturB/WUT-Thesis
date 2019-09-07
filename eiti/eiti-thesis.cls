@@ -154,6 +154,12 @@
 \fancyfoot[LE,RO]{\thepage}
 
 %--------------------------------
+% Set default list style
+%--------------------------------
+\setlist[itemize]{label=\large$\bullet$, leftmargin=28pt}
+\setlist[enumerate]{leftmargin=32pt}
+
+%--------------------------------
 % Streszczenie po polsku
 %--------------------------------
 \newcommand{\streszczenie}{

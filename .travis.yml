@@ -70,7 +70,6 @@ install:
     msys)
       ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic download
       ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic install
-      
       tree "$TEXREP"
       ;;
   esac

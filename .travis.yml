@@ -51,7 +51,7 @@ before_install:
 # Update software repositiories
 - echo "$OSTYPE"
 - |
-  case "$OSTYPE"
+  case "$OSTYPE" in
     linux) 
       sudo apt-get update
       ;;

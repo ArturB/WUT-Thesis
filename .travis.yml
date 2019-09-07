@@ -11,25 +11,34 @@ sudo: true
 # Do not choose a language; we provide our own build tools.
 language: generic
 
-# Caching so the next build will be fast too.
-cache:
-  directories:
-
 # We set the compiler values here to tell Travis 
 # to use a different compiler per set of arguments.
 matrix:
   include:
   # The LaTeX builds on Linux.
-  - env: BUILD="pdfLaTeX"
+  - env: TEX="texlive" CTEX="pdfLaTeX" OS=LINUX
     compiler: ": pdfLaTeX"
 
-  - env: BUILD="LuaLaTeX"
+  - env: TEX="texlive" CTEX="LuaLaTeX" OS=LINUX
     compiler: ": LuaLaTeX"
     addons: {apt: {packages: [texlive-luatex]}}
 
-  - env: BUILD="XeLaTeX"
+  - env: TEX="texlive" CTEX="XeLaTeX" OS=LINUX
     compiler: ": XeLaTeX"
     addons: {apt: {packages: [texlive-xetex]}}
+    
+  # The LaTeX builds on Windows.
+  - env: TEX="miktex" CTEX="pdfLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+    compiler: ": pdfLaTeX"
+    os: windows
+
+  - env: TEX="miktex" CTEX="LuaLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+    compiler: ": LuaLaTeX"
+    os: windows
+
+  - env: TEX="miktex" CTEX="XeLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+    compiler: ": XeLaTeX"
+    os: windows
 
 before_install:
 # Using compiler above sets CC to an invalid value, so unset it
@@ -37,14 +46,33 @@ before_install:
 # Clear possible LaTeX auxiliary files
 - ./clear.sh
 # Update software repositiories
-- sudo apt-get update
+- |
+  case "$OS" in
+    LINUX) 
+      sudo apt-get update
+      ;;
+    WINDOWS) 
+      curl -L https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktexsetup-2.9.6942-x64.zip > miktexsetup.zip
+      unzip miktexsetup.zip
+      ;;
+  esac 
 
 install:
-- sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+- |
+  case "$OS" in
+    LINUX) 
+      sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+      ;;
+    WINDOWS)
+      miktexsetup.exe --quiet --local-package-repository="$TEXREP" --package-set=basic download
+      miktexsetup.exe --quiet --local-package-repository="$TEXREP" --package-set=basic install
+      export PATH="$TEXPATH:$PATH"
+      ;;
+  esac
 
 script:
 - |
-  case "$BUILD" in
+  case "$CTEX" in
     pdfLaTeX)
       ./pdftex-build.sh
       ;;

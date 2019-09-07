@@ -68,14 +68,15 @@ install:
       sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
       ;;
     msys)
-      ls
       ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic download
       ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic install
-      export PATH="$TEXPATH:$PATH"
       ;;
   esac
 
 script:
+- ls "$TEXPATH"
+- export PATH="$TEXPATH:$PATH"
+- echo $PATH
 - |
   case "$CTEX" in
     pdfLaTeX)

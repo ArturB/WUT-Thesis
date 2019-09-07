@@ -29,17 +29,17 @@ matrix:
     
   # The LaTeX builds on Windows.
   - language: shell
-    env: CTEX="pdfLaTeX" TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+    env: CTEX="pdfLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
     compiler: ": pdfLaTeX"
     os: windows
 
   - language: shell
-    env: CTEX="LuaLaTeX" TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+    env: CTEX="LuaLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
     compiler: ": LuaLaTeX"
     os: windows
 
   - language: shell
-    env: CTEX="XeLaTeX" TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+    env: CTEX="XeLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
     compiler: ": XeLaTeX"
     os: windows
 
@@ -71,6 +71,7 @@ install:
       ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic download
       ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic install
       ls "$TEXREP"
+      export PATH="$TEXPATH:$PATH"
       ;;
   esac
 

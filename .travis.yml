@@ -13,27 +13,33 @@ sudo: true
 matrix:
   include:
   # The LaTeX builds on Linux.
-  - env: TEX="texlive" CTEX="pdfLaTeX" OS=LINUX
+  - language: generic
+    env: TEX="texlive" CTEX="pdfLaTeX" OS=LINUX
     compiler: ": pdfLaTeX"
 
-  - env: TEX="texlive" CTEX="LuaLaTeX" OS=LINUX
+  - language: generic
+    env: TEX="texlive" CTEX="LuaLaTeX" OS=LINUX
     compiler: ": LuaLaTeX"
     addons: {apt: {packages: [texlive-luatex]}}
 
-  - env: TEX="texlive" CTEX="XeLaTeX" OS=LINUX
+  - language: generic
+    env: TEX="texlive" CTEX="XeLaTeX" OS=LINUX
     compiler: ": XeLaTeX"
     addons: {apt: {packages: [texlive-xetex]}}
     
   # The LaTeX builds on Windows.
-  - env: TEX="miktex" CTEX="pdfLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+  - language: shell
+    env: TEX="miktex" CTEX="pdfLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
     compiler: ": pdfLaTeX"
     os: windows
 
-  - env: TEX="miktex" CTEX="LuaLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+  - language: shell
+    env: TEX="miktex" CTEX="LuaLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
     compiler: ": LuaLaTeX"
     os: windows
 
-  - env: TEX="miktex" CTEX="XeLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+  - language: shell
+    env: TEX="miktex" CTEX="XeLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
     compiler: ": XeLaTeX"
     os: windows
 

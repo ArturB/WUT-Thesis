@@ -70,13 +70,12 @@ install:
     msys)
       ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic download
       ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic install
+      
+      tree "$TEXREP"
       ;;
   esac
 
 script:
-- ls "$TEXPATH"
-- export PATH="$TEXPATH:$PATH"
-- echo $PATH
 - |
   case "$CTEX" in
     pdfLaTeX)

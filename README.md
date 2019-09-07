@@ -1,4 +1,4 @@
-# WUT-Thesis
+# WUT-Thesis ![Travis (.org)](https://img.shields.io/travis/ArturB/WUT-Thesis?label=texlive)
 Repozytorium zawiera stworzony w LaTeXu szablon pracy dyplomowej: inżynierskiej lub magisterskiej - przeznaczony dla Wydziału EiTI Politechniki Warszawskiej. Szablon z założenia powinien być zgodny z normą składu tekstów w języku polskim (BN-76 7440-02), jednakże nie gwarantuję całkowitej zgodności. Istnieją również pewne intencjonalnie wprowadzone różnice (np. sposób listowania) wynikające z tego, że w/w norma jest proweniencji jeszcze komunistycznej i pewne rzeczy się zdezaktualizowały. 
 
 Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autorstwie, w dokumencie zawarte są przykładowe fragmenty kodu:

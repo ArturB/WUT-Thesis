@@ -67,8 +67,8 @@ install:
       sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
       ;;
     WINDOWS)
-      miktexsetup.exe --quiet --local-package-repository="$TEXREP" --package-set=basic download
-      miktexsetup.exe --quiet --local-package-repository="$TEXREP" --package-set=basic install
+      miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic download
+      miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic install
       export PATH="$TEXPATH:$PATH"
       ;;
   esac

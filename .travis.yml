@@ -49,8 +49,8 @@ before_install:
 # Clear possible LaTeX auxiliary files
 - ./clear.sh
 # Update software repositiories
+- echo "$OSTYPE"
 - |
-  echo "$OSTYPE"
   case "$OSTYPE"
     linux) 
       sudo apt-get update

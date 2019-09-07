@@ -8,9 +8,6 @@ dist: bionic
 # Use new container infrastructure to enable caching
 sudo: true
 
-# Do not choose a language; we provide our own build tools.
-language: generic
-
 # We set the compiler values here to tell Travis 
 # to use a different compiler per set of arguments.
 matrix:

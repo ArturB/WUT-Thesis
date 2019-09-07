@@ -14,32 +14,32 @@ matrix:
   include:
   # The LaTeX builds on Linux.
   - language: generic
-    env: TEX="texlive" CTEX="pdfLaTeX" OS=LINUX
+    env: CTEX="pdfLaTeX"
     compiler: ": pdfLaTeX"
 
   - language: generic
-    env: TEX="texlive" CTEX="LuaLaTeX" OS=LINUX
+    env: CTEX="LuaLaTeX"
     compiler: ": LuaLaTeX"
     addons: {apt: {packages: [texlive-luatex]}}
 
   - language: generic
-    env: TEX="texlive" CTEX="XeLaTeX" OS=LINUX
+    env: CTEX="XeLaTeX"
     compiler: ": XeLaTeX"
     addons: {apt: {packages: [texlive-xetex]}}
     
   # The LaTeX builds on Windows.
   - language: shell
-    env: TEX="miktex" CTEX="pdfLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+    env: CTEX="pdfLaTeX" TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
     compiler: ": pdfLaTeX"
     os: windows
 
   - language: shell
-    env: TEX="miktex" CTEX="LuaLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+    env: CTEX="LuaLaTeX" TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
     compiler: ": LuaLaTeX"
     os: windows
 
   - language: shell
-    env: TEX="miktex" CTEX="XeLaTeX" OS=WINDOWS TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
+    env: CTEX="XeLaTeX" TEXREP="C:\temp\miktex" TEXPATH="/c/temp/miktex/miktex/bin/x64"
     compiler: ": XeLaTeX"
     os: windows
 
@@ -50,11 +50,12 @@ before_install:
 - ./clear.sh
 # Update software repositiories
 - |
-  case "$OS" in
-    LINUX) 
+  echo "$OSTYPE"
+  case "$OSTYPE"
+    linux) 
       sudo apt-get update
       ;;
-    WINDOWS) 
+    msys) 
       curl -L https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktexsetup-2.9.6942-x64.zip > miktexsetup.zip
       unzip miktexsetup.zip
       ;;
@@ -63,10 +64,10 @@ before_install:
 install:
 - |
   case "$OS" in
-    LINUX) 
+    linux) 
       sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
       ;;
-    WINDOWS)
+    msys)
       miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic download
       miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic install
       export PATH="$TEXPATH:$PATH"

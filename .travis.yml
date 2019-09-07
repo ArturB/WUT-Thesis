@@ -69,8 +69,8 @@ install:
       ;;
     msys)
       ls
-      miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic download
-      miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic install
+      ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic download
+      ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic install
       export PATH="$TEXPATH:$PATH"
       ;;
   esac

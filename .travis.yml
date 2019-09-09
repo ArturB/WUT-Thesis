@@ -1,0 +1,61 @@
+# This is the complex Travis configuration, 
+# which is intended for use on open source libraries 
+# which need compatibility over many platforms
+
+# Base distribution:
+dist: bionic
+
+# Use new container infrastructure to enable caching
+sudo: true
+
+# Do not choose a language; we provide our own build tools.
+language: generic
+
+# Caching so the next build will be fast too.
+cache:
+  directories:
+
+# We set the compiler values here to tell Travis 
+# to use a different compiler per set of arguments.
+matrix:
+  include:
+  # The LaTeX builds on Linux.
+  - env: BUILD="pdfLaTeX"
+    compiler: ": pdfLaTeX"
+
+  - env: BUILD="LuaLaTeX"
+    compiler: ": LuaLaTeX"
+    addons: {apt: {packages: [texlive-luatex]}}
+
+  - env: BUILD="XeLaTeX"
+    compiler: ": XeLaTeX"
+    addons: {apt: {packages: [texlive-xetex]}}
+
+before_install:
+# Using compiler above sets CC to an invalid value, so unset it
+- unset CC
+# Clear possible LaTeX auxiliary files
+- ./clear.sh
+# Update software repositiories
+- sudo apt-get update
+
+install:
+- sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+
+script:
+- |
+  case "$BUILD" in
+    pdfLaTeX)
+      ./pdftex-build.sh
+      ;;
+    LuaLaTeX)
+      ./luatex-build.sh
+      ;;
+    XeLaTeX)
+      ./xetex-build.sh
+      ;;
+  esac
+
+# Do not send email notifications after every build. 
+notifications:
+  email: false

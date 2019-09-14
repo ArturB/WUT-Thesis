@@ -12,6 +12,23 @@
 	twoside
 ]{mwart}
 
+%--------------------------------------
+% Define class parameters
+%--------------------------------------
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+	family=eiti/eiti-thesis.cls,
+	prefix=eiti
+}
+
+\DeclareStringOption[2.5cm]{left}
+\DeclareStringOption[2.5cm]{right}
+\DeclareStringOption[2.5cm]{top}
+\DeclareStringOption[2.5cm]{bottom}
+\DeclareStringOption[6mm]{bindingoffset}
+\DeclareBoolOption[false]{nohyphenation}
+\ProcessKeyvalOptions*
+
 %--------------------------------
 % Common packages
 %--------------------------------
@@ -74,6 +91,43 @@
 		protrusion=true,
 		expansion=true
 	]{microtype}
+%	% In LuaTeX, we can prevent one-letter words 
+%	% from beging at the end of the line. 
+%    \begin{luacode}
+%	local debug = false
+%	local glyph_id = node.id "glyph"
+%	local glue_id  = node.id "glue"
+%	local hlist_id = node.id "hlist"
+%	
+%	local prevent_single_letter = function (head)
+%		while head do
+%			if head.id == glyph_id then
+%				if unicode.utf8.match(unicode.utf8.char(head.char),"%a") then     -- is a letter
+%					if head.prev.id == glue_id and head.next.id == glue_id then   -- is one letter word
+%	
+%						local p = node.new("penalty")
+%						p.penalty = 10000
+%	
+%						if debug then
+%							local w = node.new("whatsit","pdf_literal")
+%							w.data = "q 1 0 1 RG 1 0 1 rg 0 0 m 0 5 l 2 5 l 2 0 l b Q"
+%							node.insert_after(head,head,w)
+%							node.insert_after(head,w,p)
+%						else
+%							node.insert_after(head,head,p)
+%						end
+%					end
+%				end
+%			end
+%			head = head.next
+%		end
+%		return true
+%	end
+%	
+%	luatexbase.add_to_callback("pre_linebreak_filter",prevent_single_letter,"~")
+%	
+%\end{luacode} %% po zrobieniu wcięcia,kod przestaje się kompilować !!! 
+
 \fi
 
 %--------------------------------
@@ -89,38 +143,26 @@
 }
 
 %--------------------------------------
-% Define and process class parameters
 % Default margin is 2.5 cm
 %--------------------------------------
-\define@key{eiti/eiti-thesis.cls}{left}[2.5cm]{
-	\def\@left{#1}
-}
-\define@key{eiti/eiti-thesis.cls}{right}[2.5cm]{
-	\def\@right{#1}
-}
-\define@key{eiti/eiti-thesis.cls}{top}[2.5cm]{
-	\def\@top{#1}
-}
-\define@key{eiti/eiti-thesis.cls}{bottom}[2.5cm]{
-	\def\@bottom{#1}
-}
-\define@key{eiti/eiti-thesis.cls}{bindingoffset}[0cm]{
-	\def\@bindingoffset{#1}
-}
-\ExecuteOptionsX{left}
-\ExecuteOptionsX{right}
-\ExecuteOptionsX{top}
-\ExecuteOptionsX{bottom}
-\ExecuteOptionsX{bindingoffset}
-\ProcessOptionsX
 \RequirePackage[
 	a4paper, 
-	left=\@left,
-	right=\@right,
-	top=\@top,
-	bottom=\@bottom,
-	bindingoffset=\@bindingoffset
+	left=\eitileft,
+	right=\eitiright,
+	top=\eititop,
+	bottom=\eitibottom,
+	bindingoffset=\eitibindingoffset
 ]{geometry}
+
+%--------------------------------
+% Turn off hyphenation
+%--------------------------------
+\ifeitinohyphenation
+	\tolerance=1
+	\emergencystretch=\maxdimen
+	\hyphenpenalty=10000
+	\hbadness=10000
+\fi
 
 %--------------------------------
 % Initial setup
@@ -152,6 +194,17 @@
 \fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
 \fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
+
+%--------------------------------
+% Set default list style
+%--------------------------------
+\setlist[itemize,1]{topsep=2pt,label=\large$\bullet$, leftmargin=28pt}
+\setlist[itemize,2]{topsep=2pt,leftmargin=18pt}
+\setlist[itemize,3]{topsep=2pt,leftmargin=18pt}
+
+\setlist[enumerate,1]{topsep=2pt,leftmargin=24pt}
+\setlist[enumerate,2]{topsep=2pt,leftmargin=16pt}
+\setlist[enumerate,3]{topsep=2pt,leftmargin=16pt}
 
 %--------------------------------
 % Streszczenie po polsku

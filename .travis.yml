@@ -1,6 +1,6 @@
 # This is the complex Travis configuration, 
 # which is intended for use on open source libraries 
-# which need compatibility over many platforms
+# which need compatibility over many platforms. 
 
 # Base distribution:
 dist: bionic
@@ -8,28 +8,41 @@ dist: bionic
 # Use new container infrastructure to enable caching
 sudo: true
 
-# Do not choose a language; we provide our own build tools.
-language: generic
-
-# Caching so the next build will be fast too.
-cache:
-  directories:
-
 # We set the compiler values here to tell Travis 
 # to use a different compiler per set of arguments.
 matrix:
   include:
   # The LaTeX builds on Linux.
-  - env: BUILD="pdfLaTeX"
+
+  - language: generic
+    env: CTEX="pdfLaTeX"
     compiler: ": pdfLaTeX"
 
-  - env: BUILD="LuaLaTeX"
+  - language: generic
+    env: CTEX="LuaLaTeX"
     compiler: ": LuaLaTeX"
     addons: {apt: {packages: [texlive-luatex]}}
 
-  - env: BUILD="XeLaTeX"
+  - language: generic
+    env: CTEX="XeLaTeX"
     compiler: ": XeLaTeX"
     addons: {apt: {packages: [texlive-xetex]}}
+    
+  # The LaTeX builds on Windows.
+  - language: shell
+    env: CTEX="pdfLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
+    compiler: ": pdfLaTeX"
+    os: windows
+
+  - language: shell
+    env: CTEX="LuaLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
+    compiler: ": LuaLaTeX"
+    os: windows
+
+  - language: shell
+    env: CTEX="XeLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
+    compiler: ": XeLaTeX"
+    os: windows
 
 before_install:
 # Using compiler above sets CC to an invalid value, so unset it
@@ -37,14 +50,35 @@ before_install:
 # Clear possible LaTeX auxiliary files
 - ./clear.sh
 # Update software repositiories
-- sudo apt-get update
+- echo "$OSTYPE"
+- |
+  case "$OSTYPE" in
+    linux-gnu) 
+      sudo apt-get update
+      ;;
+    msys) 
+      curl -L https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktexsetup-2.9.6942-x64.zip > miktexsetup.zip
+      unzip miktexsetup.zip
+      ;;
+  esac 
 
 install:
-- sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+- |
+  case "$OSTYPE" in
+    linux-gnu) 
+      sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+      ;;
+    msys)
+      ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic download
+      ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic --common-install="$TEXREP" install
+      ls "$TEXREP"
+      export PATH="$TEXPATH:$PATH"
+      ;;
+  esac
 
 script:
 - |
-  case "$BUILD" in
+  case "$CTEX" in
     pdfLaTeX)
       ./pdftex-build.sh
       ;;

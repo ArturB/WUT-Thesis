@@ -78,19 +78,39 @@ install:
 
 script:
 - |
-  case "$CTEX" in
-    pdfLaTeX)
-      ./pdftex-build.sh
-      cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\pdflatex.log
+  case "$OSTYPE" in
+  
+    linux-gnu) 
+      case "$CTEX" in
+        pdfLaTeX)
+          ./pdftex-build.sh
+          ;;
+        LuaLaTeX)
+          ./luatex-build.sh
+          ;;
+        XeLaTeX)
+          ./xetex-build.sh
+          ;;
+      esac
       ;;
-    LuaLaTeX)
-      ./luatex-build.sh
-      cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\lualatex.log
+
+    msys)
+      case "$CTEX" in
+        pdfLaTeX)
+          ./pdftex-build.sh
+          cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\pdflatex.log
+          ;;
+        LuaLaTeX)
+          ./luatex-build.sh
+          cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\lualatex.log
+          ;;
+        XeLaTeX)
+          ./xetex-build.sh
+          cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\xelatex.log
+          ;;
+      esac
       ;;
-    XeLaTeX)
-      ./xetex-build.sh
-      cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\xelatex.log
-      ;;
+
   esac
 
 # Do not send email notifications after every build. 

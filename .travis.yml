@@ -1,6 +1,6 @@
 # This is the complex Travis configuration, 
 # which is intended for use on open source libraries 
-# which need compatibility over many platforms
+# which need compatibility over many platforms. 
 
 # Base distribution:
 dist: bionic

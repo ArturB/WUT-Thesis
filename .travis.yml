@@ -93,3 +93,4 @@ script:
 # Do not send email notifications after every build. 
 notifications:
   email: false
+

@@ -29,20 +29,20 @@ matrix:
     addons: {apt: {packages: [texlive-xetex]}}
     
   # The LaTeX builds on Windows.
-  - language: shell
-    env: CTEX="pdfLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
-    compiler: ": pdfLaTeX"
-    os: windows
+  # - language: shell
+  #   env: CTEX="pdfLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
+  #   compiler: ": pdfLaTeX"
+  #   os: windows
 
-  - language: shell
-    env: CTEX="LuaLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
-    compiler: ": LuaLaTeX"
-    os: windows
+  # - language: shell
+  #   env: CTEX="LuaLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
+  #   compiler: ": LuaLaTeX"
+  #   os: windows
 
-  - language: shell
-    env: CTEX="XeLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
-    compiler: ": XeLaTeX"
-    os: windows
+  # - language: shell
+  #   env: CTEX="XeLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
+  #   compiler: ": XeLaTeX"
+  #   os: windows
 
 before_install:
 # Using compiler above sets CC to an invalid value, so unset it
@@ -79,7 +79,7 @@ install:
 script:
 - |
   case "$OSTYPE" in
-  
+
     linux-gnu) 
       case "$CTEX" in
         pdfLaTeX)

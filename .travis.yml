@@ -80,13 +80,16 @@ script:
 - |
   case "$CTEX" in
     pdfLaTeX)
-      ./pdftex-build.sh --admin
+      ./pdftex-build.sh
+      cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\pdflatex.log
       ;;
     LuaLaTeX)
-      ./luatex-build.sh --admin
+      ./luatex-build.sh
+      cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\lualatex.log
       ;;
     XeLaTeX)
-      ./xetex-build.sh --admin
+      ./xetex-build.sh
+      cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\xelatex.log
       ;;
   esac
 

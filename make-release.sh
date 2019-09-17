@@ -49,10 +49,7 @@ cp tex/* $RELEASE_DIR/tex
 cp *.bib $RELEASE_DIR
 cp *.tex $RELEASE_DIR
 
-cp clear.sh $RELEASE_DIR
-cp luatex-build.sh $RELEASE_DIR
-cp pdftex-build.sh $RELEASE_DIR
-cp deploy.sh $RELEASE_DIR
+cp Makefile $RELEASE_DIR
 cp .gitignore $RELEASE_DIR
 
 cd releases/$VERSION

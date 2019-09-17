@@ -20,6 +20,4 @@ if [ -z TEXENV ] ; then
 	exit 1
 fi
 
-./pdftex-build.sh && mv main.pdf pdfs/$TEXENV-pdftex.pdf && ./clear.sh
-./luatex-build.sh && mv main.pdf pdfs/$TEXENV-luatex.pdf && ./clear.sh
-./xetex-build.sh  && mv main.pdf pdfs/$TEXENV-xetex.pdf  && ./clear.sh
+echo "$TEXENV"

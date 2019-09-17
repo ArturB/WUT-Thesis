@@ -45,3 +45,6 @@ xetex: $(PROJNAME).tex
 clean:
 	rm -rf $(BUILD_DIR)
 	rm -f $(PROJNAME).pdf
+	latexmk -silent -C -bibtex
+	$(RM) *.run.xml *.synctex.gz
+	$(RM) *.bbl

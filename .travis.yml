@@ -83,13 +83,13 @@ script:
     linux-gnu) 
       case "$CTEX" in
         pdfLaTeX)
-          ./pdftex-build.sh
+          make pdf
           ;;
         LuaLaTeX)
-          ./luatex-build.sh
+          make lua
           ;;
         XeLaTeX)
-          ./xetex-build.sh
+          make xetex
           ;;
       esac
       ;;
@@ -97,15 +97,15 @@ script:
     msys)
       case "$CTEX" in
         pdfLaTeX)
-          ./pdftex-build.sh
+          make pdf
           cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\pdflatex.log
           ;;
         LuaLaTeX)
-          ./luatex-build.sh
+          make lua
           cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\lualatex.log
           ;;
         XeLaTeX)
-          ./xetex-build.sh
+          make xetex
           cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\xelatex.log
           ;;
       esac

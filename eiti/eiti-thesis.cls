@@ -85,51 +85,48 @@
 % LuaTeX specific configuration
 %--------------------------------------
 \ifluatex
-    \RequirePackage[T1]{fontenc}
-    \RequirePackage[utf8]{luainputenc}
-    \RequirePackage{luatexbase}
-    \RequirePackage{luacode}
-    \RequirePackage[
-        protrusion=true,
-        expansion=true
-    ]{microtype}
-    % In LuaTeX, we can prevent one-letter words 
-    % from beging at the end of the line. 
-    \begin{luacode}
-    local debug = false
-    local glyph_id = node.id "glyph"
-    local glue_id  = node.id "glue"
-    local hlist_id = node.id "hlist"
+	\RequirePackage[T1]{fontenc}
+	\RequirePackage[utf8]{luainputenc}
+	\RequirePackage{luatexbase,luacode}
+	\RequirePackage[
+		protrusion=true,
+		expansion=true
+	]{microtype}
+	% In LuaTeX, we can prevent one-letter words 
+	% from beging at the end of the line. 
+	\begin{luacode}
+	local debug = false
+	local glyph_id = node.id "glyph"
+	local glue_id  = node.id "glue"
+	local hlist_id = node.id "hlist"
 
-    local prevent_single_letter = function (head)
-        while head do
-            if head.id == glyph_id then
-                if unicode.utf8.match(unicode.utf8.char(head.char),"%a") then     -- is a letter
-                    if head.prev.id == glue_id and head.next.id == glue_id then   -- is one letter word
+	local prevent_single_letter = function (head)
+		while head do
+			if head.id == glyph_id then
+				if unicode.utf8.match(unicode.utf8.char(head.char),"%a") then	 -- is a letter
+					if head.prev.id == glue_id and head.next.id == glue_id then   -- is one letter word
 
-                        local p = node.new("penalty")
-                        p.penalty = 10000
+						local p = node.new("penalty")
+						p.penalty = 10000
 
-                        if debug then
-                            local w = node.new("whatsit","pdf_literal")
-                            w.data = "q 1 0 1 RG 1 0 1 rg 0 0 m 0 5 l 2 5 l 2 0 l b Q"
-                            node.insert_after(head,head,w)
-                            node.insert_after(head,w,p)
-                        else
-                            node.insert_after(head,head,p)
-                        end
-                    end
-                end
-            end
-            head = head.next
-        end
-        return true
-    end
+						if debug then
+							local w = node.new("whatsit","pdf_literal")
+							w.data = "q 1 0 1 RG 1 0 1 rg 0 0 m 0 5 l 2 5 l 2 0 l b Q"
+							node.insert_after(head,head,w)
+							node.insert_after(head,w,p)
+						else
+							node.insert_after(head,head,p)
+						end
+					end
+				end
+			end
+			head = head.next
+		end
+		return true
+	end
 
-    luatexbase.add_to_callback("pre_linebreak_filter",prevent_single_letter,"~")
-
-    \end{luacode} %% po zrobieniu wcięcia,kod przestaje się kompilować !!! 
-
+	luatexbase.add_to_callback("pre_linebreak_filter",prevent_single_letter,"~")
+	\end{luacode}
 \fi
 
 %--------------------------------

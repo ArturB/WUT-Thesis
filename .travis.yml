@@ -48,7 +48,7 @@ before_install:
 # Using compiler above sets CC to an invalid value, so unset it
 - unset CC
 # Clear possible LaTeX auxiliary files
-- make clear
+- make clean
 # Update software repositiories
 - echo "$OSTYPE"
 - |

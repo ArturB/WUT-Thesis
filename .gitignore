@@ -8,3 +8,7 @@
 *.gz
 *.toc
 *.xml
+*-blx.bib
+
+*.pdf
+!pdfs/*.pdf

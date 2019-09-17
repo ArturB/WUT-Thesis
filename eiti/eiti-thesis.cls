@@ -87,7 +87,8 @@
 \ifluatex
     \RequirePackage[T1]{fontenc}
     \RequirePackage[utf8]{luainputenc}
-    \RequirePackage{luatexbase,luacode}
+    \RequirePackage{luatexbase}
+    \RequirePackage{luacode}
     \RequirePackage[
         protrusion=true,
         expansion=true

@@ -8,8 +8,8 @@
 \ProvidesClass{eiti/eiti-thesis}
 
 \LoadClass[
-	12pt, 
-	twoside
+    12pt, 
+    twoside
 ]{mwart}
 
 %--------------------------------------
@@ -17,8 +17,8 @@
 %--------------------------------------
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
-	family=eiti/eiti-thesis.cls,
-	prefix=eiti
+    family=eiti/eiti-thesis.cls,
+    prefix=eiti
 }
 
 \DeclareStringOption[2.5cm]{left}
@@ -37,8 +37,8 @@
 \RequirePackage{amsthm}
 \RequirePackage{array} 
 \RequirePackage[
-	labelfont=bf,
-	labelsep=period
+    labelfont=bf,
+    labelsep=period
 ]{caption}
 \RequirePackage{enumitem}
 \RequirePackage{float}
@@ -63,22 +63,22 @@
 % PdfTeX specific configuration
 %--------------------------------------
 \ifpdf
-	\RequirePackage[T1]{fontenc}
-	\RequirePackage[utf8]{inputenc}
-	\RequirePackage[
-		protrusion=true,
-		expansion=true
-	]{microtype}
+    \RequirePackage[T1]{fontenc}
+    \RequirePackage[utf8]{inputenc}
+    \RequirePackage[
+        protrusion=true,
+        expansion=true
+    ]{microtype}
 \fi
 
 %--------------------------------------
 % XeTeX specific configuration
 %--------------------------------------
 \ifxetex
-	\RequirePackage{fontspec-xetex}
-	\RequirePackage[
-		protrusion=true,
-	]{microtype}
+    \RequirePackage{fontspec-xetex}
+    \RequirePackage[
+        protrusion=true,
+    ]{microtype}
 \fi
 
 %--------------------------------------
@@ -136,33 +136,33 @@
 %--------------------------------
 \RequirePackage{hyperref}
 \hypersetup{
-	colorlinks,
-	citecolor=black,
-	filecolor=black,
-	linkcolor=black,
-	urlcolor=black
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
 }
 
 %--------------------------------------
 % Default margin is 2.5 cm
 %--------------------------------------
 \RequirePackage[
-	a4paper, 
-	left=\eitileft,
-	right=\eitiright,
-	top=\eititop,
-	bottom=\eitibottom,
-	bindingoffset=\eitibindingoffset
+    a4paper, 
+    left=\eitileft,
+    right=\eitiright,
+    top=\eititop,
+    bottom=\eitibottom,
+    bindingoffset=\eitibindingoffset
 ]{geometry}
 
 %--------------------------------
 % Turn off hyphenation
 %--------------------------------
 \ifeitinohyphenation
-	\tolerance=1
-	\emergencystretch=\maxdimen
-	\hyphenpenalty=10000
-	\hbadness=10000
+    \tolerance=1
+    \emergencystretch=\maxdimen
+    \hyphenpenalty=10000
+    \hbadness=10000
 \fi
 
 %--------------------------------
@@ -172,13 +172,13 @@
 \SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
 \let\oldsection\section
 \renewcommand{\section}{
-	\thispagestyle{plain}
-	\oldsection
+    \thispagestyle{plain}
+    \oldsection
 }
 \fancypagestyle{plain}{
-	\fancyhf{}
-	\renewcommand{\headrulewidth}{0pt}
-	\fancyfoot[LE,RO]{\thepage}
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyfoot[LE,RO]{\thepage}
 }
 
 %--------------------------------
@@ -186,7 +186,7 @@
 %--------------------------------
 \pagestyle{fancy}
 \renewcommand{\sectionmark}[1]{
-	\markboth{#1}{#1}
+    \markboth{#1}{#1}
 }
 
 \fancyhead{}
@@ -211,9 +211,9 @@
 % Streszczenie po polsku
 %--------------------------------
 \newcommand{\streszczenie}{
-	\thispagestyle{empty}
-	\begin{center}\textbf{\large\@title}\end{center}
-	\textbf{\\ Streszczenie.\xspace}
+    \thispagestyle{empty}
+    \begin{center}\textbf{\large\@title}\end{center}
+    \textbf{\\ Streszczenie.\xspace}
 }
 \newcommand{\slowakluczowe}{\vspace{0.5cm}\par\noindent \textbf{Słowa kluczowe: \xspace}}
 
@@ -221,9 +221,9 @@
 % Streszczenie po angielsku
 %--------------------------------
 \renewcommand{\abstract}{
-	\thispagestyle{empty}
-	\begin{center}\textbf{\large\@engtitle}\end{center}
-	\textbf{\\ Abstract.\xspace}
+    \thispagestyle{empty}
+    \begin{center}\textbf{\large\@engtitle}\end{center}
+    \textbf{\\ Abstract.\xspace}
 }
 \newcommand{\keywords}{\vspace{0.5cm}\par\noindent \textbf{Keywords: \xspace}}
 
@@ -231,41 +231,41 @@
 % Oświadczenie o autorstwie
 %--------------------------------
 \newcommand{\makeauthorship}{
-	\thispagestyle{empty}
-	\begin{figure}[H]
-		\vspace{-55pt}
-		\noindent\makebox[\textwidth]{
-			\includegraphics[width=1.3\textwidth]{eiti/oswiadczenie_autora_pracy.pdf}
-		}
-	\end{figure}
+    \thispagestyle{empty}
+    \begin{figure}[H]
+        \vspace{-55pt}
+        \noindent\makebox[\textwidth]{
+            \includegraphics[width=1.3\textwidth]{eiti/oswiadczenie_autora_pracy.pdf}
+        }
+    \end{figure}
 }
 
 %--------------------------------
 % Strona tytułowa - makra
 %--------------------------------
 \newcommand{\EngineerThesis}{
-	\newcommand{\ThesisType}{Engineer}
+    \newcommand{\ThesisType}{Engineer}
 }
 \newcommand{\MasterThesis}{
-	\newcommand{\ThesisType}{Master}
+    \newcommand{\ThesisType}{Master}
 }
 \newcommand{\instytut}[1]{
-	\newcommand{\@instytut}{#1}
+    \newcommand{\@instytut}{#1}
 }
 \newcommand{\kierunek}[1]{
-	\newcommand{\@kierunek}{#1}
+    \newcommand{\@kierunek}{#1}
 }
 \newcommand{\specjalnosc}[1]{
-	\newcommand{\@specjalnosc}{#1}
+    \newcommand{\@specjalnosc}{#1}
 }
 \newcommand{\album}[1]{
-	\newcommand{\@album}{#1}
+    \newcommand{\@album}{#1}
 }
 \newcommand{\promotor}[1]{
-	\newcommand{\@promotor}{#1}
+    \newcommand{\@promotor}{#1}
 }
 \newcommand{\engtitle}[1]{
-	\newcommand{\@engtitle}{#1}
+    \newcommand{\@engtitle}{#1}
 }
 
 %--------------------------------
@@ -273,54 +273,54 @@
 %--------------------------------
 \let\oldmaketitle\maketitle
 \renewcommand{\maketitle}{
-	\linespread{1.15}
-	
-	\thispagestyle{empty}
-	\pagenumbering{gobble}
-	
-	\begin{center}
-		%\sffamily
-		\includegraphics[width=\textwidth]{eiti/header.png} \\
-		\hfill \break
-		\hfill \break
-		Instytut \@instytut \\
-		\hfill \break
-		\hfill \break
-		\hfill \break
-		\ifnum \pdf@strcmp{\ThesisType}{Engineer} = 0
-			\includegraphics[width=\textwidth]{eiti/title-inz.png} \\
-		\fi
-		\ifnum \pdf@strcmp{\ThesisType}{Master} = 0
-			\includegraphics[width=\textwidth]{eiti/title-mgr.png} \\
-		\fi
-		\hfill \break
-		na~kierunku \@kierunek \\
-		w~specjalności \@specjalnosc \\
-		\hfill \break
-		\hfill \break
-		\large
-		\@title \\
-		\hfill \break
-		\hfill \break
-		\LARGE
-		\@author \\
-		\normalsize
-		Numer~albumu \@album \\
-		\hfill \break
-		\hfill \break
-		promotor \\
-		\@promotor \\
-		\vfill
-		WARSZAWA \@date
-	\end{center}
-	
-	\newpage
-	\thispagestyle{empty}
-	\hfill
-	\newpage
-	
-	\pagenumbering{arabic}
-	\setcounter{page}{3}
+    \linespread{1.15}
+    
+    \thispagestyle{empty}
+    \pagenumbering{gobble}
+    
+    \begin{center}
+        %\sffamily
+        \includegraphics[width=\textwidth]{eiti/header.png} \\
+        \hfill \break
+        \hfill \break
+        Instytut \@instytut \\
+        \hfill \break
+        \hfill \break
+        \hfill \break
+        \ifnum \pdf@strcmp{\ThesisType}{Engineer} = 0
+            \includegraphics[width=\textwidth]{eiti/title-inz.png} \\
+        \fi
+        \ifnum \pdf@strcmp{\ThesisType}{Master} = 0
+            \includegraphics[width=\textwidth]{eiti/title-mgr.png} \\
+        \fi
+        \hfill \break
+        na~kierunku \@kierunek \\
+        w~specjalności \@specjalnosc \\
+        \hfill \break
+        \hfill \break
+        \large
+        \@title \\
+        \hfill \break
+        \hfill \break
+        \LARGE
+        \@author \\
+        \normalsize
+        Numer~albumu \@album \\
+        \hfill \break
+        \hfill \break
+        promotor \\
+        \@promotor \\
+        \vfill
+        WARSZAWA \@date
+    \end{center}
+    
+    \newpage
+    \thispagestyle{empty}
+    \hfill
+    \newpage
+    
+    \pagenumbering{arabic}
+    \setcounter{page}{3}
 }
 
 
@@ -328,19 +328,19 @@
 % Pusta strona - makro
 %--------------------------------
 \newcommand{\blankpage}{
-	\newpage
-	\thispagestyle{empty}
-	\ 
-	\newpage
+    \newpage
+    \thispagestyle{empty}
+    \ 
+    \newpage
 }
 
 %--------------------------------
 % Skrót (akronim) - makro
 %--------------------------------
 \newcommand{\acronym}[2]{
-	\noindent
-	\textbf{#1} -- #2
-	\newline
+    \noindent
+    \textbf{#1} -- #2
+    \newline
 }
 
 %--------------------------------
@@ -348,26 +348,26 @@
 %--------------------------------
 \newcommand{\nocontentsline}[3]{}
 \newcommand{\tocless}[2]{%
-	\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup
+    \bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup
 }
 
 \newcommand\listappendicesname{Spis załączników}
 
 \newcommand\newappendix[1]{%
-	% \refstepcounter{section}
-	\tocless\section{\hspace*{1.5ex} #1}
-	\addcontentsline{app}{subsection}{\hspace*{-2.5ex}\arabic{section}.\hspace*{0.5ex} #1}
+    % \refstepcounter{section}
+    \tocless\section{\hspace*{1.5ex} #1}
+    \addcontentsline{app}{subsection}{\hspace*{-2.5ex}\arabic{section}.\hspace*{0.5ex} #1}
 }
 \makeatletter
 \newcommand\listofappendices{%
-	\section*{\listappendicesname}\@starttoc{app}
-	\appendix
-	\renewcommand{\thesection}{Załącznik~\arabic{section}}
+    \section*{\listappendicesname}\@starttoc{app}
+    \appendix
+    \renewcommand{\thesection}{Załącznik~\arabic{section}}
 }
 \makeatother
 
 \let\oldappendix\appendix
 \renewcommand{\appendix}{
-	\oldappendix
-	\renewcommand{\thesection}{Załącznik~\arabic{section}}
+    \oldappendix
+    \renewcommand{\thesection}{Załącznik~\arabic{section}}
 }

@@ -6,18 +6,18 @@ mkdir -p pdfs
 ./clear.sh
 # Determine platform environment (texlive or miktex)
 if [[ $OSTYPE == "linux-gnu" ]] ; then
-	TEXENV="texlive"
+    TEXENV="texlive"
 else
-	if [[ $(which pdftex) =~ miktex ]] ; then
-		TEXENV="miktex"
-	else
-		TEXENV="texlive"
-	fi
+    if [[ $(which pdftex) =~ miktex ]] ; then
+        TEXENV="miktex"
+    else
+        TEXENV="texlive"
+    fi
 fi
 
 if [ -z TEXENV ] ; then
-	echo Unable to determine the environment! Exit...
-	exit 1
+    echo Unable to determine the environment! Exit...
+    exit 1
 fi
 
 echo "$TEXENV"

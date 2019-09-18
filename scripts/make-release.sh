@@ -39,7 +39,8 @@ cp tex/* $RELEASE_DIR/tex
 cp *.bib $RELEASE_DIR
 cp *.tex $RELEASE_DIR
 
-cp Makefile $RELEASE_DIR
+cp configure.ac $RELEASE_DIR
+cp Makefile.in $RELEASE_DIR
 cp .gitignore $RELEASE_DIR
 
 cd releases/$VERSION

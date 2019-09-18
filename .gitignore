@@ -9,6 +9,7 @@
 *.log
 *.lot
 *.out
+*.status
 *.toc
 *.xml
 *-blx.bib
@@ -17,3 +18,4 @@
 !pdfs/*.pdf
 
 build
+autom4te.cache

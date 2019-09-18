@@ -1,6 +1,3 @@
-#make-release
-
-PROJNAME 	= main
 BUILD_DIR 	= build
 PDFS_DIR 	= pdfs
 RELEASE_DIR = releases
@@ -13,31 +10,32 @@ LUALATEX 	= lualatex
 XELATEX 	= xelatex
 TEXFLAGS 	= -synctex=1 --interaction=nonstopmode
 
-TEXENV		= $(shell ./get-texenv.sh)
+TEXENV		= $(shell ./scripts/texenv.sh)
 
 .PHONY: base clean
 
 # Generate all three PDFs
-all: 	pdf lua xetex
+all: 	pdf xetex lua 
 
 # Remove LaTeX auxiliary files
 clean:  
 		$(RM) *.app *.aux *.bbl *.blg 
 		$(RM) *.fdb_latexmk *.fls *.gz 
-		$(RM) *.lof *.log *.lot *.out 
+		$(RM) *.lof *.log *.lot *.out *.status
 		$(RM) *.toc *.xml *-blx.bib *.pdf 
 		$(RM) -r $(BUILD_DIR)/*
+		$(RM) -r $(PDFS_DIR)/*
 
 # Generate LuaLateX PDF
-lua:	$(PROJNAME).tex
+lua:	*.tex *.bib ./tex/* 
 		$(MAKE) base CTEX=$(LUALATEX) OUT=$(BUILD_DIR)/$(LUALATEX)
 
 # Generate pdfLaTeX PDF
-pdf:	$(PROJNAME).tex
+pdf:	*.tex *.bib ./tex/* 
 		$(MAKE) base CTEX=$(PDFLATEX) OUT=$(BUILD_DIR)/$(PDFLATEX)
 
 # Generate XeLaTeX PDF
-xetex:	$(PROJNAME).tex
+xetex:	*.tex *.bib ./tex/* 
 		$(MAKE) base CTEX=$(XELATEX) OUT=$(BUILD_DIR)/$(XELATEX)
 
 # Make release tarball
@@ -45,9 +43,9 @@ release:
 		./scripts/make-release.sh $(version)
 
 # Template of building command
-base:   
+base:
 		$(LATEXMK) $(MKFLAGS) \
 			-output-directory=$(OUT) \
-			-pdflatex="$(CTEX) $(LATEXOPT) $(NONSTOP)" $<
+			-pdflatex="$(CTEX) $(TEXFLAGS)" $<
 		mkdir -p $(PDFS_DIR)
 		cp ./$(OUT)/$(PROJNAME).pdf ./$(PDFS_DIR)/$(TEXENV)-$(CTEX).pdf

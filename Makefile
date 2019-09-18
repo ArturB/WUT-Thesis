@@ -48,4 +48,4 @@ base:
 			-output-directory=$(OUT) \
 			-pdflatex="$(CTEX) $(TEXFLAGS)" $<
 		mkdir -p $(PDFS_DIR)
-		cp ./$(OUT)/$(PROJNAME).pdf ./$(PDFS_DIR)/$(TEXENV)-$(CTEX).pdf
+		cp ./$(OUT)/*.pdf ./$(PDFS_DIR)/$(TEXENV)-$(CTEX).pdf

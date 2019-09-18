@@ -1,52 +1,53 @@
 #make-release
 
-PROJNAME=main
-BUILD_DIR=build
-PDFS_DIR=pdfs
+PROJNAME 	= main
+BUILD_DIR 	= build
+PDFS_DIR 	= pdfs
+RELEASE_DIR = releases
 
-PDFLATEX=pdflatex
-LUALATEX=lualatex
-XELATEX=xelatex
+LATEXMK 	= latexmk
+MKFLAGS 	= -bibtex -pdf
 
-PDFLATEX_BUILD_DIR=$(BUILD_DIR)/$(PDFLATEX)
-LUALATEX_BUILD_DIR=$(BUILD_DIR)/$(LUALATEX)
-XELATEX_BUILD_DIR=$(BUILD_DIR)/$(XELATEX)
+PDFLATEX 	= pdflatex
+LUALATEX 	= lualatex
+XELATEX 	= xelatex
+TEXFLAGS 	= -synctex=1 --interaction=nonstopmode
 
-LATEX=$(PDFLATEX)
-LATEXOPT=-synctex=1
-NONSTOP=--interaction=nonstopmode
-LATEX_BUILD_DIR=$(PDFLATEX_BUILD_DIR)
+TEXENV		= $(shell ./get-texenv.sh)
 
-LATEXMK=latexmk
-LATEXMKOPT=-bibtex -pdf
+.PHONY: base clean
 
-TEXENV=$(shell ./get-texenv.sh)
+# Generate all three PDFs
+all: 	pdf lua xetex
 
-.PHONY: all clean lua pdf release xetex 
+# Remove LaTeX auxiliary files
+clean:  
+		$(RM) *.app *.aux *.bbl *.blg 
+		$(RM) *.fdb_latexmk *.fls *.gz 
+		$(RM) *.lof *.log *.lot *.out 
+		$(RM) *.toc *.xml *-blx.bib *.pdf 
+		$(RM) -r $(BUILD_DIR)/*
 
-all: pdf lua xetex
+# Generate LuaLateX PDF
+lua:	$(PROJNAME).tex
+		$(MAKE) base CTEX=$(LUALATEX) OUT=$(BUILD_DIR)/$(LUALATEX)
 
-clean:  $(RM) *.app *.aux *.bbl *.blg 
-        $(RM) *.fdb_latexmk *.fls 
-        $(RM) *.gz *.lof *.log *.lot *.out 
-        $(RM) *.toc *.xml *-blx.bib *.pdf 
-        $(RM) -r $(BUILD_DIR)
-        $(RM) $(PROJNAME).pdf
-        latexmk -silent -C -bibtex
-        $(RM) *.run.xml *.synctex.gz
-        $(RM) *.bbl
+# Generate pdfLaTeX PDF
+pdf:	$(PROJNAME).tex
+		$(MAKE) base CTEX=$(PDFLATEX) OUT=$(BUILD_DIR)/$(PDFLATEX)
 
-lua:    $(PROJNAME).tex
-        $(MAKE) base LATEX=$(LUALATEX) LATEX_BUILD_DIR=$(LUALATEX_BUILD_DIR)
+# Generate XeLaTeX PDF
+xetex:	$(PROJNAME).tex
+		$(MAKE) base CTEX=$(XELATEX) OUT=$(BUILD_DIR)/$(XELATEX)
 
-pdf:    $(PROJNAME).tex
-        $(MAKE) base LATEX=$(PDFLATEX) LATEX_BUILD_DIR=$(PDFLATEX_BUILD_DIR)
+# Make release tarball
+release: 
+		./scripts/make-release.sh $(version)
 
-xetex:  $(PROJNAME).tex
-        $(MAKE) base LATEX=$(XELATEX) LATEX_BUILD_DIR=$(XELATEX_BUILD_DIR)
-
-base:   $(LATEXMK) $(LATEXMKOPT) -output-directory=$(LATEX_BUILD_DIR) \
-            -pdflatex="$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S" -use-make $<
-        cp $(LATEX_BUILD_DIR)/$(PROJNAME).pdf .
-        mkdir -p $(PDFS_DIR)
-        cp $(PROJNAME).pdf $(PDFS_DIR)/$(TEXENV)-$(LATEX).pdf
+# Template of building command
+base:   
+		$(LATEXMK) $(MKFLAGS) \
+			-output-directory=$(OUT) \
+			-pdflatex="$(CTEX) $(LATEXOPT) $(NONSTOP)" $<
+		mkdir -p $(PDFS_DIR)
+		cp ./$(OUT)/$(PROJNAME).pdf ./$(PDFS_DIR)/$(TEXENV)-$(CTEX).pdf

@@ -12,27 +12,17 @@ function validate_version_number() {
     echo $VERSION
 }
 
-# Get version number from user and check validity
-function get_version_number() {
-    while [ -z $VERSION ]
-    do
-        echo -n "Please specify a valid version number in format Num.Num.Num:  "
-        read VERSION
-        VERSION=$(validate_version_number $VERSION)
-    done
-    echo $VERSION
-}
-
 VERSION=$(validate_version_number $1)
-if [ -z $VERSION ] 
+if [ -z $VERSION ]
 then
-    get_version_number
+    echo -e "\033[31mPlease specify a valid version number in format: make release version=X.X.X\033[0m"
+    exit 1
 fi
 
 # Check if release alredy exists
 if [[ -d "releases/$VERSION" ]] 
 then 
-    echo -e Directory releases/$VERSION already exists!
+    echo -e "\033[31mDirectory releases/$VERSION already exists!\033[0m"
     exit 1
 fi
 

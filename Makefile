@@ -3,7 +3,7 @@ PDFS_DIR 	= pdfs
 RELEASE_DIR = releases
 
 LATEXMK 	= latexmk
-MKFLAGS 	= -bibtex -pdf
+MKFLAGS 	= -bibtex -pdf -f
 
 PDFLATEX 	= pdflatex
 LUALATEX 	= lualatex

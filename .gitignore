@@ -1,14 +1,21 @@
+*.app
 *.aux
 *.bbl
 *.blg
+*.fdb_latexmk
+*.fls
+*.gz
 *.lof
 *.log
 *.lot
 *.out
-*.gz
+*.status
 *.toc
 *.xml
 *-blx.bib
 
 *.pdf
 !pdfs/*.pdf
+
+build
+autom4te.cache

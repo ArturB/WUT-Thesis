@@ -12,6 +12,7 @@ sudo: true
 # to use a different compiler per set of arguments.
 matrix:
   include:
+
   # The LaTeX builds on Linux.
 
   - language: generic
@@ -27,90 +28,31 @@ matrix:
     env: CTEX="XeLaTeX"
     compiler: ": XeLaTeX"
     addons: {apt: {packages: [texlive-xetex]}}
-    
-  # The LaTeX builds on Windows.
-  # - language: shell
-  #   env: CTEX="pdfLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
-  #   compiler: ": pdfLaTeX"
-  #   os: windows
-
-  # - language: shell
-  #   env: CTEX="LuaLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
-  #   compiler: ": LuaLaTeX"
-  #   os: windows
-
-  # - language: shell
-  #   env: CTEX="XeLaTeX" TEXREP="/c/temp/miktex" TEXPATH="$TEXREP/miktex/bin/x64"
-  #   compiler: ": XeLaTeX"
-  #   os: windows
 
 before_install:
 # Using compiler above sets CC to an invalid value, so unset it
 - unset CC
 # Clear possible LaTeX auxiliary files
-- ./clear.sh
+#- make clean
 # Update software repositiories
 - echo "$OSTYPE"
-- |
-  case "$OSTYPE" in
-    linux-gnu) 
-      sudo apt-get update
-      ;;
-    msys) 
-      curl -L https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktexsetup-2.9.6942-x64.zip > miktexsetup.zip
-      unzip miktexsetup.zip
-      ;;
-  esac 
+- sudo apt-get update
 
 install:
-- |
-  case "$OSTYPE" in
-    linux-gnu) 
-      sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
-      ;;
-    msys)
-      ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic download
-      ./miktexsetup.exe --verbose --local-package-repository="$TEXREP" --package-set=basic --common-install="$TEXREP" install
-      ls "$TEXREP"
-      export PATH="$TEXPATH:$PATH"
-      ;;
-  esac
+- sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre latexmk
 
 script:
 - |
-  case "$OSTYPE" in
-
-    linux-gnu) 
-      case "$CTEX" in
-        pdfLaTeX)
-          ./pdftex-build.sh
-          ;;
-        LuaLaTeX)
-          ./luatex-build.sh
-          ;;
-        XeLaTeX)
-          ./xetex-build.sh
-          ;;
-      esac
+  case "$CTEX" in
+    pdfLaTeX)
+      make pdf
       ;;
-
-    msys)
-      case "$CTEX" in
-        pdfLaTeX)
-          ./pdftex-build.sh
-          cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\pdflatex.log
-          ;;
-        LuaLaTeX)
-          ./luatex-build.sh
-          cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\lualatex.log
-          ;;
-        XeLaTeX)
-          ./xetex-build.sh
-          cat C:\Users\travis\AppData\Local\MiKTeX\2.9\miktex\log\xelatex.log
-          ;;
-      esac
+    LuaLaTeX)
+      make lua
       ;;
-
+    XeLaTeX)
+      make xetex
+      ;;
   esac
 
 # Do not send email notifications after every build. 

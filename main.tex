@@ -95,7 +95,7 @@
 %--------------------------------------
 \thispagestyle{empty}
 \tableofcontents
-\blankpage
+\cleardoublepage
 
 %--------------------------------------
 % Rozdziały
@@ -124,34 +124,29 @@
 % we własnym zakresie. Ponieważ mało kto używa takiego wykazu, 
 % uznałem, że robienie automatycznie sortowanej listy
 % na poziomie LaTeXa to za duży overkill. 
-% Jest tylko proste i oczywiste makro \acronym, 
-% które dodaje postawowe formatowanie. 
 % //AB
 \vspace{0.8cm}
-\section*{Wykaz symboli i skrótów}
-\acronym{EiTI}{Wydział Elektroniki i Technik Informacyjnych}
-\acronym{PW}{Politechnika Warszawska}
+\begin{acronym}
+    \item \textbf{EiTI} -- Wydział Elektroniki i Technik Informacyjnych
+    \item \textbf{PW} -- Politechnika Warszawska
+\end{acronym}
+\vspace{1cm}                % vertical space
 
 \listoffigures              % Spis obrazków. 
 \vspace{1cm}                % vertical space
 \listoftables               % Spis tabel. 
 \vspace{1cm}                % vertical space
-\listofappendices           % Spis załączników
+\begin{appendix}            % Spis załączników.  
+    \item Załącznik 1.
+    \item Załącznik 2.
+\end{appendix}
 
-% Załączniki
-\appendix
-
-\newpage
-\newappendix{Nazwa załącznika 1}
-\lipsum[1]
-
-\newpage
-\newappendix{Nazwa załącznika 2}
-\lipsum[1]
-
-% Używając powyższych spisów jako szablonu,
-% możesz tu dodać swój własny wykaz bądź listę, 
+% Możesz też dodać swój własny spis, 
 % np. spis algorytmów. 
+% \begin{spis}{algorytmów}
+%     \item Algorytm 1.
+%     \item Algorytm 2.
+% \end{spis}
 
 \end{document} % Dobranoc. 
 

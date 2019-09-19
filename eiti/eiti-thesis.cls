@@ -203,7 +203,7 @@
 \setlist[itemize,2]{topsep=2pt,leftmargin=18pt}
 \setlist[itemize,3]{topsep=2pt,leftmargin=18pt}
 
-\setlist[enumerate,1]{topsep=2pt,leftmargin=24pt}
+\setlist[enumerate,1]{topsep=2pt,leftmargin=28pt}
 \setlist[enumerate,2]{topsep=2pt,leftmargin=16pt}
 \setlist[enumerate,3]{topsep=2pt,leftmargin=16pt}
 
@@ -335,39 +335,38 @@
 }
 
 %--------------------------------
-% Skrót (akronim) - makro
+% Wykaz symboli i skrótów
 %--------------------------------
-\newcommand{\acronym}[2]{
-    \noindent
-    \textbf{#1} -- #2
-    \newline
+
+\newenvironment{acronym}{
+    \section*{Wykaz symboli i skrótów}
+    \small
+    \begin{enumerate}[leftmargin=14.5pt]
+}{
+    \end{enumerate}
+    \normalsize
 }
 
 %--------------------------------
-% Spis załączników - makra
+% Spis załączników
 %--------------------------------
-\newcommand{\nocontentsline}[3]{}
-\newcommand{\tocless}[2]{%
-    \bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup
+\renewenvironment{appendix}{
+    \section*{Spis załączników}
+    \small
+    \begin{enumerate}[leftmargin=14.5pt]
+}{
+    \end{enumerate}
+    \normalsize
 }
 
-\newcommand\listappendicesname{Spis załączników}
-
-\newcommand\newappendix[1]{%
-    % \refstepcounter{section}
-    \tocless\section{\hspace*{1.5ex} #1}
-    \addcontentsline{app}{subsection}{\hspace*{-2.5ex}\arabic{section}.\hspace*{0.5ex} #1}
-}
-\makeatletter
-\newcommand\listofappendices{%
-    \section*{\listappendicesname}\@starttoc{app}
-    \appendix
-    \renewcommand{\thesection}{Załącznik~\arabic{section}}
-}
-\makeatother
-
-\let\oldappendix\appendix
-\renewcommand{\appendix}{
-    \oldappendix
-    \renewcommand{\thesection}{Załącznik~\arabic{section}}
+%--------------------------------
+% Spis generyczny
+%--------------------------------
+\newenvironment{spis}[1]{
+    \section*{Spis #1}
+    \small
+    \begin{enumerate}[leftmargin=14.5pt]
+}{
+    \end{enumerate}
+    \normalsize
 }

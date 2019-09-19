@@ -15,7 +15,7 @@ TEXENV		= $(shell ./scripts/texenv.sh)
 .PHONY: base clean
 
 # Generate all three PDFs
-all: 	pdf xetex lua 
+all: 	lua pdf xetex
 
 # Remove LaTeX auxiliary files
 clean:  

@@ -97,7 +97,7 @@ Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y](https://
 
 ## Dla deweloperów
 #### Plik klasy (.CLS)
-Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w pliku klasy [eiti-thesis.cls](https://github.com/ArturB/WUT-Thesis/blob/master/eiti/eiti-thesis.cls). Pliki zawierające treść właściwego dokumentu (*.tex*) formatowane są zgodnie z plikiem klasy. Zawartość pliku .cls traktowana jest jako publiczne API niniejszego szablonu (w rozumieniu inżynierii oprogramowania) i podlega wersjonowaniu zgodnie z [poniższymi zaleceniami](#wersjonowanie). 
+Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w pliku klasy [eiti-thesis.cls](https://github.com/ArturB/WUT-Thesis/blob/master/eiti/eiti-thesis.cls). Pliki zawierające treść właściwego dokumentu (*.tex*) formatowane są zgodnie z plikiem klasy. Zawartość pliku .cls traktowana jest jako publiczne API niniejszego szablonu (w rozumieniu inżynierii oprogramowania) i podlega wersjonowaniu zgodnie z [odpowiednimi zaleceniami](#wersjonowanie). 
 
 #### Makefile
 Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne są następujące komendy: 

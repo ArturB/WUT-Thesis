@@ -2,7 +2,7 @@
 
 Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magisterskiej - przeznaczony dla Wydziału EiTI Politechniki Warszawskiej. 
 
-#### Linki:
+**Linki:**
 * [Overleaf](https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt)
 * [Archiwum ZIP](https://github.com/ArturB/WUT-Thesis/releases/download/latest/WUT-Thesis.zip)
 

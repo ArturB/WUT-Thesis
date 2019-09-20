@@ -4,7 +4,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 
 #### Linki:
 * [Overleaf](https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt)
-* [Archiwum ZIP](https://github.com/ArturB/WUT-Thesis/releases/download/latest/WUT-Thesis.zip)
+* [Archiwum ZIP](https://github.com/ArturB/WUT-Thesis/releases/tag/latest)
 
 ![](https://i.imgur.com/yeeuWpC.png)
 

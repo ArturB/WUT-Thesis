@@ -46,7 +46,7 @@ Powyższe zalecenia dotyczą obu sposobów korzystania z szablonu: w przeglądar
 ### Overleaf
 Jest to chyba najpopularniejsze w chwili obecnej środowisko TeX-owe, które pozwala na tworzenie i edycję dokumentów w przeglądarce, bez konieczności instalowania TeX-a na lokalnej maszynie.
 
-![](https://i.imgur.com/WfjM51M.png)
+![](https://i.imgur.com/z1wV4sC.png)
 
 Link do szablonu: https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt. 
 

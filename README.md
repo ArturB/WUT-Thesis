@@ -119,7 +119,7 @@ Czyści katalog z plików pośrednich kompilacji (katalog *build*, wyłączony z
 Tworzy (w folderze [releases](https://github.com/ArturB/WUT-Thesis/tree/master/releases)) archiwum ZIP zawierające wersję szablonu gotową do kompilacji na lokalnej maszynie. Wytyczne dot. numerów wersji zostały opisane w rozdziale [Wersjonowanie](#wersjonowanie).
 
 #### Branch protection, CI, Quality Assurance
-Branch *master* ma status *protected*: każdy nowy kod musi być najpierw zacommitowany do osobnego brancha, a następnie przejść przez wszystkie testy (Continuous Integration) i zostac zatwierdzony przez administratora (tzn. przeze mnie) przed jego zmerge'owaniem do głównego brancha. 
+Branch *master* ma status *protected*: każdy nowy kod musi być najpierw zacommitowany do osobnego brancha, a następnie przejść przez wszystkie testy (Continuous Integration) i zostać zatwierdzony przez administratora (tzn. przeze mnie) przed jego zmerge'owaniem do głównego brancha. 
 
 Testy automatycznie z użyciem [Travisa](https://travis-ci.org/ArturB/WUT-Thesis). Po każdym commicie, tworzony jest build dla każdego z trzech kompilatorów: pdfTeX, LuaTeX i XeTeX. Build jest traktowany jako zaliczony, jeżeli szablon zbuduje się poprawnie na każdym z trzech kompilatorów. Buildy odbywają się w środowisku texlive na Ubuntu 18.04; próbowaliśmy dodać również automatyczne testy na Windowsie w miktex, ale ze względu na problemy z rzeczonym, automatyczne testy odbywają się jedynie na Ubuntu w texlive. 
 

@@ -39,8 +39,9 @@ cp tex/* $RELEASE_DIR/tex
 cp *.bib $RELEASE_DIR
 cp *.tex $RELEASE_DIR
 
-cp Makefile $RELEASE_DIR
 cp .gitignore $RELEASE_DIR
+cp LICENSE $RELEASE_DIR
+cp Makefile $RELEASE_DIR
 
 cd releases/$VERSION
-tar -cvf WUT-Thesis.tar.gz WUT-Thesis/*
+zip WUT-Thesis.zip WUT-Thesis/*

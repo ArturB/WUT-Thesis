@@ -53,7 +53,7 @@ Link do szablonu: https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfq
 Na jego podstawie możecie tworzyć i edytować własne dokumenty. 
 
 ### Lokalnie
-Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases](https://github.com/ArturB/WUT-Thesis/releases). Najnowsza wersja szablonu jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/download/latest/WUT-Thesis.zip. Kompilacja z użyciem Makefile:
+Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases](https://github.com/ArturB/WUT-Thesis/releases). Najnowsza wersja szablonu jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/download/latest/WUT-Thesis.zip. Kompilacja za pomocą Makefile:
 
 > make pdf
 
@@ -87,7 +87,7 @@ Domyślnym językiem szablonu jest język polski, można jednak łatwo przetłum
 
 * musimy również ręcznie pozmieniać te fragmenty tekstu, których *babel* nie potrafi przetłumaczyć automatycznie, tj. nazwy twierdzeń i definicji oraz niektóre nagłówki: spis rysunków i tabel. 
 
-![](https://i.imgur.com/BPRpCJJ.png)
+![](https://i.imgur.com/BPRpCJJ.png =200x)
 
 ## Czcionki
 Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek, jednak ja nie widzę takiego powodu. 
@@ -96,7 +96,28 @@ Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która j
 Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y](https://github.com/ArturB/WUT-Thesis/issues) na GitHubie. Pisz tam, jeżeli masz jakiś problem. 
 
 ## Dla deweloperów
+### Plik klasy (.CLS)
+Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w piku klasy [eiti-thesis.cls](https://github.com/ArturB/WUT-Thesis/blob/master/eiti/eiti-thesis.cls). Pliki zawierające treść właściwego dokumentu (*.tex*) formatowane są zgodnie z plikiem klasy. Zawartość pliku .cls traktowana jest jako publiczne API niniejszego szablonu (w rozumieniu inżynierii oprogramowania) i podlega wersjonowaniu zgodnie z [poniższymi zaleceniami](#wersjonowanie). 
 
+### Makefile
+Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne są następujące komendy: 
+* *make pdf, make lua, make xetex* - tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany PDF jest umieszczanyw w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. 
+* *make all* - tworzy wszystkie 3 wymienione wyżej PDF-y i umieszcza je w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
+* *make clean* - czyści katalog z plików pośrednich kompilacji (katalog *build*, wyłączony z kontroli wersji); usuwa również pliki pośrednie istniejące w katalogu głównym oraz PDF-y, istniejące zarówno w katalogu głównym jak i w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
+* *make release version=X.Y.Z* - tworzy (w folderze [releases](https://github.com/ArturB/WUT-Thesis/tree/master/releases)) archiwum ZIP zawierające wersję szablonu gotową do kompilacji na lokalnej maszynie. Wytyczne dot. numerów wersji zostały opisane w rozdziale [Wersjonowanie](#wersjonowanie).
+
+### Branch protection, CI, Quality Assurance
+Branch *master* ma status *protected*: każdy nowy kod musi być najpierw zacommitowany do osobnego brancha, a następnie przejść przez wszystkie testy (Continuous Integration) i zostac zatwierdzony przez administratora (tzn. przeze mnie) przed jego zmerge'owaniem do głównego brancha. 
+
+Testy automatycznie z użyciem [Travisa](https://travis-ci.org/ArturB/WUT-Thesis). Po każdym commicie, tworzony jest build dla każdego z trzech kompilatorów: pdfTeX, LuaTeX i XeTeX. Build jest traktowany jako zaliczony, jeżeli szablon zbuduje się poprawnie na każdym z trzech kompilatorów. Buildy odbywają się w środowisku texlive na Ubuntu 18.04; próbowaliśmy dodać również automatyczne testy na Windowsie w miktex, ale ze względu na problemy z rzeczonym, automatyczne testy odbywają się jedynie na Ubuntu w texlive. 
+
+### Wersjonowanie
+Każda kolejna wersja szablonu musi być oznaczona numerem wersji w formacie *Major.Minor.Patch*. Schemat wersjonowania jest zgodny z (nieco uproszczonymi) zasadami [Semantic Versioning](https://semver.org/):
+* Wersja *Major* ulega zmianie po wprowadzeniu zmian łamiących wsteczną kompatybilność (*backward incompatible changes*), tj. zmian, które:
+   * uniemożliwiają kompilację kodu z użyciem pliku klasy z poprzednej wersji;
+   * znacząco zmieniają wygląd dokumentu (co może wymagać ponownych rozmów z Instytutami);
+* Wersja *Minor* ulega zmianie przy wprowadzaniu nowych funkcji LaTeX-a, np. nowego znacznika, które nie powodują złamania wstecznej kompatybilności;
+* Wersja *Patch* ulega zmianie przy innych niż zmiana kodu LaTeXa (np. komentarze, dokumentacja).
 
 ## Uwagi
 Copyright by Artur M. Brodzki 2019, based on https://github.com/pwozniak/EiTI-Szablon by [Piotr Woźniak](https://github.com/pwozniak). 

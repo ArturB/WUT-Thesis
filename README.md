@@ -27,7 +27,7 @@ Szablon został zatwierdzony przez Instytuty wydziału EiTI do oficjalnego użyt
 - wzory matematyczne z numeracją lub bez, w tym równanie macierzowe;
 - twierdzenia, aksjomaty i definicje;
 - fragment kodu źródłowego programu;
-- bibliografia w BibLaTeX zawierająca różne typy źródeł (artykuł, książka lub jej fragment, raport, specyfikacja techniczna, repozytorium kodu);
+- bibliografia w BibLaTeX zawierająca różne typy źródeł: artykuł, książka lub jej fragment, raport, specyfikacja techniczna, repozytorium kodu;
 - wykaz symboli i skrótów;
 - spisy: rysunków, tabel oraz załączników.
 

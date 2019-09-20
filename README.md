@@ -6,6 +6,8 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 * [Overleaf](https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt)
 * [Archiwum ZIP](https://github.com/ArturB/WUT-Thesis/releases/download/latest/WUT-Thesis.zip)
 
+![](https://i.imgur.com/yeeuWpC.png)
+
 ## Spis treści
 * [Zawartość szablonu](#zawartość)
 * [Kompilacja](#kompilacja)
@@ -16,8 +18,6 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 * [Problemy](#problemy)
 * [Dla deweloperów](#dla-deweloperów)
 * [Uwagi](#uwagi)
-
-![](https://i.imgur.com/yeeuWpC.png)
 
 ## Zawartość
 Szablon został zatwierdzony przez Instytuty wydziału EiTI do oficjalnego użytku (na dzień 20.09.2019 jest to Instytut Informatyki, link do odpowiedniego komunikatu [tutaj](http://www.ii.pw.edu.pl/index.php/ii_pol/Instytut-Informatyki/Nauczanie/Poradnik-dyplomanta/Przygotowanie-pracy-dyplomowej)). Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autorstwie, w dokumencie zawarte są przykładowe fragmenty kodu:

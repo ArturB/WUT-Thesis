@@ -96,10 +96,10 @@ Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która j
 Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y](https://github.com/ArturB/WUT-Thesis/issues) na GitHubie. Pisz tam, jeżeli masz jakiś problem. 
 
 ## Dla deweloperów
-### Plik klasy (.CLS)
+#### Plik klasy (.CLS)
 Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w piku klasy [eiti-thesis.cls](https://github.com/ArturB/WUT-Thesis/blob/master/eiti/eiti-thesis.cls). Pliki zawierające treść właściwego dokumentu (*.tex*) formatowane są zgodnie z plikiem klasy. Zawartość pliku .cls traktowana jest jako publiczne API niniejszego szablonu (w rozumieniu inżynierii oprogramowania) i podlega wersjonowaniu zgodnie z [poniższymi zaleceniami](#wersjonowanie). 
 
-### Makefile
+#### Makefile
 Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne są następujące komendy: 
 
 > make pdf, make lua, make xetex
@@ -118,12 +118,12 @@ Czyści katalog z plików pośrednich kompilacji (katalog *build*, wyłączony z
 
 Tworzy (w folderze [releases](https://github.com/ArturB/WUT-Thesis/tree/master/releases)) archiwum ZIP zawierające wersję szablonu gotową do kompilacji na lokalnej maszynie. Wytyczne dot. numerów wersji zostały opisane w rozdziale [Wersjonowanie](#wersjonowanie).
 
-### Branch protection, CI, Quality Assurance
+#### Branch protection, CI, Quality Assurance
 Branch *master* ma status *protected*: każdy nowy kod musi być najpierw zacommitowany do osobnego brancha, a następnie przejść przez wszystkie testy (Continuous Integration) i zostac zatwierdzony przez administratora (tzn. przeze mnie) przed jego zmerge'owaniem do głównego brancha. 
 
 Testy automatycznie z użyciem [Travisa](https://travis-ci.org/ArturB/WUT-Thesis). Po każdym commicie, tworzony jest build dla każdego z trzech kompilatorów: pdfTeX, LuaTeX i XeTeX. Build jest traktowany jako zaliczony, jeżeli szablon zbuduje się poprawnie na każdym z trzech kompilatorów. Buildy odbywają się w środowisku texlive na Ubuntu 18.04; próbowaliśmy dodać również automatyczne testy na Windowsie w miktex, ale ze względu na problemy z rzeczonym, automatyczne testy odbywają się jedynie na Ubuntu w texlive. 
 
-### Wersjonowanie
+#### Wersjonowanie
 Każda kolejna wersja szablonu musi być oznaczona numerem wersji w formacie *Major.Minor.Patch*. Schemat wersjonowania jest zgodny z (nieco uproszczonymi) zasadami [Semantic Versioning](https://semver.org/):
 * Wersja *Major* ulega zmianie po wprowadzeniu zmian łamiących wsteczną kompatybilność (*backward incompatible changes*), tj. zmian, które:
    * uniemożliwiają kompilację kodu z użyciem pliku klasy z poprzednej wersji;

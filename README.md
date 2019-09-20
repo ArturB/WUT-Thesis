@@ -29,7 +29,7 @@ Szablon został zatwierdzony przez Instytuty wydziału EiTI do oficjalnego użyt
 - fragment kodu źródłowego programu;
 - bibliografia w BibLaTeX zawierająca różne typy źródeł: artykuł, książka lub jej fragment, raport, specyfikacja techniczna, repozytorium kodu;
 - wykaz symboli i skrótów;
-- spisy: rysunków, tabel oraz załączników.
+- spisy: spis rysunków, tabel oraz załączników.
 
 ## Kompilacja
 Możliwa jest kompilacja z użyciem trzech głównych kompilatorów: [pdfTeX](https://www.tug.org/applications/pdftex/), [LuaTeX](http://www.luatex.org/) oraz [XeTeX](http://xetex.sourceforge.net/). Pewne funkcje dostępne są jednak tylko w niektórych kompilatorach:

@@ -87,7 +87,7 @@ Domyślnym językiem szablonu jest język polski, można jednak łatwo przetłum
 
 * musimy również ręcznie pozmieniać te fragmenty tekstu, których *babel* nie potrafi przetłumaczyć automatycznie, tj. nazwy twierdzeń i definicji oraz niektóre nagłówki: spis rysunków i tabel. 
 
-![](https://i.imgur.com/BPRpCJJ.png =200x)
+![](https://i.imgur.com/BPRpCJJ.png)
 
 ## Czcionki
 Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek, jednak ja nie widzę takiego powodu. 
@@ -101,10 +101,22 @@ Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w piku klas
 
 ### Makefile
 Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne są następujące komendy: 
-* *make pdf, make lua, make xetex* - tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany PDF jest umieszczanyw w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. 
-* *make all* - tworzy wszystkie 3 wymienione wyżej PDF-y i umieszcza je w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
-* *make clean* - czyści katalog z plików pośrednich kompilacji (katalog *build*, wyłączony z kontroli wersji); usuwa również pliki pośrednie istniejące w katalogu głównym oraz PDF-y, istniejące zarówno w katalogu głównym jak i w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
-* *make release version=X.Y.Z* - tworzy (w folderze [releases](https://github.com/ArturB/WUT-Thesis/tree/master/releases)) archiwum ZIP zawierające wersję szablonu gotową do kompilacji na lokalnej maszynie. Wytyczne dot. numerów wersji zostały opisane w rozdziale [Wersjonowanie](#wersjonowanie).
+
+> make pdf, make lua, make xetex
+
+Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany PDF jest umieszczanyw w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. 
+
+> make all
+
+Tworzy wszystkie 3 wymienione wyżej PDF-y i umieszcza je w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
+
+> make clean
+
+Czyści katalog z plików pośrednich kompilacji (katalog *build*, wyłączony z kontroli wersji); usuwa również pliki pośrednie istniejące w katalogu głównym oraz PDF-y, istniejące zarówno w katalogu głównym jak i w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
+
+> make release version=X.Y.Z
+
+Tworzy (w folderze [releases](https://github.com/ArturB/WUT-Thesis/tree/master/releases)) archiwum ZIP zawierające wersję szablonu gotową do kompilacji na lokalnej maszynie. Wytyczne dot. numerów wersji zostały opisane w rozdziale [Wersjonowanie](#wersjonowanie).
 
 ### Branch protection, CI, Quality Assurance
 Branch *master* ma status *protected*: każdy nowy kod musi być najpierw zacommitowany do osobnego brancha, a następnie przejść przez wszystkie testy (Continuous Integration) i zostac zatwierdzony przez administratora (tzn. przeze mnie) przed jego zmerge'owaniem do głównego brancha. 

@@ -9,7 +9,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 ![](https://i.imgur.com/yeeuWpC.png)
 
 ----
-
+### Spis treści
 * [Zawartość szablonu](#zawartość-szablonu)
 * [Kompilacja](#kompilacja)
   * [Overleaf](#overleaf)

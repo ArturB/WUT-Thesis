@@ -75,7 +75,7 @@
 % XeTeX specific configuration
 %--------------------------------------
 \ifxetex
-    \RequirePackage{fontspec-xetex}
+    \RequirePackage{fontspec}
     \RequirePackage[
         protrusion=true,
     ]{microtype}

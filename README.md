@@ -9,7 +9,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 ![](https://i.imgur.com/yeeuWpC.png)
 
 ## Spis treści
-* [Zawartość szablonu](#zawartość)
+* [Zawartość szablonu](#zawartość-szablonu)
 * [Kompilacja](#kompilacja)
   * [Overleaf](#overleaf)
   * [Lokalnie](#lokalnie)
@@ -19,7 +19,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 * [Dla deweloperów](#dla-deweloperów)
 * [Uwagi](#uwagi)
 
-## Zawartość
+## Zawartość szablonu
 Szablon został zatwierdzony przez Instytuty wydziału EiTI do oficjalnego użytku (na dzień 20.09.2019 jest to Instytut Informatyki, link do odpowiedniego komunikatu [tutaj](http://www.ii.pw.edu.pl/index.php/ii_pol/Instytut-Informatyki/Nauczanie/Poradnik-dyplomanta/Przygotowanie-pracy-dyplomowej)). Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autorstwie, w dokumencie zawarte są przykładowe fragmenty kodu:
 - prosta tabela z podpisem;
 - duża tabela wielostronicowa, z regulowaną szerokością kolumn i zagnieżdżaniem (*multirow*);

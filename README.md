@@ -1,17 +1,27 @@
 # WUT-Thesis ![Travis (.org) branch](https://img.shields.io/travis/ArturB/WUT-Thesis/master?label=texlive)
 
-Repozytorium zawiera stworzony w LaTeXu szablon pracy dyplomowej: inżynierskiej lub magisterskiej - przeznaczony dla Wydziału EiTI Politechniki Warszawskiej. Szablon z założenia powinien być zgodny z normą składu tekstów w języku polskim (BN-76 7440-02), jednakże nie gwarantuję całkowitej zgodności. Istnieją również pewne intencjonalnie wprowadzone różnice (np. sposób listowania) wynikające z tego, że w/w norma jest proweniencji jeszcze komunistycznej i pewne rzeczy się zdezaktualizowały. 
+Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magisterskiej - przeznaczony dla Wydziału EiTI Politechniki Warszawskiej. 
 
 Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autorstwie, w dokumencie zawarte są przykładowe fragmenty kodu:
- - obrazek z podpisem;
- - wzory matematyczne z numeracją lub bez, w tym równanie macierzowe;
- - lista nieuporządkowana oraz numerowana, z regulowanym wzorem elementów oraz wcięciem;
  - prosta tabela z podpisem;
  - duża tabela wielostronicowa, z regulowaną szerokością kolumn i zagnieżdżaniem (multirow);
+ - wzory matematyczne z numeracją lub bez, w tym równanie macierzowe;
  - twierdzenia, aksjomaty i definicje;
  - fragment kodu źródłowego programu;
- - bibliografia w BibLaTeX;
- - spis tabel oraz rysunków.
+ - bibliografia w BibLaTeX zawierająca różne typy źródeł (artykuł, książka lub jej fragment, raport, specyfikacja techniczna, repozytorium kodu);
+ - wykaz symboli i skrótów;
+ - spisy: rysunków, tabel oraz załączników.
+
+## Spis treści
+ * Kompilacja
+ * Czcionki
+ * Problemy
+ * Dla deweloperów
+ * Uwagi
+
+## Kompilacja
+### Overleaf
+[!](https://i.imgur.com/WfjM51M.png)
  
 [Tutaj](https://github.com/ArturB/WUT-Thesis/blob/master/main.pdf) dostępny podgląd w formacie PDF. Najnowsza wersja szablonu gotowa do kompilacji jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/download/latest/WUT-Thesis.zip. 
  

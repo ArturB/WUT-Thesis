@@ -1,0 +1,36 @@
+version: '3.2'
+
+services:
+
+  debian:
+    image: docker.pkg.github.com/arturb/wut-thesis/debian:latest
+    build: 
+      context: .
+      dockerfile: ./docker/debian/Dockerfile
+    volumes:
+    - type: bind
+      source: ./pdfs
+      target: /dist
+    privileged: true
+  
+  fedora:
+    image: docker.pkg.github.com/arturb/wut-thesis/fedora:latest
+    build: 
+      context: .
+      dockerfile: ./docker/fedora/Dockerfile
+    volumes:
+    - type: bind
+      source: ./pdfs
+      target: /dist
+    privileged: true
+  
+  ubuntu:
+    image: docker.pkg.github.com/arturb/wut-thesis/ubuntu:latest
+    build: 
+      context: .
+      dockerfile: ./docker/ubuntu/Dockerfile
+    volumes:
+    - type: bind
+      source: ./pdfs
+      target: /dist
+    privileged: true

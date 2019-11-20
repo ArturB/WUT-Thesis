@@ -1,7 +1,6 @@
 BUILD_DIR 	= build
-PDFS_DIR 	= pdfs
 RELEASE_DIR = releases
-
+PDFS_DIR    = pdfs/local
 LATEXMK 	= latexmk
 MKFLAGS 	= -bibtex -pdf -f
 
@@ -15,7 +14,8 @@ TEXENV		= $(shell ./scripts/texenv.sh)
 .PHONY: base clean
 
 # Generate all three PDFs
-all: 	pdf xetex lua 
+all: 	pdf PDFS_DIR=pdfs/local/polski
+		pdf PDFS_DIR=/pdfs/local/english
 
 # Remove LaTeX auxiliary files
 clean:  
@@ -23,8 +23,10 @@ clean:
 		$(RM) *.fdb_latexmk *.fls *.gz 
 		$(RM) *.lof *.log *.lot *.out *.status
 		$(RM) *.toc *.xml *-blx.bib *.pdf 
-		$(RM) -r $(BUILD_DIR)/*
-		$(RM) -r $(PDFS_DIR)/*
+		$(RM) -r $(BUILD_DIR)
+		$(RM) -r $(PDFS_DIR)
+		mkdir -p $(BUILD_DIR)
+		mkdir -p $(PDFS_DIR)
 
 # Generate LuaLateX PDF
 lua:	*.tex *.bib ./tex/* 

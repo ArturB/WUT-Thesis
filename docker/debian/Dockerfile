@@ -17,10 +17,16 @@ RUN apt-get install -y make \
                        texlive-luatex \
                        texlive-xetex
 
-COPY . /wut-thesis
+COPY ./*.tex     /wut-thesis/
+COPY ./*.bib     /wut-thesis/
+COPY ./Makefile  /wut-thesis/
+COPY ./eiti/*    /wut-thesis/eiti/
+COPY ./img/*     /wut-thesis/img/
+COPY ./scripts/* /wut-thesis/scripts/
+COPY ./tex/*     /wut-thesis/tex/
 
 WORKDIR /wut-thesis
 
-RUN rm -f ./pdfs/* && make all
+RUN rm -rf ./pdfs/* && make all
 
 ENTRYPOINT mkdir -p /dist/debian && cp ./pdfs/* /dist/debian

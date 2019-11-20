@@ -1,19 +1,17 @@
 FROM opensuse/leap:latest
 
-RUN apt-get install -y make \
-                       latexmk \
-                       tex-gyre \
-                       texlive-bibtex-extra \
-                       texlive-fonts-extra \
-                       texlive-lang-polish \
-                       texlive-latex-extra \
-                       texlive-luatex \
-                       texlive-xetex
-
-COPY . /wut-thesis
+RUN zypper install -y make \
+                      latexmk \
+                      tex-gyre \
+                      texlive-bibtex-extra \
+                      texlive-fonts-extra \
+                      texlive-lang-polish \
+                      texlive-latex-extra \
+                      texlive-luatex \
+                      texlive-xetex
 
 WORKDIR /wut-thesis
 
-RUN rm -f ./pdfs/* && make all
+RUN rm -rf ./pdfs/* && make all
 
-ENTRYPOINT cp ./pdfs/* /dist
+ENTRYPOINT mkdir -p /dist/opensuse && cp ./pdfs/* /dist/opensuse

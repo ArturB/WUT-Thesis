@@ -21,6 +21,6 @@ COPY . /wut-thesis
 
 WORKDIR /wut-thesis
 
-RUN rm -f ./pdfs/* && make all
+RUN rm -rf ./pdfs/* && make all
 
 ENTRYPOINT mkdir -p /dist/ubuntu && cp ./pdfs/* /dist/ubuntu

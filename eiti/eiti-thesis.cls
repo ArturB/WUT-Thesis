@@ -208,6 +208,44 @@
 \setlist[enumerate,3]{topsep=2pt,leftmargin=16pt}
 
 %--------------------------------
+% Wybór języka pracy
+%--------------------------------
+\newcommand{\langpol}{
+    \newcommand{\@lang}{polish}
+    \usepackage[polish]{babel}
+	
+	\newtheorem{theorem}{Twierdzenie}
+	\newtheorem{lemma}{Lemat}
+	\newtheorem{corollary}{Wniosek}
+	\newtheorem{definition}{Definicja}
+	\newtheorem{axiom}{Aksjomat}
+	\newtheorem{assumption}{Założenie}
+	
+	\AtBeginDocument{
+		\renewcommand{\listfigurename}{Spis rysunków}
+		\renewcommand{\listtablename}{Spis tabel}
+		\renewcommand{\tablename}{Tabela}
+	}
+}
+\newcommand{\langeng}{
+    \newcommand{\@lang}{english}
+    \usepackage[english]{babel}
+	
+	\newtheorem{theorem}{Theorem}
+	\newtheorem{lemma}{Lemma}
+	\newtheorem{corollary}{Corollary}
+	\newtheorem{definition}{Definition}
+	\newtheorem{axiom}{Axiom}
+	\newtheorem{assumption}{Assumption}
+	
+	\AtBeginDocument{
+		\renewcommand{\listfigurename}{List of Figures}
+		\renewcommand{\listtablename}{List of Tables}
+		\renewcommand{\tablename}{Table}
+	}
+}
+
+%--------------------------------
 % Streszczenie po polsku
 %--------------------------------
 \newcommand{\streszczenie}{
@@ -280,22 +318,52 @@
     
     \begin{center}
         %\sffamily
-        \includegraphics[width=\textwidth]{eiti/header.png} \\
+        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+            \includegraphics[width=\textwidth]{eiti/header.png} \\
+        \fi
+        \ifnum \pdf@strcmp{\@lang}{english} = 0
+            \includegraphics[width=\textwidth]{eiti/header-eng.png} \\
+        \fi
         \hfill \break
         \hfill \break
-        Instytut \@instytut \\
+        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+            Instytut \@instytut \\
+        \fi
+        \ifnum \pdf@strcmp{\@lang}{english} = 0
+            Institute of \@instytut \\
+        \fi
         \hfill \break
         \hfill \break
         \hfill \break
         \ifnum \pdf@strcmp{\ThesisType}{Engineer} = 0
-            \includegraphics[width=\textwidth]{eiti/title-inz.png} \\
+            \ifnum \pdf@strcmp{\@lang}{polish} = 0
+                \includegraphics[width=\textwidth]{eiti/title-inz.png} \\
+            \fi
+            \ifnum \pdf@strcmp{\@lang}{english} = 0
+                \includegraphics[width=\textwidth]{eiti/title-inz-eng.png} \\
+            \fi
         \fi
         \ifnum \pdf@strcmp{\ThesisType}{Master} = 0
-            \includegraphics[width=\textwidth]{eiti/title-mgr.png} \\
+            \ifnum \pdf@strcmp{\@lang}{polish} = 0
+                \includegraphics[width=\textwidth]{eiti/title-mgr.png} \\
+            \fi
+            \ifnum \pdf@strcmp{\@lang}{english} = 0
+                \includegraphics[width=\textwidth]{eiti/title-mgr-eng.png} \\
+            \fi
         \fi
         \hfill \break
-        na~kierunku \@kierunek \\
-        w~specjalności \@specjalnosc \\
+        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+            na~kierunku \@kierunek \\
+        \fi
+        \ifnum \pdf@strcmp{\@lang}{english} = 0
+            in~the~field~of~study \@kierunek \\
+        \fi
+        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+            w~specjalności \@specjalnosc \\
+        \fi
+        \ifnum \pdf@strcmp{\@lang}{english} = 0
+            and~specialisation \@specjalnosc \\
+        \fi
         \hfill \break
         \hfill \break
         \large
@@ -305,13 +373,28 @@
         \LARGE
         \@author \\
         \normalsize
-        Numer~albumu \@album \\
+        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+            Numer~albumu \@album \\
+        \fi
+        \ifnum \pdf@strcmp{\@lang}{english} = 0
+            student record book number \@album \\
+        \fi
         \hfill \break
         \hfill \break
-        promotor \\
+        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+            promotor \\
+        \fi
+        \ifnum \pdf@strcmp{\@lang}{english} = 0
+            thesis supervisor \\
+        \fi
         \@promotor \\
         \vfill
-        WARSZAWA \@date
+        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+            WARSZAWA \@date
+        \fi
+        \ifnum \pdf@strcmp{\@lang}{english} = 0
+            WARSAW \@date
+        \fi
     \end{center}
     
     \newpage
@@ -337,6 +420,14 @@
 %--------------------------------
 % Skrót (akronim) - makro
 %--------------------------------
+\newcommand{\acronymlist}{
+    \ifnum \pdf@strcmp{\@lang}{polish} = 0
+        \section*{Wykaz symboli i skrótów}
+    \fi
+    \ifnum \pdf@strcmp{\@lang}{english} = 0
+        \section*{List of Symbols and Abbreviations}
+    \fi
+}
 \newcommand{\acronym}[2]{
     \noindent
     \textbf{#1} -- #2
@@ -346,28 +437,39 @@
 %--------------------------------
 % Spis załączników - makra
 %--------------------------------
+\makeatletter
+
 \newcommand{\nocontentsline}[3]{}
 \newcommand{\tocless}[2]{%
     \bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup
 }
 
-\newcommand\listappendicesname{Spis załączników}
+\newcommand{\@appendixtitle}{
+    \ifnum \pdf@strcmp{\@lang}{polish} = 0
+        Załącznik
+    \fi
+    \ifnum \pdf@strcmp{\@lang}{english} = 0
+        Appendix
+    \fi
+}
 
-\newcommand\newappendix[1]{%
+\let\standardappendix\appendix
+\renewcommand\appendix[1]{%
     % \refstepcounter{section}
     \tocless\section{\hspace*{1.5ex} #1}
     \addcontentsline{app}{subsection}{\hspace*{-2.5ex}\arabic{section}.\hspace*{0.5ex} #1}
 }
-\makeatletter
-\newcommand\listofappendices{%
-    \section*{\listappendicesname}\@starttoc{app}
-    \appendix
-    \renewcommand{\thesection}{Załącznik~\arabic{section}}
-}
-\makeatother
 
-\let\oldappendix\appendix
-\renewcommand{\appendix}{
-    \oldappendix
-    \renewcommand{\thesection}{Załącznik~\arabic{section}}
+\newcommand\listofappendices{%
+    \ifnum \pdf@strcmp{\@lang}{polish} = 0
+        \section*{Spis załączników}\@starttoc{app}
+    \fi
+    \ifnum \pdf@strcmp{\@lang}{english} = 0
+        \section*{List of Appendices}\@starttoc{app}
+    \fi
+    
+    \standardappendix
+    \renewcommand{\thesection}{\@appendixtitle~\arabic{section}}
 }
+
+\makeatother

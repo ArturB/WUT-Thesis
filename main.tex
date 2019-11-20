@@ -14,7 +14,7 @@
     nohyphenation=false % You may turn off hyphenation, if don't like. 
 ]{eiti/eiti-thesis}
 
-\usepackage[polish]{babel}
+
 \usepackage[
     backend=bibtex,
     style=ieee
@@ -23,29 +23,7 @@
 
 \graphicspath{{img/}}             % Katalog z obrazkami.
 \addbibresource{bibliografia.bib} % Plik .bib z bibliografią
-
-%----------------------------------------
-% Twierdzenia i definicje;
-% tutaj ew. tłumaczymy te terminy
-% na inne języki
-%----------------------------------------
-\newtheorem{theorem}{Twierdzenie}
-\newtheorem{lemma}{Lemat}
-\newtheorem{corollary}{Wniosek}
-\newtheorem{definition}{Definicja}
-\newtheorem{axiom}{Aksjomat}
-\newtheorem{assumption}{Założenie}
-
-%----------------------------------------
-% Spis rysunków, tablic i załączników;
-% tutaj ew. tłumaczymy te terminy
-% na inne języki
-%----------------------------------------
-\AtBeginDocument{
-    \renewcommand{\listfigurename}{Spis rysunków}
-    \renewcommand{\listtablename}{Spis tabel}
-    \renewcommand{\tablename}{Tabela}
-}
+\langeng % Dla języka angielskiego mamy \angpol
 
 \begin{document}
 
@@ -105,7 +83,7 @@
 \input{tex/3-code-listings} % każdy rozdział w osobnym pliku. 
 
 \newpage % Zaleca się otwieranie rozdziału od nowej strony
-\section{Podsumowanie}      % Ale można też pisać w jednym. 
+\section{Summatio}      % Ale można też pisać w jednym. 
 \lipsum[5-7]
 
 %--------------------------------------------
@@ -124,11 +102,13 @@
 % we własnym zakresie. Ponieważ mało kto używa takiego wykazu, 
 % uznałem, że robienie automatycznie sortowanej listy
 % na poziomie LaTeXa to za duży overkill. 
-% Jest tylko proste i oczywiste makro \acronym, 
-% które dodaje postawowe formatowanie. 
+% Makro \acronymlist generuje właściwy tytuł sekcji, 
+% w zależności od języka.
+% Makro \acronym dodaje skrót/symbol to listy, 
+% zapewniając podstawowe formatowanie.
 % //AB
 \vspace{0.8cm}
-\section*{Wykaz symboli i skrótów}
+\acronymlist
 \acronym{EiTI}{Wydział Elektroniki i Technik Informacyjnych}
 \acronym{PW}{Politechnika Warszawska}
 
@@ -139,14 +119,13 @@
 \listofappendices           % Spis załączników
 
 % Załączniki
-\appendix
 
 \newpage
-\newappendix{Nazwa załącznika 1}
+\appendix{Nazwa załącznika 1}
 \lipsum[1]
 
 \newpage
-\newappendix{Nazwa załącznika 2}
+\appendix{Nazwa załącznika 2}
 \lipsum[1]
 
 % Używając powyższych spisów jako szablonu,

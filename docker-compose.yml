@@ -3,7 +3,7 @@ version: '3.2'
 services:
 
   debian:
-    image: docker.pkg.github.com/arturb/wut-thesis/debian:latest
+    image: arturbrodzki/wut-thesis:debian
     build: 
       context: .
       dockerfile: ./docker/debian/Dockerfile
@@ -14,10 +14,21 @@ services:
     privileged: true
   
   fedora:
-    image: docker.pkg.github.com/arturb/wut-thesis/fedora:latest
+    image: arturbrodzki/wut-thesis:fedora
     build: 
       context: .
       dockerfile: ./docker/fedora/Dockerfile
+    volumes:
+    - type: bind
+      source: ./pdfs
+      target: /dist
+    privileged: true
+
+  opensuse:
+    image: docker.pkg.github.com/arturb/wut-thesis/opensuse:latest
+    build: 
+      context: .
+      dockerfile: ./docker/opensuse/Dockerfile
     volumes:
     - type: bind
       source: ./pdfs

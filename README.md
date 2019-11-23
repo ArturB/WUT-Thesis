@@ -80,14 +80,14 @@ Oficjalne Quality Assurance gwarantujemy tylko dla **środowiska texlive**; mikt
 Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/WUT-Thesis/tree/master/tex). 
 
 ## Prace w języku angielskim
-Domyślnym językiem szablonu jest język polski, można jednak łatwo przetłumaczyć szablon na angielski (oraz inne języki):
-* w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/Readme/main.tex) zmieniasz język pakietu *babel*
+Szablon można stosować zarowno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/master/main.tex) stosujemy komendę:
+> \langpol
 
-![](https://i.imgur.com/Vmh0CA9.png)
+dla prac w języku polskim, lub 
 
-* musimy również ręcznie pozmieniać te fragmenty tekstu, których *babel* nie potrafi przetłumaczyć automatycznie, tj. nazwy twierdzeń i definicji oraz niektóre nagłówki: spis rysunków i tabel. 
+> \langeng
 
-![](https://i.imgur.com/BPRpCJJ.png)
+dla prac w języku angielskim. Wg. stanu **na dzień 23.11.2019, tłumaczenie szablonu na język angielski nie jest ukończone w 100%**; do przetłumaczenia pozostaje oświadczenie o autorstwie pracy na str. 5. 
 
 ## Czcionki
 Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek, jednak ja nie widzę takiego powodu. 

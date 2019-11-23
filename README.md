@@ -80,14 +80,14 @@ Oficjalne Quality Assurance gwarantujemy tylko dla **środowiska texlive**; mikt
 Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/WUT-Thesis/tree/master/tex). 
 
 ## Prace w języku angielskim
-Domyślnym językiem szablonu jest język polski, można jednak łatwo przetłumaczyć szablon na angielski (oraz inne języki):
-* w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/Readme/main.tex) zmieniasz język pakietu *babel*
+Szablon można stosować zarówno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/master/main.tex) stosujemy komendę:
+> \langpol
 
-![](https://i.imgur.com/Vmh0CA9.png)
+dla prac w języku polskim, lub 
 
-* musimy również ręcznie pozmieniać te fragmenty tekstu, których *babel* nie potrafi przetłumaczyć automatycznie, tj. nazwy twierdzeń i definicji oraz niektóre nagłówki: spis rysunków i tabel. 
+> \langeng
 
-![](https://i.imgur.com/BPRpCJJ.png)
+dla prac w języku angielskim. Wg. stanu **na dzień 23.11.2019, tłumaczenie szablonu na język angielski nie jest ukończone w 100%**; do przetłumaczenia pozostaje oświadczenie o autorstwie pracy na str. 5. 
 
 ## Czcionki
 Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek, jednak ja nie widzę takiego powodu. 
@@ -104,7 +104,7 @@ Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne s
 
 > make pdf, make lua, make xetex
 
-Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany PDF jest umieszczanyw w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. 
+Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany plik PDF jest umieszczany w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. 
 
 > make all
 
@@ -126,7 +126,7 @@ Testy automatycznie z użyciem [Travisa](https://travis-ci.org/ArturB/WUT-Thesis
 #### Wersjonowanie
 Każda kolejna wersja szablonu musi być oznaczona numerem wersji w formacie *Major.Minor.Patch*. Schemat wersjonowania jest zgodny z (nieco uproszczonymi) zasadami [Semantic Versioning](https://semver.org/):
 * Wersja *Major* ulega zmianie po wprowadzeniu zmian łamiących wsteczną kompatybilność (*backward incompatible changes*), tj. zmian, które:
-   * uniemożliwiają kompilację kodu z użyciem pliku klasy z poprzednej wersji;
+   * uniemożliwiają kompilację kodu z użyciem pliku klasy z poprzedniej wersji;
    * znacząco zmieniają wygląd dokumentu (co może wymagać ponownych rozmów z Instytutami);
 * Wersja *Minor* ulega zmianie przy wprowadzaniu nowych funkcji LaTeX-a, np. nowego znacznika, które nie powodują złamania wstecznej kompatybilności;
 * Wersja *Patch* ulega zmianie przy innych niż zmiana kodu LaTeXa (np. komentarze, dokumentacja).

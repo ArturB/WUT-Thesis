@@ -80,7 +80,7 @@ Oficjalne Quality Assurance gwarantujemy tylko dla **środowiska texlive**; mikt
 Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/WUT-Thesis/tree/master/tex). 
 
 ## Prace w języku angielskim
-Szablon można stosować zarowno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/master/main.tex) stosujemy komendę:
+Szablon można stosować zarówno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/master/main.tex) stosujemy komendę:
 > \langpol
 
 dla prac w języku polskim, lub 
@@ -104,7 +104,7 @@ Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne s
 
 > make pdf, make lua, make xetex
 
-Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany PDF jest umieszczanyw w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. 
+Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany plik PDF jest umieszczany w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. 
 
 > make all
 
@@ -126,7 +126,7 @@ Testy automatycznie z użyciem [Travisa](https://travis-ci.org/ArturB/WUT-Thesis
 #### Wersjonowanie
 Każda kolejna wersja szablonu musi być oznaczona numerem wersji w formacie *Major.Minor.Patch*. Schemat wersjonowania jest zgodny z (nieco uproszczonymi) zasadami [Semantic Versioning](https://semver.org/):
 * Wersja *Major* ulega zmianie po wprowadzeniu zmian łamiących wsteczną kompatybilność (*backward incompatible changes*), tj. zmian, które:
-   * uniemożliwiają kompilację kodu z użyciem pliku klasy z poprzednej wersji;
+   * uniemożliwiają kompilację kodu z użyciem pliku klasy z poprzedniej wersji;
    * znacząco zmieniają wygląd dokumentu (co może wymagać ponownych rozmów z Instytutami);
 * Wersja *Minor* ulega zmianie przy wprowadzaniu nowych funkcji LaTeX-a, np. nowego znacznika, które nie powodują złamania wstecznej kompatybilności;
 * Wersja *Patch* ulega zmianie przy innych niż zmiana kodu LaTeXa (np. komentarze, dokumentacja).

@@ -14,29 +14,29 @@ TEXENV		= $(shell ./scripts/texenv.sh)
 .PHONY: base clean
 
 # Generate all three PDFs
-all: 	pdf PDFS_DIR=pdfs/local/polski
-		pdf PDFS_DIR=/pdfs/local/english
+all: 	pdf lua xetex
 
 # Remove LaTeX auxiliary files
 clean:  
-		$(RM) *.app *.aux *.bbl *.blg 
-		$(RM) *.fdb_latexmk *.fls *.gz 
-		$(RM) *.lof *.log *.lot *.out *.status
-		$(RM) *.toc *.xml *-blx.bib *.pdf 
-		$(RM) -r $(BUILD_DIR)
-		$(RM) -r $(PDFS_DIR)
+		rm -f *.app *.aux *.bbl *.blg 
+		rm -f *.fdb_latexmk *.fls *.gz 
+		rm -f *.lof *.log *.lot *.out *.status
+		rm -f *.toc *.xml *-blx.bib *.pdf 
+
+		rm -rf $(BUILD_DIR)
 		mkdir -p $(BUILD_DIR)
+		rm -rf $(PDFS_DIR)
 		mkdir -p $(PDFS_DIR)
 
-# Generate LuaLateX PDF
+# Generate LuaLateX PDF in polish
 lua:	*.tex *.bib ./tex/* 
 		$(MAKE) base CTEX=$(LUALATEX) OUT=$(BUILD_DIR)/$(LUALATEX)
 
-# Generate pdfLaTeX PDF
+# Generate pdfLaTeX PDF in polish
 pdf:	*.tex *.bib ./tex/* 
 		$(MAKE) base CTEX=$(PDFLATEX) OUT=$(BUILD_DIR)/$(PDFLATEX)
 
-# Generate XeLaTeX PDF
+# Generate XeLaTeX PDF in polish
 xetex:	*.tex *.bib ./tex/* 
 		$(MAKE) base CTEX=$(XELATEX) OUT=$(BUILD_DIR)/$(XELATEX)
 
@@ -50,4 +50,4 @@ base:
 			-output-directory=$(OUT) \
 			-pdflatex="$(CTEX) $(TEXFLAGS)" $<
 		mkdir -p $(PDFS_DIR)
-		cp ./$(OUT)/*.pdf ./$(PDFS_DIR)/$(TEXENV)-$(CTEX).pdf
+		cp -v ./$(OUT)/*.pdf ./$(PDFS_DIR)/$(TEXENV)-$(CTEX).pdf

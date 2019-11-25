@@ -16,6 +16,7 @@
 
 *.pdf
 !pdfs/*.pdf
+!eiti/*.pdf
 
 build
 autom4te.cache

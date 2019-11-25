@@ -37,6 +37,10 @@
 \RequirePackage{amsthm}
 \RequirePackage{array} 
 \RequirePackage[
+    backend=biber,
+    style=ieee
+]{biblatex}
+\RequirePackage[
     labelfont=bf,
     labelsep=period
 ]{caption}
@@ -130,6 +134,11 @@
 
     \end{luacode}
 \fi
+
+%--------------------------------------
+% Load csquotes after inputenc
+%--------------------------------------
+\RequirePackage{csquotes}
 
 %--------------------------------
 % Define hyperref colors
@@ -249,7 +258,7 @@
 % Streszczenie po polsku
 %--------------------------------
 \newcommand{\streszczenie}{
-    \thispagestyle{empty}
+    \thispagestyle{plain}
     \begin{center}\textbf{\large\@title}\end{center}
     \textbf{\\ Streszczenie.\xspace}
 }
@@ -259,7 +268,7 @@
 % Streszczenie po angielsku
 %--------------------------------
 \renewcommand{\abstract}{
-    \thispagestyle{empty}
+    \thispagestyle{plain}
     \begin{center}\textbf{\large\@engtitle}\end{center}
     \textbf{\\ Abstract.\xspace}
 }
@@ -269,13 +278,32 @@
 % Oświadczenie o autorstwie
 %--------------------------------
 \newcommand{\makeauthorship}{
-    \thispagestyle{empty}
-    \begin{figure}[H]
-        \vspace{-55pt}
-        \noindent\makebox[\textwidth]{
+    \ifnum \pdf@strcmp{\@lang}{polish} = 0
+        \thispagestyle{plain}
+        \begin{figure}[H]
+            \vspace{-55pt}
+            \noindent\makebox[\textwidth]{
             \includegraphics[width=1.3\textwidth]{eiti/oswiadczenie_autora_pracy.pdf}
-        }
-    \end{figure}
+            }
+        \end{figure}
+    \fi
+    \ifnum \pdf@strcmp{\@lang}{english} = 0
+        \thispagestyle{plain}
+        \begin{figure}[H]
+            \vspace{-55pt}
+            \noindent\makebox[\textwidth]{
+            \includegraphics[width=1.3\textwidth]{eiti/thesis_author_declaration-1.pdf}
+            }
+        \end{figure}
+        \newpage
+        \thispagestyle{plain}
+        \begin{figure}[H]
+            \vspace{-55pt}
+            \noindent\makebox[\textwidth]{
+            \includegraphics[width=1.3\textwidth]{eiti/thesis_author_declaration-2.pdf}
+            }
+        \end{figure}
+    \fi
 }
 
 %--------------------------------
@@ -397,15 +425,9 @@
         \fi
     \end{center}
     
-    \newpage
-    \thispagestyle{empty}
-    \hfill
-    \newpage
-    
     \pagenumbering{arabic}
-    \setcounter{page}{3}
+    \setcounter{page}{1}
 }
-
 
 %--------------------------------
 % Pusta strona - makro
@@ -429,9 +451,8 @@
     \fi
 }
 \newcommand{\acronym}[2]{
-    \noindent
+    \par\noindent 
     \textbf{#1} -- #2
-    \newline
 }
 
 %--------------------------------

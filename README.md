@@ -8,6 +8,8 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 
 ![](https://i.imgur.com/yeeuWpC.png)
 
+TODO: czerwona ikona "texlive:failing" wynika z tego, że CI jest w trakcie przebudowy z Travisa na Dockera, ale szablon działa, można pobierać. 
+
 ----
 ### Spis treści
 * [Zawartość szablonu](#zawartość-szablonu)

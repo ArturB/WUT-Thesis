@@ -82,7 +82,7 @@ Oficjalne Quality Assurance gwarantujemy tylko dla **środowiska texlive**; mikt
 Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/WUT-Thesis/tree/master/tex). 
 
 ## Prace w języku angielskim
-Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję 2.0.0 Alpha:** https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki jest jeszcze tylko po polsku. 
+Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję 2.0.0 Alpha:** https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019). 
 
 W celu wyboru języka, w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/master/main.tex) stosujemy komendę:
 > \langpol
@@ -91,7 +91,7 @@ dla prac w języku polskim, lub
 
 > \langeng
 
-dla prac w języku angielskim. Wg. stanu na dzień 23.12.2019, tłumaczenie powinno być kompletne i stabilne, chociaż mogą zajść jeszcze pewne zmiany wraz ze zgłaszaniem uwag przez Instytuty.
+dla prac w języku angielskim. Wg. stanu na dzień 22.12.2019, tłumaczenie powinno być kompletne i stabilne, chociaż mogą zajść jeszcze pewne zmiany wraz ze zgłaszaniem uwag przez Instytuty.
 
 ## Czcionki
 Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek, jednak ja nie widzę takiego powodu. 

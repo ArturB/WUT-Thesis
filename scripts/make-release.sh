@@ -43,4 +43,4 @@ cp Makefile $RELEASE_DIR
 cp .gitignore $RELEASE_DIR
 
 cd releases/$VERSION
-tar -cvf WUT-Thesis.tar.gz WUT-Thesis/*
+zip -r WUT-Thesis.zip WUT-Thesis/*

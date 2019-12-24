@@ -73,7 +73,7 @@ Szablonu można używać zasadniczo w trzech głównych konfiguracjach:
 
 Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności. Na texlive wymagane jest zainstalowanie następujących zbiorów pakietów: 
 
-> latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+> biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
 
 Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności.  
 

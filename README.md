@@ -1,4 +1,4 @@
-# WUT-Thesis ![Travis (.org) branch](https://img.shields.io/travis/ArturB/WUT-Thesis/master?label=texlive)
+# WUT-Thesis 
 
 Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magisterskiej - przeznaczony dla Wydziału EiTI Politechniki Warszawskiej. 
 

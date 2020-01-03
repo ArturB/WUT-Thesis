@@ -4,7 +4,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 
 #### Linki:
 * [Overleaf](https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt)
-* [Archiwum ZIP](https://github.com/ArturB/WUT-Thesis/releases/tag/latest)
+* [Archiwum ZIP](https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0)
 
 ![](https://i.imgur.com/yeeuWpC.png)
 
@@ -55,7 +55,7 @@ Link do szablonu: https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfq
 Na jego podstawie możecie tworzyć i edytować własne dokumenty. 
 
 ### Lokalnie
-Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases](https://github.com/ArturB/WUT-Thesis/releases). Najnowsza wersja szablonu jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/download/latest/WUT-Thesis-current.zip. Kompilacja za pomocą Makefile:
+Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases](https://github.com/ArturB/WUT-Thesis/releases). Najnowsza wersja szablonu jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Kompilacja za pomocą Makefile:
 
 > make pdf
 

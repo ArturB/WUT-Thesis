@@ -57,11 +57,15 @@ Na jego podstawie możecie tworzyć i edytować własne dokumenty.
 ### Lokalnie
 Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases](https://github.com/ArturB/WUT-Thesis/releases). Najnowsza wersja szablonu jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Kompilacja za pomocą Makefile:
 
-> make pdf
+```
+make pdf
+```
 
 albo
 
-> make lua
+```
+make lua
+```
 
 dla kompilacji z użyciem LuaTeX. Na Windowsie *make* jest dostępny w msys, instalujesz go najlepiej razem z [git-scm](https://git-scm.com/). 
 
@@ -71,9 +75,13 @@ Szablonu można używać zasadniczo w trzech głównych konfiguracjach:
 * na Windowsie w [texlive](https://www.tug.org/texlive/) oraz [miktex](https://miktex.org/);
 * na Linuxie w [texlive](https://www.tug.org/texlive/).
 
-Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności. Na texlive wymagane jest zainstalowanie następujących zbiorów pakietów: 
+Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności.
 
-> biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+**Uwaga**: Na texlive wymagane jest zainstalowanie następujących zbiorów pakietów
+
+```
+biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+```
 
 Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności.  
 
@@ -81,59 +89,70 @@ Oficjalne Quality Assurance gwarantujemy tylko dla **środowiska texlive**; mikt
 
 Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/WUT-Thesis/tree/master/tex). 
 
-## Prace w języku angielskim
-Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję 2.0.0 Alpha:** https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019). 
+## Język pracy
 
-W celu wyboru języka, w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/master/main.tex) stosujemy komendę:
-> \langpol
+W celu wyboru języka, w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/master/main.tex) stosujemy:
 
-dla prac w języku polskim, lub 
+- 🇵🇱 `\langpol`
+- 🇬🇧 `\langeng`
 
-> \langeng
+**Uwaga**:
 
-dla prac w języku angielskim. Wg. stanu na dzień 22.12.2019, tłumaczenie powinno być kompletne i stabilne, chociaż mogą zajść jeszcze pewne zmiany wraz ze zgłaszaniem uwag przez Instytuty.
+Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję 2.0.0 Alpha:** https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019). Wg. stanu na dzień 22.12.2019, tłumaczenie powinno być kompletne i stabilne, chociaż mogą zajść jeszcze pewne zmiany wraz ze zgłaszaniem uwag przez Instytuty.
 
 ## Czcionki
 Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek, jednak ja nie widzę takiego powodu. 
- 
+
 ## Problemy
 Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y](https://github.com/ArturB/WUT-Thesis/issues) na GitHubie. Pisz tam, jeżeli masz jakiś problem. 
 
 ## Dla deweloperów
-#### Plik klasy (.CLS)
+### Plik klasy (.CLS)
 Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w pliku klasy [eiti-thesis.cls](https://github.com/ArturB/WUT-Thesis/blob/master/eiti/eiti-thesis.cls). Pliki zawierające treść właściwego dokumentu (*.tex*) formatowane są zgodnie z plikiem klasy. Zawartość pliku .cls traktowana jest jako publiczne API niniejszego szablonu (w rozumieniu inżynierii oprogramowania) i podlega wersjonowaniu zgodnie z [odpowiednimi zaleceniami](#wersjonowanie). 
 
-#### Makefile
-Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne są następujące komendy: 
+### Szczegóły kompilacji
+Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne są następujące komendy:
 
-> make pdf, make lua, make xetex
+```
+make pdf
+make lua
+make xetex
+```
 
-Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany plik PDF jest umieszczany w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. 
+Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany plik PDF jest umieszczany w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. Aby utworzyć wszystkie 3 wymienione wyżej PDF-y w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), należy użyć:
 
-> make all
+```
+make all
+```
 
-Tworzy wszystkie 3 wymienione wyżej PDF-y i umieszcza je w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
+### Czyszczenie projektu
 
-> make clean
+```
+make clean
+```
 
-Czyści katalog z plików pośrednich kompilacji (katalog *build*, wyłączony z kontroli wersji); usuwa również pliki pośrednie istniejące w katalogu głównym oraz PDF-y, istniejące zarówno w katalogu głównym jak i w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
+Czyści katalog z plików pośrednich kompilacji (katalog *build*, wyłączony z kontroli wersji); usuwa również pliki pośrednie istniejące w katalogu głównym oraz PDF-y, istniejące zarówno w katalogu głównym jak i w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs).
 
-> make release version=X.Y.Z
+### Wersjonowanie
 
-Tworzy (w folderze [releases](https://github.com/ArturB/WUT-Thesis/tree/master/releases)) archiwum ZIP zawierające wersję szablonu gotową do kompilacji na lokalnej maszynie. Wytyczne dot. numerów wersji zostały opisane w rozdziale [Wersjonowanie](#wersjonowanie).
+```
+make release version=X.Y.Z
+```
 
-#### Branch protection, CI, Quality Assurance
-Branch *master* ma status *protected*: każdy nowy kod musi być najpierw zacommitowany do osobnego brancha, a następnie przejść przez wszystkie testy (Continuous Integration) i zostać zatwierdzony przez administratora (tzn. przeze mnie) przed jego zmerge'owaniem do głównego brancha. 
+Tworzy (w folderze [releases](https://github.com/ArturB/WUT-Thesis/tree/master/releases)) archiwum ZIP zawierające wersję szablonu gotową do kompilacji na lokalnej maszynie.
 
-Testy automatycznie z użyciem [Travisa](https://travis-ci.org/ArturB/WUT-Thesis). Po każdym commicie, tworzony jest osobny build dla trzech kompilatorów: pdfTeX, LuaTeX i XeTeX. Build jest traktowany jako zaliczony, jeżeli szablon zbuduje się poprawnie na każdym z trzech kompilatorów. Buildy odbywają się w środowisku texlive na Ubuntu 18.04; próbowaliśmy dodać również automatyczne testy na Windowsie w miktex, ale ze względu na problemy z rzeczonym, automatyczne testy odbywają się jedynie na Ubuntu w texlive. 
-
-#### Wersjonowanie
 Każda kolejna wersja szablonu musi być oznaczona numerem wersji w formacie *Major.Minor.Patch*. Schemat wersjonowania jest zgodny z (nieco uproszczonymi) zasadami [Semantic Versioning](https://semver.org/):
 * Wersja *Major* ulega zmianie po wprowadzeniu zmian łamiących wsteczną kompatybilność (*backward incompatible changes*), tj. zmian, które:
    * uniemożliwiają kompilację kodu z użyciem pliku klasy z poprzedniej wersji;
    * znacząco zmieniają wygląd dokumentu (co może wymagać ponownych rozmów z Instytutami);
 * Wersja *Minor* ulega zmianie przy wprowadzaniu nowych funkcji LaTeX-a, np. nowego znacznika, które nie powodują złamania wstecznej kompatybilności;
 * Wersja *Patch* ulega zmianie przy innych niż zmiana kodu LaTeXa (np. komentarze, dokumentacja).
+
+### Branch protection, CI, Quality Assurance
+
+Branch *master* ma status *protected*: każdy nowy kod musi być najpierw zacommitowany do osobnego brancha, a następnie przejść przez wszystkie testy (Continuous Integration) i zostać zatwierdzony przez administratora (tzn. przeze mnie) przed jego zmerge'owaniem do głównego brancha.
+
+Testy automatycznie z użyciem [Travisa](https://travis-ci.org/ArturB/WUT-Thesis). Po każdym commicie, tworzony jest osobny build dla trzech kompilatorów: pdfTeX, LuaTeX i XeTeX. Build jest traktowany jako zaliczony, jeżeli szablon zbuduje się poprawnie na każdym z trzech kompilatorów. Buildy odbywają się w środowisku texlive na Ubuntu 18.04; próbowaliśmy dodać również automatyczne testy na Windowsie w miktex, ale ze względu na problemy z rzeczonym, automatyczne testy odbywają się jedynie na Ubuntu w texlive.
 
 ## Uwagi
 Copyright by Artur M. Brodzki 2019, based on https://github.com/pwozniak/EiTI-Szablon by [Piotr Woźniak](https://github.com/pwozniak). 

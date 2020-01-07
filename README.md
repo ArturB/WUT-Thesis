@@ -3,8 +3,26 @@
 Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magisterskiej - przeznaczony dla Wydziału EiTI Politechniki Warszawskiej. 
 
 #### Linki:
-* [Overleaf](https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt)
-* [Archiwum ZIP](https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0)
+[ref:overleaf]: https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt
+[ref:current-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0
+[ref:alpha-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0
+[ref:poradnik-ii]: http://www.ii.pw.edu.pl/index.php/ii_pol/Instytut-Informatyki/Nauczanie/Poradnik-dyplomanta/Przygotowanie-pracy-dyplomowej
+
+[ref:main-tex]: https://github.com/ArturB/WUT-Thesis/blob/master/main.tex
+[ref:cls-file]: https://github.com/ArturB/WUT-Thesis/blob/master/eiti/eiti-thesis.cls
+
+[ref:tex-dir]: https://github.com/ArturB/WUT-Thesis/tree/master/tex
+[ref:pdfs-dir]: https://github.com/ArturB/WUT-Thesis/tree/master/pdfs
+[ref:releases-dir]: https://github.com/ArturB/WUT-Thesis/tree/master/releases
+
+[ref:issues]: https://github.com/ArturB/WUT-Thesis/issues
+[ref:releases]: https://github.com/ArturB/WUT-Thesis/releases
+
+[ref:texlive]: https://www.tug.org/texlive/
+[ref:miktex]: https://miktex.org/
+
+* [Overleaf][ref:overleaf]
+* [Archiwum ZIP][ref:current-zip]
 
 ![](https://i.imgur.com/yeeuWpC.png)
 
@@ -16,14 +34,14 @@ TODO: czerwona ikona "texlive:failing" wynika z tego, że CI jest w trakcie prze
 * [Kompilacja](#kompilacja)
   * [Overleaf](#overleaf)
   * [Lokalnie](#lokalnie)
-* [Prace w języku angielskim](#prace-w-języku-angielskim)
+* [Wsparcie dla innych języków](#wsparcie-dla-innych-języków)
 * [Czcionki](#czcionki)
 * [Problemy](#problemy)
 * [Dla deweloperów](#dla-deweloperów)
 * [Uwagi](#uwagi)
 
 ## Zawartość szablonu
-Szablon został zatwierdzony przez Instytuty wydziału EiTI do oficjalnego użytku (na dzień 20.09.2019 jest to Instytut Informatyki, link do odpowiedniego komunikatu [tutaj](http://www.ii.pw.edu.pl/index.php/ii_pol/Instytut-Informatyki/Nauczanie/Poradnik-dyplomanta/Przygotowanie-pracy-dyplomowej)). Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autorstwie, w dokumencie zawarte są przykładowe fragmenty kodu:
+Szablon został zatwierdzony przez Instytuty wydziału EiTI do oficjalnego użytku (na dzień 20.09.2019 jest to Instytut Informatyki, link do odpowiedniego komunikatu [tutaj][ref:poradnik-ii]). Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autorstwie, w dokumencie zawarte są przykładowe fragmenty kodu:
 - prosta tabela z podpisem;
 - duża tabela wielostronicowa, z regulowaną szerokością kolumn i zagnieżdżaniem (*multirow*);
 - wzory matematyczne z numeracją lub bez, w tym równanie macierzowe;
@@ -50,12 +68,12 @@ Jest to chyba najpopularniejsze w chwili obecnej środowisko TeX-owe, które poz
 
 ![](https://i.imgur.com/z1wV4sC.png)
 
-Link do szablonu: https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt. 
+Link do szablonu: [tutaj][ref:overleaf]. 
 
 Na jego podstawie możecie tworzyć i edytować własne dokumenty. 
 
 ### Lokalnie
-Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases](https://github.com/ArturB/WUT-Thesis/releases). Najnowsza wersja szablonu jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Kompilacja za pomocą Makefile:
+Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases][ref:releases]. Najnowsza wersja szablonu jest zawsze dostępna [pod tym adresem][ref:current-zip]. Kompilacja za pomocą Makefile:
 
 ```
 make pdf
@@ -72,8 +90,8 @@ dla kompilacji z użyciem LuaTeX. Na Windowsie *make* jest dostępny w msys, ins
 Szablon kompiluje się również bez problemu za pomocą dedykowanych dla LaTeXa IDE: [TeX Studio](https://www.texstudio.org/) oraz w [VS Code](https://code.visualstudio.com/), wyposażonym w [odpowiednią wtyczkę](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop). 
 
 Szablonu można używać zasadniczo w trzech głównych konfiguracjach:
-* na Windowsie w [texlive](https://www.tug.org/texlive/) oraz [miktex](https://miktex.org/);
-* na Linuxie w [texlive](https://www.tug.org/texlive/).
+* na Windowsie w [texlive][ref:texlive] oraz [miktex][ref:miktex]
+* na Linuxie w [texlive][ref:texlive].
 
 Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności. Na **texlive wymagane jest zainstalowanie** następujących zbiorów pakietów: 
 
@@ -85,12 +103,12 @@ Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależnośc
 
 Oficjalne Quality Assurance gwarantujemy tylko dla **środowiska texlive**; miktex ma długą tradycję [problemów z uprawnieniami](https://github.com/MiKTeX/miktex/issues/83), dlatego w tym środowisku nie przeprowadzamy automatycznych testów. Co prawda w większości sytuacji szablon *powinien* działać również w miktex, niemniej zachęcam do instalowania texlive-a także na swoich Windowsach. W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z macOS-em radzisz więc sobie sam(a). 
 
-Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/WUT-Thesis/tree/master/tex). 
+Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex][ref:tex-dir]. 
 
 ## Wsparcie dla innych języków
-Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję 2.0.0 Alpha:** https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019). 
+Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję 2.0.0 Alpha:** [ref:alpha-zip]. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019). 
 
-W celu wyboru języka, w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/master/main.tex) stosujemy komendę:
+W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
 
 ```
 \langpol
@@ -108,11 +126,11 @@ dla prac w języku angielskim. Wg. stanu na dzień 22.12.2019, tłumaczenie powi
 Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek, jednak ja nie widzę takiego powodu. 
  
 ## Problemy
-Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y](https://github.com/ArturB/WUT-Thesis/issues) na GitHubie. Pisz tam, jeżeli masz jakiś problem. 
+Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y][ref:issues] na GitHubie. Pisz tam, jeżeli masz jakiś problem. 
 
 ## Dla deweloperów
 #### Plik klasy (.CLS)
-Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w pliku klasy [eiti-thesis.cls](https://github.com/ArturB/WUT-Thesis/blob/master/eiti/eiti-thesis.cls). Pliki zawierające treść właściwego dokumentu (*.tex*) formatowane są zgodnie z plikiem klasy. Zawartość pliku .cls traktowana jest jako publiczne API niniejszego szablonu (w rozumieniu inżynierii oprogramowania) i podlega wersjonowaniu zgodnie z [odpowiednimi zaleceniami](#wersjonowanie). 
+Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w pliku klasy [eiti-thesis.cls][ref:cls-file]. Pliki zawierające treść właściwego dokumentu (*.tex*) formatowane są zgodnie z plikiem klasy. Zawartość pliku .cls traktowana jest jako publiczne API niniejszego szablonu (w rozumieniu inżynierii oprogramowania) i podlega wersjonowaniu zgodnie z [odpowiednimi zaleceniami](#wersjonowanie). 
 
 #### Makefile
 Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne są następujące komendy: 
@@ -121,25 +139,25 @@ Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne s
 make pdf, make lua, make xetex
 ```
 
-Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany plik PDF jest umieszczany w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. 
+Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany plik PDF jest umieszczany w katalogu [pdfs][ref:pdf-dir], wraz z nazwą kompilatora. 
 
 ```
 make all
 ```
 
-Tworzy wszystkie 3 wymienione wyżej PDF-y i umieszcza je w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
+Tworzy wszystkie 3 wymienione wyżej PDF-y i umieszcza je w folderze [pdfs][ref:pdfs-dir]. 
 
 ```
 make clean
 ```
 
-Czyści katalog z plików pośrednich kompilacji (katalog *build*, wyłączony z kontroli wersji); usuwa również pliki pośrednie istniejące w katalogu głównym oraz PDF-y, istniejące zarówno w katalogu głównym jak i w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
+Czyści katalog z plików pośrednich kompilacji (katalog *build*, wyłączony z kontroli wersji); usuwa również pliki pośrednie istniejące w katalogu głównym oraz PDF-y, istniejące zarówno w katalogu głównym jak i w folderze [pdfs][ref:pdfs-dir]. 
 
 ```
 make release version=X.Y.Z
 ```
 
-Tworzy (w folderze [releases](https://github.com/ArturB/WUT-Thesis/tree/master/releases)) archiwum ZIP zawierające wersję szablonu gotową do kompilacji na lokalnej maszynie. Wytyczne dot. numerów wersji zostały opisane w rozdziale [Wersjonowanie](#wersjonowanie).
+Tworzy (w folderze [releases][ref:releases-dir]) archiwum ZIP zawierające wersję szablonu gotową do kompilacji na lokalnej maszynie. Wytyczne dot. numerów wersji zostały opisane w rozdziale [Wersjonowanie](#wersjonowanie).
 
 #### Branch protection, CI, Quality Assurance
 Branch *master* ma status *protected*: każdy nowy kod musi być najpierw zacommitowany do osobnego brancha, a następnie przejść przez wszystkie testy (Continuous Integration) i zostać zatwierdzony przez administratora (tzn. przeze mnie) przed jego zmerge'owaniem do głównego brancha. 

@@ -57,11 +57,15 @@ Na jego podstawie możecie tworzyć i edytować własne dokumenty.
 ### Lokalnie
 Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases](https://github.com/ArturB/WUT-Thesis/releases). Najnowsza wersja szablonu jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Kompilacja za pomocą Makefile:
 
-> make pdf
+```
+make pdf
+```
 
 albo
 
-> make lua
+```
+make lua
+```
 
 dla kompilacji z użyciem LuaTeX. Na Windowsie *make* jest dostępny w msys, instalujesz go najlepiej razem z [git-scm](https://git-scm.com/). 
 
@@ -71,9 +75,11 @@ Szablonu można używać zasadniczo w trzech głównych konfiguracjach:
 * na Windowsie w [texlive](https://www.tug.org/texlive/) oraz [miktex](https://miktex.org/);
 * na Linuxie w [texlive](https://www.tug.org/texlive/).
 
-Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności. Na texlive wymagane jest zainstalowanie następujących zbiorów pakietów: 
+Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności. Na **texlive wymagane jest zainstalowanie** następujących zbiorów pakietów: 
 
-> biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+```
+biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+```
 
 Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności.  
 
@@ -81,15 +87,20 @@ Oficjalne Quality Assurance gwarantujemy tylko dla **środowiska texlive**; mikt
 
 Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex](https://github.com/ArturB/WUT-Thesis/tree/master/tex). 
 
-## Prace w języku angielskim
+## Wsparcie dla innych języków
 Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję 2.0.0 Alpha:** https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019). 
 
 W celu wyboru języka, w pliku [main.tex](https://github.com/ArturB/WUT-Thesis/blob/master/main.tex) stosujemy komendę:
-> \langpol
+
+```
+\langpol
+```
 
 dla prac w języku polskim, lub 
 
-> \langeng
+```
+\langeng
+```
 
 dla prac w języku angielskim. Wg. stanu na dzień 22.12.2019, tłumaczenie powinno być kompletne i stabilne, chociaż mogą zajść jeszcze pewne zmiany wraz ze zgłaszaniem uwag przez Instytuty.
 
@@ -106,19 +117,27 @@ Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w pliku kla
 #### Makefile
 Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne są następujące komendy: 
 
-> make pdf, make lua, make xetex
+```
+make pdf, make lua, make xetex
+```
 
 Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany plik PDF jest umieszczany w katalogu [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs), wraz z nazwą kompilatora. 
 
-> make all
+```
+make all
+```
 
 Tworzy wszystkie 3 wymienione wyżej PDF-y i umieszcza je w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
 
-> make clean
+```
+make clean
+```
 
 Czyści katalog z plików pośrednich kompilacji (katalog *build*, wyłączony z kontroli wersji); usuwa również pliki pośrednie istniejące w katalogu głównym oraz PDF-y, istniejące zarówno w katalogu głównym jak i w folderze [pdfs](https://github.com/ArturB/WUT-Thesis/tree/master/pdfs). 
 
-> make release version=X.Y.Z
+```
+make release version=X.Y.Z
+```
 
 Tworzy (w folderze [releases](https://github.com/ArturB/WUT-Thesis/tree/master/releases)) archiwum ZIP zawierające wersję szablonu gotową do kompilacji na lokalnej maszynie. Wytyczne dot. numerów wersji zostały opisane w rozdziale [Wersjonowanie](#wersjonowanie).
 

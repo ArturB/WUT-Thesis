@@ -68,7 +68,7 @@ Jest to chyba najpopularniejsze w chwili obecnej środowisko TeX-owe, które poz
 
 ![](https://i.imgur.com/z1wV4sC.png)
 
-Link do szablonu: [tutaj][ref:overleaf]. 
+[Link do szablonu][ref:overleaf].
 
 Na jego podstawie możecie tworzyć i edytować własne dokumenty. 
 
@@ -106,7 +106,7 @@ Oficjalne Quality Assurance gwarantujemy tylko dla **środowiska texlive**; mikt
 Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex][ref:tex-dir]. 
 
 ## Wsparcie dla innych języków
-Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję 2.0.0 Alpha:** [ref:alpha-zip]. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019). 
+Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję [2.0.0 Alpha][ref:alpha-zip]**. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019). 
 
 W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
 
@@ -139,7 +139,7 @@ Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne s
 make pdf, make lua, make xetex
 ```
 
-Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany plik PDF jest umieszczany w katalogu [pdfs][ref:pdf-dir], wraz z nazwą kompilatora. 
+Tworzy PDF-a z użyciem kompilatorów, odpowiednio: pdfTeX, LuaTex oraz XeTeX. Wygenerowany plik PDF jest umieszczany w katalogu [pdfs][ref:pdfs-dir], wraz z nazwą kompilatora. 
 
 ```
 make all

@@ -1,10 +1,10 @@
-# WUT-Thesis ![Travis (.org) branch](https://img.shields.io/travis/ArturB/WUT-Thesis/master?label=texlive)
+# WUT-Thesis 
 
 Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magisterskiej - przeznaczony dla Wydziału EiTI Politechniki Warszawskiej. 
 
 #### Linki:
 * [Overleaf](https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt)
-* [Archiwum ZIP](https://github.com/ArturB/WUT-Thesis/releases/tag/latest)
+* [Archiwum ZIP](https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0)
 
 ![](https://i.imgur.com/yeeuWpC.png)
 
@@ -55,7 +55,7 @@ Link do szablonu: https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfq
 Na jego podstawie możecie tworzyć i edytować własne dokumenty. 
 
 ### Lokalnie
-Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases](https://github.com/ArturB/WUT-Thesis/releases). Najnowsza wersja szablonu jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/download/latest/WUT-Thesis.zip. Kompilacja za pomocą Makefile:
+Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases](https://github.com/ArturB/WUT-Thesis/releases). Najnowsza wersja szablonu jest zawsze dostępna pod adresem https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0. Kompilacja za pomocą Makefile:
 
 > make pdf
 
@@ -73,7 +73,7 @@ Szablonu można używać zasadniczo w trzech głównych konfiguracjach:
 
 Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności. Na texlive wymagane jest zainstalowanie następujących zbiorów pakietów: 
 
-> latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+> biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
 
 Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności.  
 

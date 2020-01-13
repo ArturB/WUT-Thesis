@@ -4,8 +4,8 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 
 #### Linki:
 [ref:overleaf]: https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt
-[ref:current-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0
-[ref:alpha-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.0.0
+[ref:current-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.1.0
+[ref:alpha-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.1.0
 [ref:poradnik-ii]: http://www.ii.pw.edu.pl/index.php/ii_pol/Instytut-Informatyki/Nauczanie/Poradnik-dyplomanta/Przygotowanie-pracy-dyplomowej
 
 [ref:main-tex]: https://github.com/ArturB/WUT-Thesis/blob/master/main.tex
@@ -25,7 +25,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 [ref:vscode]: https://code.visualstudio.com/
 
 * [Overleaf][ref:overleaf]
-* [Archiwum ZIP][ref:current-zip]
+* [Archiwum ZIP][ref:releases]
 
 ![](https://i.imgur.com/yeeuWpC.png)
 

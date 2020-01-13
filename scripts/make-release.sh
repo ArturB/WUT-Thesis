@@ -3,7 +3,7 @@
 # Check validity of the version number
 # If the first argument passed is in format Num.Num.Num,
 # return this argument.
-# Return "" otherwise. 
+# Return "" otherwise.
 function validate_version_number() {
     local VERSION=$1
     if ! [[ $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
@@ -20,8 +20,8 @@ then
 fi
 
 # Check if release alredy exists
-if [[ -d "releases/$VERSION" ]] 
-then 
+if [[ -d "releases/$VERSION" ]]
+then
     echo -e "\033[31mDirectory releases/$VERSION already exists!\033[0m"
     exit 1
 fi
@@ -43,4 +43,4 @@ cp Makefile $RELEASE_DIR
 cp .gitignore $RELEASE_DIR
 
 cd releases/$VERSION
-zip -r WUT-Thesis.zip WUT-Thesis/*
+zip -r WUT-Thesis-$VERSION.zip WUT-Thesis/*

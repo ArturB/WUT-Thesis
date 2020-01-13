@@ -18,7 +18,7 @@ all: 	pdf lua xetex
 
 # Remove LaTeX auxiliary files
 clean:
-		rm -f *.app *.aux *.bbl *.blg
+		rm -f *.app *.aux *.bbl *.blg *.bcf *.synctex\(busy\)
 		rm -f *.fdb_latexmk *.fls *.gz
 		rm -f *.lof *.log *.lot *.out *.status
 		rm -f *.toc *.xml *-blx.bib *.pdf

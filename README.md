@@ -83,7 +83,7 @@ Powyższe nazwy dot. instalacji pakietów w środowisku texlive. Na miktex mened
 Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
 
 #### TeX Studio
-Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, wystarczy uruchomić środowisko, a następnie przejść do: Opcje -> Konfiguruj TeX Studio -> Zbuduj i ustawić:
+Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, wystarczy uruchomić środowisko, a następnie przejść do: *Opcje -> Konfiguruj TeX Studio -> Zbuduj*, i ustawić:
 - Kompilator domyslny: Latexmk
 - Domyślne narzędzie bibliografii: Biber
 

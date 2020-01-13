@@ -8,7 +8,7 @@
 \ProvidesClass{eiti/eiti-thesis}
 
 \LoadClass[
-    12pt, 
+    12pt,
     twoside
 ]{mwart}
 
@@ -35,7 +35,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
-\RequirePackage{array} 
+\RequirePackage{array}
 \RequirePackage[
     backend=biber,
     style=ieee
@@ -156,7 +156,7 @@
 % Default margin is 2.5 cm
 %--------------------------------------
 \RequirePackage[
-    a4paper, 
+    a4paper,
     left=\eitileft,
     right=\eitiright,
     top=\eititop,
@@ -178,32 +178,38 @@
 % Initial setup
 %--------------------------------
 \setstretch{1.2}
-\SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
-\let\oldsection\section
-\renewcommand{\section}{
-    \thispagestyle{plain}
-    \oldsection
-}
-\fancypagestyle{plain}{
-    \fancyhf{}
-    \renewcommand{\headrulewidth}{0pt}
-    \fancyfoot[LE,RO]{\thepage}
-}
+
 
 %--------------------------------
 % Header & footer
 %--------------------------------
-\pagestyle{fancy}
-\renewcommand{\sectionmark}[1]{
-    \markboth{#1}{#1}
+\SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
+\let\oldsection\section
+\renewcommand{\section}{
+	\thispagestyle{plain}
+	\oldsection
 }
 
-\fancyhead{}
-\fancyheadoffset{0cm} 
-\fancyhead[RO]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
-\fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
-\fancyfoot{}
-\fancyfoot[LE,RO]{\thepage}
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyfoot[LE,RO]{\thepage}
+}
+
+\fancypagestyle{headings}{
+	\fancyhead{}
+	\renewcommand{\headrulewidth}{1pt}
+	\fancyheadoffset{0cm}
+	\fancyhead[RO]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
+	\fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
+	\fancyfoot{}
+	\fancyfoot[LE,RO]{\thepage}
+}
+\pagestyle{headings}
+
+\renewcommand{\sectionmark}[1]{
+	\markboth{#1}{#1}
+}
 
 %--------------------------------
 % Set default list style
@@ -222,14 +228,14 @@
 \newcommand{\langpol}{
     \newcommand{\@lang}{polish}
     \usepackage[polish]{babel}
-	
+
 	\newtheorem{theorem}{Twierdzenie}
 	\newtheorem{lemma}{Lemat}
 	\newtheorem{corollary}{Wniosek}
 	\newtheorem{definition}{Definicja}
 	\newtheorem{axiom}{Aksjomat}
 	\newtheorem{assumption}{Założenie}
-	
+
 	\AtBeginDocument{
 		\renewcommand{\listfigurename}{Spis rysunków}
 		\renewcommand{\listtablename}{Spis tabel}
@@ -239,14 +245,14 @@
 \newcommand{\langeng}{
     \newcommand{\@lang}{english}
     \usepackage[english]{babel}
-	
+
 	\newtheorem{theorem}{Theorem}
 	\newtheorem{lemma}{Lemma}
 	\newtheorem{corollary}{Corollary}
 	\newtheorem{definition}{Definition}
 	\newtheorem{axiom}{Axiom}
 	\newtheorem{assumption}{Assumption}
-	
+
 	\AtBeginDocument{
 		\renewcommand{\listfigurename}{List of Figures}
 		\renewcommand{\listtablename}{List of Tables}
@@ -340,10 +346,10 @@
 \let\oldmaketitle\maketitle
 \renewcommand{\maketitle}{
     \linespread{1.15}
-    
+
     \thispagestyle{empty}
     \pagenumbering{gobble}
-    
+
     \begin{center}
         %\sffamily
         \ifnum \pdf@strcmp{\@lang}{polish} = 0
@@ -424,7 +430,7 @@
             WARSAW \@date
         \fi
     \end{center}
-    
+
     \pagenumbering{arabic}
     \setcounter{page}{1}
 }
@@ -435,7 +441,7 @@
 \newcommand{\blankpage}{
     \newpage
     \thispagestyle{empty}
-    \ 
+    \
     \newpage
 }
 
@@ -451,7 +457,7 @@
     \fi
 }
 \newcommand{\acronym}[2]{
-    \par\noindent 
+    \par\noindent
     \textbf{#1} -- #2
 }
 
@@ -488,7 +494,7 @@
     \ifnum \pdf@strcmp{\@lang}{english} = 0
         \section*{List of Appendices}\@starttoc{app}
     \fi
-    
+
     \standardappendix
     \renewcommand{\thesection}{\@appendixtitle~\arabic{section}}
 }

@@ -11,13 +11,15 @@
 *.lot
 *.out
 *.status
+*.synctex*
 *.toc
 *.xml
 *-blx.bib
 
 *.pdf
-!pdfs/*.pdf
-!eiti/*.pdf
+
+releases/*
+!releases/.gitkeep
 
 build
 autom4te.cache

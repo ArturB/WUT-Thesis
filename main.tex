@@ -11,7 +11,7 @@
     top=2.5cm,          % superseded by more specific
     bottom=3cm,         % left...bottom parameters.
     bindingoffset=6mm,  % Optional binding offset.
-    nohyphenation=false % You may turn off hyphenation, if don't like. 
+    nohyphenation=false % You may turn off hyphenation, if don't like.
 ]{eiti/eiti-thesis}
 
 \langpol % Dla języka angielskiego mamy \langeng
@@ -28,7 +28,7 @@
 \kierunek{XXXXXX}
 \specjalnosc{XXXXXX}
 \title{
-    Niepotrzebnie długi i skomplikowany tytuł pracy \\ 
+    Niepotrzebnie długi i skomplikowany tytuł pracy \\
     trudny do przeczytania, zrozumienia i wymówienia
 }
 \engtitle{ % Tytuł po angielsku do angielskiego streszczenia
@@ -65,20 +65,22 @@
 % Spis treści
 %--------------------------------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
-\thispagestyle{plain}
+\pagestyle{plain}
 \tableofcontents
 
 %--------------------------------------
 % Rozdziały
 %--------------------------------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
+\pagestyle{headings}
 
-\input{tex/1-wstep}         % W długich pracach
-\input{tex/2-de-finibus}    % wygodnie jest trzymać
-\input{tex/3-code-listings} % każdy rozdział w osobnym pliku. 
+\input{tex/1-wstep}         % Wygodnie jest trzymać każdy rozdział w osobnym pliku.
+\input{tex/2-de-finibus}    % Umożliwia to również łatwą migrację do nowej wersji szablonu:
+\input{tex/3-code-listings} % wystarczy podmienić swoje pliki main.tex i eiti-thesis.cls
+                            % na nowe wersje, a cały tekst pracy pozostaje nienaruszony.
 
 \newpage % Rozdziały zaczynamy od nowej strony
-\section{Summatio}          % Można też pisać rozdziały w jednym pliku. 
+\section{Summatio}          % Można też pisać rozdziały w jednym pliku.
 \lipsum[5-10]
 
 %--------------------------------------------
@@ -91,15 +93,16 @@
 % Spisy (opcjonalne)
 %--------------------------------------------
 \newpage
+\pagestyle{plain}
 
 % Wykaz symboli i skrótów.
 % Pamiętaj, żeby posortować symbole alfabetycznie
-% we własnym zakresie. Ponieważ mało kto używa takiego wykazu, 
+% we własnym zakresie. Ponieważ mało kto używa takiego wykazu,
 % uznałem, że robienie automatycznie sortowanej listy
-% na poziomie LaTeXa to za duży overkill. 
-% Makro \acronymlist generuje właściwy tytuł sekcji, 
+% na poziomie LaTeXa to za duży overkill.
+% Makro \acronymlist generuje właściwy tytuł sekcji,
 % w zależności od języka.
-% Makro \acronym dodaje skrót/symbol do listy, 
+% Makro \acronym dodaje skrót/symbol do listy,
 % zapewniając podstawowe formatowanie.
 % //AB
 \vspace{0.8cm}
@@ -108,23 +111,23 @@
 \acronym{PW}{Politechnika Warszawska}
 \acronym{WEIRD}{ang. \emph{Western, Educated, Industrialized, Rich and Democratic}}
 
-\listoffigures              % Spis obrazków. 
+\listoffigures              % Spis obrazków.
 \vspace{1cm}                % vertical space
-\listoftables               % Spis tabel. 
+\listoftables               % Spis tabel.
 \vspace{1cm}                % vertical space
 \listofappendices           % Spis załączników
 
 % Załączniki
 \newpage
 \appendix{Nazwa załącznika 1}
-\lipsum[1]
+\lipsum[1-8]
 
 \newpage
 \appendix{Nazwa załącznika 2}
-\lipsum[1]
+\lipsum[1-4]
 
 % Używając powyższych spisów jako szablonu,
-% możesz tu dodać swój własny wykaz bądź listę, 
-% np. spis algorytmów. 
+% możesz tu dodać swój własny wykaz bądź listę,
+% np. spis algorytmów.
 
-\end{document} % Dobranoc. 
+\end{document} % Dobranoc.

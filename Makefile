@@ -17,11 +17,11 @@ TEXENV		= $(shell ./scripts/texenv.sh)
 all: 	pdf lua xetex
 
 # Remove LaTeX auxiliary files
-clean:  
-		rm -f *.app *.aux *.bbl *.blg 
-		rm -f *.fdb_latexmk *.fls *.gz 
+clean:
+		rm -f *.app *.aux *.bbl *.blg
+		rm -f *.fdb_latexmk *.fls *.gz
 		rm -f *.lof *.log *.lot *.out *.status
-		rm -f *.toc *.xml *-blx.bib *.pdf 
+		rm -f *.toc *.xml *-blx.bib *.pdf
 
 		rm -rf $(BUILD_DIR)
 		mkdir -p $(BUILD_DIR)
@@ -29,19 +29,19 @@ clean:
 		mkdir -p $(PDFS_DIR)
 
 # Generate LuaLateX PDF in polish
-lua:	*.tex *.bib ./tex/* 
+lua:	*.tex *.bib ./tex/*
 		$(MAKE) base CTEX=$(LUALATEX) OUT=$(BUILD_DIR)/$(LUALATEX)
 
 # Generate pdfLaTeX PDF in polish
-pdf:	*.tex *.bib ./tex/* 
+pdf:	*.tex *.bib ./tex/*
 		$(MAKE) base CTEX=$(PDFLATEX) OUT=$(BUILD_DIR)/$(PDFLATEX)
 
 # Generate XeLaTeX PDF in polish
-xetex:	*.tex *.bib ./tex/* 
+xetex:	*.tex *.bib ./tex/*
 		$(MAKE) base CTEX=$(XELATEX) OUT=$(BUILD_DIR)/$(XELATEX)
 
 # Make release tarball
-release: 
+release:
 		./scripts/make-release.sh $(version)
 
 # Template of building command

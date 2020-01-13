@@ -63,7 +63,7 @@ Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożl
 
 ![](https://i.imgur.com/z1wV4sC.png)
 
-Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. Według stanu **na dzień 13.01.2020**, wersja dostępna **na Overleafie to 1.3.0**, natomiast **aktualna wersja stabilna to 2.1.0**. 
+Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. **Na dzień 13.01.2020**, wersja dostępna na Overleafie to **1.3.0**, natomiast aktualna wersja stabilna to **2.1.0**. 
 
 ### Lokalnie
 Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. Kompilacja szablonu w większości wypadków powinna być bardzo prosta. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
@@ -86,12 +86,16 @@ Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostęp
 Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, wystarczy uruchomić środowisko, a następnie przejść do: Opcje -> Konfiguruj TeX Studio -> Zbuduj i ustawić:
 - Kompilator domyslny: Latexmk
 - Domyślne narzędzie bibliografii: Biber
+
 ![](https://i.imgur.com/qycveue.png)
+
 Następnie kompilujesz szablon wciskając F5 i wszystko powinno działać bezbłędnie *out of the box*. 
 
 #### VS Code
 Aby VS Code poradził sobie z kompilacją LaTeXa, należy zainstalować dla niego wtyczkę [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop). Proces kompilacji kodu do pliku PDF uruchamiany jest automatycznie po każdym zapisie. 
+
 ![](https://i.imgur.com/0j5VVCl.png)
+
 Niestety, w VS Code są pewne problemy z wtyczką do podglądu PDF w czasie rzeczywistym: często po skompilowaniu szablonu obraz się nie odświeża i należy ręcznie zamknąć kartę i otworzyć ją ponownie. 
 
 #### Makefile
@@ -122,7 +126,7 @@ Zalecam zatem następujący workflow:
 Powyższe zalecenia dotyczą obu sposobów korzystania z szablonu: w przeglądarce (Overleaf) oraz lokalnie.
 
 ## Wsparcie dla innych języków
-Szablon **od wersji 2.0.0** można stosować zarówno w języku polskim jak i angielskim; wg. stanu na dzień 13.01.2010, wersja dostępna na Overleafie, jest jeszcze tylko po polsku.
+Szablon **od wersji 2.0.0** można stosować zarówno w języku polskim jak i angielskim; wg. stanu na dzień 13.01.2010, wersja dostępna na Overleafie to 1.3.0 i jest ona jeszcze tylko po polsku.
 
 W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
 

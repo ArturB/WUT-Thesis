@@ -122,7 +122,7 @@ Zalecam zatem następujący workflow:
 Powyższe zalecenia dotyczą obu sposobów korzystania z szablonu: w przeglądarce (Overleaf) oraz lokalnie.
 
 ## Wsparcie dla innych języków
-Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję [2.0.0 Alpha][ref:alpha-zip]**. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019).
+Szablon **od wersji 2.0.0** można stosować zarówno w języku polskim jak i angielskim; wg. stanu na dzień 13.01.2010, wersja dostępna na Overleafie, jest jeszcze tylko po polsku.
 
 W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
 
@@ -136,7 +136,7 @@ dla prac w języku polskim, lub
 \langeng
 ```
 
-dla prac w języku angielskim. Wg. stanu na dzień 22.12.2019, tłumaczenie powinno być kompletne i stabilne, chociaż mogą zajść jeszcze pewne zmiany wraz ze zgłaszaniem uwag przez Instytuty.
+dla prac w języku angielskim. Wg. stanu na dzień 13.01.2020, tłumaczenie powinno być kompletne i stabilne, chociaż mogą zajść jeszcze pewne zmiany wraz ze zgłaszaniem uwag przez Instytuty.
 
 ## Czcionki
 Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek, jednak ja nie widzę takiego powodu.
@@ -189,4 +189,4 @@ Każda kolejna wersja szablonu musi być oznaczona numerem wersji w formacie *Ma
 * Wersja *Patch* ulega zmianie przy innych niż zmiana kodu LaTeXa (np. komentarze, dokumentacja).
 
 ## Uwagi
-Copyright by Artur M. Brodzki 2019, based on https://github.com/pwozniak/EiTI-Szablon by [Piotr Woźniak](https://github.com/pwozniak).
+Copyright by Artur M. Brodzki 2019-2020, based on https://github.com/pwozniak/EiTI-Szablon by [Piotr Woźniak](https://github.com/pwozniak).

@@ -10,6 +10,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 
 [ref:main-tex]: https://github.com/ArturB/WUT-Thesis/blob/master/main.tex
 [ref:cls-file]: https://github.com/ArturB/WUT-Thesis/blob/master/eiti/eiti-thesis.cls
+[ref:makefile]: https://github.com/ArturB/WUT-Thesis/blob/master/Makefile
 
 [ref:tex-dir]: https://github.com/ArturB/WUT-Thesis/tree/master/tex
 [ref:pdfs-dir]: https://github.com/ArturB/WUT-Thesis/tree/master/pdfs
@@ -34,6 +35,9 @@ TODO: czerwona ikona "texlive:failing" wynika z tego, że CI jest w trakcie prze
 * [Kompilacja](#kompilacja)
   * [Overleaf](#overleaf)
   * [Lokalnie](#lokalnie)
+    * [Tex Studio](#tex-studio)
+    * [VS Code](#vs-code)
+  * [Kompilatory](#kompilatory)
 * [Wsparcie dla innych języków](#wsparcie-dla-innych-języków)
 * [Czcionki](#czcionki)
 * [Problemy](#problemy)
@@ -52,28 +56,42 @@ Szablon został zatwierdzony przez Instytuty wydziału EiTI do oficjalnego użyt
 - spisy: spis rysunków, tabel oraz załączników.
 
 ## Kompilacja
-Możliwa jest kompilacja z użyciem trzech głównych kompilatorów: [pdfTeX](https://www.tug.org/applications/pdftex/), [LuaTeX](http://www.luatex.org/) oraz [XeTeX](http://xetex.sourceforge.net/). Pewne funkcje dostępne są jednak tylko w niektórych kompilatorach:
-* kompilacja na **pdfTeX** oraz **LuaTeX** daje *prawie* takie same rezultaty, co - dzięki zastosowaniu techniki [microtypingu](https://ctan.org/pkg/microtype) i [innych takich bajerów](https://en.wikipedia.org/wiki/Kerning) - gwarantuje epicki wygląd całego dokumentu.
-* Na **LuaTeX** dodatkowo działa funkcja automatycznego przenoszenia jednoliterowych wyrazów do nowej linii, zgodnie z tradycyjnym zaleceniem polskiej typografii. Funkcja ta nie działa na pdfTeX, ze względu na brak możliwości oskryptowania dokumentu w języku Lua. Kompilacja LuaTeX-em jest jednak również znacznie dłuższa niż w pdfTeX.
-* kompilator **XeTeX** daje możliwość stosowania własnych czcionek, czego nie zapewnia pdfTeX. Niestety, na XeTeX-u niedostępna jest część niskopoziomowych funkcji TeX-a, przez co, jeśli chodzi o końcowy rezultat, jestem w stanie zagwarantować co najwyżej [dramat](https://i.imgur.com/8yEWodB.jpg). Dlatego, jeżeli masz potrzebę zastosowania innego kompilatora niż pdfTeX (do czego nie zachęcam, bo nie ma po co) - to ogranicz się raczej do LuaTeX-a.
-
-Zalecam zatem następujący workflow:
-1. Bieżąca kompilacja podczas tworzenia dokumentu w pdfTeX;
-2. Kompilacja końcowej wersji za pomocą LuaTeX-a.
-
-Powyższe zalecenia dotyczą obu sposobów korzystania z szablonu: w przeglądarce (Overleaf) oraz lokalnie.
-
 ### Overleaf
-Jest to chyba najpopularniejsze w chwili obecnej środowisko TeX-owe, które pozwala na tworzenie i edycję dokumentów w przeglądarce, bez konieczności instalowania TeX-a na lokalnej maszynie.
+Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożliwia korzystanie z niego bez konieczności instalacji TeXa na własnej maszynie. 
 
 ![](https://i.imgur.com/z1wV4sC.png)
 
-[Link do szablonu][ref:overleaf].
-
-Na jego podstawie możecie tworzyć i edytować własne dokumenty.
+Jednak wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. Według stanu **na dzień 13.01.2020**, wersja dostępna **na Overleafie to 1.3.0**, natomiast **aktualna wersja stabilna to 2.1.0**. 
 
 ### Lokalnie
-Jeżeli nie lubisz Overleafa, możliwa jest również samodzielna kompilacja szablonu. Kolejne wersje szablonu gotowe do kompilacji znajdują się w zakładce [Releases][ref:releases]. Najnowsza wersja szablonu jest zawsze dostępna [pod tym adresem][ref:current-zip]. Kompilacja za pomocą Makefile:
+Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. Aby skompilować szablon na własnej maszynie musisz mieć poprawnie zainstalowanego LaTeXa:
+- [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
+- [texlive][ref:texlive] na Linuxie.
+W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z macOS-em radzisz więc sobie sam(a).
+
+Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności. Na **texlive wymagane jest zainstalowanie** następujących zbiorów pakietów:
+
+```
+biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+```
+
+Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności. 
+
+Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są w zasadzie dwa edytory dla LaTeXa, w których szablon działa tak jak powinien: TeX Studio oraz VS Code. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
+
+#### TeX Studio
+Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, wystarczy uruchomić środowisko, a następnie przejść do: Opcje -> Konfiguruj TeX Studio -> Zbuduj i ustawić:
+- Kompilator domyslny: Latexmk
+- Domyślne narzędzie bibliografii: Biber
+![](https://i.imgur.com/qycveue.png)
+
+#### VS Code
+Aby VS Code poradził sobie z kompilacją LaTeXa, należy zainstalować dla niego wtyczkę [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop). Proces kompilacji kodu do pliku PDF uruchamiany jest automatycznie po każdym zapisie. 
+![](https://i.imgur.com/0j5VVCl.png)
+Niestety, w VS Code są pewne problemy z wtyczką do podglądu PDF w czasie rzeczywistym: często po skompilowaniu szablonu obraz się nie odświeża i należy ręcznie zamknąć kartę i otworzyć ją ponownie. 
+
+#### Makefile
+Można również skompilować szablon z linii poleceń za pomocą Makefile:
 
 ```
 make pdf
@@ -85,7 +103,19 @@ albo
 make lua
 ```
 
-dla kompilacji z użyciem LuaTeX. Na Windowsie *make* jest dostępny w msys, instalujesz go najlepiej razem z [git-scm](https://git-scm.com/).
+dla kompilacji z użyciem LuaTeX. Na Windowsie *make* jest dostępny w msys, instalujesz go najlepiej za pomocą [git-scm](https://git-scm.com/).
+
+### Kompilatory
+Możliwa jest kompilacja z użyciem trzech głównych kompilatorów: [pdfTeX](https://www.tug.org/applications/pdftex/), [LuaTeX](http://www.luatex.org/) oraz [XeTeX](http://xetex.sourceforge.net/). Pewne funkcje dostępne są jednak tylko w niektórych kompilatorach:
+* kompilacja na **pdfTeX** oraz **LuaTeX** daje *prawie* takie same rezultaty, co - dzięki zastosowaniu techniki [microtypingu](https://ctan.org/pkg/microtype) i [innych takich bajerów](https://en.wikipedia.org/wiki/Kerning) - gwarantuje epicki wygląd całego dokumentu.
+* Na **LuaTeX** dodatkowo działa funkcja automatycznego przenoszenia jednoliterowych wyrazów do nowej linii, zgodnie z tradycyjnym zaleceniem polskiej typografii. Funkcja ta nie działa na pdfTeX, ze względu na brak możliwości oskryptowania dokumentu w języku Lua. Kompilacja LuaTeX-em jest jednak również znacznie dłuższa niż w pdfTeX.
+* kompilator **XeTeX** daje możliwość stosowania własnych czcionek, czego nie zapewnia pdfTeX. Niestety, na XeTeX-u niedostępna jest część niskopoziomowych funkcji TeX-a, przez co, jeśli chodzi o końcowy rezultat, jestem w stanie zagwarantować co najwyżej [dramat](https://i.imgur.com/8yEWodB.jpg). Dlatego, jeżeli masz potrzebę zastosowania innego kompilatora niż pdfTeX (do czego nie zachęcam, bo nie ma po co) - to ogranicz się raczej do LuaTeX-a.
+
+Zalecam zatem następujący workflow:
+1. Bieżąca kompilacja podczas tworzenia dokumentu w pdfTeX;
+2. Kompilacja końcowej wersji za pomocą LuaTeX-a.
+
+Powyższe zalecenia dotyczą obu sposobów korzystania z szablonu: w przeglądarce (Overleaf) oraz lokalnie.
 
 Szablon kompiluje się również bez problemu za pomocą dedykowanych dla LaTeXa IDE: [TeX Studio](https://www.texstudio.org/) oraz w [VS Code](https://code.visualstudio.com/), wyposażonym w [odpowiednią wtyczkę](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
 
@@ -93,17 +123,7 @@ Szablonu można używać zasadniczo w trzech głównych konfiguracjach:
 * na Windowsie w [texlive][ref:texlive] oraz [miktex][ref:miktex]
 * na Linuxie w [texlive][ref:texlive].
 
-Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności. Na **texlive wymagane jest zainstalowanie** następujących zbiorów pakietów:
 
-```
-biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
-```
-
-Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności.
-
-Oficjalne Quality Assurance gwarantujemy tylko dla **środowiska texlive**; miktex ma długą tradycję [problemów z uprawnieniami](https://github.com/MiKTeX/miktex/issues/83), dlatego w tym środowisku nie przeprowadzamy automatycznych testów. Co prawda w większości sytuacji szablon *powinien* działać również w miktex, niemniej zachęcam do instalowania texlive-a także na swoich Windowsach. W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z macOS-em radzisz więc sobie sam(a).
-
-Szablon jest zoptymalizowany pod użycie z systemem kontroli wersji git. Możliwa - i zalecana przy większych dokumentach - jest praca w systemie wieloplikowym: po jednym pliku na każdy rozdział. Pliki z rozdziałami zawartymi w szablonie znajdują się w katalogu [tex][ref:tex-dir].
 
 ## Wsparcie dla innych języków
 Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję [2.0.0 Alpha][ref:alpha-zip]**. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019).

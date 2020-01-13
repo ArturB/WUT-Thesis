@@ -139,6 +139,13 @@
 % Load csquotes after inputenc
 %--------------------------------------
 \RequirePackage{csquotes}
+\DeclareQuoteStyle[quotes]{polish}
+{\quotedblbase}
+{\textquotedblright}
+[0.05em]
+{\quotesinglbase}
+{\fixligatures\textquoteright}
+\DeclareQuoteAlias[quotes]{polish}{polish}
 
 %--------------------------------
 % Define hyperref colors

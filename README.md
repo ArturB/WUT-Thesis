@@ -45,7 +45,7 @@ TODO: czerwona ikona "texlive:failing" wynika z tego, że CI jest w trakcie prze
 * [Uwagi](#uwagi)
 
 ## Zawartość szablonu
-Szablon został zatwierdzony przez Instytuty wydziału EiTI do oficjalnego użytku (na dzień 20.09.2019 jest to Instytut Informatyki, link do odpowiedniego komunikatu [tutaj][ref:poradnik-ii]). Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autorstwie, w dokumencie zawarte są przykładowe fragmenty kodu:
+Szablon został zatwierdzony przez Instytuty wydziału EiTI do oficjalnego użytku (na dzień 23.01.2020 jest to Instytut Informatyki, link do odpowiedniego komunikatu [tutaj][ref:poradnik-ii]). Oprócz wymaganej przepisami strony tytułowej, streszczeń i deklaracji o autorstwie, w dokumencie zawarte są przykładowe fragmenty kodu:
 - prosta tabela z podpisem;
 - duża tabela wielostronicowa, z regulowaną szerokością kolumn i zagnieżdżaniem (*multirow*);
 - wzory matematyczne z numeracją lub bez, w tym równanie macierzowe;
@@ -61,21 +61,21 @@ Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożl
 
 ![](https://i.imgur.com/z1wV4sC.png)
 
-Jednak wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. Według stanu **na dzień 13.01.2020**, wersja dostępna **na Overleafie to 1.3.0**, natomiast **aktualna wersja stabilna to 2.1.0**. 
+Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. Według stanu **na dzień 13.01.2020**, wersja dostępna **na Overleafie to 1.3.0**, natomiast **aktualna wersja stabilna to 2.1.0**. 
 
 ### Lokalnie
-Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. Aby skompilować szablon na własnej maszynie musisz mieć poprawnie zainstalowanego LaTeXa:
+Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. Kompilacja szablonu w większości wypadków powinna być bardzo prost. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
 - [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
 - [texlive][ref:texlive] na Linuxie.
 W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z macOS-em radzisz więc sobie sam(a).
 
-Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności. Na **texlive wymagane jest zainstalowanie** następujących zbiorów pakietów:
+Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności:
 
 ```
 biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
 ```
 
-Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności. 
+Powyższe nazwy dot. instalacji pakietów w środowisku texlive. Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności. Jeżeli nie - zainstaluj je sobie ręcznie, szukając w pakietów o nazwach takich jak powyższe przed przedrostka *texlive*. 
 
 Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są w zasadzie dwa edytory dla LaTeXa, w których szablon działa tak jak powinien: TeX Studio oraz VS Code. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
 
@@ -84,6 +84,7 @@ Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, 
 - Kompilator domyslny: Latexmk
 - Domyślne narzędzie bibliografii: Biber
 ![](https://i.imgur.com/qycveue.png)
+Następnie kompilujesz szablon wciskając F5 i wszystko powinno działać bezbłędnie *out of the box*. 
 
 #### VS Code
 Aby VS Code poradził sobie z kompilacją LaTeXa, należy zainstalować dla niego wtyczkę [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop). Proces kompilacji kodu do pliku PDF uruchamiany jest automatycznie po każdym zapisie. 
@@ -91,7 +92,7 @@ Aby VS Code poradził sobie z kompilacją LaTeXa, należy zainstalować dla nieg
 Niestety, w VS Code są pewne problemy z wtyczką do podglądu PDF w czasie rzeczywistym: często po skompilowaniu szablonu obraz się nie odświeża i należy ręcznie zamknąć kartę i otworzyć ją ponownie. 
 
 #### Makefile
-Można również skompilować szablon z linii poleceń za pomocą Makefile:
+Można również skompilować szablon z linii poleceń za pomocą [Makefile][ref:makefile]:
 
 ```
 make pdf
@@ -116,14 +117,6 @@ Zalecam zatem następujący workflow:
 2. Kompilacja końcowej wersji za pomocą LuaTeX-a.
 
 Powyższe zalecenia dotyczą obu sposobów korzystania z szablonu: w przeglądarce (Overleaf) oraz lokalnie.
-
-Szablon kompiluje się również bez problemu za pomocą dedykowanych dla LaTeXa IDE: [TeX Studio](https://www.texstudio.org/) oraz w [VS Code](https://code.visualstudio.com/), wyposażonym w [odpowiednią wtyczkę](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
-
-Szablonu można używać zasadniczo w trzech głównych konfiguracjach:
-* na Windowsie w [texlive][ref:texlive] oraz [miktex][ref:miktex]
-* na Linuxie w [texlive][ref:texlive].
-
-
 
 ## Wsparcie dla innych języków
 Szablon można stosować zarówno w języku polskim jak i angielskim, jednak **aby skorzystać z wersji w języku angielskim, należy pobrać wersję [2.0.0 Alpha][ref:alpha-zip]**. Wersja dostępna na stronie z Poradnikiem Dyplomanta Instytutu Informatyki, jak również ta na Overleafie, jest jeszcze tylko po polsku (stan na dzień 22.12.2019).

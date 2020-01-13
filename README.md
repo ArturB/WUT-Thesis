@@ -64,7 +64,7 @@ Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożl
 Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. Według stanu **na dzień 13.01.2020**, wersja dostępna **na Overleafie to 1.3.0**, natomiast **aktualna wersja stabilna to 2.1.0**. 
 
 ### Lokalnie
-Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. Kompilacja szablonu w większości wypadków powinna być bardzo prost. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
+Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. Kompilacja szablonu w większości wypadków powinna być bardzo prosta. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
 - [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
 - [texlive][ref:texlive] na Linuxie.
 W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z macOS-em radzisz więc sobie sam(a).

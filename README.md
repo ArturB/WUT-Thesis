@@ -82,6 +82,21 @@ Powyższe nazwy dot. instalacji pakietów w środowisku texlive. Na miktex mened
 
 Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
 
+#### Konfiguracja MikTeX dla systemów Windows 7/8.1/10
+1. Zainstaluj MikTeX [ze strony głównej](https://miktex.org/download).
+2. Uruchom konsolę MikTeX Console i zaktualizuj wszystkie pakiety (zakładka "Updates").
+3. Zaintaluj poniższe pakiety (zakładka "Packages"):
+    * *latexmk* (do kompilacji),
+    * *cm-super* (do używania czionek o dynamicznej wielkości).
+4. W menu górnym "Tasks" kliknij kolejno:
+    * "Refresh file name database",
+    * "Refresh font map files",
+    * "Update package database".
+
+![](https://i.imgur.com/F3pVWDa.png)
+
+Jeżeli czas oczekiwania na kompilację jest zbyt długi, należy przeinstalować MikTeXa.
+
 #### TeX Studio
 Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, wystarczy uruchomić środowisko, a następnie przejść do: *Opcje -> Konfiguruj TeX Studio -> Zbuduj*, i ustawić:
 - Kompilator domyslny: Latexmk
@@ -89,14 +104,18 @@ Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, 
 
 ![](https://i.imgur.com/qycveue.png)
 
-Następnie kompilujesz szablon wciskając F5 i wszystko powinno działać bezbłędnie *out of the box*. 
+Następnie kompilujesz szablon wciskając F5 i wszystko powinno działać bezbłędnie *out of the box*.
+
+Jeżeli wynikowy szablon PDF nie zawiera bibliografii, skompiluj plik "\*.bib", wciskając F8, a następnie znowu F5.
 
 #### VS Code
 Aby VS Code poradził sobie z kompilacją LaTeXa, należy zainstalować dla niego wtyczkę [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop). Proces kompilacji kodu do pliku PDF uruchamiany jest automatycznie po każdym zapisie. 
 
 ![](https://i.imgur.com/0j5VVCl.png)
 
-Niestety, w VS Code są pewne problemy z wtyczką do podglądu PDF w czasie rzeczywistym: często po skompilowaniu szablonu obraz się nie odświeża i należy ręcznie zamknąć kartę i otworzyć ją ponownie. 
+Niestety, w VS Code są pewne problemy z wtyczką do podglądu PDF w czasie rzeczywistym: często po skompilowaniu szablonu obraz się nie odświeża i należy ręcznie zamknąć kartę i otworzyć ją ponownie.
+
+Kompilacja za pomocą "latexmk" w VS Code wykorzystuje Perla. Aby skompilować szablon za pomocą tego właśnie pakietu, należy zainstalować Perla. Zalecany jest open-source'owy [Strawberry Perl](http://strawberryperl.com/). To samo tyczy się Atoma.
 
 #### Makefile
 Można również skompilować szablon z linii poleceń za pomocą [Makefile][ref:makefile]:
@@ -111,7 +130,14 @@ albo
 make lua
 ```
 
-dla kompilacji z użyciem LuaTeX. Na Windowsie *make* jest dostępny w msys, instalujesz go najlepiej za pomocą [git-scm](https://git-scm.com/).
+dla kompilacji z użyciem LuaTeX.
+
+Na Windowsie *make* jest dostępny w msys, instalujesz go najlepiej za pomocą [git-scm](https://git-scm.com/).
+
+Można go również pobrać za pomocą *chocolatey*. W tym celu:
+1. Uruchom konsolę PowerShell i wykonaj komendę: ```Set-ExecutionPolicy AllSigned```
+2. Zainstaluj chocolatey według [tej instrukcji](https://chocolatey.org/courses/installation/installing?method=installing-chocolatey?quiz=true). Po wpisaniu komendy ```choco -?``` powinny ukazać się informację o wersji chocolatey.
+3. Wykonaj w cmd.exe na prawach administratora komendę: ```choco install make```.
 
 ### Kompilatory
 Możliwa jest kompilacja z użyciem trzech głównych kompilatorów: [pdfTeX](https://www.tug.org/applications/pdftex/), [LuaTeX](http://www.luatex.org/) oraz [XeTeX](http://xetex.sourceforge.net/). Pewne funkcje dostępne są jednak tylko w niektórych kompilatorach:
@@ -142,7 +168,7 @@ dla prac w języku polskim, lub
 
 dla prac w języku angielskim. Wg. stanu na dzień 13.01.2020, tłumaczenie powinno być kompletne i stabilne, chociaż mogą zajść jeszcze pewne zmiany wraz ze zgłaszaniem uwag przez Instytuty.
 
-## Czcionki
+## Fonty
 Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która jest zgodna z wymaganiami wydziału i zapewnia wszystkie niezbędne interfejsy. Możliwe jest użycie innych czcionek, jednak ja nie widzę takiego powodu.
 
 ## Problemy
@@ -152,7 +178,7 @@ Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y][ref:issu
 #### Plik klasy (.CLS)
 Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w pliku klasy [eiti-thesis.cls][ref:cls-file]. Pliki zawierające treść właściwego dokumentu (*.tex*) formatowane są zgodnie z plikiem klasy. Zawartość pliku .cls traktowana jest jako publiczne API niniejszego szablonu (w rozumieniu inżynierii oprogramowania) i podlega wersjonowaniu zgodnie z [odpowiednimi zaleceniami](#wersjonowanie).
 
-#### Makefile
+#### Makefile - kompilowanie szablonu
 Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne są następujące komendy:
 
 ```

@@ -204,11 +204,14 @@
 \renewcommand{\sectionmark}[1]{
     \markboth{#1}{#1}
 }
+\newcommand{\fancyheadsec}{
+    \ifnum\value{section}=0 {} \else {\thesection.} \fi
+}
 
 \fancyhead{}
 \fancyheadoffset{0cm} 
-\fancyhead[RO]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
-\fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
+\fancyhead[RO]{\nouppercase{\fancyheadsec\hspace{8pt}\leftmark}}
+\fancyhead[LE]{\nouppercase{\fancyheadsec\hspace{8pt}\leftmark}}
 \fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
 

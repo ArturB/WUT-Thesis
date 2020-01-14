@@ -59,11 +59,11 @@ Szablon został zatwierdzony przez Instytuty wydziału EiTI do oficjalnego użyt
 
 ## Kompilacja
 ### Overleaf
-Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożliwia korzystanie z niego bez konieczności instalacji TeXa na własnej maszynie. 
+Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożliwia korzystanie z niego bez konieczności instalacji TeXa na własnej maszynie.
 
 ![](https://i.imgur.com/z1wV4sC.png)
 
-Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. **Na dzień 13.01.2020**, wersja dostępna na Overleafie to **1.3.0**, natomiast aktualna wersja stabilna to **2.1.0**. 
+Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. **Na dzień 13.01.2020**, wersja dostępna na Overleafie to **1.3.0**, natomiast aktualna wersja stabilna to **2.1.0**.
 
 ### Lokalnie
 Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. Kompilacja szablonu w większości wypadków powinna być bardzo prosta. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
@@ -78,7 +78,7 @@ Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna równi
 biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
 ```
 
-Powyższe nazwy dot. instalacji pakietów w środowisku texlive. Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności. Jeżeli nie - zainstaluj je sobie ręcznie, szukając w pakietów o nazwach takich jak powyższe przed przedrostka *texlive*. 
+Powyższe nazwy dot. instalacji pakietów w środowisku texlive. Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności. Jeżeli nie - zainstaluj je sobie ręcznie, szukając w pakietów o nazwach takich jak powyższe przed przedrostka *texlive*.
 
 Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
 
@@ -109,7 +109,7 @@ Następnie kompilujesz szablon wciskając F5 i wszystko powinno działać bezbł
 Jeżeli wynikowy szablon PDF nie zawiera bibliografii, skompiluj plik "\*.bib", wciskając F8, a następnie znowu F5.
 
 #### VS Code
-Aby VS Code poradził sobie z kompilacją LaTeXa, należy zainstalować dla niego wtyczkę [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop). Proces kompilacji kodu do pliku PDF uruchamiany jest automatycznie po każdym zapisie. 
+Aby VS Code poradził sobie z kompilacją LaTeXa, należy zainstalować dla niego wtyczkę [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop). Proces kompilacji kodu do pliku PDF uruchamiany jest automatycznie po każdym zapisie.
 
 ![](https://i.imgur.com/0j5VVCl.png)
 

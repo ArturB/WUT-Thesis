@@ -37,10 +37,16 @@ TODO: czerwona ikona "texlive:failing" wynika z tego, że CI jest w trakcie prze
 * [Kompilacja](#kompilacja)
   * [Overleaf](#overleaf)
   * [Lokalnie](#lokalnie)
-    * [Tex Studio](#tex-studio)
-    * [VS Code](#vs-code)
+    * [Instalacja LaTeXa](#instalacja-latexa)
+      * [texlive](#windows-7810-texlive)
+      * [miktex](#windows-7810-miktex)
+      * [Zmiana dystrybucji](#zmiana-dystrybucji)
+    * [IDE](#ide)
+      * [Tex Studio](#tex-studio)
+      * [VS Code](#vs-code)
+      * [Makefile](#makefile)
   * [Kompilatory](#kompilatory)
-* [Wsparcie dla innych języków](#wsparcie-dla-innych-języków)
+* [Wsparcie dla prac w jęz. angielskim](#wsparcie-dla-prac-w-języku-angielskim)
 * [Czcionki](#czcionki)
 * [Problemy](#problemy)
 * [Dla deweloperów](#dla-deweloperów)
@@ -63,42 +69,76 @@ Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożl
 
 ![](https://i.imgur.com/z1wV4sC.png)
 
-Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. **Na dzień 13.01.2020**, wersja dostępna na Overleafie to **1.3.0**, natomiast aktualna wersja stabilna to **2.1.0**.
+Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. **Na dzień 15.01.2020**, wersja dostępna na Overleafie pokrywa się z aktualną wersją stabilną **2.1.0** i zawiera wszystkie niezbędne funkcje. Ale warto wiedzieć, że czasem wersja na Overleafie może być przestarzała. 
 
 ### Lokalnie
-Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. Kompilacja szablonu w większości wypadków powinna być bardzo prosta. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
+Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases].
+
+#### Instalacja LaTeXa
+Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
 - [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
 - [texlive][ref:texlive] na Linuxie.
 
 W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z macOS-em radzisz więc sobie sam(a).
 
-Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności:
+##### Windows 7/8/10: texlive
+1. Zainstaluj TeX Live z [tej strony][ref:texlive], klikając w link z napisem _install-tl-windows.exe_.
+2. Uruchom aplikację *_install-tl-windows.exe_* i zainstaluj TeX Live wraz ze wszystkimi pakietami
+
+![](https://i.imgur.com/OmpChxg.png)
+
+3. Po zakończeniu instalacji, możesz zweryfikować jej poprawność: uruchom TeX Live Manager (GUI) lub tlmgr (w wierszu poleceń) i sprawdź, czy TeX Live ma zainstalowane poniższe pakiety:
 
 ```
-biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+biber latexmk collection-bibtex-extra collection-fonts-extra collection-latex-extra collection-lang-polish tex-gyre
 ```
 
-Powyższe nazwy dot. instalacji pakietów w środowisku texlive. Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności. Jeżeli nie - zainstaluj je sobie ręcznie, szukając w pakietów o nazwach takich jak powyższe przed przedrostka *texlive*.
+**UWAGA:** TeX Live ze wszystkimi pakietami waży około 6,5 GB. Z tego powodu pełna instalacja zajmuje ponad półtorej godziny. Miej to na uwadze.
 
+##### Windows 7/8/10: miktex
+1. Zainstaluj MikTeX [ze strony głównej](https://miktex.org/download).
+2. Uruchom konsolę MikTeX Console i zaktualizuj wszystkie pakiety (zakładka "Updates").
+3. Zaintaluj poniższe pakiety (zakładka "Packages"):
+    * *latexmk* (do kompilacji),
+    * *cm-super* (do używania czionek o dynamicznej wielkości).
+4. W menu górnym "Tasks" kliknij kolejno:
+    * "Refresh file name database",
+    * "Refresh font map files",
+    * "Update package database".
+
+<p align="center">
+<img src="https://i.imgur.com/F3pVWDa.png">
+ </p>
+
+Jeżeli czas oczekiwania na kompilację jest zbyt długi, należy przeinstalować MikTeXa.
+
+##### Zmiana dystrybucji
+Jeżeli masz na komputerze zainstalowane obie powyższe dystrybucje LaTeXa, TeXStudio i inne programy tego typu wykorzystują tą, której ścieżka znajduje się bliżej początku zmiennej środowiskowej *PATH*. Aby zmienić wykorzystywaną dystybucję należy zmienić kolejność tych ścieżek w *PATH*. Jeżeli jedna z nich znajduje się w zmiennej systemowej *PATH*, a druga w lokalnej - *Path*, usuń tą w systemowej i dopisz na końcu lokalnej.
+
+#### IDE
 Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
 
-#### TeX Studio
+##### TeX Studio
 Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, wystarczy uruchomić środowisko, a następnie przejść do: *Opcje -> Konfiguruj TeX Studio -> Zbuduj*, i ustawić:
-- Kompilator domyslny: Latexmk
+- Kompilator domyślny: Latexmk
 - Domyślne narzędzie bibliografii: Biber
 
 ![](https://i.imgur.com/qycveue.png)
 
 Następnie kompilujesz szablon wciskając F5 i wszystko powinno działać bezbłędnie *out of the box*.
 
-#### VS Code
+Jeżeli wynikowy szablon PDF nie zawiera bibliografii, skompiluj plik "\*.bib", wciskając F8, a następnie znowu F5.
+
+##### VS Code
 Aby VS Code poradził sobie z kompilacją LaTeXa, należy zainstalować dla niego wtyczkę [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop). Proces kompilacji kodu do pliku PDF uruchamiany jest automatycznie po każdym zapisie.
 
 ![](https://i.imgur.com/0j5VVCl.png)
 
 Niestety, w VS Code są pewne problemy z wtyczką do podglądu PDF w czasie rzeczywistym: często po skompilowaniu szablonu obraz się nie odświeża i należy ręcznie zamknąć kartę i otworzyć ją ponownie.
 
-#### Makefile
+Kompilacja za pomocą "latexmk" w VS Code wykorzystuje Perla. Aby skompilować szablon za pomocą tego właśnie pakietu, należy zainstalować Perla. Zalecany jest open-source'owy [Strawberry Perl](http://strawberryperl.com/). To samo tyczy się Atoma.
+
+##### Makefile
 Można również skompilować szablon z linii poleceń za pomocą [Makefile][ref:makefile]:
 
 ```
@@ -111,7 +151,14 @@ albo
 make lua
 ```
 
-dla kompilacji z użyciem LuaTeX. Na Windowsie *make* jest dostępny w msys, instalujesz go najlepiej za pomocą [git-scm](https://git-scm.com/).
+dla kompilacji z użyciem LuaTeX.
+
+Na Windowsie *make* jest dostępny w msys, instalujesz go najlepiej za pomocą [git-scm](https://git-scm.com/).
+
+Można go również pobrać za pomocą *chocolatey*. W tym celu:
+1. Uruchom konsolę PowerShell i wykonaj komendę: ```Set-ExecutionPolicy AllSigned```
+2. Zainstaluj chocolatey według [tej instrukcji](https://chocolatey.org/courses/installation/installing?method=installing-chocolatey?quiz=true). Po wpisaniu komendy ```choco -?``` powinny ukazać się informację o wersji chocolatey.
+3. Wykonaj w cmd.exe na prawach administratora komendę: ```choco install make```.
 
 ### Kompilatory
 Możliwa jest kompilacja z użyciem trzech głównych kompilatorów: [pdfTeX](https://www.tug.org/applications/pdftex/), [LuaTeX](http://www.luatex.org/) oraz [XeTeX](http://xetex.sourceforge.net/). Pewne funkcje dostępne są jednak tylko w niektórych kompilatorach:
@@ -125,10 +172,8 @@ Zalecam zatem następujący workflow:
 
 Powyższe zalecenia dotyczą obu sposobów korzystania z szablonu: w przeglądarce (Overleaf) oraz lokalnie.
 
-## Wsparcie dla innych języków
-Szablon **od wersji 2.0.0** można stosować zarówno w języku polskim jak i angielskim; wg. stanu na dzień 13.01.2010, wersja dostępna na Overleafie to 1.3.0 i jest ona jeszcze tylko po polsku.
-
-W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
+## Wsparcie dla prac w języku angielskim
+Szablon od wersji 2.0.0 można stosować zarówno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
 
 ```
 \langpol
@@ -152,7 +197,7 @@ Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y][ref:issu
 #### Plik klasy (.CLS)
 Wygląd dokumentów tworzonych z użyciem szablonu zdefiniowany jest w pliku klasy [eiti-thesis.cls][ref:cls-file]. Pliki zawierające treść właściwego dokumentu (*.tex*) formatowane są zgodnie z plikiem klasy. Zawartość pliku .cls traktowana jest jako publiczne API niniejszego szablonu (w rozumieniu inżynierii oprogramowania) i podlega wersjonowaniu zgodnie z [odpowiednimi zaleceniami](#wersjonowanie).
 
-#### Makefile
+#### Makefile - kompilowanie szablonu
 Budowanie szablonu odbywa się z linii komend za pomocą *Makefile*. Dostępne są następujące komendy:
 
 ```

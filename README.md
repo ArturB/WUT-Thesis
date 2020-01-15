@@ -37,12 +37,14 @@ TODO: czerwona ikona "texlive:failing" wynika z tego, że CI jest w trakcie prze
 * [Kompilacja](#kompilacja)
   * [Overleaf](#overleaf)
   * [Lokalnie](#lokalnie)
-    * [texlive](#windows-7810-texlive)
-    * [miktex](#windows-7810-miktex)
-    * [Zmiana dystrybucji LaTeXa](#zmiana-dystrybucji-latexa)
+    * [Instalacja LaTeXa](#instalacja-latexa)
+      * [texlive](#windows-7810-texlive)
+      * [miktex](#windows-7810-miktex)
+      * [Zmiana dystrybucji](#zmiana-dystrybucji)
     * [IDE](#ide)
-    * [Tex Studio](#tex-studio)
-    * [VS Code](#vs-code)
+      * [Tex Studio](#tex-studio)
+      * [VS Code](#vs-code)
+      * [Makefile](#makefile)
   * [Kompilatory](#kompilatory)
 * [Wsparcie dla innych języków](#wsparcie-dla-innych-języków)
 * [Czcionki](#czcionki)
@@ -74,9 +76,14 @@ Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:relea
 - [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
 - [texlive][ref:texlive] na Linuxie.
 
+#### Instalacja LaTeXa
+Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
+- [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
+- [texlive][ref:texlive] na Linuxie.
+
 W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z macOS-em radzisz więc sobie sam(a).
 
-#### Windows 7/8/10: texlive
+##### Windows 7/8/10: texlive
 1. Zainstaluj TeX Live z [tej strony][ref:texlive], klikając w link z napisem _install-tl-windows.exe_.
 2. Uruchom aplikację *_install-tl-windows.exe_* i zainstaluj TeX Live wraz ze wszystkimi pakietami
 3. Po zakończeniu instalacji, możesz zweryfikować jej poprawność: uruchom TeX Live Manager (GUI) lub tlmgr (w wierszu poleceń) i sprawdź, czy TeX Live ma zainstalowane poniższe pakiety:
@@ -89,7 +96,7 @@ biber latexmk collection-bibtex-extra collection-fonts-extra collection-latex-ex
 
 **UWAGA:** TeX Live ze wszystkimi pakietami waży około 6,5 GB. Z tego powodu pełna instalacja zajmuje ponad półtorej godziny. Miej to na uwadze.
 
-#### Windows 7/8/10: miktex
+##### Windows 7/8/10: miktex
 1. Zainstaluj MikTeX [ze strony głównej](https://miktex.org/download).
 2. Uruchom konsolę MikTeX Console i zaktualizuj wszystkie pakiety (zakładka "Updates").
 3. Zaintaluj poniższe pakiety (zakładka "Packages"):
@@ -104,13 +111,13 @@ biber latexmk collection-bibtex-extra collection-fonts-extra collection-latex-ex
 
 Jeżeli czas oczekiwania na kompilację jest zbyt długi, należy przeinstalować MikTeXa.
 
-#### Zmiana dystrybucji LaTeXa
+##### Zmiana dystrybucji
 Jeżeli masz na komputerze zainstalowane obie powyższe dystrybucje LaTeXa, TeXStudio i inne programy tego typu wykorzystują tą, której ścieżka znajduje się bliżej początku zmiennej środowiskowej *PATH*. Aby zmienić wykorzystywaną dystybucję należy zmienić kolejność tych ścieżek w *PATH*. Jeżeli jedna z nich znajduje się w zmiennej systemowej *PATH*, a druga w lokalnej - *Path*, usuń tą w systemowej i dopisz na końcu lokalnej.
 
 #### IDE
 Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
 
-#### TeX Studio
+##### TeX Studio
 Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, wystarczy uruchomić środowisko, a następnie przejść do: *Opcje -> Konfiguruj TeX Studio -> Zbuduj*, i ustawić:
 - Kompilator domyslny: Latexmk
 - Domyślne narzędzie bibliografii: Biber
@@ -121,7 +128,7 @@ Następnie kompilujesz szablon wciskając F5 i wszystko powinno działać bezbł
 
 Jeżeli wynikowy szablon PDF nie zawiera bibliografii, skompiluj plik "\*.bib", wciskając F8, a następnie znowu F5.
 
-#### VS Code
+##### VS Code
 Aby VS Code poradził sobie z kompilacją LaTeXa, należy zainstalować dla niego wtyczkę [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop). Proces kompilacji kodu do pliku PDF uruchamiany jest automatycznie po każdym zapisie.
 
 ![](https://i.imgur.com/0j5VVCl.png)
@@ -130,7 +137,7 @@ Niestety, w VS Code są pewne problemy z wtyczką do podglądu PDF w czasie rzec
 
 Kompilacja za pomocą "latexmk" w VS Code wykorzystuje Perla. Aby skompilować szablon za pomocą tego właśnie pakietu, należy zainstalować Perla. Zalecany jest open-source'owy [Strawberry Perl](http://strawberryperl.com/). To samo tyczy się Atoma.
 
-#### Makefile
+##### Makefile
 Można również skompilować szablon z linii poleceń za pomocą [Makefile][ref:makefile]:
 
 ```

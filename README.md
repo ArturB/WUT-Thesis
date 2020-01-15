@@ -37,8 +37,9 @@ TODO: czerwona ikona "texlive:failing" wynika z tego, że CI jest w trakcie prze
 * [Kompilacja](#kompilacja)
   * [Overleaf](#overleaf)
   * [Lokalnie](#lokalnie)
-    * [texlive](#windows-7/8/10:-texlive)
-    * [miktex](#windows-7/8/10:-miktex)
+    * [texlive](#windows-7810-texlive)
+    * [miktex](#windows-7810-miktex)
+    * [Zmiana dystrybucji LaTeXa](#zmiana-dystrybucji-latexa)
     * [IDE](#ide)
     * [Tex Studio](#tex-studio)
     * [VS Code](#vs-code)
@@ -75,7 +76,7 @@ Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:relea
 
 W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z macOS-em radzisz więc sobie sam(a).
 
-#### Windows 7/8/10: Texlive
+#### Windows 7/8/10: texlive
 1. Zainstaluj TeX Live z [tej strony][ref:texlive], klikając w link z napisem _install-tl-windows.exe_.
 2. Uruchom aplikację *_install-tl-windows.exe_* i zainstaluj TeX Live wraz ze wszystkimi pakietami
 3. Po zakończeniu instalacji, możesz zweryfikować jej poprawność: uruchom TeX Live Manager (GUI) lub tlmgr (w wierszu poleceń) i sprawdź, czy TeX Live ma zainstalowane poniższe pakiety:
@@ -86,9 +87,7 @@ biber latexmk collection-bibtex-extra collection-fonts-extra collection-latex-ex
 
 ![](https://i.imgur.com/OmpChxg.png)
 
-**UWAGA:**
-
-TeX Live ze wszystkimi pakietami waży około 6,5 GB. Z tego powodu pełna instalacja zajmuje ponad półtorej godziny. Miej to na uwadze.
+**UWAGA:** TeX Live ze wszystkimi pakietami waży około 6,5 GB. Z tego powodu pełna instalacja zajmuje ponad półtorej godziny. Miej to na uwadze.
 
 #### Windows 7/8/10: miktex
 1. Zainstaluj MikTeX [ze strony głównej](https://miktex.org/download).

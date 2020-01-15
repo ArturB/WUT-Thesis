@@ -85,4 +85,4 @@ Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y][ref:issu
 Informacje dla osób zainteresowanych rozwijaniem szablonu znajdują się w [encyklopedii projektu][ref:wiki-dla-deweloperów]. 
 
 ## Uwagi
-Copyright by Artur M. Brodzki 2019-2020, based on https://github.com/pwozniak/EiTI-Szablon by [Piotr Woźniak](https://github.com/pwozniak).
+Copyleft © Artur M. Brodzki 2019-2020. Loosely based on [EiTI-Szablon](https://github.com/pwozniak/EiTI-Szablon) by [Piotr Woźniak](https://github.com/pwozniak). All wrongs reserved. 

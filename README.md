@@ -37,6 +37,9 @@ TODO: czerwona ikona "texlive:failing" wynika z tego, że CI jest w trakcie prze
 * [Kompilacja](#kompilacja)
   * [Overleaf](#overleaf)
   * [Lokalnie](#lokalnie)
+    * [texlive](#windows-7/8/10:-texlive)
+    * [miktex](#windows-7/8/10:-miktex)
+    * [IDE](#ide)
     * [Tex Studio](#tex-studio)
     * [VS Code](#vs-code)
   * [Kompilatory](#kompilatory)
@@ -72,7 +75,7 @@ Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:relea
 
 W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z macOS-em radzisz więc sobie sam(a).
 
-#### Instalacja i konfiguracja TeX Live 2019 dla systemu Windows 10
+#### Windows 7/8/10: Texlive
 1. Zainstaluj TeX Live z [tej strony][ref:texlive], klikając w link z napisem _install-tl-windows.exe_.
 2. Uruchom aplikację *_install-tl-windows.exe_* i zainstaluj TeX Live wraz ze wszystkimi pakietami
 3. Po zakończeniu instalacji, możesz zweryfikować jej poprawność: uruchom TeX Live Manager (GUI) lub tlmgr (w wierszu poleceń) i sprawdź, czy TeX Live ma zainstalowane poniższe pakiety:
@@ -87,7 +90,7 @@ biber latexmk collection-bibtex-extra collection-fonts-extra collection-latex-ex
 
 TeX Live ze wszystkimi pakietami waży około 6,5 GB. Z tego powodu pełna instalacja zajmuje ponad półtorej godziny. Miej to na uwadze.
 
-#### Instalacja i konfiguracja MikTeX dla systemów Windows 7/8.1/10
+#### Windows 7/8/10: miktex
 1. Zainstaluj MikTeX [ze strony głównej](https://miktex.org/download).
 2. Uruchom konsolę MikTeX Console i zaktualizuj wszystkie pakiety (zakładka "Updates").
 3. Zaintaluj poniższe pakiety (zakładka "Packages"):
@@ -102,7 +105,7 @@ TeX Live ze wszystkimi pakietami waży około 6,5 GB. Z tego powodu pełna insta
 
 Jeżeli czas oczekiwania na kompilację jest zbyt długi, należy przeinstalować MikTeXa.
 
-#### Zmiana dystrybucji LaTeXa (z TeX Live'a na MikTeXa i odwrotnie)
+#### Zmiana dystrybucji LaTeXa
 Jeżeli masz na komputerze zainstalowane obie powyższe dystrybucje LaTeXa, TeXStudio i inne programy tego typu wykorzystują tą, której ścieżka znajduje się bliżej początku zmiennej środowiskowej *PATH*. Aby zmienić wykorzystywaną dystybucję należy zmienić kolejność tych ścieżek w *PATH*. Jeżeli jedna z nich znajduje się w zmiennej systemowej *PATH*, a druga w lokalnej - *Path*, usuń tą w systemowej i dopisz na końcu lokalnej.
 
 #### IDE

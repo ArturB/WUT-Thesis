@@ -63,7 +63,7 @@ Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożl
 
 ![](https://i.imgur.com/z1wV4sC.png)
 
-Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. **Na dzień 13.01.2020**, wersja dostępna na Overleafie to **1.3.0**, natomiast aktualna wersja stabilna to **2.1.0**.
+Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. **Na dzień 15.01.2020**, wersja dostępna na Overleafie pokrywa się z aktualną wersją stabilną **2.1.0** i zawiera wszystkie niezbędne funkcje. Ale warto wiedzieć, że czasem wersja na Overleafie może być przestarzała. 
 
 ### Lokalnie
 Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. Kompilacja szablonu w większości wypadków powinna być bardzo prosta. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
@@ -72,15 +72,20 @@ Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:relea
 
 W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarantuję wsparcia dla systemów Apple'a. Z macOS-em radzisz więc sobie sam(a).
 
-Szablon, oprócz biblioteki standardowej LaTeXa, wykorzystuje rzecz jasna również inne pakiety jako zależności:
+#### Instalacja i konfiguracja TeX Live 2019 dla systemu Windows 10
+1. Zainstaluj TeX Live z [tej strony][ref:texlive], klikając w link z napisem _install-tl-windows.exe_.
+2. Uruchom aplikację *_install-tl-windows.exe_* i zainstaluj TeX Live wraz ze wszystkimi pakietami
+3. Po zakończeniu instalacji, możesz zweryfikować jej poprawność: uruchom TeX Live Manager (GUI) lub tlmgr (w wierszu poleceń) i sprawdź, czy TeX Live ma zainstalowane poniższe pakiety:
 
 ```
-biber latexmk texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre
+biber latexmk collection-bibtex-extra collection-fonts-extra collection-latex-extra collection-lang-polish tex-gyre
 ```
 
-Powyższe nazwy dot. instalacji pakietów w środowisku texlive. Na miktex menedżer pakietów powinien sam zainstalować odpowiednie zależności. Jeżeli nie - zainstaluj je sobie ręcznie, szukając w pakietów o nazwach takich jak powyższe przed przedrostka *texlive*.
+![](https://i.imgur.com/OmpChxg.png)
 
-Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
+**UWAGA:**
+
+TeX Live ze wszystkimi pakietami waży około 6,5 GB. Z tego powodu pełna instalacja zajmuje ponad półtorej godziny. Miej to na uwadze.
 
 #### Instalacja i konfiguracja MikTeX dla systemów Windows 7/8.1/10
 1. Zainstaluj MikTeX [ze strony głównej](https://miktex.org/download).
@@ -97,22 +102,11 @@ Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostęp
 
 Jeżeli czas oczekiwania na kompilację jest zbyt długi, należy przeinstalować MikTeXa.
 
-#### Instalacja i konfiguracja TeX Live 2019 dla systemu Windows 10
-1. Zainstaluj TeX Live z [tej strony](https://www.tug.org/texlive/acquire-netinstall.html), klikając w link z napisem _install-tl-windows.exe_.
-2. Uruchom aplikację _install-tl-windows.exe_ i zainstaluj TeX Live wraz ze wszystkimi pakietami
-3. Uruchom TeX Live Manager (GUI) lub tlmgr (w wierszu poleceń) i sprawdź, czy TeX Live ma zainstalowane poniższe pakiety:
-```
-biber latexmk collection-bibtex-extra collection-fonts-extra collection-latex-extra collection-lang-polish tex-gyre
-```
-
-![](https://i.imgur.com/OmpChxg.png)
-
-**UWAGA:**
-
-TeX Live ze wszystkimi pakietami waży około 6,5 GB. Z tego powodu pełna instalacja zajmuje ponad półtorej godziny. Miej to na uwadze.
-
-##### Zmiana dystrybucji LaTeXa (z TeX Live'a na MikTeXa i odwrotnie)
+#### Zmiana dystrybucji LaTeXa (z TeX Live'a na MikTeXa i odwrotnie)
 Jeżeli masz na komputerze zainstalowane obie powyższe dystrybucje LaTeXa, TeXStudio i inne programy tego typu wykorzystują tą, której ścieżka znajduje się bliżej początku zmiennej środowiskowej *PATH*. Aby zmienić wykorzystywaną dystybucję należy zmienić kolejność tych ścieżek w *PATH*. Jeżeli jedna z nich znajduje się w zmiennej systemowej *PATH*, a druga w lokalnej - *Path*, usuń tą w systemowej i dopisz na końcu lokalnej.
+
+#### IDE
+Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
 
 #### TeX Studio
 Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, wystarczy uruchomić środowisko, a następnie przejść do: *Opcje -> Konfiguruj TeX Studio -> Zbuduj*, i ustawić:
@@ -169,9 +163,7 @@ Zalecam zatem następujący workflow:
 Powyższe zalecenia dotyczą obu sposobów korzystania z szablonu: w przeglądarce (Overleaf) oraz lokalnie.
 
 ## Wsparcie dla innych języków
-Szablon **od wersji 2.0.0** można stosować zarówno w języku polskim jak i angielskim; wg. stanu na dzień 13.01.2010, wersja dostępna na Overleafie to 1.3.0 i jest ona jeszcze tylko po polsku.
-
-W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
+Szablon od wersji 2.0.0 można stosować zarówno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
 
 ```
 \langpol

@@ -46,7 +46,7 @@ TODO: czerwona ikona "texlive:failing" wynika z tego, że CI jest w trakcie prze
       * [VS Code](#vs-code)
       * [Makefile](#makefile)
   * [Kompilatory](#kompilatory)
-* [Wsparcie dla innych języków](#wsparcie-dla-innych-języków)
+* [Wsparcie dla prac w jęz. angielskim](#wsparcie-dla-prac-w-języku-angielskim)
 * [Czcionki](#czcionki)
 * [Problemy](#problemy)
 * [Dla deweloperów](#dla-deweloperów)
@@ -106,7 +106,9 @@ biber latexmk collection-bibtex-extra collection-fonts-extra collection-latex-ex
     * "Refresh font map files",
     * "Update package database".
 
-![](https://i.imgur.com/F3pVWDa.png)
+<p align="center">
+<img src="https://i.imgur.com/F3pVWDa.png">
+ </p>
 
 Jeżeli czas oczekiwania na kompilację jest zbyt długi, należy przeinstalować MikTeXa.
 
@@ -170,7 +172,7 @@ Zalecam zatem następujący workflow:
 
 Powyższe zalecenia dotyczą obu sposobów korzystania z szablonu: w przeglądarce (Overleaf) oraz lokalnie.
 
-## Wsparcie dla innych języków
+## Wsparcie dla prac w języku angielskim
 Szablon od wersji 2.0.0 można stosować zarówno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
 
 ```

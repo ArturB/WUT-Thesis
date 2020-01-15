@@ -82,7 +82,7 @@ Powyższe nazwy dot. instalacji pakietów w środowisku texlive. Na miktex mened
 
 Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
 
-#### Konfiguracja MikTeX dla systemów Windows 7/8.1/10
+#### Instalacja i konfiguracja MikTeX dla systemów Windows 7/8.1/10
 1. Zainstaluj MikTeX [ze strony głównej](https://miktex.org/download).
 2. Uruchom konsolę MikTeX Console i zaktualizuj wszystkie pakiety (zakładka "Updates").
 3. Zaintaluj poniższe pakiety (zakładka "Packages"):
@@ -96,6 +96,23 @@ Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostęp
 ![](https://i.imgur.com/F3pVWDa.png)
 
 Jeżeli czas oczekiwania na kompilację jest zbyt długi, należy przeinstalować MikTeXa.
+
+#### Instalacja i konfiguracja TeX Live 2019 dla systemu Windows 10
+1. Zainstaluj TeX Live z [tej strony](https://www.tug.org/texlive/acquire-netinstall.html), klikając w link z napisem _install-tl-windows.exe_.
+2. Uruchom aplikację _install-tl-windows.exe_ i zainstaluj TeX Live wraz ze wszystkimi pakietami
+3. Uruchom TeX Live Manager (GUI) lub tlmgr (w wierszu poleceń) i sprawdź, czy TeX Live ma zainstalowane poniższe pakiety:
+```
+biber latexmk collection-bibtex-extra collection-fonts-extra collection-latex-extra collection-lang-polish tex-gyre
+```
+
+![](https://i.imgur.com/OmpChxg.png)
+
+**UWAGA:**
+
+TeX Live ze wszystkimi pakietami waży około 6,5 GB. Z tego powodu pełna instalacja zajmuje ponad półtorej godziny. Miej to na uwadze.
+
+##### Zmiana dystrybucji LaTeXa (z TeX Live'a na MikTeXa i odwrotnie)
+Jeżeli masz na komputerze zainstalowane obie powyższe dystrybucje LaTeXa, TeXStudio i inne programy tego typu wykorzystują tą, której ścieżka znajduje się bliżej początku zmiennej środowiskowej *PATH*. Aby zmienić wykorzystywaną dystybucję należy zmienić kolejność tych ścieżek w *PATH*. Jeżeli jedna z nich znajduje się w zmiennej systemowej *PATH*, a druga w lokalnej - *Path*, usuń tą w systemowej i dopisz na końcu lokalnej.
 
 #### TeX Studio
 Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, wystarczy uruchomić środowisko, a następnie przejść do: *Opcje -> Konfiguruj TeX Studio -> Zbuduj*, i ustawić:

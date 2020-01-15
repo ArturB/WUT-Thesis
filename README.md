@@ -72,9 +72,7 @@ Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożl
 Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji: po wysłaniu zgłoszenia do supportu, pracownik Overleafa musi samodzielnie obejrzeć uploadowany szablon i ręcznie go zatwierdzić. **Na dzień 15.01.2020**, wersja dostępna na Overleafie pokrywa się z aktualną wersją stabilną **2.1.0** i zawiera wszystkie niezbędne funkcje. Ale warto wiedzieć, że czasem wersja na Overleafie może być przestarzała. 
 
 ### Lokalnie
-Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. Kompilacja szablonu w większości wypadków powinna być bardzo prosta. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
-- [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
-- [texlive][ref:texlive] na Linuxie.
+Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases].
 
 #### Instalacja LaTeXa
 Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
@@ -86,13 +84,14 @@ W innych konfiguracjach póki co nie próbowałem, w szczególności nie gwarant
 ##### Windows 7/8/10: texlive
 1. Zainstaluj TeX Live z [tej strony][ref:texlive], klikając w link z napisem _install-tl-windows.exe_.
 2. Uruchom aplikację *_install-tl-windows.exe_* i zainstaluj TeX Live wraz ze wszystkimi pakietami
+
+![](https://i.imgur.com/OmpChxg.png)
+
 3. Po zakończeniu instalacji, możesz zweryfikować jej poprawność: uruchom TeX Live Manager (GUI) lub tlmgr (w wierszu poleceń) i sprawdź, czy TeX Live ma zainstalowane poniższe pakiety:
 
 ```
 biber latexmk collection-bibtex-extra collection-fonts-extra collection-latex-extra collection-lang-polish tex-gyre
 ```
-
-![](https://i.imgur.com/OmpChxg.png)
 
 **UWAGA:** TeX Live ze wszystkimi pakietami waży około 6,5 GB. Z tego powodu pełna instalacja zajmuje ponad półtorej godziny. Miej to na uwadze.
 
@@ -119,7 +118,7 @@ Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostęp
 
 ##### TeX Studio
 Kompilacja szablonu na TeX Studio jest bardzo prosta: po zainstalowaniu LaTeXa, wystarczy uruchomić środowisko, a następnie przejść do: *Opcje -> Konfiguruj TeX Studio -> Zbuduj*, i ustawić:
-- Kompilator domyslny: Latexmk
+- Kompilator domyślny: Latexmk
 - Domyślne narzędzie bibliografii: Biber
 
 ![](https://i.imgur.com/qycveue.png)

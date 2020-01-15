@@ -7,13 +7,9 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 [ref:current-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.1.0
 [ref:alpha-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.1.0
 [ref:poradnik-ii]: http://www.ii.pw.edu.pl/index.php/ii_pol/Instytut-Informatyki/Nauczanie/Poradnik-dyplomanta/Przygotowanie-pracy-dyplomowej
+[ref:wiki-kompilacja]: https://github.com/ArturB/WUT-Thesis/wiki/Kompilacja-szablonu
+[ref:wiki-dla-deweloperów]: https://github.com/ArturB/WUT-Thesis/wiki/Dla-deweloper%C3%B3w
 
-[ref:main-tex]: https://github.com/ArturB/WUT-Thesis/blob/master/main.tex
-[ref:cls-file]: https://github.com/ArturB/WUT-Thesis/blob/master/eiti/eiti-thesis.cls
-[ref:makefile]: https://github.com/ArturB/WUT-Thesis/blob/master/Makefile
-
-[ref:tex-dir]: https://github.com/ArturB/WUT-Thesis/tree/master/tex
-[ref:pdfs-dir]: https://github.com/ArturB/WUT-Thesis/tree/master/pdfs
 [ref:releases-dir]: https://github.com/ArturB/WUT-Thesis/tree/master/releases
 
 [ref:issues]: https://github.com/ArturB/WUT-Thesis/issues
@@ -28,8 +24,6 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 * [Archiwum ZIP][ref:releases]
 
 ![](https://i.imgur.com/yeeuWpC.png)
-
-TODO: czerwona ikona "texlive:failing" wynika z tego, że CI jest w trakcie przebudowy z Travisa na Dockera, ale szablon działa, można pobierać.
 
 ----
 ### Spis treści
@@ -59,9 +53,9 @@ Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa
 - [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
 - [texlive][ref:texlive] na Linuxie.
 
-Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
+Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą Makefile.
 
-Szczegółowe informacje nt. samodzielnej kompilacji szablonu znajdują w [encyklopedii projektu]. 
+Szczegółowe informacje nt. samodzielnej kompilacji szablonu znajdują w [encyklopedii projektu][ref:wiki-kompilacja]. 
 
 ## Wsparcie dla prac w języku angielskim
 Szablon od wersji 2.0.0 można stosować zarówno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
@@ -85,7 +79,7 @@ Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która j
 Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y][ref:issues] na GitHubie. Pisz tam, jeżeli masz jakiś problem.
 
 ## Dla deweloperów
-Informacje dla osób zainteresowanych rozwijaniem szablonu znajdują się w [encyklopedii projektu](
+Informacje dla osób zainteresowanych rozwijaniem szablonu znajdują się w [encyklopedii projektu][ref:dla-deweloperów]. 
 
 ## Uwagi
 Copyright by Artur M. Brodzki 2019-2020, based on https://github.com/pwozniak/EiTI-Szablon by [Piotr Woźniak](https://github.com/pwozniak).

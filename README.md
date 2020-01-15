@@ -7,9 +7,11 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 [ref:current-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.1.0
 [ref:alpha-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.1.0
 [ref:poradnik-ii]: http://www.ii.pw.edu.pl/index.php/ii_pol/Instytut-Informatyki/Nauczanie/Poradnik-dyplomanta/Przygotowanie-pracy-dyplomowej
+[ref:wiki]: https://github.com/ArturB/WUT-Thesis/wiki
 [ref:wiki-kompilacja]: https://github.com/ArturB/WUT-Thesis/wiki/Kompilacja-szablonu
 [ref:wiki-dla-deweloperów]: https://github.com/ArturB/WUT-Thesis/wiki/Dla-deweloper%C3%B3w
 
+[ref:main-tex]: https://github.com/ArturB/WUT-Thesis/blob/master/main.tex
 [ref:releases-dir]: https://github.com/ArturB/WUT-Thesis/tree/master/releases
 
 [ref:issues]: https://github.com/ArturB/WUT-Thesis/issues
@@ -22,6 +24,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 
 * [Overleaf][ref:overleaf]
 * [Archiwum ZIP][ref:releases]
+* [Szczegółowe informacje nt. kompilacji szablonu (wiki)][ref:wiki]
 
 ![](https://i.imgur.com/yeeuWpC.png)
 
@@ -79,7 +82,7 @@ Domyślną czcionką jest [Adobe Utopia](https://ctan.org/pkg/fourier), która j
 Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y][ref:issues] na GitHubie. Pisz tam, jeżeli masz jakiś problem.
 
 ## Dla deweloperów
-Informacje dla osób zainteresowanych rozwijaniem szablonu znajdują się w [encyklopedii projektu][ref:dla-deweloperów]. 
+Informacje dla osób zainteresowanych rozwijaniem szablonu znajdują się w [encyklopedii projektu][ref:wiki-dla-deweloperów]. 
 
 ## Uwagi
 Copyright by Artur M. Brodzki 2019-2020, based on https://github.com/pwozniak/EiTI-Szablon by [Piotr Woźniak](https://github.com/pwozniak).

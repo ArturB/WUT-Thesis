@@ -35,7 +35,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 * [Uwagi](#uwagi)
 
 ### Status szablonu
-Szablon został zatwierdzony przez niektóre Instytuty wydziału EiTI do oficjalnego użytku; na dzień 17.01.2020 jest to Instytut Informatyki [[klik]][ref:poradnik-ii]. W trakcie realizacji są ustalenia z pozostałymi instytutami oraz podniesienie szablonu do rangi ogólnowydziałowego. Więcej informacji na ten temat znajduje się [w encyklopedii projektu][ref:wiki]. 
+Szablon został zatwierdzony przez niektóre Instytuty wydziału EiTI do oficjalnego użytku; na dzień 17.01.2020 jest to Instytut Informatyki [[klik][ref:poradnik-ii]]. W trakcie realizacji są ustalenia z pozostałymi instytutami oraz podniesienie szablonu do rangi ogólnowydziałowego. Więcej informacji na ten temat znajduje się [w encyklopedii projektu][ref:wiki]. 
 
 Szablon zawiera wszystkie wymagane przepisami elementy: stronę tytułową, streszczenia, deklarację o autorstwie. Formatowanie poszczególnych sekcji jest wynikiem ustaleń z Instytutami. W dokumencie zawarte są również przykładowe fragmenty kodu, m. in:
 - bibliografia w BibLaTeX zawierająca różne typy źródeł: artykuł, książka lub jej fragment, raport, specyfikacja techniczna, repozytorium kodu;

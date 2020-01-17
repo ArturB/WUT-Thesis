@@ -55,7 +55,7 @@ Jeżeli chcesz korzystać z najnowszej wersji szablonu, możesz ją pobrać w za
 
 Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa edytory: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
 
-Szczegółowe informacje nt. samodzielnej kompilacji szablonu, w tym rozwiązania ew. problemów znajdują [w encyklopedii projektu][ref:wiki]. 
+Szczegółowe informacje nt. samodzielnej kompilacji szablonu i rozwiązania ew. problemów znajdują [w encyklopedii projektu][ref:wiki]. 
 
 ### Wsparcie dla prac w języku angielskim
 Szablon od wersji 2.0.0 można stosować zarówno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:

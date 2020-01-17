@@ -36,25 +36,25 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 * [Uwagi](#uwagi)
 
 ## Status szablonu
-Szablon został zatwierdzony przez niektóre Instytuty wydziału EiTI do oficjalnego użytku; na dzień 17.01.2020 jest to Instytut Informatyki, link do odpowiedniego komunikatu [tutaj][ref:poradnik-ii]). W trakcie realizacji są ustalenia z pozostałymi instytutami oraz podniesienie szablonu do rangi ogólnowydziałowego. Więcej informacji na ten temat znajduje się w [encyklopedii projektu][ref:wiki]. 
+Szablon został zatwierdzony przez niektóre Instytuty wydziału EiTI do oficjalnego użytku; na dzień 17.01.2020 jest to Instytut Informatyki [>>klik<<j][ref:poradnik-ii]. W trakcie realizacji są ustalenia z pozostałymi instytutami oraz podniesienie szablonu do rangi ogólnowydziałowego. Więcej informacji na ten temat znajduje się [w encyklopedii projektu][ref:wiki]. 
 
 Szablon zawiera wszystkie wymagane przepisami elementy: stronę tytułową, streszczenia, deklarację o autorstwie. Formatowanie poszczególnych sekcji jest wynikiem ustaleń z Instytutami. W dokumencie zawarte są również przykładowe fragmenty kodu, m. in:
 - fragment kodu źródłowego programu;
 - bibliografia w BibLaTeX zawierająca różne typy źródeł: artykuł, książka lub jej fragment, raport, specyfikacja techniczna, repozytorium kodu;
-- wykaz symboli i skrótów, spis rysunków, tabel oraz załączników.
+- wykaz symboli i skrótów, spis rysunków, tabel oraz załączników;
 
-i inne. 
+i wiele innych. 
 
 ## Kompilacja
-Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożliwia korzystanie z niego bez konieczności instalacji TeXa na własnej maszynie.Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji. Jeżeli chcesz korzystać z najnowszej wersji szablonu, musisz pobrać ją z tego repozytorium. Najnowsza wersja szablonu jest zawsze dostępna w zakładce [Releases][ref:releases]. 
+Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożliwia korzystanie z niego bez konieczności instalacji TeXa na własnej maszynie.Niestety wersja dla Overleafa nie zawsze jest aktualna, z uwagi na długotrwały proces aktualizacji tj. ręczne zatwierdzanie każdej zmiany przez pracowników Overleafa. 
 
-Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
+Jeżeli chcesz korzystać z najnowszej wersji szablonu, możesz ją pobrać w zakładce [Releases][ref:releases]. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
 - [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
 - [texlive][ref:texlive] na Linuxie.
 
-Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa porządne edytory, w których szablon działa tak jak powinien: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą Makefile.
+Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa edytory: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
 
-Szczegółowe informacje nt. samodzielnej kompilacji szablonu znajdują w [encyklopedii projektu][ref:wiki]. 
+Szczegółowe informacje nt. samodzielnej kompilacji szablonu, w tym rozwiązania ew. problemów znajdują [w encyklopedii projektu][ref:wiki]. 
 
 ## Wsparcie dla prac w języku angielskim
 Szablon od wersji 2.0.0 można stosować zarówno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:

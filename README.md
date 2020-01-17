@@ -47,7 +47,7 @@ i wiele innych.
 ### Kompilacja
 Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożliwia korzystanie z niego bez konieczności instalacji TeXa na własnej maszynie. Jest to **najprostsza i rekomendowana** metoda korzystania z szablonu. 
 
-Czasem może się zdarzyć, że wersja dostępna na Overleafie jest nieco starsza niż wersja znajdująca się na GitHubie. Wynika to z długotrwałego procesu aktualizacji tj. ręcznego zatwierdzania każdej zmiany przez pracowników Overleafa. Informacje nt. bieżącego statusu szablonu znajdują się zawsze [w encyklopedii projektu][ref:wiki]. 
+Czasem może się zdarzyć, że wersja dostępna na Overleafie jest nieco starsza niż ta znajdująca się na GitHubie. Wynika to z długotrwałego procesu aktualizacji tj. ręcznego zatwierdzania każdej zmiany przez pracowników Overleafa. Informacje nt. bieżącego statusu szablonu znajdują się zawsze [w encyklopedii projektu][ref:wiki]. 
 
 Jeżeli chcesz korzystać z najnowszej wersji szablonu, możesz ją pobrać w zakładce [Releases][ref:releases]. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
 - [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;

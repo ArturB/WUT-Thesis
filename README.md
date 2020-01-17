@@ -20,9 +20,9 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej lub magis
 [ref:texstudio]: https://www.texstudio.org/
 [ref:vscode]: https://code.visualstudio.com/
 
-* [Overleaf][ref:overleaf]
+* [Overleaf][ref:overleaf] **[recommended]**
 * [Archiwum ZIP][ref:releases]
-* [Szczegółowe informacje nt. kompilacji szablonu (wiki)][ref:wiki]
+* [Wskazówki dot. kompilacji (wiki)][ref:wiki]
 
 ![](https://i.imgur.com/yeeuWpC.png)
 

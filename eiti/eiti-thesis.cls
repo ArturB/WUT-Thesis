@@ -458,7 +458,7 @@
 }
 \newcommand{\acronym}[2]{
     \par\noindent
-    \small\textbf{#1} -- #2
+    {\small{\textbf{#1} -- #2}}
 }
 
 %--------------------------------
@@ -484,7 +484,7 @@
 \renewcommand\appendix[1]{%
     % \refstepcounter{section}
     \tocless\section{\hspace*{1.5ex} #1}
-    \addcontentsline{app}{subsection}{\small\hspace*{-2.5ex}\arabic{section}.\hspace*{0.5ex} #1}
+    {\addcontentsline{app}{subsection}{\small\hspace*{-2.5ex}\arabic{section}.\hspace*{0.5ex} #1}}
 }
 
 \newcommand\listofappendices{%

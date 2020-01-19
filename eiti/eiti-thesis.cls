@@ -458,7 +458,7 @@
 }
 \newcommand{\acronym}[2]{
     \par\noindent
-    \textbf{#1} -- #2
+    \small\textbf{#1} -- #2
 }
 
 %--------------------------------

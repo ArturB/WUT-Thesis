@@ -43,7 +43,7 @@
 \RequirePackage[            % Custom figure and table captions
     labelfont=bf,
     labelsep=period
-]{caption}                  
+]{caption}
 \RequirePackage{chngcntr}   % Per-section counters
 \RequirePackage{enumitem}   % Itemize/enumrate
 \RequirePackage{fancyhdr}   % Custom header/footer styles
@@ -136,7 +136,7 @@
 \fi
 
 %--------------------------------
-% Produce clickable hyperlinks 
+% Produce clickable hyperlinks
 % in ToC, LoF and LoT
 %--------------------------------
 \RequirePackage{hyperref}
@@ -174,7 +174,6 @@
 % Initial setup
 %--------------------------------
 \setstretch{1.2}
-%\renewcommand{\counterwithin}{\@ifstar{\@csinstar}{\@csin}}
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 \renewcommand*\l@figure{\@dottedtocline{1}{0.5em}{2.25em}}

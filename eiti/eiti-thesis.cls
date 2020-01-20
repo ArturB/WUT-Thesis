@@ -285,19 +285,19 @@
 \newcommand{\makeauthorship}{
     \ifnum \pdf@strcmp{\@lang}{polish} = 0
         \thispagestyle{plain}
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.3\textwidth]{eiti/oswiadczenie_autora_pracy.pdf}
+            \includegraphics[width=1.19\textwidth]{eiti/oswiadczenie_autora_pracy.pdf}
             }
         \end{figure}
     \fi
     \ifnum \pdf@strcmp{\@lang}{english} = 0
         \thispagestyle{plain}
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.3\textwidth]{eiti/thesis_author_declaration-1.pdf}
+            \includegraphics[width=1.19\textwidth]{eiti/thesis_author_declaration-1.pdf}
             }
         \end{figure}
         \newpage
@@ -305,7 +305,7 @@
         \begin{figure}[h]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.3\textwidth]{eiti/thesis_author_declaration-2.pdf}
+            \includegraphics[width=1.19\textwidth]{eiti/thesis_author_declaration-2.pdf}
             }
         \end{figure}
     \fi

@@ -32,36 +32,36 @@
 %--------------------------------
 % Common packages
 %--------------------------------
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage{amsthm}
-\RequirePackage{array}
-\RequirePackage[
+\RequirePackage{amsmath}    % Basic mathematical typesetting
+\RequirePackage{amssymb}    % Advanced math symbols
+\RequirePackage{amsthm}     % Theorems typesetting
+\RequirePackage{array}      % Advanced table column formats
+\RequirePackage[            % Bibliography in biber
     backend=biber,
     style=ieee
 ]{biblatex}
-\RequirePackage[
+\RequirePackage[            % Custom figure and table captions
     labelfont=bf,
     labelsep=period
-]{caption}
-\RequirePackage{enumitem}
-\RequirePackage{float}
-\RequirePackage{fancyhdr}
-\RequirePackage{fourier}
-\RequirePackage{graphicx}
-\RequirePackage{ifluatex}
-\RequirePackage{ifpdf}
-\RequirePackage{ifxetex}
-\RequirePackage{kantlipsum}
-\RequirePackage{lipsum}
-\RequirePackage{listings}
-\RequirePackage{longtable}
-\RequirePackage{multirow}
-\RequirePackage{setspace}
-\RequirePackage{tgadventor}
-\RequirePackage{url}
-\RequirePackage{xkeyval}
-\RequirePackage{xspace}
+]{caption}                  
+\RequirePackage{chngcntr}   % Per-section counters
+\RequirePackage{enumitem}   % Itemize/enumrate
+\RequirePackage{fancyhdr}   % Custom header/footer styles
+\RequirePackage{fourier}    % Adobe Utopia font
+\RequirePackage{graphicx}   % Enhanced images support
+\RequirePackage{ifluatex}   % LuaTeX-specific options
+\RequirePackage{ifpdf}      % pdfTeX-specific options
+\RequirePackage{ifxetex}    % XeTeX-specific options
+\RequirePackage{kantlipsum} % English kantian-style lipsum
+\RequirePackage{lipsum}     % Lorem ipsum
+\RequirePackage{listings}   % Code listings
+\RequirePackage{longtable}  % Multi-page tables
+\RequirePackage{multirow}   % Advanced table cells
+\RequirePackage{setspace}   % Set space between lines
+\RequirePackage{scrextend}  % Custom ToC/LoF/LoT
+\RequirePackage{url}        % URL-sensitive line breaks
+\RequirePackage{xkeyval}    % Keys and class parameters
+\RequirePackage{xspace}     % Remove duplicated spaces
 
 %--------------------------------------
 % PdfTeX specific configuration
@@ -135,13 +135,9 @@
     \end{luacode}
 \fi
 
-%--------------------------------------
-% Load csquotes after inputenc
-%--------------------------------------
-\RequirePackage{csquotes}
-
 %--------------------------------
-% Define hyperref colors
+% Produce clickable hyperlinks 
+% in ToC, LoF and LoT
 %--------------------------------
 \RequirePackage{hyperref}
 \hypersetup{
@@ -178,7 +174,11 @@
 % Initial setup
 %--------------------------------
 \setstretch{1.2}
-
+%\renewcommand{\counterwithin}{\@ifstar{\@csinstar}{\@csin}}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\renewcommand*\l@figure{\@dottedtocline{1}{0.5em}{2.25em}}
+\renewcommand*\l@table{\@dottedtocline{1}{0.5em}{2.25em}}
 
 %--------------------------------
 % Header & footer
@@ -286,7 +286,7 @@
 \newcommand{\makeauthorship}{
     \ifnum \pdf@strcmp{\@lang}{polish} = 0
         \thispagestyle{plain}
-        \begin{figure}[H]
+        \begin{figure}[h]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
             \includegraphics[width=1.3\textwidth]{eiti/oswiadczenie_autora_pracy.pdf}
@@ -295,7 +295,7 @@
     \fi
     \ifnum \pdf@strcmp{\@lang}{english} = 0
         \thispagestyle{plain}
-        \begin{figure}[H]
+        \begin{figure}[h]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
             \includegraphics[width=1.3\textwidth]{eiti/thesis_author_declaration-1.pdf}
@@ -303,7 +303,7 @@
         \end{figure}
         \newpage
         \thispagestyle{plain}
-        \begin{figure}[H]
+        \begin{figure}[h]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
             \includegraphics[width=1.3\textwidth]{eiti/thesis_author_declaration-2.pdf}
@@ -457,15 +457,13 @@
     \fi
 }
 \newcommand{\acronym}[2]{
-    \par\noindent
+    \par\noindent\hspace{0.4em}
     {\small{\textbf{#1} -- #2}}
 }
 
 %--------------------------------
 % Spis załączników - makra
 %--------------------------------
-\makeatletter
-
 \newcommand{\nocontentsline}[3]{}
 \newcommand{\tocless}[2]{%
     \bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup
@@ -482,9 +480,8 @@
 
 \let\standardappendix\appendix
 \renewcommand\appendix[1]{%
-    % \refstepcounter{section}
-    \tocless\section{\hspace*{1.5ex} #1}
-    {\addcontentsline{app}{subsection}{\small\hspace*{-2.5ex}\arabic{section}.\hspace*{0.5ex} #1}}
+    \tocless\section{\hspace*{1.5em} #1}
+    {\addcontentsline{app}{subsection}{\small\hspace*{-1.1em}\arabic{section}.\hspace*{0.5em} #1}}
 }
 
 \newcommand\listofappendices{%
@@ -498,5 +495,3 @@
     \standardappendix
     \renewcommand{\thesection}{\@appendixtitle~\arabic{section}}
 }
-
-\makeatother

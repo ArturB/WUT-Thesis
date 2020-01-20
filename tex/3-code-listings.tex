@@ -1,23 +1,72 @@
 \newpage % Rozdziały zaczynamy od nowej strony.
 \section{Code listings}
+
 \lipsum[10]
-\begin{lstlisting}[language=HTML]
+
+% \addmargin pozwala na wcięcie kodu od lewej (tutaj: 6mm).
+% Wcięcie pomaga ustawić kod tak, 
+% aby numery linii nie były za bardzo na lewo. 
+% Druga liczba oznacza wcięcie od prawej. 
+\begin{addmargin}[6mm]{0mm}
+\begin{lstlisting}[
+    language=HTML,
+    numbers=left,
+    firstnumber=1,
+    caption={\emph{Hello world} w HTML}
+]
 <html>
   <head>
     <title>Hello world!</title>
   </head>
   <body>
-    Hello
+    Hello world!
   </body>
 </html>
 \end{lstlisting}
+\end{addmargin}
+
 \lipsum[11]
-\begin{lstlisting}[language=C]
-#include <stdio.h>
+
+% Dla dłuższych numerów linii
+% potrzebne jest większe wcięcie.
+\begin{addmargin}[10mm]{0mm}
+\begin{lstlisting}[
+    language=C++,
+    numbers=left,
+    firstnumber=147,
+    caption={Generowanie sekwencji Collatza w języku C++}
+]
+class Collatz {
+  private:
+    unsigned current_val_;
+    void update_val() {
+        if( current_val_ % 2 == 0 )
+            current_val_ /= 2;
+        else
+            current_val_ = current_val_ * 3 + 1;
+    }
+
+  public:
+    explicit Collatz(unsigned initial_value) : 
+        current_val_(initial_value) {}
+    void print_sequence() {
+        unsigned i = 1;
+        while( current_val_ > 1 ) {
+            std::cout
+                << "val " << i << " = " << current_val_
+                << std::endl;
+            update_val(); ++i;
+        }
+    }
+};
+
 int main() {
-  // printf() displays the string inside quotation
-  printf("Hello world!");
+  // prints Collatz seqence, starting from 194375
+  Collatz seq(194375);
+  seq.print_sequence();
   return 0;
 }
 \end{lstlisting}
+\end{addmargin}
+
 \lipsum[12]

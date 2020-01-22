@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Engineer & Master Thesis LaTeX Template Class     %%
-%% Copyleft by Piotr Wozniak & Artur M. Brodzki      %%
+%% Bachelor's & Master's Thesis Template             %%
+%% Copyleft by Artur M. Brodzki & Piotr Woźniak      %%
 %% Faculty of Electronics and Information Technology %%
-%% Warsaw University of Technology, Warsaw, 2019     %%
+%% Warsaw University of Technology, 2019-2020        %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ProvidesClass{eiti/eiti-thesis}
@@ -41,6 +41,7 @@
     style=ieee
 ]{biblatex}
 \RequirePackage[            % Custom figure and table captions
+    font=normalsize,
     labelfont=bf,
     labelsep=period
 ]{caption}
@@ -58,7 +59,8 @@
 \RequirePackage{longtable}  % Multi-page tables
 \RequirePackage{multirow}   % Advanced table cells
 \RequirePackage{setspace}   % Set space between lines
-\RequirePackage{scrextend}  % Custom ToC/LoF/LoT
+\RequirePackage{scrextend}  % Allows \addmargin environment
+\RequirePackage{tocloft}    % Custom ToC/LoF/LoT
 \RequirePackage{url}        % URL-sensitive line breaks
 \RequirePackage{xkeyval}    % Keys and class parameters
 \RequirePackage{xspace}     % Remove duplicated spaces
@@ -176,8 +178,33 @@
 \setstretch{1.2}
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
+
+%--------------------------------
+% Table of Contents setup
+%--------------------------------
+\setlength{\cftbeforesecskip}{2pt}
+\renewcommand{\cftsecfont}{\bf\normalsize}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
+\renewcommand{\cftsecdotsep}{\cftdotsep}
+
+%--------------------------------
+% List of Figures setup
+%--------------------------------
 \renewcommand*\l@figure{\@dottedtocline{1}{0.5em}{2.25em}}
+\newcommand{\listoffigurestoc}{
+    \listoffigures
+    \addcontentsline{toc}{section}{\listfigurename}
+}
+
+%--------------------------------
+% List of Tables setup
+%--------------------------------
 \renewcommand*\l@table{\@dottedtocline{1}{0.5em}{2.25em}}
+\newcommand{\listoftablestoc}{
+    \listoftables
+    \addcontentsline{toc}{section}{\listtablename}
+}
 
 %--------------------------------
 % Header & footer
@@ -457,7 +484,7 @@
 }
 \newcommand{\acronym}[2]{
     \par\noindent\hspace{0.4em}
-    {\small{\textbf{#1} -- #2}}
+    {\textbf{#1} -- #2}
 }
 
 %--------------------------------
@@ -480,10 +507,10 @@
 \let\standardappendix\appendix
 \renewcommand\appendix[1]{%
     \tocless\section{\hspace*{1.5em} #1}
-    {\addcontentsline{app}{subsection}{\small\hspace*{-1.1em}\arabic{section}.\hspace*{0.5em} #1}}
+    \addcontentsline{app}{subsection}{\hspace*{-1.1em}\arabic{section}.\hspace*{0.5em} #1}
 }
 
-\newcommand\listofappendices{%
+\newcommand\listofappendicestoc{
     \ifnum \pdf@strcmp{\@lang}{polish} = 0
         \section*{Spis załączników}\@starttoc{app}
     \fi

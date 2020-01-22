@@ -41,7 +41,7 @@
     style=ieee
 ]{biblatex}
 \RequirePackage[            % Custom figure and table captions
-    font=normalsize,
+    font=small,
     labelfont=bf,
     labelsep=period
 ]{caption}

@@ -2,14 +2,17 @@
 \section{Praefatio}
 \lipsum[1] \cite{goossens93}
 \begin{figure}[!h]
+	% Znacznik \caption oprócz podpisu służy również do wygenerowania numeru obrazka;
+	\caption{Tradycyjne godło Politechniki Warszawskiej}
+	% dlatego zawsze pamiętaj używać najpierw \caption, a potem \label
     \label{fig:tradycyjne-logo-pw}
+    % Zamiast width można też użyć height, etc. 
     \centering \includegraphics[width=0.5\linewidth]{logopw.png}
-    \caption{Tradycyjne godło Politechniki Warszawskiej}
 \end{figure}
 \lipsum[2-3]
 \begin{figure}[!h]
+	\caption{Współczesne logo Politechniki Warszawskiej}
 	\label{fig:nowe-logo-pw}
 	\centering \includegraphics[width=0.5\linewidth]{logopw2.png}
-	\caption{Współczesne logo Politechniki Warszawskiej}
 \end{figure}
-\lipsum[4-6]
+\lipsum[4-6] Reference to image \ref{fig:nowe-logo-pw}. 

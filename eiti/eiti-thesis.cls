@@ -309,13 +309,16 @@
 %--------------------------------
 % Oświadczenie o autorstwie
 %--------------------------------
+\newcommand{\plauthorshippdf}{eiti/oswiadczenie_autora_pracy.pdf}
+\newcommand{\enauthorshippdf}{eiti/thesis_author_declaration-1.pdf}
+\newcommand{\enauthorshippdfsecond}{eiti/thesis_author_declaration-2.pdf}
 \newcommand{\makeauthorship}{
     \ifnum \pdf@strcmp{\@lang}{polish} = 0
         \thispagestyle{plain}
         \begin{figure}[ht]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{eiti/oswiadczenie_autora_pracy.pdf}
+            \includegraphics[width=1.19\textwidth]{\plauthorshippdf}
             }
         \end{figure}
     \fi
@@ -324,7 +327,7 @@
         \begin{figure}[ht]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{eiti/thesis_author_declaration-1.pdf}
+            \includegraphics[width=1.19\textwidth]{\enauthorshippdf}
             }
         \end{figure}
         \newpage
@@ -332,7 +335,7 @@
         \begin{figure}[h]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{eiti/thesis_author_declaration-2.pdf}
+            \includegraphics[width=1.19\textwidth]{\enauthorshippdfsecond}
             }
         \end{figure}
     \fi

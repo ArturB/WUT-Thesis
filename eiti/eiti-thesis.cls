@@ -111,7 +111,7 @@
         while head do
             if head.id == glyph_id then
                 if unicode.utf8.match(unicode.utf8.char(head.char),"%a") then     -- is a letter
-                    if head.prev.id == glue_id and head.next.id == glue_id then   -- is one letter word
+                    if head.next.id == glue_id and (head.prev.id == glue_id or (head.prev.id == glyph_id and head.prev.prev.id == glue_id)) then   -- is one or two letter word
 
                         local p = node.new("penalty")
                         p.penalty = 10000

@@ -429,7 +429,12 @@
         \hfill \break
         \hfill \break
         \large
-        \@title \\
+        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+            \@title \\
+        \fi
+        \ifnum \pdf@strcmp{\@lang}{english} = 0
+            \@engtitle \\
+        \fi
         \hfill \break
         \hfill \break
         \LARGE

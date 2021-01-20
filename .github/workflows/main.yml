@@ -15,30 +15,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-              sudo apt-get install -y texlive              \
-                                      texlive-bibtex-extra \
-                                      texlive-fonts-extra  \
-                                      texlive-latex-extra  \
-                                      texlive-lang-polish  \
-                                      tex-gyre latexmk     \
-                                      biber
+          sudo apt-get install -y   \
+               texlive              \
+               texlive-bibtex-extra \
+               texlive-fonts-extra  \
+               texlive-latex-extra  \
+               texlive-lang-polish  \
+               tex-gyre latexmk     \
+               biber
       - uses: actions/checkout@v2
 
   pdftex:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - run: cd /home/runner/work/WUT-Thesis/WUT-Thesis
       - run: make pdf
   
   luatex:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - run: cd /home/runner/work/WUT-Thesis/WUT-Thesis
       - run: make lua
   
   xetex:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - run: cd /home/runner/work/WUT-Thesis/WUT-Thesis
       - run: make xetex
   

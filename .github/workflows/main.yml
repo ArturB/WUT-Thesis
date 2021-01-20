@@ -11,8 +11,11 @@ on:
 
 jobs:
   # Install necessary dependencies
-  setup_environment:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tex-compiler: [lua, pdf, xetex]
     steps:
       - run: |
           sudo apt-get install -y   \
@@ -24,28 +27,7 @@ jobs:
                tex-gyre latexmk     \
                biber
       - uses: actions/checkout@v2
-
-  make_pdftex:
-    needs: setup_environment
-    runs-on: ubuntu-latest
-    steps:
+      - run: pwd ; ls -la
       - run: cd /home/runner/work/WUT-Thesis/WUT-Thesis
       - run: pwd ; ls -la
-      - run: make pdf
-  
-  make_luatex:
-    needs: setup_environment
-    runs-on: ubuntu-latest
-    steps:
-      - run: cd /home/runner/work/WUT-Thesis/WUT-Thesis
-      - run: pwd ; ls -la
-      - run: make lua
-  
-  make_xetex:
-    needs: setup_environment
-    runs-on: ubuntu-latest
-    steps:
-      - run: cd /home/runner/work/WUT-Thesis/WUT-Thesis
-      - run: pwd ; ls -la
-      - run: make xetex
-  
+      - run: make ${{ matrix.tex-compiler }}

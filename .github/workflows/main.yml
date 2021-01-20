@@ -4,8 +4,13 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-    tags:
-      description: 'Job tags'  
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'  
 
 jobs:
   

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Determine platform environment (texlive or miktex)
 if [[ $OSTYPE == "linux-gnu" ]] ; then
     TEXENV="texlive"

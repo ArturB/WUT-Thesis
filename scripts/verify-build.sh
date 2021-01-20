@@ -11,7 +11,7 @@ case $1 in
         echo "----------------------"
         cat ./pdfs/texlive-lualatex_tr.txt
         echo -e "\n----------------------"
-        echo "Differences with referential text:"
+        echo -e "Differences with referential text:\n"
         diff ./pdfs/texlive-lualatex_tr.txt ./releases/referential/referential-lualatex.txt
         echo "All done!"
         ;;
@@ -23,7 +23,7 @@ case $1 in
         echo "----------------------"
         cat ./pdfs/texlive-pdflatex_tr.txt
         echo -e "\n----------------------"
-        echo "Differences with referential text:"
+        echo -e "Differences with referential text:\n"
         diff ./pdfs/texlive-pdflatex_tr.txt ./releases/referential/referential-pdflatex.txt
         echo "All done!"
         ;;
@@ -35,7 +35,7 @@ case $1 in
         echo "----------------------"
         cat ./pdfs/texlive-xelatex_tr.txt
         echo -e "\n----------------------"
-        echo "Differences with referential text:"
+        echo -e "Differences with referential text:\n"
         diff ./pdfs/texlive-xelatex_tr.txt ./releases/referential/referential-xelatex.txt
         echo "All done!"
         ;;

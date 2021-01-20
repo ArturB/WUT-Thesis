@@ -12,7 +12,8 @@ jobs:
         tex-compiler: [lua, pdf, xetex]
     runs-on: ubuntu-20.04
     steps:
-      - run: |
+      - name: Setup dependencies
+        run: |
           sudo apt-get install -y   \
                biber                \
                latexmk              \
@@ -25,6 +26,12 @@ jobs:
                texlive-luatex       \
                texlive-xetex        \
                tex-gyre
-      - uses: actions/checkout@v2
-      - run: make ${{ matrix.tex-compiler }}
-      - run: ./scripts/verify-build.sh ${{ matrix.tex-compiler }} 
+      
+      - name: Checkout git repository
+        uses: actions/checkout@v2
+      
+      - name: Generate PDF file
+        run: make ${{ matrix.tex-compiler }}
+      
+      - name: Verify build with referential text
+        run: ./scripts/verify-build.sh ${{ matrix.tex-compiler }} 

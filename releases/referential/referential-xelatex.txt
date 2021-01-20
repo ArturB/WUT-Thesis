@@ -128,19 +128,19 @@ czytelny podpis studenta
 
 Spis treści
 1. Praefatio . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-2. De Finibus Bonorum et Malorum . . . . . . . . . . . .
-2.1. Critique of Pure Reason . . . . . . . . . . . . . . . . . .
-2.2. Categorical Imperative . . . . . . . . . . . . . . . . . . .
-2.2.1. Deontological Ethics . . . . . . . . . . . . . . . .
-2.2.2. Consequentialism – the Ideal of practical reason
-2.3. Gödel’s ontological proof . . . . . . . . . . . . . . . . . .
+2. De Finibus Bonorum et Malorum . . .
+2.1. Critique of Pure Reason . . . . . . . . .
+2.2. Categorical Imperative . . . . . . . . .
+2.2.1. Deontological Ethics . . . . . .
+2.2.2. Consequentialism – the Ideal of
+2.3. Gödel’s ontological proof . . . . . . . .
 
-.
-.
-.
-.
-.
-.
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+practical reason
+. . . . . . . . . .
 
 .
 .
@@ -220,8 +220,8 @@ czytelny podpis studenta
 15
 16
 
-3. Code listings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
-4. Summatio . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+3. Code listings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+4. Summatio . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
 Bibliografia . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
 Wykaz symboli i skrótów . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
 Spis rysunków . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
@@ -955,5 +955,3 @@ elementum fermentum wisi. Aenean placerat. Ut imperdiet, enim sed gravida sollic
 Proin tempus nibh sit amet nisl. Vivamus quis tortor vitae risus porta vehicula.
 
 25
-
-

@@ -26,3 +26,4 @@ jobs:
                tex-gyre
       - uses: actions/checkout@v2
       - run: make ${{ matrix.tex-compiler }}
+      - run: ./scripts/verify-build.sh ${{ matrix.tex-compiler }} 

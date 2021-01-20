@@ -66,28 +66,6 @@
 \RequirePackage{xspace}     % Remove duplicated spaces
 
 %--------------------------------------
-% PdfTeX specific configuration
-%--------------------------------------
-\ifpdf
-    \RequirePackage[T1]{fontenc}
-    \RequirePackage[utf8]{inputenc}
-    \RequirePackage[
-        protrusion=true,
-        expansion=true
-    ]{microtype}
-\fi
-
-%--------------------------------------
-% XeTeX specific configuration
-%--------------------------------------
-\ifxetex
-    \RequirePackage{fontspec-xetex}
-    \RequirePackage[
-        protrusion=true,
-    ]{microtype}
-\fi
-
-%--------------------------------------
 % LuaTeX specific configuration
 %--------------------------------------
 \ifluatex
@@ -135,6 +113,30 @@
     luatexbase.add_to_callback("pre_linebreak_filter",prevent_single_letter,"~")
 
     \end{luacode}
+\else
+
+%--------------------------------------
+% XeTeX specific configuration
+%--------------------------------------
+    \ifxetex
+        \RequirePackage{fontspec-xetex}
+        \RequirePackage[
+            protrusion=true,
+        ]{microtype}
+    \else
+
+%--------------------------------------
+% PdfTeX specific configuration
+%--------------------------------------
+        \ifpdf
+            \RequirePackage[T1]{fontenc}
+            \RequirePackage[utf8]{inputenc}
+            \RequirePackage[
+                protrusion=true,
+                expansion=true
+            ]{microtype}
+        \fi
+    \fi
 \fi
 
 %--------------------------------

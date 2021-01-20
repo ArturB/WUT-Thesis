@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         tex-compiler: [lua, pdf, xetex]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - run: |
           sudo apt-get install -y   \

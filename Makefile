@@ -1,6 +1,6 @@
 BUILD_DIR 	= build
 RELEASE_DIR = releases
-PDFS_DIR    = pdfs/local
+PDFS_DIR    = pdfs
 LATEXMK 	= latexmk
 MKFLAGS 	= -bibtex -pdf -f
 
@@ -28,15 +28,15 @@ clean:
 		rm -rf $(PDFS_DIR)
 		mkdir -p $(PDFS_DIR)
 
-# Generate LuaLateX PDF in polish
+# Generate LuaLateX PDF
 lua:	*.tex *.bib ./tex/*
 		$(MAKE) base CTEX=$(LUALATEX) OUT=$(BUILD_DIR)/$(LUALATEX)
 
-# Generate pdfLaTeX PDF in polish
+# Generate pdfLaTeX PDF
 pdf:	*.tex *.bib ./tex/*
 		$(MAKE) base CTEX=$(PDFLATEX) OUT=$(BUILD_DIR)/$(PDFLATEX)
 
-# Generate XeLaTeX PDF in polish
+# Generate XeLaTeX PDF
 xetex:	*.tex *.bib ./tex/*
 		$(MAKE) base CTEX=$(XELATEX) OUT=$(BUILD_DIR)/$(XELATEX)
 

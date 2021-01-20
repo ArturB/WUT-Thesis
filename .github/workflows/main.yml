@@ -11,7 +11,7 @@ on:
 
 jobs:
   # Install necessary dependencies
-  setup:
+  setup environment:
     runs-on: ubuntu-latest
     steps:
       - run: |
@@ -25,24 +25,27 @@ jobs:
                biber
       - uses: actions/checkout@v2
 
-  pdftex:
-    needs: setup
+  make pdftex:
+    needs: setup environment
     runs-on: ubuntu-latest
     steps:
       - run: cd /home/runner/work/WUT-Thesis/WUT-Thesis
+      - run: pwd ; ls -la
       - run: make pdf
   
-  luatex:
-    needs: setup
+  make luatex:
+    needs: setup environment
     runs-on: ubuntu-latest
     steps:
       - run: cd /home/runner/work/WUT-Thesis/WUT-Thesis
+      - run: pwd ; ls -la
       - run: make lua
   
-  xetex:
-    needs: setup
+  make xetex:
+    needs: setup environment
     runs-on: ubuntu-latest
     steps:
       - run: cd /home/runner/work/WUT-Thesis/WUT-Thesis
+      - run: pwd ; ls -la
       - run: make xetex
   

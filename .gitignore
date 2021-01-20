@@ -17,8 +17,10 @@
 *-blx.bib
 
 *.pdf
+pdfs/*
 
 releases/*
+!releases/referential
 !releases/.gitkeep
 
 build

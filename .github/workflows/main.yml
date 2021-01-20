@@ -19,15 +19,16 @@ jobs:
     steps:
       - run: |
           sudo apt-get install -y   \
+               biber                \
+               latexmk              \
                texlive              \
                texlive-bibtex-extra \
                texlive-fonts-extra  \
                texlive-latex-extra  \
                texlive-lang-polish  \
-               tex-gyre latexmk     \
-               biber
+               texlive-luatex       \
+               texlive-xetex        \
+               tex-gyre
+               
       - uses: actions/checkout@v2
-      - run: pwd ; ls -la
-      - run: cd /home/runner/work/WUT-Thesis/WUT-Thesis
-      - run: pwd ; ls -la
       - run: make ${{ matrix.tex-compiler }}

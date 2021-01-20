@@ -17,6 +17,7 @@
 *-blx.bib
 
 *.pdf
+pdfs/*
 
 releases/*
 !releases/referential

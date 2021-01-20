@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Check validity of the version number
 # If the first argument passed is in format Num.Num.Num,
 # return this argument.

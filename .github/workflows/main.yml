@@ -14,7 +14,14 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre latexmk biber
+      - run: sudo apt-get install -y texlive              \
+                                     texlive-bibtex-extra \
+                                     texlive-fonts-extra  \
+                                     texlive-latex-extra  \
+                                     texlive-lang-polish  \
+                                     tex-gyre latexmk     \
+                                     biber
+      - uses: actions/checkout@v2
 
   pdftex:
     needs: setup

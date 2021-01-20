@@ -19,6 +19,7 @@
 *.pdf
 
 releases/*
+!releases/referential
 !releases/.gitkeep
 
 build

@@ -118,25 +118,25 @@
 %--------------------------------------
 % XeTeX specific configuration
 %--------------------------------------
-    \ifxetex
-        \RequirePackage{fontspec-xetex}
-        \RequirePackage[
-            protrusion=true,
-        ]{microtype}
-    \else
+\ifxetex
+    \RequirePackage{fontspec-xetex}
+    \RequirePackage[
+        protrusion=true,
+    ]{microtype}
+\else
 
 %--------------------------------------
 % PdfTeX specific configuration
 %--------------------------------------
-        \ifpdf
-            \RequirePackage[T1]{fontenc}
-            \RequirePackage[utf8]{inputenc}
-            \RequirePackage[
-                protrusion=true,
-                expansion=true
-            ]{microtype}
-        \fi
-    \fi
+\ifpdf
+    \RequirePackage[T1]{fontenc}
+    \RequirePackage[utf8]{inputenc}
+    \RequirePackage[
+        protrusion=true,
+        expansion=true
+    ]{microtype}
+\fi
+\fi
 \fi
 
 %--------------------------------

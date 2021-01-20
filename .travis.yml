@@ -39,7 +39,7 @@ before_install:
 - sudo apt-get update
 
 install:
-- sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre latexmk
+- sudo apt-get install -y texlive texlive-bibtex-extra texlive-fonts-extra texlive-latex-extra texlive-lang-polish tex-gyre latexmk biber
 
 script:
 - |

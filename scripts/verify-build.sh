@@ -18,4 +18,5 @@ case $1 in
     *)
         echo Unknown LaTeX compiler!
         exit 1
+        ;;
 esac

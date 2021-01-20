@@ -2,20 +2,16 @@ name: CI
 
 on:
   push:
-    branches: [ master, github-actions ]
   pull_request:
-    branches: [ master, github-actions ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
-  # Install necessary dependencies
-  build:
-    runs-on: ubuntu-latest
+  
+  make:
     strategy:
       matrix:
         tex-compiler: [lua, pdf, xetex]
+    runs-on: ubuntu-latest
     steps:
       - run: |
           sudo apt-get install -y   \
@@ -29,6 +25,5 @@ jobs:
                texlive-luatex       \
                texlive-xetex        \
                tex-gyre
-               
       - uses: actions/checkout@v2
       - run: make ${{ matrix.tex-compiler }}

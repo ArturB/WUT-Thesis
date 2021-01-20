@@ -1,4 +1,4 @@
-# WUT-Thesis
+# WUT-Thesis ![CI](https://github.com/ArturB/WUT-Thesis/workflows/CI/badge.svg)
 
 Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej oraz magisterskiej - przeznaczony dla Wydziału EiTI Politechniki Warszawskiej.
 

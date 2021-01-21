@@ -5,7 +5,7 @@ requestInfoOn:
   issue: true
 
 requestInfoReplyComment: >
-  We would appreciate it if you could provide us with more info about this issue. 
+  Hey there! You didn't give us a whole lot of info about this issue. We would love if you could provide more details about what you're trying to accomplish here. 
 
 requestInfoLabelToAdd: needs-more-info
 

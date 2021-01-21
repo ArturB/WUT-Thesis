@@ -1,6 +1,11 @@
+# *************************************
+# WUT-Thesis Makefile build targets
+# *************************************
+
 BUILD_DIR 	= build
-RELEASE_DIR = releases
 PDFS_DIR    = pdfs
+RELEASE_DIR = releases
+
 LATEXMK 	= latexmk
 MKFLAGS 	= -bibtex -pdf -f
 

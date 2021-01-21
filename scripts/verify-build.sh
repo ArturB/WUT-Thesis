@@ -30,7 +30,7 @@ case $1 in
     
     xetex)
         pdftotext ./pdfs/texlive-xelatex.pdf ./pdfs/texlive-xelatex.txt
-        cat ./pdfs/texlive-xelatex.txt | tr -d "[:space:]" > | tr -s "eE" "\n" ./pdfs/texlive-xelatex_tr.txt
+        cat ./pdfs/texlive-xelatex.txt | tr -d "[:space:]" | tr -s "eE" "\n" > ./pdfs/texlive-xelatex_tr.txt
         echo "Generated pdf:"
         echo "----------------------"
         cat ./pdfs/texlive-xelatex_tr.txt

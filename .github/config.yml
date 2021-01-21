@@ -1,0 +1,13 @@
+# Configuration for request-info - https://github.com/behaviorbot/request-info
+
+requestInfoOn:
+  pullRequest: true
+  issue: true
+
+requestInfoReplyComment: >
+  We would appreciate it if you could provide us with more info about this issue. 
+
+requestInfoLabelToAdd: needs-more-info
+
+checkIssueTemplate: true
+checkPullRequestTemplate: true

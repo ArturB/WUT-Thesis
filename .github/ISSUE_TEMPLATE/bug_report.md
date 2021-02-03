@@ -20,15 +20,15 @@ Tutaj wklej fragment kodu LaTeXa, który sprawia problem.
 Koniecznie wklej zrzuty ekranu przedstawiające błąd. 
 
 **Informacje nt. środowiska**
-[ ] Overleaf
-[ ] Windows MikTeX
-[ ] Windows TexLive
-[ ] Linux
+- [ ] Overleaf
+- [ ] Windows MikTeX
+- [ ] Windows TexLive
+- [ ] Linux
 
 **Kompilator**
-[ ] pdfTeX
-[ ] LuaTeX
-[ ] XeTeX
+- [ ] pdfTeX
+- [ ] LuaTeX
+- [ ] XeTeX
 
 **Pozostałe**
 Dodatkowy kontekst i informacje.

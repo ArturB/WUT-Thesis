@@ -29,7 +29,8 @@ then
 fi
 
 # Make release archive
-RELEASE_DIR="releases/$VERSION/WUT-Thesis"
+RELEASE_DIR_OUTER="build/releases/$VERSION"
+RELEASE_DIR="$RELEASE_DIR_OUTER/WUT-Thesis"
 mkdir -p $RELEASE_DIR
 mkdir -p $RELEASE_DIR/src
 mkdir -p $RELEASE_DIR/tex
@@ -43,5 +44,5 @@ cp LICENSE $RELEASE_DIR
 cp Makefile $RELEASE_DIR
 cp .gitignore $RELEASE_DIR
 
-cd releases/$VERSION
+cd $RELEASE_DIR_OUTER
 zip -r ../WUT-Thesis-$VERSION.zip WUT-Thesis

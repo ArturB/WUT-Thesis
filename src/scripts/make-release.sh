@@ -29,20 +29,20 @@ then
 fi
 
 # Make release archive
-RELEASE_DIR="releases/$VERSION/WUT-Thesis"
+RELEASE_DIR_OUTER="build/releases/$VERSION"
+RELEASE_DIR="$RELEASE_DIR_OUTER/WUT-Thesis"
 mkdir -p $RELEASE_DIR
-mkdir -p $RELEASE_DIR/eiti
-mkdir -p $RELEASE_DIR/img
+mkdir -p $RELEASE_DIR/src
 mkdir -p $RELEASE_DIR/tex
 
-cp eiti/* $RELEASE_DIR/eiti
-cp img/* $RELEASE_DIR/img
-cp tex/* $RELEASE_DIR/tex
+cp -r src/* $RELEASE_DIR/src
+cp -r tex/* $RELEASE_DIR/tex
 cp *.bib $RELEASE_DIR
 cp *.tex $RELEASE_DIR
 
+cp LICENSE $RELEASE_DIR
 cp Makefile $RELEASE_DIR
 cp .gitignore $RELEASE_DIR
 
-cd releases/$VERSION
-zip -r WUT-Thesis-$VERSION.zip WUT-Thesis/*
+cd $RELEASE_DIR_OUTER
+zip -r ../WUT-Thesis-$VERSION.zip WUT-Thesis

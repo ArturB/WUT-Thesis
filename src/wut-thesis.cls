@@ -1,11 +1,10 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Bachelor's & Master's Thesis Template             %%
-%% Copyleft by Artur M. Brodzki & Piotr Woźniak      %%
-%% Faculty of Electronics and Information Technology %%
-%% Warsaw University of Technology, 2019-2020        %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%------------------------------------------------%%
+%%  Engineer's & Master's Thesis Template         %%
+%%  Copyleft by Artur M. Brodzki & Piotr Woźniak  %%
+%%  Warsaw University of Technology, 2019-2021    %%
+%%------------------------------------------------%%
 
-\ProvidesClass{eiti/eiti-thesis}
+\ProvidesClass{wut/wut-thesis}
 
 \LoadClass[
     12pt,
@@ -17,8 +16,8 @@
 %--------------------------------------
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
-    family=eiti/eiti-thesis.cls,
-    prefix=eiti
+    family=wut/wut-thesis.cls,
+    prefix=wut
 }
 
 \DeclareStringOption[2.5cm]{left}
@@ -157,17 +156,17 @@
 %--------------------------------------
 \RequirePackage[
     a4paper,
-    left=\eitileft,
-    right=\eitiright,
-    top=\eititop,
-    bottom=\eitibottom,
-    bindingoffset=\eitibindingoffset
+    left=\wutleft,
+    right=\wutright,
+    top=\wuttop,
+    bottom=\wutbottom,
+    bindingoffset=\wutbindingoffset
 ]{geometry}
 
 %--------------------------------
 % Turn off hyphenation
 %--------------------------------
-\ifeitinohyphenation
+\ifwutnohyphenation
     \tolerance=1
     \emergencystretch=\maxdimen
     \hyphenpenalty=10000
@@ -317,7 +316,7 @@
         \begin{figure}[ht]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{eiti/oswiadczenie_autora_pracy.pdf}
+            \includegraphics[width=1.19\textwidth]{src/img/oswiadczenie_autora_pracy.pdf}
             }
         \end{figure}
     \fi
@@ -326,7 +325,7 @@
         \begin{figure}[ht]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{eiti/thesis_author_declaration-1.pdf}
+            \includegraphics[width=1.19\textwidth]{src/img/thesis_author_declaration-1.pdf}
             }
         \end{figure}
         \newpage
@@ -334,7 +333,7 @@
         \begin{figure}[h]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{eiti/thesis_author_declaration-2.pdf}
+            \includegraphics[width=1.19\textwidth]{src/img/thesis_author_declaration-2.pdf}
             }
         \end{figure}
     \fi
@@ -381,10 +380,10 @@
     \begin{center}
         %\sffamily
         \ifnum \pdf@strcmp{\@lang}{polish} = 0
-            \includegraphics[width=\textwidth]{eiti/header.png} \\
+            \includegraphics[width=\textwidth]{src/img/header.png} \\
         \fi
         \ifnum \pdf@strcmp{\@lang}{english} = 0
-            \includegraphics[width=\textwidth]{eiti/header-eng.png} \\
+            \includegraphics[width=\textwidth]{src/img/header-eng.png} \\
         \fi
         \hfill \break
         \hfill \break
@@ -399,18 +398,18 @@
         \hfill \break
         \ifnum \pdf@strcmp{\ThesisType}{Engineer} = 0
             \ifnum \pdf@strcmp{\@lang}{polish} = 0
-                \includegraphics[width=\textwidth]{eiti/title-inz.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-inz.png} \\
             \fi
             \ifnum \pdf@strcmp{\@lang}{english} = 0
-                \includegraphics[width=\textwidth]{eiti/title-inz-eng.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-inz-eng.png} \\
             \fi
         \fi
         \ifnum \pdf@strcmp{\ThesisType}{Master} = 0
             \ifnum \pdf@strcmp{\@lang}{polish} = 0
-                \includegraphics[width=\textwidth]{eiti/title-mgr.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-mgr.png} \\
             \fi
             \ifnum \pdf@strcmp{\@lang}{english} = 0
-                \includegraphics[width=\textwidth]{eiti/title-mgr-eng.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-mgr-eng.png} \\
             \fi
         \fi
         \hfill \break

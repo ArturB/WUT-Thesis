@@ -16,12 +16,4 @@
 *.xml
 *-blx.bib
 
-*.pdf
-pdfs/*
-
-releases/*
-!releases/referential
-!releases/.gitkeep
-
 build
-autom4te.cache

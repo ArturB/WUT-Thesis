@@ -14,7 +14,7 @@ LUALATEX 	= lualatex
 XELATEX 	= xelatex
 TEXFLAGS 	= -synctex=1 --interaction=nonstopmode
 
-TEXENV		= $(shell ./scripts/texenv.sh)
+TEXENV		= $(shell ./src/scripts/texenv.sh)
 
 .PHONY: base clean
 
@@ -23,15 +23,14 @@ all: 	pdf lua xetex
 
 # Remove LaTeX auxiliary files
 clean:
-		rm -f *.app *.aux *.bbl *.blg
+		rm -f *.app *.aux *.bbl *.bcf *.blg
 		rm -f *.fdb_latexmk *.fls *.gz
 		rm -f *.lof *.log *.lot *.out *.status
 		rm -f *.toc *.xml *-blx.bib *.pdf
 
 		rm -rf $(BUILD_DIR)
 		mkdir -p $(BUILD_DIR)
-		rm -rf $(PDFS_DIR)
-		mkdir -p $(PDFS_DIR)
+		mkdir -p $(BUILD_DIR)/$(PDFS_DIR)
 
 # Generate LuaLateX PDF
 lua:	*.tex *.bib ./tex/*
@@ -54,5 +53,4 @@ base:
 		$(LATEXMK) $(MKFLAGS) \
 			-output-directory=$(OUT) \
 			-pdflatex="$(CTEX) $(TEXFLAGS)" $<
-		mkdir -p $(PDFS_DIR)
-		cp -v ./$(OUT)/*.pdf ./$(PDFS_DIR)/$(TEXENV)-$(CTEX).pdf
+		cp -v ./$(OUT)/*.pdf ./$(BUILD_DIR)/$(PDFS_DIR)/$(TEXENV)-$(CTEX).pdf

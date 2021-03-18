@@ -2,24 +2,24 @@
 \section{De Finibus Bonorum et Malorum}
 \lipsum[1] Lorem ipsum dolor sit amet\footnote{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.}.
 \begin{align*}
-    E & = mc^2 \\
+    E & = mc^2          \\
     y & = ax^2 + bx + c
 \end{align*}
 
 \lipsum[3]
 
 \begin{align}
-\begin{bmatrix}
-    1 & 0 & 0 \\
-    0 & 2 & 0 \\
-    0 & 0 & 3
-\end{bmatrix} \cdot
-\begin{bmatrix}
-    4 \\ 5 \\ 6
-\end{bmatrix} =
-\begin{bmatrix}
-    4 \\ 10 \\ 18
-\end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 2 & 0 \\
+        0 & 0 & 3
+    \end{bmatrix} \cdot
+    \begin{bmatrix}
+        4 \\ 5 \\ 6
+    \end{bmatrix} =
+    \begin{bmatrix}
+        4 \\ 10 \\ 18
+    \end{bmatrix}
 \end{align}
 
 \lipsum[4] Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua \cite{szczypiorski2015}, \cite{duqu2011}, \cite{shs2015}, \cite{wozniak2018}, \cite{dcp19}.
@@ -28,49 +28,49 @@
 \kant[1]
 
 \begin{table}[!h] \centering
-% Znacznik \caption oprócz podpisu służy również do wygenerowania numeru tabeli;
-\caption{Przykładowa tabela.}
-% dlatego zawsze pamiętaj używać najpierw \caption, a potem \label.
-\label{tab:tabela1}
+    % Znacznik \caption oprócz podpisu służy również do wygenerowania numeru tabeli;
+    \caption{Przykładowa tabela.}
+    % dlatego zawsze pamiętaj używać najpierw \caption, a potem \label.
+    \label{tab:tabela1}
 
-\begin{tabular} {| c | c | r |} \hline
-    Kolumna 1 & Kolumna 2 & Liczba \\ \hline\hline
-    cell1 & cell2 & 60 \\ \hline
-    cell4 & cell5 & 43 \\ \hline
-    cell7 & cell8 & 20,45 \\ \hline
-    \multicolumn{2}{|r|}{Suma:} & 123,45 \\ \hline
-\end{tabular}
+    \begin{tabular} {| c | c | r |} \hline
+        Kolumna 1                   & Kolumna 2 & Liczba \\ \hline\hline
+        cell1                       & cell2     & 60     \\ \hline
+        cell4                       & cell5     & 43     \\ \hline
+        cell7                       & cell8     & 20,45  \\ \hline
+        \multicolumn{2}{|r|}{Suma:} & 123,45             \\ \hline
+    \end{tabular}
 
 \end{table}
 
-Reference to table \ref{tab:tabela1}. \kant[2] 
+Reference to table \ref{tab:tabela1}. \kant[2]
 
 \begin{longtable}{| c | m{0.58\linewidth} | r | m{0.1\linewidth} |}
-    \caption{Tabela wielostronicowa.} 
-    \label{table:koszty} \\
-    
+    \caption{Tabela wielostronicowa.}
+    \label{table:koszty}                                                                                                                                                                                               \\
+
     \hline
-    Lp & \multicolumn{1}{c|}{Treść} & \multicolumn{1}{c|}{Kwota} & \multicolumn{1}{m{0.1\linewidth}|}{Wariant opłaty} \\ \hline\hline \endfirsthead
+    Lp & \multicolumn{1}{c|}{Treść}                                                                                                  & \multicolumn{1}{c|}{Kwota} & \multicolumn{1}{m{0.1\linewidth}|}{Wariant opłaty} \\ \hline\hline \endfirsthead
 
     \endfoot
     \hline \endlastfoot
 
-    1 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 111 111,11 zł & \multicolumn{1}{c|}{WAR1} \\ \hline
-    2 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 22 222,22 zł & \multicolumn{1}{c|}{WAR1} \\ \hline
-    3 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 33 333,33 zł & \multicolumn{1}{c|}{WAR1} \\ \hline
-    4 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 444 444,44 zł & \multicolumn{1}{c|}{WAR1} \\ \hline
-    5 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 55 555,55 zł & \multicolumn{1}{c|}{WAR1} \\ \hline
-    6 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 66 666,66 zł & \multicolumn{1}{c|}{WAR1} \\ \hline
-    7 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 777 777,77 zł & \multicolumn{1}{c|}{WAR1} \\ \hline
-    8 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 8 888,88 zł & \multicolumn{1}{c|}{WAR1} \\ \hline
-    9 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 999 999,99 zł & \multicolumn{1}{c|}{WAR1} \\ \hline
-    10 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 111 111,11 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
-    11 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 22 222,22 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
-    12 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 33 333,33 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
-    13 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 444 444,44 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
-    14 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 55 555,55 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
-    15 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 66 666,66 zł & \multicolumn{1}{c|}{WAR2} \\ \hline
-    & \multicolumn{1}{r|}{\textbf{Suma:}} & \textbf{7 777 777,77 zł} &
+    1  & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 111 111,11 zł              & \multicolumn{1}{c|}{WAR1}                          \\ \hline
+    2  & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 22 222,22 zł               & \multicolumn{1}{c|}{WAR1}                          \\ \hline
+    3  & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 33 333,33 zł               & \multicolumn{1}{c|}{WAR1}                          \\ \hline
+    4  & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 444 444,44 zł              & \multicolumn{1}{c|}{WAR1}                          \\ \hline
+    5  & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 55 555,55 zł               & \multicolumn{1}{c|}{WAR1}                          \\ \hline
+    6  & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 66 666,66 zł               & \multicolumn{1}{c|}{WAR1}                          \\ \hline
+    7  & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 777 777,77 zł              & \multicolumn{1}{c|}{WAR1}                          \\ \hline
+    8  & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 8 888,88 zł                & \multicolumn{1}{c|}{WAR1}                          \\ \hline
+    9  & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 999 999,99 zł              & \multicolumn{1}{c|}{WAR1}                          \\ \hline
+    10 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 111 111,11 zł              & \multicolumn{1}{c|}{WAR2}                          \\ \hline
+    11 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 22 222,22 zł               & \multicolumn{1}{c|}{WAR2}                          \\ \hline
+    12 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 33 333,33 zł               & \multicolumn{1}{c|}{WAR2}                          \\ \hline
+    13 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 444 444,44 zł              & \multicolumn{1}{c|}{WAR2}                          \\ \hline
+    14 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 55 555,55 zł               & \multicolumn{1}{c|}{WAR2}                          \\ \hline
+    15 & Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. & 66 666,66 zł               & \multicolumn{1}{c|}{WAR2}                          \\ \hline
+       & \multicolumn{1}{r|}{\textbf{Suma:}}                                                                                         & \textbf{7 777 777,77 zł}   &
 \end{longtable}
 \kant[4]
 
@@ -82,11 +82,11 @@ As any dedicated reader can clearly see, the Ideal of practical reason is a repr
 % ale ja nie polecam. // AB
 \begin{itemize}
     \item Item 1:
-    \begin{itemize}[label=---]
-        \item item 1.1;
-        \item item 1.2;
-        \item item 1.3;
-    \end{itemize}
+          \begin{itemize}[label=---]
+              \item item 1.1;
+              \item item 1.2;
+              \item item 1.3;
+          \end{itemize}
     \item Item 2;
     \item Item 3;
     \item Item 4.
@@ -97,15 +97,15 @@ As any dedicated reader can clearly see, the Ideal of practical reason is a repr
 \kant[3]
 \begin{enumerate}
     \item Item 1:
-    \begin{enumerate}
-        \item item 1.1;
-        \item item 1.2:
-        \begin{enumerate}
-            \item item 1.2.1;
-            \item item 1.2.2;
-        \end{enumerate}
-        \item item 1.3;
-    \end{enumerate}
+          \begin{enumerate}
+              \item item 1.1;
+              \item item 1.2:
+                    \begin{enumerate}
+                        \item item 1.2.1;
+                        \item item 1.2.2;
+                    \end{enumerate}
+              \item item 1.3;
+          \end{enumerate}
     \item Item 2;
     \item Item 3;
     \item Item 4.

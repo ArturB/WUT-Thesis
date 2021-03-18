@@ -1,21 +1,20 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Bachelor's & Master's Thesis Template             %%
-%% Copyleft by Artur M. Brodzki & Piotr Woźniak      %%
-%% Faculty of Electronics and Information Technology %%
-%% Warsaw University of Technology, 2019-2020        %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%------------------------------------------------%%
+%%  Engineer's & Master's Thesis Template         %%
+%%  Copyleft by Artur M. Brodzki & Piotr Woźniak  %%
+%%  Warsaw University of Technology, 2019-2021    %%
+%%------------------------------------------------%%
 
 \documentclass[
     left=2.5cm,         % Sadly, generic margin parameter
-    right=2.5cm,        % doesnt't work, as it is
+    right=2.5cm,        % does not work, as it is
     top=2.5cm,          % superseded by more specific
     bottom=3cm,         % left...bottom parameters.
     bindingoffset=6mm,  % Optional binding offset.
     nohyphenation=false % You may turn off hyphenation, if don't like.
-]{eiti/eiti-thesis}
+]{src/wut-thesis}
 
 \langpol % Dla języka angielskiego mamy \langeng
-\graphicspath{{img/}}             % Katalog z obrazkami.
+\graphicspath{{tex/img/}}         % Katalog z obrazkami.
 \addbibresource{bibliografia.bib} % Plik .bib z bibliografią
 
 \begin{document}
@@ -76,8 +75,7 @@
 
 \input{tex/1-wstep}         % Wygodnie jest trzymać każdy rozdział w osobnym pliku.
 \input{tex/2-de-finibus}    % Umożliwia to również łatwą migrację do nowej wersji szablonu:
-\input{tex/3-code-listings} % wystarczy podmienić swoje pliki main.tex i eiti-thesis.cls
-                            % na nowe wersje, a cały tekst pracy pozostaje nienaruszony.
+\input{tex/3-code-listings} % wystarczy podmienić swoje pliki main.tex i eiti-thesis.cls na nowe wersje.
 
 \newpage % Rozdziały zaczynamy od nowej strony
 \section{Summatio}          % Można też pisać rozdziały w jednym pliku.

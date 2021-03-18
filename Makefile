@@ -46,7 +46,7 @@ xetex:	*.tex *.bib ./tex/*
 
 # Make release tarball
 release:
-		./scripts/make-release.sh $(version)
+		./src/scripts/make-release.sh $(version)
 
 # Template of building command
 base:

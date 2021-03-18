@@ -45,4 +45,5 @@ base:
 		latexmk $(MKFLAGS) \
 			-output-directory=$(OUT) \
 			-pdflatex="$(CTEX) $(TEXFLAGS)" $<
+		mkdir -p $(BUILD_DIR)/$(PDFS_DIR)
 		cp -v ./$(OUT)/*.pdf ./$(BUILD_DIR)/$(PDFS_DIR)/main-$(CTEX).pdf

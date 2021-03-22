@@ -116,10 +116,20 @@
 \vspace{1cm}          % vertical space
 \listofappendicestoc  % Spis załączników
 
+% Tabele i wykresy w załączniku nie są brane pod uwagę w spisie tabel i wykresów.
+% Ich numeracja jest zresetowana.
+\captionsetup[figure]{list=no}
+\captionsetup[table]{list=no}
+
 % Załączniki
 \newpage
 \appendix{Nazwa załącznika 1}
 \lipsum[1-8]
+\begin{figure}[!h]
+	\label{fig:nowe-logo-pw2}
+	\centering \includegraphics[width=0.5\linewidth]{logopw2.png}
+	\caption{Współczesne logo Politechniki Warszawskiej - załącznik}
+\end{figure}
 
 \newpage
 \appendix{Nazwa załącznika 2}

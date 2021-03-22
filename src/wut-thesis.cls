@@ -20,11 +20,11 @@
     prefix=wut
 }
 
-\DeclareStringOption[2.5cm]{left}
-\DeclareStringOption[2.5cm]{right}
-\DeclareStringOption[2.5cm]{top}
-\DeclareStringOption[2.5cm]{bottom}
-\DeclareStringOption[6mm]{bindingoffset}
+\DeclareStringOption[25mm]{left}
+\DeclareStringOption[25mm]{right}
+\DeclareStringOption[25mm]{top}
+\DeclareStringOption[25mm]{bottom}
+\DeclareStringOption[5mm]{bindingoffset}
 \DeclareBoolOption[false]{nohyphenation}
 \ProcessKeyvalOptions*
 
@@ -176,7 +176,8 @@
 %--------------------------------
 % Initial setup
 %--------------------------------
-\setstretch{1.2}
+\setstretch{1.15}
+\setlength{\parindent}{5mm}
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 

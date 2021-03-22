@@ -3388,7 +3388,12 @@ ut,iaculis
 u,mal
 suadaac,duiMaurisnibhl
 o,facilisisnon,adipiscingquis,ultric
-sa,duiZałącznikNazwazałącznikaLor
+sa,duiRysun
+kWspółcz
+sn
+logoPolit
+chnikiWarszawski
+jzałącznikZałącznikNazwazałącznikaLor
 mipsumdolorsitam
 t,cons
 ct

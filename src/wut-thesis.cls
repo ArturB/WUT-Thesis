@@ -289,6 +289,16 @@
 }
 
 %--------------------------------
+% Wybór wydziału
+%--------------------------------
+\newcommand{\facultyeiti}{
+    \newcommand{\@faculty}{eiti}
+}
+\newcommand{\facultymeil}{
+    \newcommand{\@faculty}{meil}
+}
+
+%--------------------------------
 % Streszczenie po polsku
 %--------------------------------
 \newcommand{\streszczenie}{
@@ -380,11 +390,21 @@
 
     \begin{center}
         %\sffamily
-        \ifnum \pdf@strcmp{\@lang}{polish} = 0
-            \includegraphics[width=\textwidth]{src/img/header.pdf} \\
+        \ifnum \pdf@strcmp{\@faculty}{eiti} = 0
+            \ifnum \pdf@strcmp{\@lang}{polish} = 0
+                \includegraphics[width=\textwidth]{src/img/header-eiti.pdf} \\
+            \fi
+            \ifnum \pdf@strcmp{\@lang}{english} = 0
+                \includegraphics[width=\textwidth]{src/img/header-eiti-eng.pdf} \\
+            \fi
         \fi
-        \ifnum \pdf@strcmp{\@lang}{english} = 0
-            \includegraphics[width=\textwidth]{src/img/header-eng.pdf} \\
+        \ifnum \pdf@strcmp{\@faculty}{meil} = 0
+            \ifnum \pdf@strcmp{\@lang}{polish} = 0
+                \includegraphics[width=\textwidth]{src/img/header-meil.pdf} \\
+            \fi
+            \ifnum \pdf@strcmp{\@lang}{english} = 0
+                \includegraphics[width=\textwidth]{src/img/header-meil-eng.pdf} \\
+            \fi
         \fi
         \hfill \break
         \hfill \break

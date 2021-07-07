@@ -381,10 +381,10 @@
     \begin{center}
         %\sffamily
         \ifnum \pdf@strcmp{\@lang}{polish} = 0
-            \includegraphics[width=\textwidth]{src/img/header.png} \\
+            \includegraphics[width=\textwidth]{src/img/header.pdf} \\
         \fi
         \ifnum \pdf@strcmp{\@lang}{english} = 0
-            \includegraphics[width=\textwidth]{src/img/header-eng.png} \\
+            \includegraphics[width=\textwidth]{src/img/header-eng.pdf} \\
         \fi
         \hfill \break
         \hfill \break
@@ -399,18 +399,18 @@
         \hfill \break
         \ifnum \pdf@strcmp{\ThesisType}{Engineer} = 0
             \ifnum \pdf@strcmp{\@lang}{polish} = 0
-                \includegraphics[width=\textwidth]{src/img/title-inz.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-inz.pdf} \\
             \fi
             \ifnum \pdf@strcmp{\@lang}{english} = 0
-                \includegraphics[width=\textwidth]{src/img/title-inz-eng.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-inz-eng.pdf} \\
             \fi
         \fi
         \ifnum \pdf@strcmp{\ThesisType}{Master} = 0
             \ifnum \pdf@strcmp{\@lang}{polish} = 0
-                \includegraphics[width=\textwidth]{src/img/title-mgr.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-mgr.pdf} \\
             \fi
             \ifnum \pdf@strcmp{\@lang}{english} = 0
-                \includegraphics[width=\textwidth]{src/img/title-mgr-eng.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-mgr-eng.pdf} \\
             \fi
         \fi
         \hfill \break

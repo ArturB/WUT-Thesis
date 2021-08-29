@@ -76,6 +76,7 @@ if 'verify-build' in TARGETS:
             os.system('rm ' + TXT_FILE)
         else:
             os.system('cmp ' + TXT_FILE + ' ' + REF_FILE)
+            os.system('cat ' + TXT_FILE)
             Exit(1)
 
 Exit(0)

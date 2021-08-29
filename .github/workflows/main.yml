@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  make:
+  scons:
     strategy:
       matrix:
         tex-compiler: [lua, pdf]

@@ -17,18 +17,19 @@ if not TARGETS:
 if 'pdf' in TARGETS:
     os.system("latexmk -pdf -output-directory=build/pdflatex " +
               TEXFLAGS + " main.tex")
+    os.system('mkdir -p build/pdfs')
     os.system("cp -v build/pdflatex/main.pdf build/pdfs/pdflatex.pdf")
 
 # Lualatex target
 if 'lua' in TARGETS:
     os.system("latexmk -pdflua -output-directory=build/lualatex " +
               TEXFLAGS + " main.tex")
+    os.system('mkdir -p build/pdfs')
     os.system("cp -v build/lualatex/main.pdf build/pdfs/lualatex.pdf")
 
 # Clean compilation files
 if 'clean' in TARGETS:
     os.system('rm -rfv build')
-    os.system('mkdir -pv build')
     os.system('mkdir -pv build/pdfs')
 
 # Make release

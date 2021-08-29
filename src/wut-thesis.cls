@@ -289,6 +289,16 @@
 }
 
 %--------------------------------
+% Wybór wydziału
+%--------------------------------
+\newcommand{\facultyeiti}{
+    \newcommand{\@faculty}{eiti}
+}
+\newcommand{\facultymeil}{
+    \newcommand{\@faculty}{meil}
+}
+
+%--------------------------------
 % Streszczenie po polsku
 %--------------------------------
 \newcommand{\streszczenie}{
@@ -312,29 +322,40 @@
 % Oświadczenie o autorstwie
 %--------------------------------
 \newcommand{\makeauthorship}{
-    \ifnum \pdf@strcmp{\@lang}{polish} = 0
-        \thispagestyle{plain}
-        \begin{figure}[ht]
-            \vspace{-55pt}
-            \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/img/oswiadczenie_autora_pracy.pdf}
-            }
-        \end{figure}
+    \ifnum \pdf@strcmp{\@faculty}{eiti} = 0
+        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+            \thispagestyle{plain}
+            \begin{figure}[ht]
+                \vspace{-55pt}
+                \noindent\makebox[\textwidth]{
+                \includegraphics[width=1.19\textwidth]{src/img/oswiadczenie_autora_pracy.pdf}
+                }
+            \end{figure}
+        \fi
+        \ifnum \pdf@strcmp{\@lang}{english} = 0
+            \thispagestyle{plain}
+            \begin{figure}[ht]
+                \vspace{-55pt}
+                \noindent\makebox[\textwidth]{
+                \includegraphics[width=1.19\textwidth]{src/img/thesis_author_declaration-1.pdf}
+                }
+            \end{figure}
+            \newpage
+            \thispagestyle{plain}
+            \begin{figure}[h]
+                \vspace{-55pt}
+                \noindent\makebox[\textwidth]{
+                \includegraphics[width=1.19\textwidth]{src/img/thesis_author_declaration-2.pdf}
+                }
+            \end{figure}
+        \fi
     \fi
-    \ifnum \pdf@strcmp{\@lang}{english} = 0
+    \ifnum \pdf@strcmp{\@faculty}{meil} = 0
         \thispagestyle{plain}
         \begin{figure}[ht]
             \vspace{-55pt}
             \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/img/thesis_author_declaration-1.pdf}
-            }
-        \end{figure}
-        \newpage
-        \thispagestyle{plain}
-        \begin{figure}[h]
-            \vspace{-55pt}
-            \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/img/thesis_author_declaration-2.pdf}
+            \includegraphics[width=1.19\textwidth]{src/img/oswiadczenie_autora_pracy-meil.pdf}
             }
         \end{figure}
     \fi
@@ -380,11 +401,21 @@
 
     \begin{center}
         %\sffamily
-        \ifnum \pdf@strcmp{\@lang}{polish} = 0
-            \includegraphics[width=\textwidth]{src/img/header.png} \\
+        \ifnum \pdf@strcmp{\@faculty}{eiti} = 0
+            \ifnum \pdf@strcmp{\@lang}{polish} = 0
+                \includegraphics[width=\textwidth]{src/img/header-eiti.pdf} \\
+            \fi
+            \ifnum \pdf@strcmp{\@lang}{english} = 0
+                \includegraphics[width=\textwidth]{src/img/header-eiti-eng.pdf} \\
+            \fi
         \fi
-        \ifnum \pdf@strcmp{\@lang}{english} = 0
-            \includegraphics[width=\textwidth]{src/img/header-eng.png} \\
+        \ifnum \pdf@strcmp{\@faculty}{meil} = 0
+            \ifnum \pdf@strcmp{\@lang}{polish} = 0
+                \includegraphics[width=\textwidth]{src/img/header-meil.pdf} \\
+            \fi
+            \ifnum \pdf@strcmp{\@lang}{english} = 0
+                \includegraphics[width=\textwidth]{src/img/header-meil-eng.pdf} \\
+            \fi
         \fi
         \hfill \break
         \hfill \break
@@ -399,18 +430,18 @@
         \hfill \break
         \ifnum \pdf@strcmp{\ThesisType}{Engineer} = 0
             \ifnum \pdf@strcmp{\@lang}{polish} = 0
-                \includegraphics[width=\textwidth]{src/img/title-inz.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-inz.pdf} \\
             \fi
             \ifnum \pdf@strcmp{\@lang}{english} = 0
-                \includegraphics[width=\textwidth]{src/img/title-inz-eng.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-inz-eng.pdf} \\
             \fi
         \fi
         \ifnum \pdf@strcmp{\ThesisType}{Master} = 0
             \ifnum \pdf@strcmp{\@lang}{polish} = 0
-                \includegraphics[width=\textwidth]{src/img/title-mgr.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-mgr.pdf} \\
             \fi
             \ifnum \pdf@strcmp{\@lang}{english} = 0
-                \includegraphics[width=\textwidth]{src/img/title-mgr-eng.png} \\
+                \includegraphics[width=\textwidth]{src/img/title-mgr-eng.pdf} \\
             \fi
         \fi
         \hfill \break

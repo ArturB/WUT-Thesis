@@ -11,7 +11,7 @@
     top=25mm,          % superseded by more specific
     bottom=25mm,         % left...bottom parameters.
     bindingoffset=5mm,  % Optional binding offset.
-    nohyphenation=false % You may turn off hyphenation, if don't like. 
+    nohyphenation=false % You may turn off hyphenation, if don't like.
 ]{src/wut-thesis}
 
 \langpol % Dla języka angielskiego mamy \langeng
@@ -51,7 +51,7 @@
 %--------------------------------------
 % Streszczenie po angielsku
 %--------------------------------------
-\newpage
+\clearpage
 \abstract \kant[1-3]
 \keywords XXX, XXX, XXX
 
@@ -78,7 +78,7 @@
 \input{tex/2-de-finibus}    % Umożliwia to również łatwą migrację do nowej wersji szablonu:
 \input{tex/3-code-listings} % wystarczy podmienić swoje pliki main.tex i eiti-thesis.cls na nowe wersje.
 
-\newpage % Rozdziały zaczynamy od nowej strony
+\clearpage % Rozdziały zaczynamy od nowej strony
 \section{Summatio}          % Można też pisać rozdziały w jednym pliku.
 \lipsum[5-10]
 
@@ -91,7 +91,7 @@
 %--------------------------------------------
 % Spisy (opcjonalne)
 %--------------------------------------------
-\newpage
+\clearpage
 \pagestyle{plain}
 
 % Wykaz symboli i skrótów.
@@ -122,7 +122,7 @@
 \captionsetup[table]{list=no}
 
 % Załączniki
-\newpage
+\clearpage
 \appendix{Nazwa załącznika 1}
 \lipsum[1-8]
 \begin{figure}[!h]
@@ -131,7 +131,7 @@
 	\caption{Współczesne logo Politechniki Warszawskiej - załącznik}
 \end{figure}
 
-\newpage
+\clearpage
 \appendix{Nazwa załącznika 2}
 \lipsum[1-4]
 

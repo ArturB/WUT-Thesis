@@ -1,12 +1,12 @@
-\newpage % Rozdziały zaczynamy od nowej strony.
+\clearpage % Rozdziały zaczynamy od nowej strony.
 \section{Code listings}
 
 \lipsum[10]
 
 % \addmargin pozwala na wcięcie kodu od lewej (tutaj: 6mm).
-% Wcięcie pomaga ustawić kod tak, 
-% aby numery linii nie były za bardzo na lewo. 
-% Druga liczba oznacza wcięcie od prawej. 
+% Wcięcie pomaga ustawić kod tak,
+% aby numery linii nie były za bardzo na lewo.
+% Druga liczba oznacza wcięcie od prawej.
 \begin{addmargin}[6mm]{0mm}
   \begin{lstlisting}[
     language=HTML,
@@ -49,7 +49,7 @@ class Collatz {
     }
 
   public:
-    explicit Collatz(unsigned initial_value) : 
+    explicit Collatz(unsigned initial_value) :
         current_val_(initial_value) {}
     void print_sequence() {
         unsigned i = 1;

@@ -55,7 +55,7 @@ if 'make-release' in TARGETS:
 def make_cmp(PDF_FILE, CMP_FILE):
     os.system('pdftotext -enc UTF-8 ' + PDF_FILE + ' ' + CMP_FILE)
     os.system('cat ' + CMP_FILE +
-                ' | tr -cd "[a-ząćęłńóśżźA-ZĄĆĘŁŃÓŚŻŹ]" > ' + CMP_FILE + '.2')
+                ' | tr -cd "[a-zA-Z]" > ' + CMP_FILE + '.2')
     os.system('mv ' + CMP_FILE + '.2' + ' ' + CMP_FILE)
 
 # Make referentials

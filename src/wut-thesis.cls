@@ -59,6 +59,7 @@
 \RequirePackage{multirow}   % Advanced table cells
 \RequirePackage{setspace}   % Set space between lines
 \RequirePackage{scrextend}  % Allows \addmargin environment
+\RequirePackage{tgtermes}   % Copyable font
 \RequirePackage{tocloft}    % Custom ToC/LoF/LoT
 \RequirePackage{url}        % URL-sensitive line breaks
 \RequirePackage{xkeyval}    % Keys and class parameters
@@ -115,16 +116,6 @@
 \else
 
 %--------------------------------------
-% XeTeX specific configuration
-%--------------------------------------
-\ifxetex
-    \RequirePackage{fontspec-xetex}
-    \RequirePackage[
-        protrusion=true,
-    ]{microtype}
-\else
-
-%--------------------------------------
 % PdfTeX specific configuration
 %--------------------------------------
 \ifpdf
@@ -134,7 +125,6 @@
         protrusion=true,
         expansion=true
     ]{microtype}
-\fi
 \fi
 \fi
 
@@ -207,6 +197,17 @@
     \listoftables
     \addcontentsline{toc}{section}{\listtablename}
 }
+
+%--------------------------
+% Sections numbering depth
+%--------------------------
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+%--------------------------------
+% Equations numbering by section
+%--------------------------------
+\numberwithin{equation}{section}
 
 %--------------------------------
 % Header & footer

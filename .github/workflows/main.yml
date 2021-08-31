@@ -11,7 +11,8 @@ jobs:
       fail-fast: false
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -y \
+        run: |
+          sudo apt-get install -y    \
                biber                 \
                latexmk               \
                poppler-utils         \

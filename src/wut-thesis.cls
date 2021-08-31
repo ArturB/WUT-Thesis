@@ -4,7 +4,7 @@
 %%  Warsaw University of Technology, 2019-2021    %%
 %%------------------------------------------------%%
 
-\ProvidesClass{wut/wut-thesis}
+\ProvidesClass{src/wut-thesis}
 
 \LoadClass[
     12pt,
@@ -12,24 +12,27 @@
 ]{mwart}
 
 %--------------------------------------
-% Define class parameters
+% Document class parameters
 %--------------------------------------
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
     family=wut/wut-thesis.cls,
     prefix=wut
 }
-
-\DeclareStringOption[25mm]{left}
-\DeclareStringOption[25mm]{right}
-\DeclareStringOption[25mm]{top}
-\DeclareStringOption[25mm]{bottom}
 \DeclareStringOption[5mm]{bindingoffset}
-\DeclareBoolOption[false]{nohyphenation}
+\DeclareBoolOption[true]{hyphenation}
 \ProcessKeyvalOptions*
+% Hyphenation
+\ifwuthyphenation
+\else
+    \tolerance=1
+    \emergencystretch=\maxdimen
+    \hyphenpenalty=10000
+    \hbadness=10000
+\fi
 
 %--------------------------------
-% Common packages
+% Necessary packages
 %--------------------------------
 \RequirePackage{amsmath}    % Basic mathematical typesetting
 \RequirePackage{amssymb}    % Advanced math symbols
@@ -59,10 +62,23 @@
 \RequirePackage{multirow}   % Advanced table cells
 \RequirePackage{setspace}   % Set space between lines
 \RequirePackage{scrextend}  % Allows \addmargin environment
+\RequirePackage{tgtermes}   % Copyable font
 \RequirePackage{tocloft}    % Custom ToC/LoF/LoT
 \RequirePackage{url}        % URL-sensitive line breaks
 \RequirePackage{xkeyval}    % Keys and class parameters
 \RequirePackage{xspace}     % Remove duplicated spaces
+
+%--------------------------------------
+% PdfTeX specific configuration
+%--------------------------------------
+\ifpdf
+    \RequirePackage[T1]{fontenc}
+    \RequirePackage[utf8]{inputenc}
+    \RequirePackage[
+        protrusion=true,
+        expansion=true
+    ]{microtype}
+\else
 
 %--------------------------------------
 % LuaTeX specific configuration
@@ -112,36 +128,14 @@
     luatexbase.add_to_callback("pre_linebreak_filter",prevent_single_letter,"~")
 
     \end{luacode}
-\else
-
-%--------------------------------------
-% XeTeX specific configuration
-%--------------------------------------
-\ifxetex
-    \RequirePackage{fontspec-xetex}
-    \RequirePackage[
-        protrusion=true,
-    ]{microtype}
-\else
-
-%--------------------------------------
-% PdfTeX specific configuration
-%--------------------------------------
-\ifpdf
-    \RequirePackage[T1]{fontenc}
-    \RequirePackage[utf8]{inputenc}
-    \RequirePackage[
-        protrusion=true,
-        expansion=true
-    ]{microtype}
-\fi
 \fi
 \fi
 
-%--------------------------------
-% Produce clickable hyperlinks
-% in ToC, LoF and LoT
-%--------------------------------
+%-----------------------------------
+% Babel csquotes, clickable
+% hyperlinks and default margins
+%-----------------------------------
+\RequirePackage{csquotes}
 \RequirePackage{hyperref}
 \hypersetup{
     colorlinks,
@@ -150,111 +144,20 @@
     linkcolor=black,
     urlcolor=black
 }
-
-%--------------------------------------
-% Default margin is 2.5 cm
-%--------------------------------------
 \RequirePackage[
     a4paper,
-    left=\wutleft,
-    right=\wutright,
-    top=\wuttop,
-    bottom=\wutbottom,
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm,
     bindingoffset=\wutbindingoffset
 ]{geometry}
-
-%--------------------------------
-% Turn off hyphenation
-%--------------------------------
-\ifwutnohyphenation
-    \tolerance=1
-    \emergencystretch=\maxdimen
-    \hyphenpenalty=10000
-    \hbadness=10000
-\fi
-
-%--------------------------------
-% Initial setup
-%--------------------------------
-\setstretch{1.15}
-\setlength{\parindent}{5mm}
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
-
-%--------------------------------
-% Table of Contents setup
-%--------------------------------
-\setlength{\cftbeforesecskip}{2pt}
-\renewcommand{\cftsecfont}{\bf\normalsize}
-\renewcommand{\cftsecpagefont}{\normalfont}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
-\renewcommand{\cftsecdotsep}{\cftdotsep}
-
-%--------------------------------
-% List of Figures setup
-%--------------------------------
-\renewcommand*\l@figure{\@dottedtocline{1}{0.5em}{2.25em}}
-\newcommand{\listoffigurestoc}{
-    \listoffigures
-    \addcontentsline{toc}{section}{\listfigurename}
-}
-
-%--------------------------------
-% List of Tables setup
-%--------------------------------
-\renewcommand*\l@table{\@dottedtocline{1}{0.5em}{2.25em}}
-\newcommand{\listoftablestoc}{
-    \listoftables
-    \addcontentsline{toc}{section}{\listtablename}
-}
-
-%--------------------------------
-% Header & footer
-%--------------------------------
-\SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
-\let\oldsection\section
-\renewcommand{\section}{
-	\thispagestyle{plain}
-	\oldsection
-}
-
-\fancypagestyle{plain}{
-	\fancyhf{}
-	\renewcommand{\headrulewidth}{0pt}
-	\fancyfoot[LE,RO]{\thepage}
-}
-
-\fancypagestyle{headings}{
-	\fancyhead{}
-	\renewcommand{\headrulewidth}{1pt}
-	\fancyheadoffset{0cm}
-	\fancyhead[RO]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
-	\fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
-	\fancyfoot{}
-	\fancyfoot[LE,RO]{\thepage}
-}
-\pagestyle{headings}
-
-\renewcommand{\sectionmark}[1]{
-	\markboth{#1}{#1}
-}
-
-%--------------------------------
-% Set default list style
-%--------------------------------
-\setlist[itemize,1]{topsep=2pt,label=\large$\bullet$, leftmargin=28pt}
-\setlist[itemize,2]{topsep=2pt,leftmargin=18pt}
-\setlist[itemize,3]{topsep=2pt,leftmargin=18pt}
-
-\setlist[enumerate,1]{topsep=2pt,leftmargin=24pt}
-\setlist[enumerate,2]{topsep=2pt,leftmargin=16pt}
-\setlist[enumerate,3]{topsep=2pt,leftmargin=16pt}
 
 %--------------------------------
 % Wybór języka pracy
 %--------------------------------
 \newcommand{\langpol}{
-    \newcommand{\@lang}{polish}
+    \newcommand{\@lang}{pl}
     \usepackage[polish]{babel}
 
 	\newtheorem{theorem}{Twierdzenie}
@@ -271,7 +174,7 @@
 	}
 }
 \newcommand{\langeng}{
-    \newcommand{\@lang}{english}
+    \newcommand{\@lang}{en}
     \usepackage[english]{babel}
 
 	\newtheorem{theorem}{Theorem}
@@ -289,65 +192,69 @@
 }
 
 %--------------------------------
-% Streszczenie po polsku
+% Wybór wydziału
 %--------------------------------
-\newcommand{\streszczenie}{
-    \thispagestyle{plain}
-    \begin{center}\textbf{\large\@title}\end{center}
-    \textbf{\\ Streszczenie.\xspace}
+\newcommand{\facultyeiti}{
+    \newcommand{\@faculty}{eiti}
 }
-\newcommand{\slowakluczowe}{\vspace{0.5cm}\par\noindent \textbf{Słowa kluczowe: \xspace}}
+\newcommand{\facultymeil}{
+    \newcommand{\@faculty}{meil}
+}
+
+%-----------------------------------
+% Basic setup: text stretch, indent
+% length, list and numbering style
+%-----------------------------------
+\setstretch{1.15}
+\setlength{\parindent}{5mm}
+\counterwithin{equation}{section}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+\setlist[itemize,1]{topsep=2pt,label=\large$\bullet$, leftmargin=28pt}
+\setlist[itemize,2]{topsep=2pt,leftmargin=18pt}
+\setlist[itemize,3]{topsep=2pt,leftmargin=18pt}
+\setlist[enumerate,1]{topsep=2pt,leftmargin=24pt}
+\setlist[enumerate,2]{topsep=2pt,leftmargin=16pt}
+\setlist[enumerate,3]{topsep=2pt,leftmargin=16pt}
 
 %--------------------------------
-% Streszczenie po angielsku
+% Header & footer
 %--------------------------------
-\renewcommand{\abstract}{
-    \thispagestyle{plain}
-    \begin{center}\textbf{\large\@engtitle}\end{center}
-    \textbf{\\ Abstract.\xspace}
+\SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
+\let\oldsection\section
+\renewcommand{\section}{
+	\thispagestyle{plain}
+	\oldsection
 }
-\newcommand{\keywords}{\vspace{0.5cm}\par\noindent \textbf{Keywords: \xspace}}
-
-%--------------------------------
-% Oświadczenie o autorstwie
-%--------------------------------
-\newcommand{\makeauthorship}{
-    \ifnum \pdf@strcmp{\@lang}{polish} = 0
-        \thispagestyle{plain}
-        \begin{figure}[ht]
-            \vspace{-55pt}
-            \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/img/oswiadczenie_autora_pracy.pdf}
-            }
-        \end{figure}
-    \fi
-    \ifnum \pdf@strcmp{\@lang}{english} = 0
-        \thispagestyle{plain}
-        \begin{figure}[ht]
-            \vspace{-55pt}
-            \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/img/thesis_author_declaration-1.pdf}
-            }
-        \end{figure}
-        \newpage
-        \thispagestyle{plain}
-        \begin{figure}[h]
-            \vspace{-55pt}
-            \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/img/thesis_author_declaration-2.pdf}
-            }
-        \end{figure}
-    \fi
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyfoot[LE,RO]{\thepage}
+}
+\fancypagestyle{headings}{
+	\fancyhead{}
+	\renewcommand{\headrulewidth}{1pt}
+	\fancyheadoffset{0cm}
+	\fancyhead[RO]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
+	\fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
+	\fancyfoot{}
+	\fancyfoot[LE,RO]{\thepage}
+}
+\pagestyle{headings}
+\renewcommand{\sectionmark}[1]{
+	\markboth{#1}{#1}
 }
 
 %--------------------------------
 % Strona tytułowa - makra
 %--------------------------------
 \newcommand{\EngineerThesis}{
-    \newcommand{\ThesisType}{Engineer}
+    \newcommand{\@ThesisType}{inz}
 }
 \newcommand{\MasterThesis}{
-    \newcommand{\ThesisType}{Master}
+    \newcommand{\@ThesisType}{mgr}
 }
 \newcommand{\instytut}[1]{
     \newcommand{\@instytut}{#1}
@@ -379,87 +286,61 @@
     \pagenumbering{gobble}
 
     \begin{center}
-        %\sffamily
-        \ifnum \pdf@strcmp{\@lang}{polish} = 0
-            \includegraphics[width=\textwidth]{src/img/header.png} \\
-        \fi
-        \ifnum \pdf@strcmp{\@lang}{english} = 0
-            \includegraphics[width=\textwidth]{src/img/header-eng.png} \\
-        \fi
+        \includegraphics[width=\textwidth]{src/\@lang/header/\@faculty.pdf} \\
         \hfill \break
         \hfill \break
-        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+        \ifnum \pdf@strcmp{\@lang}{pl} = 0
             Instytut \@instytut \\
         \fi
-        \ifnum \pdf@strcmp{\@lang}{english} = 0
+        \ifnum \pdf@strcmp{\@lang}{en} = 0
             Institute of \@instytut \\
         \fi
         \hfill \break
         \hfill \break
         \hfill \break
-        \ifnum \pdf@strcmp{\ThesisType}{Engineer} = 0
-            \ifnum \pdf@strcmp{\@lang}{polish} = 0
-                \includegraphics[width=\textwidth]{src/img/title-inz.png} \\
-            \fi
-            \ifnum \pdf@strcmp{\@lang}{english} = 0
-                \includegraphics[width=\textwidth]{src/img/title-inz-eng.png} \\
-            \fi
-        \fi
-        \ifnum \pdf@strcmp{\ThesisType}{Master} = 0
-            \ifnum \pdf@strcmp{\@lang}{polish} = 0
-                \includegraphics[width=\textwidth]{src/img/title-mgr.png} \\
-            \fi
-            \ifnum \pdf@strcmp{\@lang}{english} = 0
-                \includegraphics[width=\textwidth]{src/img/title-mgr-eng.png} \\
-            \fi
-        \fi
+        \includegraphics[width=\textwidth]{src/\@lang/title/\@ThesisType.pdf} \\
         \hfill \break
-        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+        \ifnum \pdf@strcmp{\@lang}{pl} = 0
             na~kierunku \@kierunek \\
         \fi
-        \ifnum \pdf@strcmp{\@lang}{english} = 0
+        \ifnum \pdf@strcmp{\@lang}{en} = 0
             in~the~field~of~study \@kierunek \\
         \fi
-        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+        \ifnum \pdf@strcmp{\@lang}{pl} = 0
             w~specjalności \@specjalnosc \\
         \fi
-        \ifnum \pdf@strcmp{\@lang}{english} = 0
+        \ifnum \pdf@strcmp{\@lang}{en} = 0
             and~specialisation \@specjalnosc \\
         \fi
         \hfill \break
         \hfill \break
         \large
-        \ifnum \pdf@strcmp{\@lang}{polish} = 0
-            \@title \\
-        \fi
-        \ifnum \pdf@strcmp{\@lang}{english} = 0
-            \@engtitle \\
-        \fi
+        \@title \\
         \hfill \break
         \hfill \break
         \LARGE
         \@author \\
         \normalsize
-        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+        \ifnum \pdf@strcmp{\@lang}{pl} = 0
             Numer~albumu \@album \\
         \fi
-        \ifnum \pdf@strcmp{\@lang}{english} = 0
+        \ifnum \pdf@strcmp{\@lang}{en} = 0
             student record book number \@album \\
         \fi
         \hfill \break
         \hfill \break
-        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+        \ifnum \pdf@strcmp{\@lang}{pl} = 0
             promotor \\
         \fi
-        \ifnum \pdf@strcmp{\@lang}{english} = 0
+        \ifnum \pdf@strcmp{\@lang}{en} = 0
             thesis supervisor \\
         \fi
         \@promotor \\
         \vfill
-        \ifnum \pdf@strcmp{\@lang}{polish} = 0
+        \ifnum \pdf@strcmp{\@lang}{pl} = 0
             WARSZAWA \@date
         \fi
-        \ifnum \pdf@strcmp{\@lang}{english} = 0
+        \ifnum \pdf@strcmp{\@lang}{en} = 0
             WARSAW \@date
         \fi
     \end{center}
@@ -472,20 +353,104 @@
 % Pusta strona - makro
 %--------------------------------
 \newcommand{\blankpage}{
-    \newpage
+    \clearpage
     \thispagestyle{empty}
     \
-    \newpage
+    \clearpage
+}
+
+%--------------------------------
+% Streszczenie po polsku
+%--------------------------------
+\newcommand{\streszczenie}{
+    \thispagestyle{plain}
+    \begin{center}\textbf{\large\@title}\end{center}
+    \textbf{\\ Streszczenie.\xspace}
+}
+\newcommand{\slowakluczowe}{\vspace{0.5cm}\par\noindent \textbf{Słowa kluczowe: \xspace}}
+
+%--------------------------------
+% Streszczenie po angielsku
+%--------------------------------
+\renewcommand{\abstract}{
+    \thispagestyle{plain}
+    \ifnum \pdf@strcmp{\@lang}{pl} = 0
+        \begin{center}\textbf{\large\@engtitle}\end{center}
+    \fi
+    \ifnum \pdf@strcmp{\@lang}{en} = 0
+        \begin{center}\textbf{\large\@title}\end{center}
+    \fi
+    \textbf{\\ Abstract.\xspace}
+}
+\newcommand{\keywords}{\vspace{0.5cm}\par\noindent \textbf{Keywords: \xspace}}
+
+%--------------------------------
+% Oświadczenie o autorstwie
+%--------------------------------
+\newcommand{\makeauthorship}{
+    \ifnum \pdf@strcmp{\@lang}{pl} = 0
+        \thispagestyle{plain}
+        \begin{figure}[ht]
+            \vspace{-55pt}
+            \noindent\makebox[\textwidth]{
+            \includegraphics[width=1.19\textwidth]{src/pl/authorship/\@faculty.pdf}
+            }
+        \end{figure}
+    \fi
+    \ifnum \pdf@strcmp{\@lang}{en} = 0
+        \thispagestyle{plain}
+        \begin{figure}[ht]
+            \vspace{-55pt}
+            \noindent\makebox[\textwidth]{
+            \includegraphics[width=1.19\textwidth]{src/en/authorship/\@faculty-1.pdf}
+            }
+        \end{figure}
+        \clearpage
+        \thispagestyle{plain}
+        \begin{figure}[h]
+            \vspace{-55pt}
+            \noindent\makebox[\textwidth]{
+            \includegraphics[width=1.19\textwidth]{src/en/authorship/\@faculty-2.pdf}
+            }
+        \end{figure}
+    \fi
+}
+
+%--------------------------------
+% Table of Contents setup
+%--------------------------------
+\setlength{\cftbeforesecskip}{2pt}
+\renewcommand{\cftsecfont}{\bf\normalsize}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
+\renewcommand{\cftsecdotsep}{\cftdotsep}
+
+%--------------------------------
+% List of Figures setup
+%--------------------------------
+\renewcommand*\l@figure{\@dottedtocline{1}{0.5em}{2.25em}}
+\newcommand{\listoffigurestoc}{
+    \listoffigures
+    \addcontentsline{toc}{section}{\listfigurename}
+}
+
+%--------------------------------
+% List of Tables setup
+%--------------------------------
+\renewcommand*\l@table{\@dottedtocline{1}{0.5em}{2.25em}}
+\newcommand{\listoftablestoc}{
+    \listoftables
+    \addcontentsline{toc}{section}{\listtablename}
 }
 
 %--------------------------------
 % Skrót (akronim) - makro
 %--------------------------------
 \newcommand{\acronymlist}{
-    \ifnum \pdf@strcmp{\@lang}{polish} = 0
+    \ifnum \pdf@strcmp{\@lang}{pl} = 0
         \section*{Wykaz symboli i skrótów}
     \fi
-    \ifnum \pdf@strcmp{\@lang}{english} = 0
+    \ifnum \pdf@strcmp{\@lang}{en} = 0
         \section*{List of Symbols and Abbreviations}
     \fi
 }
@@ -495,7 +460,7 @@
 }
 
 %--------------------------------
-% Spis załączników - makra
+% Spis załączników
 %--------------------------------
 \newcommand{\nocontentsline}[3]{}
 \newcommand{\tocless}[2]{%
@@ -503,10 +468,10 @@
 }
 
 \newcommand{\@appendixtitle}{
-    \ifnum \pdf@strcmp{\@lang}{polish} = 0
+    \ifnum \pdf@strcmp{\@lang}{pl} = 0
         Załącznik
     \fi
-    \ifnum \pdf@strcmp{\@lang}{english} = 0
+    \ifnum \pdf@strcmp{\@lang}{en} = 0
         Appendix
     \fi
 }
@@ -519,10 +484,10 @@
 }
 
 \newcommand\listofappendicestoc{
-    \ifnum \pdf@strcmp{\@lang}{polish} = 0
+    \ifnum \pdf@strcmp{\@lang}{pl} = 0
         \section*{Spis załączników}\@starttoc{app}
     \fi
-    \ifnum \pdf@strcmp{\@lang}{english} = 0
+    \ifnum \pdf@strcmp{\@lang}{en} = 0
         \section*{List of Appendices}\@starttoc{app}
     \fi
 

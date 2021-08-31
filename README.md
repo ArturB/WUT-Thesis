@@ -4,24 +4,23 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej oraz magi
 
 #### Linki:
 [ref:overleaf]: https://www.overleaf.com/latex/templates/wut-thesis/vfvvdqztfqbt
-[ref:current-zip]: https://github.com/ArturB/WUT-Thesis/releases/tag/2.1.0
+[ref:current-zip]: https://github.com/ArturB/WUT-Thesis/archive/refs/heads/master.zip
 [ref:poradnik-ii]: http://www.ii.pw.edu.pl/index.php/ii_pol/Instytut-Informatyki/Nauczanie/Poradnik-dyplomanta/Przygotowanie-pracy-dyplomowej
 [ref:wiki]: https://github.com/ArturB/WUT-Thesis/wiki
-
-[ref:main-tex]: https://github.com/ArturB/WUT-Thesis/blob/master/main.tex
-[ref:makefile]: https://github.com/ArturB/WUT-Thesis/blob/master/Makefile
-
-[ref:issues]: https://github.com/ArturB/WUT-Thesis/issues
-[ref:releases]: https://github.com/ArturB/WUT-Thesis/releases
+[ref:zarządzenie-rektora]: https://www.bip.pw.edu.pl/Wewnetrzne-akty-prawne/Dokumenty-Rektora-PW/Zarzadzenia-Rektora/2016/Zarzadzenie-Rektora-nr-43-2016-z-dnia-8-09-2016
 
 [ref:texlive]: https://www.tug.org/texlive/
 [ref:miktex]: https://miktex.org/
-[ref:texstudio]: https://www.texstudio.org/
 [ref:vscode]: https://code.visualstudio.com/
+[ref:workshop]: https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop
+[ref:scons]: https://scons.org/
+
+[ref:main-tex]: https://github.com/ArturB/WUT-Thesis/blob/master/main.tex
+[ref:issues]: https://github.com/ArturB/WUT-Thesis/issues
 
 *  [>> Overleaf <<][ref:overleaf] 
-* [Archiwum ZIP][ref:releases]
-* [Wskazówki dot. kompilacji (wiki)][ref:wiki]
+* [Archiwum ZIP][ref:current-zip]
+* [Wskazówki dot. kompilacji][ref:wiki]
 
 ![](https://i.imgur.com/yeeuWpC.png)
 
@@ -35,9 +34,9 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej oraz magi
 * [Uwagi](#uwagi)
 
 ### Status szablonu
-Szablon został zatwierdzony przez niektóre Instytuty wydziału EiTI do oficjalnego użytku; na dzień 17.01.2020 jest to Instytut Informatyki [[klik][ref:poradnik-ii]]. W trakcie realizacji są ustalenia z pozostałymi instytutami oraz podniesienie szablonu do rangi ogólnowydziałowego. Więcej informacji na ten temat znajduje się [w encyklopedii projektu][ref:wiki]. 
+Szablon został zatwierdzony przez [niektóre Instytuty][ref:poradnik-ii] wydziału EiTI do oficjalnego użytku. W trakcie realizacji są ustalenia z pozostałymi instytutami oraz podniesienie szablonu do rangi ogólnowydziałowego.
 
-Szablon zawiera wszystkie wymagane przepisami elementy: stronę tytułową, streszczenia, deklarację o autorstwie. Formatowanie poszczególnych sekcji jest wynikiem ustaleń z Instytutami. W dokumencie zawarte są również przykładowe fragmenty kodu, m. in:
+Szablon zawiera wszystkie wymagane przepisami elementy: stronę tytułową, streszczenia, deklarację o autorstwie. Formatowanie jest zgodne z odpowiednim [Zarządzeniem Rektora][ref:zarządzenie-rektora]. W dokumencie zawarte są przykładowe fragmenty kodu:
 - bibliografia, zawierająca różne typy źródeł: artykuł, książka lub jej fragment, raport, specyfikacja techniczna, repozytorium kodu;
 - fragment kodu źródłowego programu;
 - wykaz symboli i skrótów, spis rysunków, tabel oraz załączników;
@@ -47,18 +46,16 @@ i wiele innych.
 ### Kompilacja
 Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożliwia korzystanie z niego bez konieczności instalacji TeXa na własnej maszynie. Jest to **najprostsza i rekomendowana** metoda korzystania z szablonu. 
 
-Czasem może się zdarzyć, że wersja dostępna na Overleafie jest nieco starsza niż ta znajdująca się na GitHubie. Wynika to z długotrwałego procesu aktualizacji tj. ręcznego zatwierdzania każdej zmiany przez pracowników Overleafa. Informacje nt. bieżącego statusu szablonu znajdują się zawsze [w encyklopedii projektu][ref:wiki]. 
-
-Jeżeli chcesz korzystać z najnowszej wersji szablonu, możesz ją pobrać w zakładce [Releases][ref:releases]. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
+~~Czasami~~ Zazwyczaj ~~może się zdarzyć~~ jest tak, że wersja dostępna na Overleafie jest ~~nieco~~ sporo starsza niż ta znajdująca się na GitHubie. Wynika to z procesu aktualizacji tj. ręcznego zatwierdzania każdej zmiany przez administratorów Overleafa. Jeżeli chcesz korzystać z najnowszej wersji szablonu, możesz ją pobrać [tutaj][ref:current-zip]. Aby skompilować szablon na własnej maszynie należy zainstalować sobie LaTeXa:
 - [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
 - [texlive][ref:texlive] na Linuxie.
 
-Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Dostępne są dwa edytory: [TeX Studio][ref:texstudio] oraz [VS Code][ref:vscode]. Możliwa jest również kompilacja z linii poleceń za pomocą [Makefile][ref:makefile].
+Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Szablon jest rozwijany z użyciem [VS Code][ref:vscode], wyposażonym we wtyczkę [LaTeX Workshop][ref:workshop]. Możliwa jest również kompilacja z linii poleceń za pomocą [SCons][ref:scons].
 
-Szczegółowe informacje nt. samodzielnej kompilacji szablonu i rozwiązania ew. problemów znajdują [w encyklopedii projektu][ref:wiki]. 
+Szczegółowe informacje nt. samodzielnej kompilacji szablonu i rozwiązania ew. problemów znajdują w [encyklopedii projektu][ref:wiki]. 
 
 ### Wsparcie dla prac w języku angielskim
-Szablon od wersji 2.0.0 można stosować zarówno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
+Szablon można stosować zarówno w języku polskim jak i angielskim. W celu wyboru języka, w pliku [main.tex][ref:main-tex] stosujemy komendę:
 
 ```
 \langpol
@@ -76,7 +73,7 @@ dla prac w języku angielskim.
 Preferowanym kanałem zgłaszania problemów z szablonem są [issues-y][ref:issues] na GitHubie. Pisz tam, jeżeli masz jakiś problem.
 
 ### Dla deweloperów
-Informacje dla osób zainteresowanych rozwijaniem szablonu znajdują się [w encyklopedii projektu][ref:wiki]. 
+Informacje dla osób zainteresowanych rozwijaniem szablonu znajdują się w [encyklopedii projektu][ref:wiki]. 
 
 ### Uwagi
-Copyleft © [Artur M. Brodzki](https://github.com/ArturB) 2019-2020. Loosely based on [EiTI-Szablon](https://github.com/pwozniak/EiTI-Szablon) by [Piotr Woźniak](https://github.com/pwozniak). All wrongs reserved. 
+Copyleft © [Artur M. Brodzki](https://github.com/ArturB) 2019-2021. Loosely based on [EiTI-Szablon](https://github.com/pwozniak/EiTI-Szablon) by [Piotr Woźniak](https://github.com/pwozniak). All wrongs reserved. 

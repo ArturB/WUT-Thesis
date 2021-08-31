@@ -27,9 +27,9 @@
 
 \begin{document}
 
-%------------------
+%--------------------------------------
 % Strona tytułowa
-%------------------
+%--------------------------------------
 \instytut{XXXXXX}
 \kierunek{XXXXXX}
 \specjalnosc{XXXXXX}
@@ -37,9 +37,7 @@
     Niepotrzebnie długi i skomplikowany tytuł pracy \\
     trudny do przeczytania, zrozumienia i wymówienia
 }
-% Tytuł po angielsku do angielskiego streszczenia
-% In english theses, you may remove this command
-\engtitle{
+\engtitle{ % Tytuł po angielsku do angielskiego streszczenia
     Unnecessarily long and complicated thesis' title \\
     difficult to read, understand and pronounce
 }
@@ -49,36 +47,36 @@
 \date{\the\year}
 \maketitle
 
-%-------------------------
+%--------------------------------------
 % Streszczenie po polsku
-%-------------------------
+%--------------------------------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \streszczenie \lipsum[1-3]
 \slowakluczowe XXX, XXX, XXX
 
-%----------------------------
+%--------------------------------------
 % Streszczenie po angielsku
-%----------------------------
+%--------------------------------------
 \clearpage
 \abstract \kant[1-3]
 \keywords XXX, XXX, XXX
 
-%----------------------------
+%--------------------------------------
 % Oświadczenie o autorstwie
-%----------------------------
-\cleardoublepage % Zaczynamy od nieparzystej strony
+%--------------------------------------
+\cleardoublepage  % Zaczynamy od nieparzystej strony
 \pagestyle{plain}
 \makeauthorship
 
-%--------------
+%--------------------------------------
 % Spis treści
-%--------------
+%--------------------------------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \tableofcontents
 
-%------------
+%--------------------------------------
 % Rozdziały
-%------------
+%--------------------------------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \pagestyle{headings}
 
@@ -86,20 +84,19 @@
 \input{tex/2-de-finibus}    % Umożliwia to również łatwą migrację do nowej wersji szablonu:
 \input{tex/3-code-listings} % zazwyczaj wystarczy podmienić plik src/wut-thesis.cls
 
- % Można też pisać rozdziały w jednym pliku.
-\clearpage % Zawsze zaczynamy rozdział od nowej strony
-\section{Summatio}
+\clearpage % Rozdziały zaczynamy od nowej strony
+\section{Summatio} % Można też pisać rozdziały w jednym pliku.
 \lipsum[5-10]
 
-%-------------
+%--------------------------------------------
 % Literatura
-%-------------
+%--------------------------------------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \printbibliography
 
-%--------------------------------------
+%--------------------------------------------
 % Spisy: rysunków, tabel, załączników
-%--------------------------------------
+%--------------------------------------------
 \clearpage
 \pagestyle{plain}
 

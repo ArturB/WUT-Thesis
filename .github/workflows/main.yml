@@ -1,38 +1,36 @@
 name: CI
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
 
 jobs:
-
-  scons:
+  test:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        tex-compiler: [pdf]
-    runs-on: ubuntu-20.04
+        test-case: ['en/eiti', 'en/meil', 'pl/eiti', 'pl/meil']
+      fail-fast: false
     steps:
       - name: Install dependencies
         run: |
-          sudo apt-get install -y   \
-               biber                \
-               latexmk              \
-               poppler-utils        \
-               scons                \
-               texlive              \
-               texlive-bibtex-extra \
-               texlive-fonts-extra  \
-               texlive-latex-extra  \
-               texlive-lang-polish  \
-               texlive-luatex       \
-               texlive-xetex        \
+          sudo apt-get install -y    \
+               biber                 \
+               latexmk               \
+               poppler-utils         \
+               scons                 \
+               texlive               \
+               texlive-bibtex-extra  \
+               texlive-fonts-extra   \
+               texlive-latex-extra   \
+               texlive-lang-polish   \
+               texlive-luatex        \
+               texlive-xetex         \
                tex-gyre
 
-      - name: Checkout git repository
+      - name: Checkout WUT-Thesis repository
         uses: actions/checkout@v2
 
       - name: Generate PDF file
-        run: scons ${{ matrix.tex-compiler }}
+        run: cp test/${{matrix.test-case}}/main.textest main.tex && scons pdf
 
       - name: Verify build with referential text
-        run: scons verify-build
+        run: scons test ref=test/${{matrix.test-case}}/ref.txt

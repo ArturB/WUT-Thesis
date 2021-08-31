@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         test-case: ['en/eiti', 'en/meil', 'pl/eiti', 'pl/meil']
-        fail-fast: false
+      fail-fast: false
     steps:
       - name: Install dependencies
         run: sudo apt-get install -y \

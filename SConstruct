@@ -61,7 +61,7 @@ def make_cmp(PDF_FILE, CMP_FILE):
               ' | tr -cd "[a-zA-Z]" > ' + CMP_FILE + '.2')
     os.system('mv ' + CMP_FILE + '.2' + ' ' + CMP_FILE)
 
-# Generate referential txt from test case file
+# Generate referential txt from .textest file
 def make_ref(TEXTEST_DIR):
     PDF_FILE = 'build/pdfs/pdflatex.pdf'
     REF_FILE = TEXTEST_DIR + '/ref.txt'
@@ -78,20 +78,21 @@ def make_ref(TEXTEST_DIR):
     os.system('mv -f test/default.textest main.tex')
     target_clean()
 
-# Make referential files from defined test cases
-def target_refs():
+# Make referential files for all defined test cases
+# Use local machine environment
+def target_local_refs():
     make_ref('test/en/eiti')
     make_ref('test/en/meil')
     make_ref('test/pl/eiti')
     make_ref('test/pl/meil')
 
-# Generate referential files
-# in ubuntu:latest docker image
-def target_docker():
+# Make referential files for all defined test cases
+# using ubuntu:latest docker image
+def target_docker_refs():
     os.system('docker build -f test/Dockerfile -t wut .')
     os.system('docker run --mount type=bind,source=$(pwd)/test,target=/ext -t wut')
 
-# Test pdf
+# Compare pdf with specified ref file
 def target_test(PDF_FILE, REF_FILE):
     TXT_FILE = PDF_FILE + '.txt'
     make_cmp(PDF_FILE, TXT_FILE)
@@ -125,10 +126,10 @@ for target in TARGETS:
         target_clean()
     elif target == 'zip':
         target_zip(ARGUMENTS.get('version', ''))
-    elif target == 'make-refs':
-        target_refs()
-    elif target =='docker':
-        target_docker()
+    elif target == 'docker':
+        target_docker_refs()
+    elif target =='make-refs':
+        target_local_refs()
     elif target == 'test':
         REF_FILE = ARGUMENTS.get('ref', 'test/pl/eiti/ref.txt')
         target_pdf()

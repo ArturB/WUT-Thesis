@@ -85,6 +85,12 @@ def target_refs():
     make_ref('test/pl/eiti')
     make_ref('test/pl/meil')
 
+# Generate referential files
+# in ubuntu:latest docker image
+def target_docker():
+    os.system('docker build -f test/Dockerfile -t wut .')
+    os.system('docker run --mount type=bind,source=$(pwd)/test,target=/ext -t wut')
+
 # Test pdf
 def target_test(PDF_FILE, REF_FILE):
     TXT_FILE = PDF_FILE + '.txt'
@@ -104,7 +110,7 @@ def target_test(PDF_FILE, REF_FILE):
 # --------------------------
 
 if not TARGETS:
-    print("Available targets: all clean lua pdf test zip")
+    print("Available targets: all clean docker lua pdf test zip")
     Exit(1)
 
 for target in TARGETS:
@@ -121,6 +127,8 @@ for target in TARGETS:
         target_zip(ARGUMENTS.get('version', ''))
     elif target == 'make-refs':
         target_refs()
+    elif target =='docker':
+        target_docker()
     elif target == 'test':
         REF_FILE = ARGUMENTS.get('ref', 'test/pl/eiti/ref.txt')
         target_pdf()

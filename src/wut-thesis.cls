@@ -201,14 +201,17 @@
     \newcommand{\@faculty}{meil}
 }
 
-%--------------------------------
-% Basic setup: text stretch,
-% indent length and list style
-%--------------------------------
+%-----------------------------------
+% Basic setup: text stretch, indent
+% length, list and numbering style
+%-----------------------------------
 \setstretch{1.15}
 \setlength{\parindent}{5mm}
+\counterwithin{equation}{section}
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
 \setlist[itemize,1]{topsep=2pt,label=\large$\bullet$, leftmargin=28pt}
 \setlist[itemize,2]{topsep=2pt,leftmargin=18pt}
 \setlist[itemize,3]{topsep=2pt,leftmargin=18pt}

@@ -133,7 +133,7 @@ for target in TARGETS:
     if target == 'all':
         target_pdf()
         target_lua()
-    if target == 'pdf':
+    elif target == 'pdf':
         target_pdf()
     elif target == 'lua':
         target_lua()

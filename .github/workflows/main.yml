@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Generate PDF file
-        run: cp test/${{matrix.test-case}}/main.textest main.tex && scons pdf
+        run: cp test/${{matrix.test-case}}/main.textest main.tex && scons all
 
       - name: Verify build with referential text
         run: scons test ref=test/${{matrix.test-case}}

@@ -3,6 +3,7 @@
 # *************************
 
 import filecmp, os, re
+from threading import Thread
 
 TARGETS = COMMAND_LINE_TARGETS
 TEXFLAGS = '-synctex=1 --interaction=nonstopmode'
@@ -55,28 +56,48 @@ def target_zip(VERSION):
 # -------------
 
 # Generate txt from pdf
-def make_cmp(PDF_FILE, CMP_FILE):
-    os.system('pdftotext -enc UTF-8 ' + PDF_FILE + ' ' + CMP_FILE)
-    os.system('cat ' + CMP_FILE +
-              ' | tr -cd "[a-zA-Z]" > ' + CMP_FILE + '.2')
-    os.system('mv ' + CMP_FILE + '.2' + ' ' + CMP_FILE)
+def make_txt(PDF_FILE, TXT_FILE):
+    os.system('pdftotext -enc UTF-8 ' + PDF_FILE + ' ' + TXT_FILE)
+    os.system('cat ' + TXT_FILE +
+              ' | tr -cd "[a-zA-Z]" > ' + TXT_FILE + '.2')
+    os.system('mv ' + TXT_FILE + '.2' + ' ' + TXT_FILE)
 
 # Generate referential txt from .textest file
+# Generated with both pdftex and luatex
 def make_ref(TEXTEST_DIR):
+    TEX_FILE = TEXTEST_DIR + '/main.textest'
     PDF_FILE = 'build/pdfs/pdflatex.pdf'
-    REF_FILE = TEXTEST_DIR + '/ref.txt'
-    TEST_FILE = TEXTEST_DIR + '/main.textest'
+    LUA_FILE = 'build/pdfs/lualatex.pdf'
+    REF_PDF = TEXTEST_DIR + '/pdflatex.txt'
+    REF_LUA = TEXTEST_DIR + '/lualatex.txt'
 
     target_clean()
     os.system('cp -f main.tex test/default.textest')
+    os.system('cp -f ' + TEX_FILE + ' main.tex')
 
-    os.system('cp -f ' + TEST_FILE + ' main.tex')
     target_pdf()
-    os.system('cp ' + PDF_FILE + ' ' + TEXTEST_DIR + '/ref.pdf')
-    make_cmp(PDF_FILE, REF_FILE)
+    target_lua()
+    os.system('cp ' + PDF_FILE + ' ' + TEXTEST_DIR)
+    os.system('cp ' + LUA_FILE + ' ' + TEXTEST_DIR)
+    make_txt(PDF_FILE, REF_PDF)
+    make_txt(LUA_FILE, REF_LUA)
 
     os.system('mv -f test/default.textest main.tex')
     target_clean()
+
+# Compare pdf with specified ref file
+def test_pdf(PDF_FILE, REF_FILE):
+    PDF_TXT = PDF_FILE + '.txt'
+    make_txt(PDF_FILE, PDF_TXT)
+    if filecmp.cmp(PDF_TXT, REF_FILE):
+        print(os.path.basename(PDF_FILE) + ": OK")
+        os.system('rm ' + PDF_TXT)
+    else:
+        os.system('cat ' + PDF_TXT)
+        os.system('cmp ' + PDF_TXT + ' ' + REF_FILE)
+        print(os.path.basename(PDF_FILE) + ": test failed")
+        os.system('rm ' + PDF_TXT)
+        Exit(1)
 
 # Make referential files for all defined test cases
 # Use local machine environment
@@ -92,19 +113,13 @@ def target_docker_refs():
     os.system('docker build -f test/Dockerfile -t wut .')
     os.system('docker run --mount type=bind,source=$(pwd)/test,target=/ext -t wut')
 
-# Compare pdf with specified ref file
-def target_test(PDF_FILE, REF_FILE):
-    TXT_FILE = PDF_FILE + '.txt'
-    make_cmp(PDF_FILE, TXT_FILE)
-    if filecmp.cmp(TXT_FILE, REF_FILE):
-        print("\nTest result: OK")
-        os.system('rm ' + TXT_FILE)
-    else:
-        os.system('cmp ' + TXT_FILE + ' ' + REF_FILE)
-        os.system('cat ' + TXT_FILE)
-        print("\n\nTest result: failed")
-        os.system('rm ' + TXT_FILE)
-        Exit(1)
+# Test luatex and pdftex pdfs with specified ref
+def target_test(REF_DIR):
+    target_pdf()
+    target_lua()
+    print("")
+    test_pdf('build/pdfs/pdflatex.pdf', REF_DIR + '/pdflatex.txt')
+    test_pdf('build/pdfs/lualatex.pdf', REF_DIR + '/lualatex.txt')
 
 # --------------------------
 # Process specified targets
@@ -126,14 +141,12 @@ for target in TARGETS:
         target_clean()
     elif target == 'zip':
         target_zip(ARGUMENTS.get('version', ''))
-    elif target == 'docker':
-        target_docker_refs()
     elif target =='make-refs':
         target_local_refs()
+    elif target == 'docker':
+        target_docker_refs()
     elif target == 'test':
-        REF_FILE = ARGUMENTS.get('ref', 'test/pl/eiti/ref.txt')
-        target_pdf()
-        target_test('build/pdfs/pdflatex.pdf', REF_FILE)
+        target_test(ARGUMENTS.get('ref', 'test/pl/eiti'))
     else:
         print(target + ': unknown target')
         Exit(1)

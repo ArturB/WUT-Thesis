@@ -33,4 +33,4 @@ jobs:
         run: cp test/${{matrix.test-case}}/main.textest main.tex && scons pdf
 
       - name: Verify build with referential text
-        run: scons test ref=test/${{matrix.test-case}}/ref.txt
+        run: scons test ref=test/${{matrix.test-case}}

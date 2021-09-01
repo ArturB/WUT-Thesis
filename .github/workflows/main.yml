@@ -23,7 +23,6 @@ jobs:
                texlive-latex-extra   \
                texlive-lang-polish   \
                texlive-luatex        \
-               texlive-xetex         \
                tex-gyre
 
       - name: Checkout WUT-Thesis repository

@@ -17,7 +17,6 @@ RUN apt-get install -y \
             texlive-latex-extra \
             texlive-lang-polish \
             texlive-luatex \
-            texlive-xetex \
             tex-gyre
 
 # Copy WUT-Thesis source code

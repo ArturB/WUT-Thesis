@@ -1,19 +1,83 @@
 \clearpage % Rozdziały zaczynamy od nowej strony.
 \section{Praefatio}
+
+% Akapit z cytatem
 \lipsum[1] \cite{goossens93}
+
+% Przykładowy obrazek
 \begin{figure}[!h]
+    % Wyrównanie obrazka, szerokość i plik
     % Zamiast width można też użyć height, etc.
     \centering \includegraphics[width=0.5\linewidth]{logopw.png}
-    % Podpis pod rysunkiem
-    % Znacznik \caption oprócz podpisu służy również do wygenerowania numeru obrazka;
+    % Podpis umieszczamy pod obrazkiem
+    % znacznik \caption służy również do wygenerowania numeru obrazka
     \caption{Tradycyjne godło Politechniki Warszawskiej}
-    % dlatego zawsze pamiętaj używać najpierw \caption, a potem \label
+    % \label pozwala odwołać się do obrazka w innych miejscach za pomocą \ref
+    % odwołanie \ref renderuje się jako numer obrazka,
+    % dlatego zawsze najpierw używaj \caption a potem \label
     \label{fig:tradycyjne-logo-pw}
 \end{figure}
-\lipsum[2-3]
-\begin{figure}[!h]
-    \centering \includegraphics[width=0.5\linewidth]{logopw2.png}
-    \caption{Współczesne logo Politechniki Warszawskiej}
-    \label{fig:nowe-logo-pw}
-\end{figure}
-\lipsum[4-6] Reference to image \ref{fig:nowe-logo-pw}.
+
+% \ref wyrenderuje się jako 'Reference to image 1.1'
+\lipsum[2] Reference to image \ref{fig:tradycyjne-logo-pw}.
+
+% Lista punktowana
+% Parametr label ustawia symbol punktora, a leftmargin - wielkość wcięcia.
+% Domyślny układ to [---] bez wcięcia, bo tak pan Marcin Woliński powiedział;
+% ale ja nie polecam. // AB
+\begin{itemize}
+    \item Item 1:
+    \begin{itemize}[label=---]
+        \item item 1.1;
+        \item item 1.2;
+    \end{itemize}
+    \item Item 2;
+    \item Item 3.
+\end{itemize}
+
+\lipsum[3]
+
+% Lista numerowana w formacie 1.a).ii
+% Tutaj również można stosować \label
+\begin{enumerate}
+    \item Item 1:
+    \begin{enumerate}
+        \item item 1.1;
+        \item item 1.2:
+        \begin{enumerate}
+            \item item 1.2.1;
+            \item item 1.2.2;
+        \end{enumerate}
+        \item item 1.3;
+    \end{enumerate}
+    \item Item 2;
+    \item Item 3.
+\end{enumerate}
+
+% Przypis dolny \footnote
+\lipsum[4] Lorem ipsum dolor sit amet\footnote{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.}, consectetur adipiscing elit.
+
+% Przykładowa tabela: wyśrodkowana i renderowana
+% w miejscu wstawienia: !h = !h[ere]
+% Domyślnie tabele trafiają na górę strony
+\begin{table}[!h] \centering
+    % Podpis tabeli umieszczamy od góry
+    \caption{Przykładowa tabela.}
+    \label{tab:tabela1}
+
+    % Tabela z trzema kolumnami:
+    % dwie wyrównanie do środka [c], a ostatnia do prawej [r]
+    % szerokość kolumn automatyczna (równa szerokości tekstu)
+    \begin{tabular}{| c | c | r |} \hline
+        Kolumna 1       & Kolumna 2 & Liczba \\ \hline\hline
+        cell1           & cell2     & 60     \\ \hline
+        cell4           & cell5     & 43     \\ \hline
+        cell7           & cell8     & 20,45  \\ \hline
+        % Komórka o szerokości dwóch kolumn, wyrównana do prawej
+        % Przypisy dolne w tabelach wstawiamy przez \tablefootnote
+        \multicolumn{2}{|r|}{Suma\tablefootnote{Table footnote.}} & 123,45 \\ \hline
+    \end{tabular}
+
+\end{table}
+
+Lorem ipsum dolor sit amet.

@@ -5,8 +5,9 @@
 %-----------------------------------------------
 
 \documentclass[
-    bindingoffset=5mm, % Optional binding offset.
-    hyphenation=true   % Hyphenation allowed by default
+    bindingoffset=5mm,  % Binding offset
+    footnoteindent=3mm, % Footnote indent
+    hyphenation=true    % Hyphenation turn on/off
 ]{src/wut-thesis}
 
 \graphicspath{{tex/img/}} % Katalog z obrazkami.
@@ -89,11 +90,11 @@
  % Można też pisać rozdziały w jednym pliku.
 \clearpage % Zawsze zaczynamy rozdział od nowej strony
 \section{Summatio}
-\lipsum[5-10]
+\lipsum[4-10]
 
-%-------------
-% Literatura
-%-------------
+%---------------
+% Bibliografia
+%---------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \printbibliography
 
@@ -111,11 +112,8 @@
 
 % Wykaz symboli i skrótów.
 % Pamiętaj, żeby posortować symbole alfabetycznie
-% we własnym zakresie. Ponieważ mało kto używa takiego wykazu,
-% uznałem, że robienie automatycznie sortowanej listy
-% na poziomie LaTeXa to za duży overkill.
-% Makro \acronymlist generuje właściwy tytuł sekcji,
-% w zależności od języka.
+% we własnym zakresie. Makro \acronymlist
+% generuje właściwy tytuł sekcji, w zależności od języka.
 % Makro \acronym dodaje skrót/symbol do listy,
 % zapewniając podstawowe formatowanie.
 \vspace{0.8cm}
@@ -124,20 +122,23 @@
 \acronym{PW}{Politechnika Warszawska}
 \acronym{WEIRD}{ang. \emph{Western, Educated, Industrialized, Rich and Democratic}}
 
-% Tabele i wykresy w załącznikach
-% nie są umieszczane w spisie tabel/wykresów.
+%-------------
+% Załączniki
+%-------------
+
+% Obrazki i tabele w załącznikach nie trafiają do spisów
 \captionsetup[figure]{list=no}
 \captionsetup[table]{list=no}
 
 % Załącznik 1
 \clearpage
 \appendix{Nazwa załącznika 1}
-\lipsum[1-8]
+\lipsum[1-3]
 \begin{figure}[!h]
-	\label{fig:nowe-logo-pw2}
 	\centering \includegraphics[width=0.5\linewidth]{logopw2.png}
-	\caption{Współczesne logo Politechniki Warszawskiej - załącznik}
+	\caption{Obrazek w załączniku.}
 \end{figure}
+\lipsum[4-7]
 
 % Załącznik 2
 \clearpage
@@ -146,9 +147,9 @@
 \begin{table}[!h] \centering
     \caption{Tabela w załączniku.}
     \begin{tabular} {| c | c | r |} \hline
-        Kolumna 1                   & Kolumna 2 & Liczba \\ \hline\hline
-        cell1                       & cell2     & 60     \\ \hline
-        \multicolumn{2}{|r|}{Suma:} & 123,45             \\ \hline
+        Kolumna 1       & Kolumna 2 & Liczba \\ \hline\hline
+        cell1           & cell2     & 60     \\ \hline
+        \multicolumn{2}{|r|}{Suma:} & 123,45 \\ \hline
     \end{tabular}
 \end{table}
 \lipsum[3-4]

@@ -20,6 +20,7 @@
     prefix=wut
 }
 \DeclareStringOption[5mm]{bindingoffset}
+\DeclareStringOption[4mm]{footnoteindent}
 \DeclareBoolOption[true]{hyphenation}
 \ProcessKeyvalOptions*
 % Hyphenation
@@ -34,27 +35,29 @@
 %---------------------
 % Basic dependencies
 %---------------------
-\RequirePackage{amsmath}     % Basic mathematical typesetting
-\RequirePackage{amssymb}     % Advanced math symbols
-\RequirePackage{amsthm}      % Theorems typesetting
-\RequirePackage{array}       % Advanced table column formats
-\RequirePackage{chngcntr}    % Per-section counters
-\RequirePackage{enumitem}    % Itemize/enumrate
-\RequirePackage{fancyhdr}    % Custom header/footer styles
-\RequirePackage{fourier}     % Adobe Utopia font
-\RequirePackage{graphicx}    % Enhanced images support
-\RequirePackage{ifluatex}    % LuaTeX-specific options
-\RequirePackage{kantlipsum}  % English kantian-style lipsum
-\RequirePackage{lipsum}      % Lorem ipsum
-\RequirePackage{listings}    % Code listings
-\RequirePackage{longtable}   % Multi-page tables
-\RequirePackage{multirow}    % Advanced table cells
-\RequirePackage{setspace}    % Set space between lines
-\RequirePackage{scrextend}   % Allows \addmargin environment
-\RequirePackage{tocloft}     % Custom ToC/LoF/LoT
-\RequirePackage{url}         % URL-sensitive line breaks
-\RequirePackage{xkeyval}     % Keys and class parameters
-\RequirePackage{xspace}      % Remove duplicated spaces
+\RequirePackage{amsmath}       % Basic mathematical typesetting
+\RequirePackage{amssymb}       % Advanced math symbols
+\RequirePackage{amsthm}        % Theorems typesetting
+\RequirePackage{array}         % Advanced table column formats
+\RequirePackage{chngcntr}      % Per-section counters
+\RequirePackage{enumitem}      % Itemize/enumrate
+\RequirePackage{fancyhdr}      % Custom header/footer styles
+\RequirePackage{fourier}       % Adobe Utopia font
+\RequirePackage{graphicx}      % Enhanced images support
+\RequirePackage{ifluatex}      % LuaTeX-specific options
+\RequirePackage{kantlipsum}    % English kantian-style lipsum
+\RequirePackage{lipsum}        % Lorem ipsum
+\RequirePackage{listings}      % Code listings
+\RequirePackage{longtable}     % Multi-page tables
+\RequirePackage{multirow}      % Advanced table cells
+\RequirePackage{setspace}      % Set space between lines
+\RequirePackage{scrextend}     % Allows \addmargin environment
+\RequirePackage{tablefootnote} % Table footnotes
+\RequirePackage{tabularx}      % Auto-adjusted tables
+\RequirePackage{tocloft}       % Custom ToC/LoF/LoT
+\RequirePackage{url}           % URL-sensitive line breaks
+\RequirePackage{xkeyval}       % Keys and class parameters
+\RequirePackage{xspace}        % Remove duplicated spaces
 
 %----------------------------
 % Parametrized dependencies
@@ -70,6 +73,12 @@
     labelfont=bf,
     labelsep=period
 ]{caption}
+% Custom footnote typesetting
+\RequirePackage[
+    hang
+]{footmisc}
+\setlength{\footnotemargin}{\wutfootnoteindent}
+%\renewcommand{\thefootnote}{\arabic{footnote}}
 % A4 paper and margins
 \RequirePackage[
     a4paper,
@@ -98,6 +107,7 @@
 % LuaTeX specific code
 %-----------------------
 \ifluatex
+    \RequirePackage[T1]{fontenc}
     \RequirePackage[utf8]{luainputenc}
     \RequirePackage{luacode}
     % In LuaTeX, we can prevent one-letter words
@@ -136,6 +146,51 @@
     luatexbase.add_to_callback("pre_linebreak_filter",prevent_single_letter,"~")
     \end{luacode}
 \fi
+
+%-----------------------
+% Basic configuration
+%-----------------------
+\setstretch{1.15}
+\setlength{\parindent}{5mm}
+\counterwithin{equation}{section}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+\setlist[itemize,1]{topsep=2pt,label=\large$\bullet$, leftmargin=28pt}
+\setlist[itemize,2]{topsep=2pt,leftmargin=18pt}
+\setlist[itemize,3]{topsep=2pt,leftmargin=18pt}
+\setlist[enumerate,1]{topsep=2pt,leftmargin=24pt}
+\setlist[enumerate,2]{topsep=2pt,leftmargin=16pt}
+\setlist[enumerate,3]{topsep=2pt,leftmargin=16pt}
+
+%------------------
+% Header & footer
+%------------------
+\SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
+\let\oldsection\section
+\renewcommand{\section}{
+	\thispagestyle{plain}
+	\oldsection
+}
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyfoot[LE,RO]{\thepage}
+}
+\fancypagestyle{headings}{
+	\fancyhead{}
+	\renewcommand{\headrulewidth}{1pt}
+	\fancyheadoffset{0cm}
+	\fancyhead[RO]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
+	\fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
+	\fancyfoot{}
+	\fancyfoot[LE,RO]{\thepage}
+}
+\pagestyle{headings}
+\renewcommand{\sectionmark}[1]{
+	\markboth{#1}{#1}
+}
 
 %---------------------
 % Wybór języka pracy
@@ -185,52 +240,6 @@
 }
 \newcommand{\facultymeil}{
     \newcommand{\@faculty}{meil}
-}
-
-%------------------------------------
-% Basic setup: text stretch, indent
-% length, list and numbering style
-%------------------------------------
-\setstretch{1.15}
-\setlength{\parindent}{5mm}
-\counterwithin{equation}{section}
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
-\setcounter{tocdepth}{5}
-\setcounter{secnumdepth}{5}
-\setlist[itemize,1]{topsep=2pt,label=\large$\bullet$, leftmargin=28pt}
-\setlist[itemize,2]{topsep=2pt,leftmargin=18pt}
-\setlist[itemize,3]{topsep=2pt,leftmargin=18pt}
-\setlist[enumerate,1]{topsep=2pt,leftmargin=24pt}
-\setlist[enumerate,2]{topsep=2pt,leftmargin=16pt}
-\setlist[enumerate,3]{topsep=2pt,leftmargin=16pt}
-
-%------------------
-% Header & footer
-%------------------
-\SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
-\let\oldsection\section
-\renewcommand{\section}{
-	\thispagestyle{plain}
-	\oldsection
-}
-\fancypagestyle{plain}{
-	\fancyhf{}
-	\renewcommand{\headrulewidth}{0pt}
-	\fancyfoot[LE,RO]{\thepage}
-}
-\fancypagestyle{headings}{
-	\fancyhead{}
-	\renewcommand{\headrulewidth}{1pt}
-	\fancyheadoffset{0cm}
-	\fancyhead[RO]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
-	\fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
-	\fancyfoot{}
-	\fancyfoot[LE,RO]{\thepage}
-}
-\pagestyle{headings}
-\renewcommand{\sectionmark}[1]{
-	\markboth{#1}{#1}
 }
 
 %--------------------------

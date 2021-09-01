@@ -30,7 +30,6 @@ def target_lua():
 def target_clean():
     os.system('rm -rfv build/pdflatex')
     os.system('rm -rfv build/lualatex')
-    os.system('rm -rfv build/pdfs')
     os.system('mkdir -pv build/pdfs')
 
 # Make release-ready zip archive
@@ -101,11 +100,16 @@ def test_pdf(PDF_FILE, REF_FILE):
 
 # Make referential files for all defined test cases
 # Use local machine environment
+# Use inside docker container only
 def target_local_refs():
-    make_ref('test/en/eiti')
-    make_ref('test/en/meil')
-    make_ref('test/pl/eiti')
-    make_ref('test/pl/meil')
+    if os.path.isfile('/.dockerenv'):
+        make_ref('test/en/eiti')
+        make_ref('test/en/meil')
+        make_ref('test/pl/eiti')
+        make_ref('test/pl/meil')
+    else:
+        print("Use this target in docker container only!")
+        Exit(1)
 
 # Make referential files for all defined test cases
 # using ubuntu:latest docker image

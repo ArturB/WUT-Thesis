@@ -11,15 +11,16 @@
     twoside
 ]{mwart}
 
-%--------------------------------------
+%----------------------------
 % Document class parameters
-%--------------------------------------
+%----------------------------
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
     family=wut/wut-thesis.cls,
     prefix=wut
 }
 \DeclareStringOption[5mm]{bindingoffset}
+\DeclareStringOption[4mm]{footnoteindent}
 \DeclareBoolOption[true]{hyphenation}
 \ProcessKeyvalOptions*
 % Hyphenation
@@ -31,67 +32,84 @@
     \hbadness=10000
 \fi
 
-%--------------------------------
-% Necessary packages
-%--------------------------------
-\RequirePackage{amsmath}    % Basic mathematical typesetting
-\RequirePackage{amssymb}    % Advanced math symbols
-\RequirePackage{amsthm}     % Theorems typesetting
-\RequirePackage{array}      % Advanced table column formats
-\RequirePackage[            % Bibliography in biber
+%---------------------
+% Basic dependencies
+%---------------------
+\RequirePackage{amsmath}       % Basic mathematical typesetting
+\RequirePackage{amssymb}       % Advanced math symbols
+\RequirePackage{amsthm}        % Theorems typesetting
+\RequirePackage{array}         % Advanced table column formats
+\RequirePackage{chngcntr}      % Per-section counters
+\RequirePackage{enumitem}      % Itemize/enumrate
+\RequirePackage{fancyhdr}      % Custom header/footer styles
+\RequirePackage{fourier}       % Adobe Utopia font
+\RequirePackage{graphicx}      % Enhanced images support
+\RequirePackage{ifluatex}      % LuaTeX-specific options
+\RequirePackage{kantlipsum}    % English kantian-style lipsum
+\RequirePackage{lipsum}        % Lorem ipsum
+\RequirePackage{listings}      % Code listings
+\RequirePackage{longtable}     % Multi-page tables
+\RequirePackage{multirow}      % Advanced table cells
+\RequirePackage{setspace}      % Set space between lines
+\RequirePackage{scrextend}     % Allows \addmargin environment
+\RequirePackage{tablefootnote} % Table footnotes
+\RequirePackage{tabularx}      % Auto-adjusted tables
+\RequirePackage{tocloft}       % Custom ToC/LoF/LoT
+\RequirePackage{url}           % URL-sensitive line breaks
+\RequirePackage{xkeyval}       % Keys and class parameters
+\RequirePackage{xspace}        % Remove duplicated spaces
+
+%----------------------------
+% Parametrized dependencies
+%----------------------------
+% Bibliography in biber
+\RequirePackage[
     backend=biber,
     style=ieee
 ]{biblatex}
-\RequirePackage[            % Custom figure and table captions
+% Custom figure and table captions
+\RequirePackage[
     font=small,
     labelfont=bf,
     labelsep=period
 ]{caption}
-\RequirePackage{chngcntr}   % Per-section counters
-\RequirePackage{enumitem}   % Itemize/enumrate
-\RequirePackage{fancyhdr}   % Custom header/footer styles
-\RequirePackage{fourier}    % Adobe Utopia font
-\RequirePackage{graphicx}   % Enhanced images support
-\RequirePackage{ifluatex}   % LuaTeX-specific options
-\RequirePackage{ifpdf}      % pdfTeX-specific options
-\RequirePackage{ifxetex}    % XeTeX-specific options
-\RequirePackage{kantlipsum} % English kantian-style lipsum
-\RequirePackage{lipsum}     % Lorem ipsum
-\RequirePackage{listings}   % Code listings
-\RequirePackage{longtable}  % Multi-page tables
-\RequirePackage{multirow}   % Advanced table cells
-\RequirePackage{setspace}   % Set space between lines
-\RequirePackage{scrextend}  % Allows \addmargin environment
-\RequirePackage{tgtermes}   % Copyable font
-\RequirePackage{tocloft}    % Custom ToC/LoF/LoT
-\RequirePackage{url}        % URL-sensitive line breaks
-\RequirePackage{xkeyval}    % Keys and class parameters
-\RequirePackage{xspace}     % Remove duplicated spaces
+% Custom footnote typesetting
+\RequirePackage[
+    hang
+]{footmisc}
+\setlength{\footnotemargin}{\wutfootnoteindent}
+%\renewcommand{\thefootnote}{\arabic{footnote}}
+% A4 paper and margins
+\RequirePackage[
+    a4paper,
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm,
+    bindingoffset=\wutbindingoffset
+]{geometry}
+% Clickable hyperlinks
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+% Advanced interword spacing
+\RequirePackage[
+    protrusion=true,
+    expansion=true
+]{microtype}
 
-%--------------------------------------
-% PdfTeX specific configuration
-%--------------------------------------
-\ifpdf
-    \RequirePackage[T1]{fontenc}
-    \RequirePackage[utf8]{inputenc}
-    \RequirePackage[
-        protrusion=true,
-        expansion=true
-    ]{microtype}
-\else
-
-%--------------------------------------
-% LuaTeX specific configuration
-%--------------------------------------
+%-----------------------
+% LuaTeX specific code
+%-----------------------
 \ifluatex
     \RequirePackage[T1]{fontenc}
     \RequirePackage[utf8]{luainputenc}
-    \RequirePackage{luatexbase}
     \RequirePackage{luacode}
-    \RequirePackage[
-        protrusion=true,
-        expansion=true
-    ]{microtype}
     % In LuaTeX, we can prevent one-letter words
     % from beging at the end of the line.
     \begin{luacode}
@@ -126,85 +144,12 @@
     end
 
     luatexbase.add_to_callback("pre_linebreak_filter",prevent_single_letter,"~")
-
     \end{luacode}
 \fi
-\fi
 
-%-----------------------------------
-% Babel csquotes, clickable
-% hyperlinks and default margins
-%-----------------------------------
-\RequirePackage{csquotes}
-\RequirePackage{hyperref}
-\hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black
-}
-\RequirePackage[
-    a4paper,
-    left=25mm,
-    right=25mm,
-    top=25mm,
-    bottom=25mm,
-    bindingoffset=\wutbindingoffset
-]{geometry}
-
-%--------------------------------
-% Wybór języka pracy
-%--------------------------------
-\newcommand{\langpol}{
-    \newcommand{\@lang}{pl}
-    \usepackage[polish]{babel}
-
-	\newtheorem{theorem}{Twierdzenie}
-	\newtheorem{lemma}{Lemat}
-	\newtheorem{corollary}{Wniosek}
-	\newtheorem{definition}{Definicja}
-	\newtheorem{axiom}{Aksjomat}
-	\newtheorem{assumption}{Założenie}
-
-	\AtBeginDocument{
-		\renewcommand{\listfigurename}{Spis rysunków}
-		\renewcommand{\listtablename}{Spis tabel}
-		\renewcommand{\tablename}{Tabela}
-	}
-}
-\newcommand{\langeng}{
-    \newcommand{\@lang}{en}
-    \usepackage[english]{babel}
-
-	\newtheorem{theorem}{Theorem}
-	\newtheorem{lemma}{Lemma}
-	\newtheorem{corollary}{Corollary}
-	\newtheorem{definition}{Definition}
-	\newtheorem{axiom}{Axiom}
-	\newtheorem{assumption}{Assumption}
-
-	\AtBeginDocument{
-		\renewcommand{\listfigurename}{List of Figures}
-		\renewcommand{\listtablename}{List of Tables}
-		\renewcommand{\tablename}{Table}
-	}
-}
-
-%--------------------------------
-% Wybór wydziału
-%--------------------------------
-\newcommand{\facultyeiti}{
-    \newcommand{\@faculty}{eiti}
-}
-\newcommand{\facultymeil}{
-    \newcommand{\@faculty}{meil}
-}
-
-%-----------------------------------
-% Basic setup: text stretch, indent
-% length, list and numbering style
-%-----------------------------------
+%-----------------------
+% Basic configuration
+%-----------------------
 \setstretch{1.15}
 \setlength{\parindent}{5mm}
 \counterwithin{equation}{section}
@@ -219,9 +164,9 @@
 \setlist[enumerate,2]{topsep=2pt,leftmargin=16pt}
 \setlist[enumerate,3]{topsep=2pt,leftmargin=16pt}
 
-%--------------------------------
+%------------------
 % Header & footer
-%--------------------------------
+%------------------
 \SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
 \let\oldsection\section
 \renewcommand{\section}{
@@ -247,9 +192,59 @@
 	\markboth{#1}{#1}
 }
 
-%--------------------------------
+%---------------------
+% Wybór języka pracy
+%---------------------
+\newcommand{\langpol}{
+    \newcommand{\@lang}{pl}
+    \usepackage[polish]{babel}
+    \usepackage{csquotes}
+
+	\newtheorem{theorem}{Twierdzenie}
+	\newtheorem{lemma}{Lemat}
+	\newtheorem{corollary}{Wniosek}
+	\newtheorem{definition}{Definicja}
+	\newtheorem{axiom}{Aksjomat}
+	\newtheorem{assumption}{Założenie}
+
+	\AtBeginDocument{
+		\renewcommand{\listfigurename}{Spis rysunków}
+		\renewcommand{\listtablename}{Spis tabel}
+		\renewcommand{\tablename}{Tabela}
+	}
+}
+\newcommand{\langeng}{
+    \newcommand{\@lang}{en}
+    \usepackage[english]{babel}
+    \usepackage{csquotes}
+
+	\newtheorem{theorem}{Theorem}
+	\newtheorem{lemma}{Lemma}
+	\newtheorem{corollary}{Corollary}
+	\newtheorem{definition}{Definition}
+	\newtheorem{axiom}{Axiom}
+	\newtheorem{assumption}{Assumption}
+
+	\AtBeginDocument{
+		\renewcommand{\listfigurename}{List of Figures}
+		\renewcommand{\listtablename}{List of Tables}
+		\renewcommand{\tablename}{Table}
+	}
+}
+
+%-----------------
+% Wybór wydziału
+%-----------------
+\newcommand{\facultyeiti}{
+    \newcommand{\@faculty}{eiti}
+}
+\newcommand{\facultymeil}{
+    \newcommand{\@faculty}{meil}
+}
+
+%--------------------------
 % Strona tytułowa - makra
-%--------------------------------
+%--------------------------
 \newcommand{\EngineerThesis}{
     \newcommand{\@ThesisType}{inz}
 }
@@ -275,9 +270,9 @@
     \newcommand{\@engtitle}{#1}
 }
 
-%--------------------------------
+%------------------
 % Strona tytułowa
-%--------------------------------
+%------------------
 \let\oldmaketitle\maketitle
 \renewcommand{\maketitle}{
     \linespread{1.15}
@@ -349,9 +344,9 @@
     \setcounter{page}{1}
 }
 
-%--------------------------------
+%-----------------------
 % Pusta strona - makro
-%--------------------------------
+%-----------------------
 \newcommand{\blankpage}{
     \clearpage
     \thispagestyle{empty}
@@ -359,9 +354,9 @@
     \clearpage
 }
 
-%--------------------------------
+%-------------------------
 % Streszczenie po polsku
-%--------------------------------
+%-------------------------
 \newcommand{\streszczenie}{
     \thispagestyle{plain}
     \begin{center}\textbf{\large\@title}\end{center}
@@ -369,9 +364,9 @@
 }
 \newcommand{\slowakluczowe}{\vspace{0.5cm}\par\noindent \textbf{Słowa kluczowe: \xspace}}
 
-%--------------------------------
+%----------------------------
 % Streszczenie po angielsku
-%--------------------------------
+%----------------------------
 \renewcommand{\abstract}{
     \thispagestyle{plain}
     \ifnum \pdf@strcmp{\@lang}{pl} = 0
@@ -384,9 +379,9 @@
 }
 \newcommand{\keywords}{\vspace{0.5cm}\par\noindent \textbf{Keywords: \xspace}}
 
-%--------------------------------
+%----------------------------
 % Oświadczenie o autorstwie
-%--------------------------------
+%----------------------------
 \newcommand{\makeauthorship}{
     \ifnum \pdf@strcmp{\@lang}{pl} = 0
         \thispagestyle{plain}
@@ -416,36 +411,36 @@
     \fi
 }
 
-%--------------------------------
+%--------------------------
 % Table of Contents setup
-%--------------------------------
+%--------------------------
 \setlength{\cftbeforesecskip}{2pt}
 \renewcommand{\cftsecfont}{\bf\normalsize}
 \renewcommand{\cftsecpagefont}{\normalfont}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
 \renewcommand{\cftsecdotsep}{\cftdotsep}
 
-%--------------------------------
+%------------------------
 % List of Figures setup
-%--------------------------------
+%------------------------
 \renewcommand*\l@figure{\@dottedtocline{1}{0.5em}{2.25em}}
 \newcommand{\listoffigurestoc}{
     \listoffigures
     \addcontentsline{toc}{section}{\listfigurename}
 }
 
-%--------------------------------
+%-----------------------
 % List of Tables setup
-%--------------------------------
+%-----------------------
 \renewcommand*\l@table{\@dottedtocline{1}{0.5em}{2.25em}}
 \newcommand{\listoftablestoc}{
     \listoftables
     \addcontentsline{toc}{section}{\listtablename}
 }
 
-%--------------------------------
+%--------------------------
 % Skrót (akronim) - makro
-%--------------------------------
+%--------------------------
 \newcommand{\acronymlist}{
     \ifnum \pdf@strcmp{\@lang}{pl} = 0
         \section*{Wykaz symboli i skrótów}
@@ -459,9 +454,9 @@
     {\textbf{#1} -- #2}
 }
 
-%--------------------------------
+%-------------------
 % Spis załączników
-%--------------------------------
+%-------------------
 \newcommand{\nocontentsline}[3]{}
 \newcommand{\tocless}[2]{%
     \bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup

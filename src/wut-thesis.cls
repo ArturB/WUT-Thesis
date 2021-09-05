@@ -39,7 +39,6 @@
 \RequirePackage{amssymb}       % Advanced math symbols
 \RequirePackage{amsthm}        % Theorems typesetting
 \RequirePackage{array}         % Advanced table column formats
-\RequirePackage{chngcntr}      % Per-section counters
 \RequirePackage{enumitem}      % Itemize/enumrate
 \RequirePackage{fancyhdr}      % Custom header/footer styles
 \RequirePackage{fourier}       % Adobe Utopia font
@@ -53,10 +52,8 @@
 \RequirePackage{setspace}      % Set space between lines
 \RequirePackage{scrextend}     % Allows \addmargin environment
 \RequirePackage{tablefootnote} % Table footnotes
-\RequirePackage{tabularx}      % Auto-adjusted tables
 \RequirePackage{tocloft}       % Custom ToC/LoF/LoT
 \RequirePackage{url}           % URL-sensitive line breaks
-\RequirePackage{xkeyval}       % Keys and class parameters
 \RequirePackage{xspace}        % Remove duplicated spaces
 
 %----------------------------
@@ -78,7 +75,6 @@
     hang
 ]{footmisc}
 \setlength{\footnotemargin}{\wutfootnoteindent}
-%\renewcommand{\thefootnote}{\arabic{footnote}}
 % A4 paper and margins
 \RequirePackage[
     a4paper,
@@ -147,9 +143,9 @@
     \end{luacode}
 \fi
 
-%-----------------------
+%----------------------
 % Basic configuration
-%-----------------------
+%----------------------
 \setstretch{1.15}
 \setlength{\parindent}{5mm}
 \counterwithin{equation}{section}
@@ -157,22 +153,24 @@
 \counterwithin{table}{section}
 \setcounter{tocdepth}{5}
 \setcounter{secnumdepth}{5}
+% List formatting
 \setlist[itemize,1]{topsep=2pt,label=\large$\bullet$, leftmargin=28pt}
 \setlist[itemize,2]{topsep=2pt,leftmargin=18pt}
 \setlist[itemize,3]{topsep=2pt,leftmargin=18pt}
 \setlist[enumerate,1]{topsep=2pt,leftmargin=24pt}
 \setlist[enumerate,2]{topsep=2pt,leftmargin=16pt}
 \setlist[enumerate,3]{topsep=2pt,leftmargin=16pt}
-
-%------------------
-% Header & footer
-%------------------
+% Section header formatting
 \SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm}
 \let\oldsection\section
 \renewcommand{\section}{
 	\thispagestyle{plain}
 	\oldsection
 }
+
+%------------------
+% Header & footer
+%------------------
 \fancypagestyle{plain}{
 	\fancyhf{}
 	\renewcommand{\headrulewidth}{0pt}
@@ -184,10 +182,9 @@
 	\fancyheadoffset{0cm}
 	\fancyhead[RO]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
 	\fancyhead[LE]{\nouppercase{\thesection.\hspace{8pt}\leftmark}}
-	\fancyfoot{}
 	\fancyfoot[LE,RO]{\thepage}
 }
-\pagestyle{headings}
+% Section number in header
 \renewcommand{\sectionmark}[1]{
 	\markboth{#1}{#1}
 }
@@ -273,7 +270,6 @@
 %------------------
 % Strona tytułowa
 %------------------
-\let\oldmaketitle\maketitle
 \renewcommand{\maketitle}{
     \linespread{1.15}
 
@@ -282,19 +278,16 @@
 
     \begin{center}
         \includegraphics[width=\textwidth]{src/\@lang/header/\@faculty.pdf} \\
-        \hfill \break
-        \hfill \break
+        \vspace{3em}
         \ifnum \pdf@strcmp{\@lang}{pl} = 0
             Instytut \@instytut \\
         \fi
         \ifnum \pdf@strcmp{\@lang}{en} = 0
             Institute of \@instytut \\
         \fi
-        \hfill \break
-        \hfill \break
-        \hfill \break
+        \vspace{4em}
         \includegraphics[width=\textwidth]{src/\@lang/title/\@ThesisType.pdf} \\
-        \hfill \break
+        \vspace{2em}
         \ifnum \pdf@strcmp{\@lang}{pl} = 0
             na~kierunku \@kierunek \\
         \fi
@@ -307,14 +300,10 @@
         \ifnum \pdf@strcmp{\@lang}{en} = 0
             and~specialisation \@specjalnosc \\
         \fi
-        \hfill \break
-        \hfill \break
-        \large
-        \@title \\
-        \hfill \break
-        \hfill \break
-        \LARGE
-        \@author \\
+        \vspace{4em}
+        \large \@title \\
+        \vspace{4.5em}
+        \LARGE \@author \\
         \normalsize
         \ifnum \pdf@strcmp{\@lang}{pl} = 0
             Numer~albumu \@album \\
@@ -322,8 +311,7 @@
         \ifnum \pdf@strcmp{\@lang}{en} = 0
             student record book number \@album \\
         \fi
-        \hfill \break
-        \hfill \break
+        \vspace{3.5em}
         \ifnum \pdf@strcmp{\@lang}{pl} = 0
             promotor \\
         \fi
@@ -342,16 +330,6 @@
 
     \pagenumbering{arabic}
     \setcounter{page}{1}
-}
-
-%-----------------------
-% Pusta strona - makro
-%-----------------------
-\newcommand{\blankpage}{
-    \clearpage
-    \thispagestyle{empty}
-    \
-    \clearpage
 }
 
 %-------------------------

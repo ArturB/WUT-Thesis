@@ -302,7 +302,7 @@
         \fi
         \vspace{4em}
         \large \@title \\
-        \vspace{4.5em}
+        \vspace{4em}
         \LARGE \@author \\
         \normalsize
         \ifnum \pdf@strcmp{\@lang}{pl} = 0
@@ -311,7 +311,7 @@
         \ifnum \pdf@strcmp{\@lang}{en} = 0
             student record book number \@album \\
         \fi
-        \vspace{3.5em}
+        \vspace{4em}
         \ifnum \pdf@strcmp{\@lang}{pl} = 0
             promotor \\
         \fi

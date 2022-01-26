@@ -82,18 +82,7 @@
 %--------------------------------------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \printbibliography
-
-%--------------------------------------------
-% Spisy: rysunków, tabel, załączników
-%--------------------------------------------
 \clearpage
-\pagestyle{plain}
-
-\listoffigurestoc    % Spis rysunków.
-\vspace{1cm}         % vertical space
-\listoftablestoc     % Spis tabel.
-\vspace{1cm}         % vertical space
-\listofappendicestoc % Spis załączników
 
 % Wykaz symboli i skrótów.
 % Pamiętaj, żeby posortować symbole alfabetycznie
@@ -109,6 +98,17 @@
 \acronym{EiTI}{Wydział Elektroniki i Technik Informacyjnych}
 \acronym{PW}{Politechnika Warszawska}
 \acronym{WEIRD}{ang. \emph{Western, Educated, Industrialized, Rich and Democratic}}
+
+%--------------------------------------------
+% Spisy: rysunków, tabel, załączników
+%--------------------------------------------
+\pagestyle{plain}
+
+\listoffigurestoc    % Spis rysunków.
+\vspace{1cm}         % vertical space
+\listoftablestoc     % Spis tabel.
+\vspace{1cm}         % vertical space
+\listofappendicestoc % Spis załączników
 
 % Tabele i wykresy w załącznikach
 % nie są umieszczane w spisie tabel/wykresów.

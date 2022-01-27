@@ -93,11 +93,11 @@
 % w zależności od języka.
 % Makro \acronym dodaje skrót/symbol do listy,
 % zapewniając podstawowe formatowanie.
-\vspace{0.8cm}
 \acronymlist
 \acronym{EiTI}{Wydział Elektroniki i Technik Informacyjnych}
 \acronym{PW}{Politechnika Warszawska}
 \acronym{WEIRD}{ang. \emph{Western, Educated, Industrialized, Rich and Democratic}}
+\vspace{0.8cm}
 
 %--------------------------------------------
 % Spisy: rysunków, tabel, załączników

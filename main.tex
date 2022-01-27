@@ -97,18 +97,7 @@
 %---------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \printbibliography
-
-%--------------------------------------
-% Spisy: rysunków, tabel, załączników
-%--------------------------------------
 \clearpage
-\pagestyle{plain}
-
-\listoffigurestoc    % Spis rysunków.
-\vspace{1cm}         % vertical space
-\listoftablestoc     % Spis tabel.
-\vspace{1cm}         % vertical space
-\listofappendicestoc % Spis załączników
 
 % Wykaz symboli i skrótów.
 % Pamiętaj, żeby posortować symbole alfabetycznie
@@ -116,11 +105,22 @@
 % generuje właściwy tytuł sekcji, w zależności od języka.
 % Makro \acronym dodaje skrót/symbol do listy,
 % zapewniając podstawowe formatowanie.
-\vspace{0.8cm}
 \acronymlist
 \acronym{EiTI}{Wydział Elektroniki i Technik Informacyjnych}
 \acronym{PW}{Politechnika Warszawska}
 \acronym{WEIRD}{ang. \emph{Western, Educated, Industrialized, Rich and Democratic}}
+\vspace{0.8cm}
+
+%--------------------------------------
+% Spisy: rysunków, tabel, załączników
+%--------------------------------------
+\pagestyle{plain}
+
+\listoffigurestoc    % Spis rysunków.
+\vspace{1cm}         % vertical space
+\listoftablestoc     % Spis tabel.
+\vspace{1cm}         % vertical space
+\listofappendicestoc % Spis załączników
 
 %-------------
 % Załączniki

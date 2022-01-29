@@ -68,6 +68,13 @@
 \pagestyle{plain}
 \makeauthorship
 
+%----------------------------
+% Oświadczenie o licencji
+%----------------------------
+\cleardoublepage % Zaczynamy od nieparzystej strony
+\pagestyle{plain}
+\makelicense
+
 %--------------------------------------
 % Spis treści
 %--------------------------------------

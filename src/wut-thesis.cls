@@ -389,6 +389,30 @@
     \fi
 }
 
+%----------------------------
+% Oświadczenie o licencji
+%----------------------------
+\newcommand{\makelicense}{
+    \ifnum \pdf@strcmp{\@lang}{pl} = 0
+        \thispagestyle{plain}
+        \begin{figure}[ht]
+            \vspace{-55pt}
+            \noindent\makebox[\textwidth]{
+            \includegraphics[width=1.19\textwidth]{src/pl/license/\@faculty.pdf}
+            }
+        \end{figure}
+    \fi
+    \ifnum \pdf@strcmp{\@lang}{en} = 0
+        \thispagestyle{plain}
+        \begin{figure}[ht]
+            \vspace{-55pt}
+            \noindent\makebox[\textwidth]{
+            \includegraphics[width=1.19\textwidth]{src/en/license/\@faculty.pdf}
+            }
+        \end{figure}
+    \fi
+}
+
 %--------------------------
 % Table of Contents setup
 %--------------------------

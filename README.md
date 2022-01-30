@@ -36,7 +36,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej oraz magi
 ### Status szablonu
 Szablon został zatwierdzony przez [niektóre Instytuty][ref:poradnik-ii] wydziału EiTI do oficjalnego użytku. W trakcie realizacji są ustalenia z pozostałymi instytutami oraz podniesienie szablonu do rangi ogólnowydziałowego.
 
-Szablon zawiera wszystkie wymagane przepisami elementy: stronę tytułową, streszczenia, deklarację o autorstwie. Formatowanie jest zgodne z odpowiednim [Zarządzeniem Rektora][ref:zarządzenie-rektora]. W dokumencie zawarte są przykładowe fragmenty kodu:
+Szablon zawiera wszystkie wymagane przepisami elementy: stronę tytułową, streszczenia, deklarację o autorstwie. Formatowanie jest zgodne z odpowiednim [Zarządzeniem Rektora][ref:zarządzenie-rektora] (43/2017, 57/2017, 109/2021; w linku to pierwsze). W dokumencie zawarte są przykładowe fragmenty kodu:
 - bibliografia, zawierająca różne typy źródeł: artykuł, książka lub jej fragment, raport, specyfikacja techniczna, repozytorium kodu;
 - fragment kodu źródłowego programu;
 - wykaz symboli i skrótów, spis rysunków, tabel oraz załączników;
@@ -50,7 +50,12 @@ Szablon jest dostępny na platformie webowej [Overleaf][ref:overleaf], co umożl
 - [texlive][ref:texlive] lub [MikTeX][ref:miktex] na Windowsie;
 - [texlive][ref:texlive] na Linuxie.
 
-Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Szablon jest rozwijany z użyciem [VS Code][ref:vscode], wyposażonym we wtyczkę [LaTeX Workshop][ref:workshop]. Możliwa jest również kompilacja z linii poleceń za pomocą [SCons][ref:scons].
+Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Szablon jest rozwijany z użyciem [VS Code][ref:vscode], wyposażonym we wtyczkę [LaTeX Workshop][ref:workshop]. Możliwa jest również kompilacja z linii poleceń za pomocą [SCons][ref:scons] (wymagany Python). Makefile już nie jest używany.
+
+Aby zbudować plik PDF z pracą dyplomową, wystarczy z linii poleceń w głównym folderze projektu wykonać:
+```
+scons all
+```
 
 Szczegółowe informacje nt. samodzielnej kompilacji szablonu i rozwiązania ew. problemów znajdują w [encyklopedii projektu][ref:wiki]. 
 

@@ -7,29 +7,39 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        test-case: ['en/eiti', 'en/meil', 'pl/eiti', 'pl/meil']
+        compiler: ['lualatex', 'pdflatex']
+        faculty: ['eiti', 'meil']
+        lang: ['eng','pol']
+        thesis: ['EngineerThesis', 'MasterThesis']
       fail-fast: false
     steps:
-      - name: Install dependencies
+      - name: Install LaTeX dependencies
         run: |
-          sudo apt-get install -y    \
-               biber                 \
-               latexmk               \
-               poppler-utils         \
-               scons                 \
-               texlive               \
-               texlive-bibtex-extra  \
-               texlive-fonts-extra   \
-               texlive-latex-extra   \
-               texlive-lang-polish   \
-               texlive-luatex        \
+          sudo apt-get install -y   \
+               biber                \
+               latexmk              \
+               python3-pip          \
+               texlive              \
+               texlive-bibtex-extra \
+               texlive-fonts-extra  \
+               texlive-latex-extra  \
+               texlive-lang-polish  \
+               texlive-luatex       \
                tex-gyre
 
       - name: Checkout WUT-Thesis repository
         uses: actions/checkout@v2
 
+      - name: Install Python dependencies
+        run: sudo pip install -r requirements.txt
+
+      - name: Generate test cases
+        run: scons generate_tests
+
       - name: Generate PDF file
-        run: cp test/${{matrix.test-case}}/main.textest main.tex && scons all
+        run: cp test/${{matrix.lang}}/${{matrix.faculty}}/${{matrix.thesis}}.textest main.tex && scons all
 
       - name: Verify build with referential text
-        run: scons test ref=test/${{matrix.test-case}}
+        run: |
+          scons test pdf=build/pdfs/${{matrix.compiler}}.pdf \
+                ref=test/${{matrix.lang}}/${{matrix.faculty}}/${{matrix.thesis}}_${{matrix.compiler}}.txt

@@ -5,8 +5,9 @@
 %-----------------------------------------------
 
 \documentclass[
-    bindingoffset=5mm, % Optional binding offset.
-    hyphenation=true   % Hyphenation allowed by default
+    bindingoffset=5mm,  % Binding offset
+    footnoteindent=3mm, % Footnote indent
+    hyphenation=true    % Hyphenation turn on/off
 ]{src/wut-thesis}
 
 \graphicspath{{tex/img/}} % Katalog z obrazkami.
@@ -21,51 +22,64 @@
 % --
 % Wybór języka: \langpol, \langeng
 %-------------------------------------------------------------
-\facultyeiti    % Wydział Elektroniki i Technik Informacyjnych
-\EngineerThesis % Praca inżynierska
-\langeng % Praca w języku angielskim
+\faculty__[faculty]__
+\__[thesis]__
+\lang__[lang]__
 
 \begin{document}
 
-%--------------------------------------
+%------------------
 % Strona tytułowa
-%--------------------------------------
+%------------------
 \instytut{XXXXXX}
 \kierunek{XXXXXX}
 \specjalnosc{XXXXXX}
 \title{
+    Niepotrzebnie długi i skomplikowany tytuł pracy \\
+    trudny do przeczytania, zrozumienia i wymówienia
+}
+% Tytuł po angielsku do angielskiego streszczenia
+% In english theses, you may remove this command
+\engtitle{
     Unnecessarily long and complicated thesis' title \\
     difficult to read, understand and pronounce
 }
-\author{\{Student's name\}}
+\author{\{Imię i Nazwisko\}}
 \album{XXXXXX}
 \promotor{XXXXXX}
 \date{\the\year}
 \maketitle
 
-%--------------------------------------
-% Abstract
-%--------------------------------------
+%-------------------------
+% Streszczenie po polsku
+%-------------------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
+\streszczenie \lipsum[1-3]
+\slowakluczowe XXX, XXX, XXX
+
+%----------------------------
+% Streszczenie po angielsku
+%----------------------------
+\clearpage
 \abstract \kant[1-3]
 \keywords XXX, XXX, XXX
 
-%--------------------------------------
+%----------------------------
 % Oświadczenie o autorstwie
-%--------------------------------------
-\cleardoublepage  % Zaczynamy od nieparzystej strony
+%----------------------------
+\cleardoublepage % Zaczynamy od nieparzystej strony
 \pagestyle{plain}
 \makeauthorship
 
-%--------------------------------------
+%--------------
 % Spis treści
-%--------------------------------------
+%--------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \tableofcontents
 
-%--------------------------------------
+%------------
 % Rozdziały
-%--------------------------------------
+%------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \pagestyle{headings}
 
@@ -73,24 +87,22 @@
 \input{tex/2-de-finibus}    % Umożliwia to również łatwą migrację do nowej wersji szablonu:
 \input{tex/3-code-listings} % zazwyczaj wystarczy podmienić plik src/wut-thesis.cls
 
-\clearpage % Rozdziały zaczynamy od nowej strony
-\section{Summatio} % Można też pisać rozdziały w jednym pliku.
-\lipsum[5-10]
+ % Można też pisać rozdziały w jednym pliku.
+\clearpage % Zawsze zaczynamy rozdział od nowej strony
+\section{Summatio}
+\lipsum[4-10]
 
-%--------------------------------------------
-% Literatura
-%--------------------------------------------
+%---------------
+% Bibliografia
+%---------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \printbibliography
 \clearpage
 
 % Wykaz symboli i skrótów.
 % Pamiętaj, żeby posortować symbole alfabetycznie
-% we własnym zakresie. Ponieważ mało kto używa takiego wykazu,
-% uznałem, że robienie automatycznie sortowanej listy
-% na poziomie LaTeXa to za duży overkill.
-% Makro \acronymlist generuje właściwy tytuł sekcji,
-% w zależności od języka.
+% we własnym zakresie. Makro \acronymlist
+% generuje właściwy tytuł sekcji, w zależności od języka.
 % Makro \acronym dodaje skrót/symbol do listy,
 % zapewniając podstawowe formatowanie.
 \acronymlist
@@ -99,9 +111,9 @@
 \acronym{WEIRD}{ang. \emph{Western, Educated, Industrialized, Rich and Democratic}}
 \vspace{0.8cm}
 
-%--------------------------------------------
+%--------------------------------------
 % Spisy: rysunków, tabel, załączników
-%--------------------------------------------
+%--------------------------------------
 \pagestyle{plain}
 
 \listoffigurestoc    % Spis rysunków.
@@ -110,31 +122,34 @@
 \vspace{1cm}         % vertical space
 \listofappendicestoc % Spis załączników
 
-% Tabele i wykresy w załącznikach
-% nie są umieszczane w spisie tabel/wykresów.
+%-------------
+% Załączniki
+%-------------
+
+% Obrazki i tabele w załącznikach nie trafiają do spisów
 \captionsetup[figure]{list=no}
 \captionsetup[table]{list=no}
 
 % Załącznik 1
 \clearpage
-\appendix{Appendix 1}
-\lipsum[1-8]
+\appendix{Nazwa załącznika 1}
+\lipsum[1-3]
 \begin{figure}[!h]
-	\label{fig:nowe-logo-pw2}
 	\centering \includegraphics[width=0.5\linewidth]{logopw2.png}
-	\caption{Current logo of Warsaw University of Technology.}
+	\caption{Obrazek w załączniku.}
 \end{figure}
+\lipsum[4-7]
 
 % Załącznik 2
 \clearpage
-\appendix{Appendix 2}
+\appendix{Nazwa załącznika 2}
 \lipsum[1-2]
 \begin{table}[!h] \centering
-    \caption{Table in appendix.}
+    \caption{Tabela w załączniku.}
     \begin{tabular} {| c | c | r |} \hline
-        Column 1                    & Column 2  & No.    \\ \hline\hline
-        cell1                       & cell2     & 60     \\ \hline
-        \multicolumn{2}{|r|}{Sum:}  & 123,45             \\ \hline
+        Kolumna 1       & Kolumna 2 & Liczba \\ \hline\hline
+        cell1           & cell2     & 60     \\ \hline
+        \multicolumn{2}{|r|}{Suma:} & 123,45 \\ \hline
     \end{tabular}
 \end{table}
 \lipsum[3-4]

@@ -1,0 +1,3 @@
+Jinja2>=3.0.0
+pdfminer.six>=2021
+SCons>=4.0.0

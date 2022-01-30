@@ -1,245 +1,208 @@
-# *************************
-# WUT-Thesis build targets
-# *************************
+# ----------------------
+# WUT-Thesis build spec
+# ----------------------
 
-import filecmp, os, re, platform
+import filecmp, os, shutil, subprocess
+from jinja2 import Environment, FileSystemLoader
+from pathlib import Path
+from pdfminer.high_level import extract_text
 from SCons.Script import ARGUMENTS, COMMAND_LINE_TARGETS
 from SCons.Script.SConscript import SConsEnvironment
-
-TEXFLAGS = "-synctex=1 --interaction=nonstopmode"
 
 # --------------
 # Build targets
 # --------------
 
-# Pdflatex
-def target_pdf():
-    if platform.system() == 'Linux':
-        os.system("latexmk -pdf -output-directory=build/pdflatex " + TEXFLAGS + " main.tex")
-    elif platform.system() == 'Windows':
-        os.system("latexmk -pdf -output-directory=build\\pdflatex " + TEXFLAGS + " main.tex")
-    target_paste_to_pdfs("pdflatex")
+LATEXMK_BASE = ["latexmk", "-synctex=1", "--interaction=nonstopmode"]
+
+# Build tex file using pdflatex
+def target_pdf(tex_file: Path, pdf_file: Path):
+    LATEXMK = LATEXMK_BASE
+    LATEXMK += ["-pdf"]
+    LATEXMK += ["--output-directory=" + str(Path("build/pdflatex"))]
+    LATEXMK += [str(tex_file)]
+    subprocess.run(LATEXMK)
+    intermediate_pdf = tex_file.with_suffix(".pdf").name
+    if not pdf_file.parent.exists():
+        os.makedirs(pdf_file.parent)
+    shutil.copy(Path("build/pdflatex/" + intermediate_pdf), pdf_file)
 
 
-# Lualatex
-def target_lua():
-    if platform.system() == 'Linux':
-        os.system("latexmk -pdflua -output-directory=build/lualatex " + TEXFLAGS + " main.tex")
-    elif platform.system() == 'Windows':
-        os.system("latexmk -pdflua -output-directory=build\\lualatex " + TEXFLAGS + " main.tex")
-    target_paste_to_pdfs("lualatex")
+# Build tex file using lualatex
+def target_lua(tex_file: Path, pdf_file: Path):
+    LATEXMK = LATEXMK_BASE
+    LATEXMK += ["-pdflua"]
+    LATEXMK += ["--output-directory=" + str(Path("build/lualatex"))]
+    LATEXMK += [str(tex_file)]
+    subprocess.run(LATEXMK)
+    intermediate_pdf = tex_file.with_suffix(".pdf").name
+    if not pdf_file.parent.exists():
+        os.makedirs(pdf_file.parent)
+    shutil.copy(Path("build/lualatex/" + intermediate_pdf), pdf_file)
 
-def target_paste_to_pdfs(kind):
-    if platform.system() == 'Linux':
-        os.system("mkdir -p build/pdfs")
-        os.system("cp -v build/" + kind + "/main.pdf build/pdfs/" + kind + ".pdf")
-    elif platform.system() == 'Windows':
-        os.system("if not exist build\\pdfs mkdir build\\pdfs")
-        os.system("copy build\\" + kind + "\\main.pdf build\\pdfs\\" + kind + ".pdf")
 
-# Clean
+# Clean build files
 def target_clean():
-    if platform.system() == 'Linux':
-        os.system("rm -rfv build/pdflatex")
-        os.system("rm -rfv build/lualatex")
-        os.system("mkdir -pv build/pdfs")
-    elif platform.system() == 'Windows':
-        os.system("if exist build\\pdflatex rd /S /Q build\\pdflatex")
-        os.system("if exist build\\lualatex rd /S /Q build\\lualatex")
-        os.system("if not exist build\\pdfs mkdir build\\pdfs")
-
-
-# Make release-ready zip archive
-def target_zip(VERSION):
-    if not re.match("^[0-9]+\.[0-9]+\.[0-9]+$", VERSION):
-        print("Please specify release version number in version=X.X.X format!")
-        SConsEnvironment.Exit(1)
-
-    print("version = " + VERSION)
-    if platform.system() == 'Linux':
-        RELEASE_DIR = "build/releases/WUT-Thesis-" + VERSION
-    elif platform.system() == 'Windows':
-        RELEASE_DIR = "build\\releases\\WUT-Thesis-" + VERSION
-
-    if platform.system() == 'Linux':
-        os.system("mkdir -p " + RELEASE_DIR + "/src")
-        os.system("mkdir -p " + RELEASE_DIR + "/tex")
-        os.system("cp -r src/* " + RELEASE_DIR + "/src")
-        os.system("cp -r tex/* " + RELEASE_DIR + "/tex")
-        os.system("cp *.bib *.tex " + RELEASE_DIR)
-        os.system("cp SConstruct " + RELEASE_DIR)
-    elif platform.system() == 'Windows':
-        os.system("if not exist " + RELEASE_DIR + "\\src mkdir " + RELEASE_DIR + "\\src")
-        os.system("if not exist " + RELEASE_DIR + "\\tex mkdir " + RELEASE_DIR + "\\tex")
-        os.system("xcopy /S /Y src\\* " + RELEASE_DIR + "\\src /E /H")
-        os.system("xcopy /S /Y tex\\* " + RELEASE_DIR + "\\tex /E /H")
-        os.system("copy *.bib *.tex " + RELEASE_DIR)
-        os.system("copy SConstruct " + RELEASE_DIR)
-
-    if platform.system() == 'Linux':
-        os.system("zip -r " + RELEASE_DIR + ".zip " + RELEASE_DIR)
-    elif platform.system() == 'Windows':
-        os.system("powershell \"Compress-Archive '" + RELEASE_DIR + "' '" + RELEASE_DIR +".zip'\"")
+    shutil.rmtree("build")
+    os.makedirs("build/pdfs")
 
 
 # -------------
 # Test targets
 # -------------
 
+# fmt:off
+TEST_CASES = [
+    {"lang": "pol", "faculty": "eiti", "thesis": "EngineerThesis"},
+    {"lang": "pol", "faculty": "eiti", "thesis": "MasterThesis"},
+    {"lang": "pol", "faculty": "meil", "thesis": "EngineerThesis"},
+    {"lang": "pol", "faculty": "meil", "thesis": "MasterThesis"},
+    {"lang": "eng", "faculty": "eiti", "thesis": "EngineerThesis"},
+    {"lang": "eng", "faculty": "eiti", "thesis": "MasterThesis"},
+    {"lang": "eng", "faculty": "meil", "thesis": "EngineerThesis"},
+    {"lang": "eng", "faculty": "meil", "thesis": "MasterThesis"},
+]
+# fmt:on
+
 # Generate txt from pdf
-def make_txt(PDF_FILE, TXT_FILE):
-    os.system("pdftotext -enc UTF-8 " + PDF_FILE + " " + TXT_FILE)
-    if platform.system() == 'Linux':
-        os.system("cat " + TXT_FILE + ' | tr -cd "[a-zA-Z]" > ' + TXT_FILE + ".2")
-        os.system("mv " + TXT_FILE + ".2" + " " + TXT_FILE)
-    elif platform.system() == 'Windows':
-        os.system('powershell "(Get-Content ' + TXT_FILE + ' -Encoding UTF8 | Out-String) -replace \\"[^^a-zA-Z]\\",\\"\\"  > ' + TXT_FILE + '.2"')
-        os.system("move /Y " + TXT_FILE + ".2" + " " + TXT_FILE)
+def pdf_to_txt(pdf_file: Path, txt_file: Path):
+    with open(txt_file, "w") as txt_handler:
+        text = extract_text(pdf_file)
+        text2 = ""
+        for char in text:
+            if char in "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ":
+                text2 += char
+        txt_handler.write(text2)
 
 
-# Generate referential txt from .textest file
-# Generated with both pdftex and luatex
-def make_ref(TEXTEST_DIR):
-    if platform.system() == 'Linux':
-        TEX_FILE = TEXTEST_DIR + "/main.textest"
-        PDF_FILE = "build/pdfs/pdflatex.pdf"
-        LUA_FILE = "build/pdfs/lualatex.pdf"
-        REF_PDF = TEXTEST_DIR + "/pdflatex.txt"
-        REF_LUA = TEXTEST_DIR + "/lualatex.txt"
-
-        target_clean()
-        os.system("cp -f main.tex test/default.textest")
-        os.system("cp -f " + TEX_FILE + " main.tex")
-
-        target_pdf()
-        target_lua()
-        os.system("cp " + PDF_FILE + " " + TEXTEST_DIR)
-        os.system("cp " + LUA_FILE + " " + TEXTEST_DIR)
-        make_txt(PDF_FILE, REF_PDF)
-        make_txt(LUA_FILE, REF_LUA)
-
-        os.system("mv -f test/default.textest main.tex")
-        target_clean()
-    elif platform.system() == 'Windows':
-        TEX_FILE = TEXTEST_DIR + "\\main.textest"
-        PDF_FILE = "build\\pdfs\\pdflatex.pdf"
-        LUA_FILE = "build\\pdfs\\lualatex.pdf"
-        REF_PDF = TEXTEST_DIR + "\\pdflatex.txt"
-        REF_LUA = TEXTEST_DIR + "\\lualatex.txt"
-
-        target_clean()
-        os.system("copy /Y main.tex test\\default.textest")
-        os.system("copy /Y" + TEX_FILE + " main.tex")
-
-        target_pdf()
-        target_lua()
-        os.system("copy " + PDF_FILE + " " + TEXTEST_DIR)
-        os.system("copy " + LUA_FILE + " " + TEXTEST_DIR)
-        make_txt(PDF_FILE, REF_PDF)
-        make_txt(LUA_FILE, REF_LUA)
-
-        os.system("move /Y test\\default.textest main.tex")
-        target_clean()
+# Generate textest files (test cases)
+# from ./test/main.tex.j2 Jinja template
+def generate_tests():
+    env = Environment(
+        loader=FileSystemLoader(searchpath=Path("test")),
+        variable_start_string="__[",
+        variable_end_string="]__",
+    )
+    template = env.get_template("main.tex.j2")
+    for test_case in TEST_CASES:
+        textest_path = Path(
+            "test/"
+            + test_case["lang"]
+            + "/"
+            + test_case["faculty"]
+            + "/"
+            + test_case["thesis"]
+            + ".textest"
+        )
+        with open(textest_path, "w") as textest_handler:
+            textest_handler.write(template.render(test_case))
+    print(str(len(TEST_CASES)) + " test cases generated")
 
 
-# Compare pdf with specified ref file
-def test_pdf(PDF_FILE, REF_FILE):
-    PDF_TXT = PDF_FILE + ".txt"
-    make_txt(PDF_FILE, PDF_TXT)
-    if filecmp.cmp(PDF_TXT, REF_FILE):
-        print(os.path.basename(PDF_FILE) + ": OK")
-        if platform.system() == 'Linux':
-            os.system("rm " + PDF_TXT)
-        elif platform.system() == 'Windows':
-            os.system("del " + PDF_TXT)
-    else:
-        if platform.system() == 'Linux':
-            os.system("cat " + PDF_TXT)
-            os.system("cmp " + PDF_TXT + " " + REF_FILE)
-            print(os.path.basename(PDF_FILE) + ": test failed")
-            os.system("rm " + PDF_TXT)
-        elif platform.system() == 'Windows':
-            os.system("powershell \"Get-Content " + PDF_TXT + "\"")
-            os.system("comp /M " + PDF_TXT + " " + REF_FILE)
-            print(os.path.basename(PDF_FILE) + ": test failed")
-            os.system("del " + PDF_TXT)
-        SConsEnvironment.Exit(1)
-
-
-# Make referential files for all defined test cases
+# Update referential txt's from current textest files
 # Use local machine environment
-# Use inside docker container only
-def target_local_refs():
-    if os.path.isfile("/.dockerenv"):
-        if platform.system() == 'Linux':
-            make_ref("test/en/eiti")
-            make_ref("test/en/meil")
-            make_ref("test/pl/eiti")
-            make_ref("test/pl/meil")
-        elif platform.system() == 'Windows':
-            make_ref("test\\en\\eiti")
-            make_ref("test\\en\\meil")
-            make_ref("test\\pl\\eiti")
-            make_ref("test\\pl\\meil")
+def update_refs_local():
+    for test_case in TEST_CASES:
+        # fmt:off
+        tex_file = Path(
+            "test/" + test_case["lang"]
+            + "/" + test_case["faculty"]
+            + "/" + test_case["thesis"]
+            + ".textest"
+        )
+        pdf_file = Path(
+            "test/" + test_case["lang"]
+            + "/" + test_case["faculty"]
+            + "/" + test_case["thesis"]
+            + "_pdflatex.pdf"
+        )
+        lua_file = Path(
+            "test/" + test_case["lang"]
+            + "/" + test_case["faculty"]
+            + "/" + test_case["thesis"]
+            + "_lualatex.pdf"
+        )
+        # fmt:on
+        target_pdf(tex_file, pdf_file)
+        pdf_to_txt(pdf_file, pdf_file.with_suffix(".txt"))
+
+        target_lua(tex_file, lua_file)
+        pdf_to_txt(lua_file, lua_file.with_suffix(".txt"))
+
+
+# Update referential txt's from current textest files
+# Use ubuntu:latest docker environment
+def update_refs_docker():
+    subprocess.run(
+        ["docker", "build", "-f", str(Path("test/Dockerfile")), "-t", "wut", "."]
+    )
+    subprocess.run(
+        [
+            "docker",
+            "run",
+            "--mount",
+            "type=bind,source=" + str(Path.cwd()) + "/test,target=/ext",
+            "-t",
+            "wut",
+        ]
+    )
+
+
+# Compare pdf with specified
+# referential txt
+def test_pdf(pdf_file: Path, ref_file: Path):
+    pdf_file_txt = pdf_file.with_suffix(".txt")
+    pdf_to_txt(pdf_file, pdf_file_txt)
+    if filecmp.cmp(pdf_file_txt, ref_file):
+        print(str(pdf_file) + ": OK")
+        os.remove(pdf_file_txt)
     else:
-        print("Use this target in docker container only!")
+        print(str(pdf_file) + ": test failed!")
+        os.remove(pdf_file_txt)
         SConsEnvironment.Exit(1)
-
-
-# Make referential files for all defined test cases
-# using ubuntu:latest docker image
-def target_docker_refs():
-    if platform.system() == 'Linux':
-        os.system("docker build -f test/Dockerfile -t wut .")
-        os.system("docker run --mount type=bind,source=$(pwd)/test,target=/ext -t wut")
-    elif platform.system() == 'Windows':
-        os.system("docker build -f test\\Dockerfile -t wut .")
-        os.system("docker run --mount type=bind,source=%CD%\\test,target=/ext -t wut")
-
-
-# Test luatex and pdftex pdfs with specified ref
-def target_test(REF_DIR):
-    target_pdf()
-    target_lua()
-    print("")
-    if platform.system() == 'Linux':
-        test_pdf("build/pdfs/pdflatex.pdf", REF_DIR + "/pdflatex.txt")
-        test_pdf("build/pdfs/lualatex.pdf", REF_DIR + "/lualatex.txt")
-    elif platform.system() == 'Windows':
-        test_pdf("build\\pdfs\\pdflatex.pdf", REF_DIR + "\\pdflatex.txt")
-        test_pdf("build\\pdfs\\lualatex.pdf", REF_DIR + "\\lualatex.txt")
 
 
 # --------------------------
 # Process specified targets
 # --------------------------
+
+# Auxiliary
+def print_help():
+    print("Available targets: ")
+    print("    all pdf lua clean generate_tests test_pdf")
+    print("    update_refs_local update_refs_docker")
+
+
 if not COMMAND_LINE_TARGETS:
-    print("Available targets: all clean docker lua pdf test zip")
+    print_help()
     SConsEnvironment.Exit(1)
 
 for target in COMMAND_LINE_TARGETS:
     if target == "all":
-        target_pdf()
-        target_lua()
+        target_pdf(Path("main.tex"), Path("build/pdfs/pdflatex.pdf"))
+        target_lua(Path("main.tex"), Path("build/pdfs/lualatex.pdf"))
     elif target == "pdf":
-        target_pdf()
+        target_pdf(Path("main.tex"), Path("build/pdfs/pdflatex.pdf"))
     elif target == "lua":
-        target_lua()
+        target_lua(Path("main.tex"), Path("build/pdfs/lualatex.pdf"))
     elif target == "clean":
         target_clean()
-    elif target == "zip":
-        target_zip(ARGUMENTS.get("version", ""))
-    elif target == "make-refs":
-        target_local_refs()
-    elif target == "docker":
-        target_docker_refs()
-    elif target == "test":
-        if platform.system() == 'Linux':
-            target_test(ARGUMENTS.get("ref", "test/pl/eiti"))
-        elif platform.system() == 'Windows':
-            target_test(ARGUMENTS.get("ref", "test\\pl\\eiti"))
+    elif target == "generate_tests":
+        generate_tests()
+    elif target == "update_refs_local":
+        generate_tests()
+        update_refs_local()
+    elif target == "update_refs_docker":
+        generate_tests()
+        update_refs_docker()
+    elif target == "test_pdf":
+        test_pdf(
+            Path(ARGUMENTS.get("pdf", "build/pdfs/pdflatex.pdf")),
+            Path(ARGUMENTS.get("ref", "test/pol/eiti/EngineerThesis_pdflatex.txt")),
+        )
     else:
         print(target + ": unknown target")
+        print_help()
         SConsEnvironment.Exit(1)
 
 SConsEnvironment.Exit(0)

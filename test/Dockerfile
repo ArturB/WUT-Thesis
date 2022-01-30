@@ -4,13 +4,12 @@ FROM ubuntu:latest
 ENV TZ=Europe/Warsaw
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# Install LaTeX and SCons
+# Install LaTeX dependencies
 RUN apt-get update
 RUN apt-get install -y \
             biber \
             latexmk \
-            poppler-utils \
-            scons \
+            python3-pip \
             texlive \
             texlive-bibtex-extra \
             texlive-fonts-extra \
@@ -22,5 +21,8 @@ RUN apt-get install -y \
 # Copy WUT-Thesis source code
 COPY . /
 
-# Build and copy refs
-ENTRYPOINT [ "/bin/bash", "-c", "scons make-refs && cp -rv /test/* /ext" ]
+# Install Python dependencies
+RUN pip install -r requirements.txt
+
+# Build and copy referential txt
+ENTRYPOINT [ "/bin/bash", "-c", "scons clean && scons update_refs_local && cp -rv /test/* /ext" ]

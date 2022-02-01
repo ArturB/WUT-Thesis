@@ -169,7 +169,7 @@ def test_pdf(pdf_file: Path, ref_file: Path):
 # Auxiliary
 def print_help():
     print("Available targets: ")
-    print("    all pdf lua clean generate_tests test_pdf")
+    print("    quick all pdf lua clean generate_tests test_pdf")
     print("    update_refs_local update_refs_docker")
 
 
@@ -178,7 +178,9 @@ if not COMMAND_LINE_TARGETS:
     SConsEnvironment.Exit(1)
 
 for target in COMMAND_LINE_TARGETS:
-    if target == "all":
+    if target == "quick":
+        target_pdf(Path("main.tex"), Path("main.pdf"))
+    elif target == "all":
         target_pdf(Path("main.tex"), Path("build/pdfs/pdflatex.pdf"))
         target_lua(Path("main.tex"), Path("build/pdfs/lualatex.pdf"))
     elif target == "pdf":

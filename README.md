@@ -54,8 +54,10 @@ Po zainstalowaniu LateXa, należy wyposażyć się jeszcze w IDE/edytor. Szablon
 
 Aby zbudować plik PDF z pracą dyplomową, wystarczy z linii poleceń w głównym folderze projektu wykonać:
 ```
-scons all
+scons quick
 ```
+
+Plik PDF z pracą dyplomową pojawi się wtedy w głównym folderze projektu.
 
 Szczegółowe informacje nt. samodzielnej kompilacji szablonu i rozwiązania ew. problemów znajdują w [encyklopedii projektu][ref:wiki]. 
 

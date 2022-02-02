@@ -361,56 +361,26 @@
 % Oświadczenie o autorstwie
 %----------------------------
 \newcommand{\makeauthorship}{
-    \ifnum \pdf@strcmp{\@lang}{pl} = 0
-        \thispagestyle{plain}
-        \begin{figure}[ht]
-            \vspace{-55pt}
-            \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/pl/authorship/\@faculty.pdf}
-            }
-        \end{figure}
-    \fi
-    \ifnum \pdf@strcmp{\@lang}{en} = 0
-        \thispagestyle{plain}
-        \begin{figure}[ht]
-            \vspace{-55pt}
-            \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/en/authorship/\@faculty-1.pdf}
-            }
-        \end{figure}
-        \clearpage
-        \thispagestyle{plain}
-        \begin{figure}[h]
-            \vspace{-55pt}
-            \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/en/authorship/\@faculty-2.pdf}
-            }
-        \end{figure}
-    \fi
+    \thispagestyle{plain}
+    \begin{figure}[ht]
+        \vspace{-55pt}
+        \noindent\makebox[\textwidth]{
+        \includegraphics[width=1.19\textwidth]{src/\@lang/authorship/\@faculty.pdf}
+        }
+    \end{figure}
 }
 
 %----------------------------
 % Oświadczenie o licencji
 %----------------------------
 \newcommand{\makelicense}{
-    \ifnum \pdf@strcmp{\@lang}{pl} = 0
-        \thispagestyle{plain}
-        \begin{figure}[ht]
-            \vspace{-55pt}
-            \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/pl/license/\@faculty.pdf}
-            }
-        \end{figure}
-    \fi
-    \ifnum \pdf@strcmp{\@lang}{en} = 0
-        \thispagestyle{plain}
-        \begin{figure}[ht]
-            \vspace{-55pt}
-            \noindent\makebox[\textwidth]{
-            \includegraphics[width=1.19\textwidth]{src/en/license/\@faculty.pdf}
-            }
-        \end{figure}
-    \fi
+    \thispagestyle{plain}
+    \begin{figure}[ht]
+        \vspace{-55pt}
+        \noindent\makebox[\textwidth]{
+        \includegraphics[width=1.19\textwidth]{src/\@lang/license/\@faculty.pdf}
+        }
+    \end{figure}
 }
 
 %--------------------------

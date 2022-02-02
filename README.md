@@ -36,7 +36,7 @@ Repozytorium zawiera szablon pracy dyplomowej w LateXu: inżynierskiej oraz magi
 ### Status szablonu
 Szablon został zatwierdzony przez [niektóre Instytuty][ref:poradnik-ii] wydziału EiTI do oficjalnego użytku. W trakcie realizacji są ustalenia z pozostałymi instytutami oraz podniesienie szablonu do rangi ogólnowydziałowego.
 
-Szablon zawiera wszystkie wymagane przepisami elementy: stronę tytułową, streszczenia, deklarację o autorstwie. Formatowanie jest zgodne z odpowiednim [Zarządzeniem Rektora][ref:zarządzenie-rektora] (43/2017, 57/2017, 109/2021; w linku to pierwsze). W dokumencie zawarte są przykładowe fragmenty kodu:
+Szablon zawiera wszystkie wymagane przepisami elementy: stronę tytułową, streszczenia, deklarację o autorstwie. Formatowanie jest zgodne z odpowiednim [Zarządzeniem Rektora][ref:zarządzenie-rektora] (43/2017, 57/2017, 109/2021, 3/2022; w linku to pierwsze). W dokumencie zawarte są przykładowe fragmenty kodu:
 - bibliografia, zawierająca różne typy źródeł: artykuł, książka lub jej fragment, raport, specyfikacja techniczna, repozytorium kodu;
 - fragment kodu źródłowego programu;
 - wykaz symboli i skrótów, spis rysunków, tabel oraz załączników;

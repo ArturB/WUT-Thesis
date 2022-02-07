@@ -348,10 +348,10 @@
 \renewcommand{\abstract}{
     \thispagestyle{plain}
     \ifnum \pdf@strcmp{\@lang}{pl} = 0
-        \begin{center}\textbf{\large\@engtitle}\end{center}
+        \begin{center}\textbf{\large\@title}\end{center}
     \fi
     \ifnum \pdf@strcmp{\@lang}{en} = 0
-        \begin{center}\textbf{\large\@title}\end{center}
+        \begin{center}\textbf{\large\@engtitle}\end{center}
     \fi
     \textbf{\\ Abstract.\xspace}
 }

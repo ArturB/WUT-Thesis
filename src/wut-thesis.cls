@@ -347,12 +347,7 @@
 %----------------------------
 \renewcommand{\abstract}{
     \thispagestyle{plain}
-    \ifnum \pdf@strcmp{\@lang}{pl} = 0
-        \begin{center}\textbf{\large\@engtitle}\end{center}
-    \fi
-    \ifnum \pdf@strcmp{\@lang}{en} = 0
-        \begin{center}\textbf{\large\@title}\end{center}
-    \fi
+    \begin{center}\textbf{\large\@engtitle}\end{center}
     \textbf{\\ Abstract.\xspace}
 }
 \newcommand{\keywords}{\vspace{0.5cm}\par\noindent \textbf{Keywords: \xspace}}

@@ -1,7 +1,7 @@
 %%------------------------------------------------%%
 %%  Engineer's & Master's Thesis Template         %%
 %%  Copyleft by Artur M. Brodzki & Piotr Woźniak  %%
-%%  Warsaw University of Technology, 2019-2021    %%
+%%  Warsaw University of Technology, 2019-2022    %%
 %%------------------------------------------------%%
 
 \ProvidesClass{src/wut-thesis}

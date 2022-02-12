@@ -1,7 +1,7 @@
 %%------------------------------------------------%%
 %%  Engineer's & Master's Thesis Template         %%
 %%  Copyleft by Artur M. Brodzki & Piotr Woźniak  %%
-%%  Warsaw University of Technology, 2019-2021    %%
+%%  Warsaw University of Technology, 2019-2022    %%
 %%------------------------------------------------%%
 
 \ProvidesClass{src/wut-thesis}
@@ -266,6 +266,9 @@
 \newcommand{\engtitle}[1]{
     \newcommand{\@engtitle}{#1}
 }
+\newcommand{\poltitle}[1]{
+    \newcommand{\@poltitle}{#1}
+}
 
 %------------------
 % Strona tytułowa
@@ -335,27 +338,47 @@
 %-------------------------
 % Streszczenie po polsku
 %-------------------------
-\newcommand{\streszczenie}{
+\renewcommand{\abstract}{
     \thispagestyle{plain}
     \begin{center}\textbf{\large\@title}\end{center}
-    \textbf{\\ Streszczenie.\xspace}
+    \ifnum \pdf@strcmp{\@lang}{pl} = 0
+        \textbf{\\ Streszczenie.\xspace}
+    \fi
+    \ifnum \pdf@strcmp{\@lang}{en} = 0
+        \textbf{\\ Abstract.\xspace}
+    \fi
 }
-\newcommand{\slowakluczowe}{\vspace{0.5cm}\par\noindent \textbf{Słowa kluczowe: \xspace}}
+\newcommand{\keywords}{
+    \ifnum \pdf@strcmp{\@lang}{pl} = 0
+        \vspace{0.5cm}\par\noindent \textbf{Słowa kluczowe:\xspace}
+    \fi
+    \ifnum \pdf@strcmp{\@lang}{en} = 0
+        \vspace{0.5cm}\par\noindent \textbf{Keywords:\xspace}
+    \fi
+}
 
 %----------------------------
 % Streszczenie po angielsku
 %----------------------------
-\renewcommand{\abstract}{
+\newcommand{\secondabstract}{
     \thispagestyle{plain}
     \ifnum \pdf@strcmp{\@lang}{pl} = 0
         \begin{center}\textbf{\large\@engtitle}\end{center}
+        \textbf{\\ Abstract.\xspace}
     \fi
     \ifnum \pdf@strcmp{\@lang}{en} = 0
-        \begin{center}\textbf{\large\@title}\end{center}
+        \begin{center}\textbf{\large\@poltitle}\end{center}
+        \textbf{\\ Streszczenie.\xspace}
     \fi
-    \textbf{\\ Abstract.\xspace}
 }
-\newcommand{\keywords}{\vspace{0.5cm}\par\noindent \textbf{Keywords: \xspace}}
+\newcommand{\secondkeywords}{
+    \ifnum \pdf@strcmp{\@lang}{pl} = 0
+        \vspace{0.5cm}\par\noindent \textbf{Keywords:\xspace}
+    \fi
+    \ifnum \pdf@strcmp{\@lang}{en} = 0
+        \vspace{0.5cm}\par\noindent \textbf{Słowa kluczowe:\xspace}
+    \fi
+}
 
 %----------------------------
 % Oświadczenie o autorstwie

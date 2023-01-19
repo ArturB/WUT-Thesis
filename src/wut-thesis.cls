@@ -151,8 +151,8 @@
 \counterwithin{equation}{section}
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
-\setcounter{tocdepth}{5}
-\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
 % List formatting
 \setlist[itemize,1]{topsep=2pt,label=\large$\bullet$, leftmargin=28pt}
 \setlist[itemize,2]{topsep=2pt,leftmargin=18pt}
